@@ -5,27 +5,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.testng.Assert;
 
 public class MetaDataSteps {
     WebDriver driver;
 
     @Given("I navigate to the {string} page")
-    public void navigateToMetaData(String page) {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    public void navigateToMetaData(String page) throws InterruptedException {
+    	WebDriverManager.chromedriver().setup();
+         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://localhost:52960/" + page.toLowerCase());
+        driver.get("http://localhost:62216/metadata");
+        Thread.sleep(3);
+    }
+    @When("I click on Metadata Button")
+    public void i_click_on_metadata_button() {
+    	driver.findElement(By.xpath("//a[@class='btn btnnav_bg active']"));
+    }
+        
+    @When("I click on Add New Button")
+    public void clickButton() {
+        driver.findElement(By.xpath("//button[text()='Add New']")).click();
     }
 
-    @When("I click on {string}")
-    public void clickButton(String buttonText) {
-        driver.findElement(By.xpath("//button[contains(text(),'" + buttonText + "')]")).click();
-    }
-
-    @When("I enter {string} in the {string} field")
+    @When("I enter test_file in the file name field")
     public void enterText(String value, String fieldName) {
-        String fieldXpath = "//label[contains(text(),'" + fieldName + "')]/following-sibling::input";
+        String fieldXpath = "//input[@formcontrolname='fileName']";
         WebElement inputField = driver.findElement(By.xpath(fieldXpath));
         inputField.sendKeys(value);
     }
@@ -37,7 +41,12 @@ public class MetaDataSteps {
         driver.quit();
     }
 
-    @Then("I should see validation errors for required fields")
+    private void assertTrue(String string, boolean fileExists) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Then("I should see validation errors for required fields")
     public void verifyValidationErrors() {
         boolean errorDisplayed = driver.getPageSource().contains("This field is required");
         assertTrue("Validation errors are not displayed!", errorDisplayed);
@@ -50,5 +59,10 @@ public class MetaDataSteps {
         assertFalse("File should not be saved!", fileExists);
         driver.quit();
     }
+
+	private void assertFalse(String string, boolean fileExists) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

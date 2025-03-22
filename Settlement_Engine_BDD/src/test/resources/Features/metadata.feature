@@ -2,7 +2,8 @@ Feature: Meta Data Form Submission
 
   Scenario: Verify Meta Data form submission with valid data
     Given I navigate to the "Meta Data" page
-    When I click on "Add New"
+    When I click on Metadata Button
+    And I click on "Add New"
     And I enter "test_file" in the "File Name" field
     And I enter "CSV" in the "File Type" field
     And I enter "/raw/path/test_file.csv" in the "File path raw" field
