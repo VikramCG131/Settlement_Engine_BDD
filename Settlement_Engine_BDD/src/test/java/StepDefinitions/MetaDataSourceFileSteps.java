@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.interactions.Actions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -42,15 +42,15 @@ public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() thr
 public void the_user_click_on_data_source_file() throws InterruptedException {
 
     driver.findElement(By.xpath("//a[contains(text(),'Data Source File')]")).click();
-    Thread.sleep(5000);
+    Thread.sleep(3000);
     System.out.println("The user is able to navigate to Data Source File page");
 }
 
 @Then("the user click on Add New Button")
 public void the_user_click_on(String string) throws InterruptedException {
+	Actions actions = new Actions(driver);
 	WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add New')]"));
-	button.isDisplayed();
-	button.click();
+	actions.moveToElement(button).click().perform();
 	Thread.sleep(3000);
 	System.out.println("The user is able to click on Add New Button");
 	}
