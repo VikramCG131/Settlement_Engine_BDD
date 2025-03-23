@@ -1,7 +1,12 @@
 Feature: Meta Data Form Submission
 
+
+     Background:  I navigate to the "Meta Data" page
+     Given The Settlement Engine<URL>
+     When user hit the Settlement Engine URL
+     Then the user is able to navigate to the MetadataPage
+
   Scenario: Verify Meta Data form submission with valid data
-    Given I navigate to the "Meta Data" page
     When I click on Metadata Button
     And I click on "Add New"
     And I enter "test_file" in the "File Name" field
@@ -16,13 +21,11 @@ Feature: Meta Data Form Submission
     Then I should see "test_file" in the file list
 
   Scenario: Verify validation errors when mandatory fields are missing
-    Given I navigate to the "Meta Data" page
     When I click on "Add New"
     And I click on "Submit"
     Then I should see validation errors for required fields
 
   Scenario: Verify that clicking "Cancel" does not save data
-    Given I navigate to the "Meta Data" page
     When I click on "Add New"
     And I enter "test_cancel" in the "File Name" field
     And I click on "Cancel"
