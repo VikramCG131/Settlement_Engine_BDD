@@ -45,10 +45,9 @@ public void the_user_click_on_data_source_file() throws InterruptedException {
 
 }
 
-@Then("the user click on {string}")
+@Then("the user click on Add New Button")
 public void the_user_click_on(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+	driver.findElement(By.xpath("//button[text()='Add New']")).click();
 }
 
 @Then("the user enter {string} in the {string} field")
