@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import Utilities.CommonUtilities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -14,21 +15,23 @@ import io.cucumber.java.en.Then;
 
 public class MetaDataSourceFileSteps {
     WebDriver driver;
+    CommonUtilities commonUtilities = new CommonUtilities();
 
 @Given("The Settlement Engine<URL>")
 public void the_settlement_engine_url() {
 	
 driver=	WebDriverManager.chromedriver().create();
     driver.manage().window().maximize();
-driver.get("http://localhost:50178");	
+driver.get("http://localhost:4200");	
 }
 
 
 @When("user hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-        Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:50178"));
+        Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
         Thread.sleep(3000);
         System.out.println("The user is able to login with Settlent Engine URL");
+      
 }
 
 @Then("the user is able to navigate to the Settlement Engine homepage")
@@ -36,14 +39,17 @@ public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() thr
 	Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
     Thread.sleep(3000);
     System.out.println("The user is able to navigate to the Settlement Engine homepage");
+    commonUtilities.screenshot();
 }
 
 @Then("the user click on Data Source File")
 public void the_user_click_on_data_source_file() throws InterruptedException {
 
     driver.findElement(By.xpath("//a[contains(text(),'Data Source File')]")).click();
-    Thread.sleep(3000);
+    Thread.sleep(8000);
     System.out.println("The user is able to navigate to Data Source File page");
+    commonUtilities.screenshot();
+    
 }
 
 @Then("the user click on Add New Button")
@@ -53,6 +59,7 @@ public void the_user_click_on(String string) throws InterruptedException {
 	actions.moveToElement(button).click().perform();
 	Thread.sleep(3000);
 	System.out.println("The user is able to click on Add New Button");
+	  commonUtilities.screenshot();
 	}
 
 @Then("the user enter {string} in the {string} field")
@@ -74,12 +81,14 @@ public void the_user_should_see_in_the_file_list(String string) throws Interrupt
     driver.findElement(By.xpath("//input[@formcontrolname='fileType']")).sendKeys("Test");
     System.out.println("The user is able to insert the data in the all fields");
     Thread.sleep(2000);
+    commonUtilities.screenshot();
 }
 
 @Then("the user should see click on the Submit Button")
 public void the_user_should_click_on_the_Submit_button(String string) {
     driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
     System.out.println("The user is able to click on the Submit Button");
+    driver.quit();
 }
 
 @Then("the user should see validation errors for required fields")
@@ -93,11 +102,13 @@ public void the_user_should_see_validation_errors_for_required_fields() {
 	driver.findElement(By.xpath("//input[@formcontrolname='headerIdentifier']")).sendKeys("Header");
 	driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).sendKeys("Column");
 	driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();   
+	  commonUtilities.screenshot();
 }
 
 @Then("{string} should not be in the file list")
 public void should_not_be_in_the_file_list(String string) {
     driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();	
+    driver.quit();
     }
 
 @Then("the user click on {string}")

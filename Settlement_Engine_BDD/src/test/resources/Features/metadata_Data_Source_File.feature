@@ -6,9 +6,10 @@ Feature: Meta Data Form Submission
      When user hit the Settlement Engine URL
      Then the user is able to navigate to the Settlement Engine homepage
      And the user click on Data Source File 
-     And the user click on "Add New"
+     
 
   Scenario: Verify Meta Data form submission with valid data
+    When the user clicks the "Add New" button
     And the user enter "test_file" in the "File Name" field
     And the user enter "CSV" in the "File Type" field
     And the user enter "/raw/path/test_file.csv" in the "File path raw" field
@@ -19,13 +20,14 @@ Feature: Meta Data Form Submission
     And the user enter "header1" in the "Header Identifier" field
     And the user click on "Submit"
     Then the user should see "test_file" in the file list
-    
-@ignore
+
   Scenario: Verify validation errors when mandatory fields are missing
+    When the user clicks the "Add New" button
     And the user click on "Submit"
     Then the user should see validation errors for required fields
-@ignore
+
   Scenario: Verify that clicking "Cancel" does not save data
+      When the user clicks the "Add New" buttons
     And the user enter "test_cancel" in the "File Name" field
     And the user click on "Cancel"
     Then "test_cancel" should not be in the file list
