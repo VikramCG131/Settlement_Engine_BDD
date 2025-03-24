@@ -67,11 +67,11 @@ public class MetaDataSourceFileSteps {
         driver.findElement(By.xpath("//input[@formcontrolname='filePathRaw']")).sendKeys("C://local");
         driver.findElement(By.xpath("//input[@formcontrolname='filePathCleansed']")).sendKeys("D://local");
         driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).sendKeys("10");
-        //driver.findElement(By.xpath("//input[@formcontrolname='fileType']")).sendKeys("Type");
         driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("MetadataSourceFile");
         driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).sendKeys(",");
         driver.findElement(By.xpath("//input[@formcontrolname='headerIdentifier']")).sendKeys(",");
         driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).sendKeys(",");
+        System.out.println("The user is able to insert the data in the all fields");
     }
 
     @When("the user should see click on the Submit Button")
@@ -88,10 +88,20 @@ public class MetaDataSourceFileSteps {
         Thread.sleep(2000);
         commonUtilities.screenshot();
     }
-
+    @When("the user click on any field")
+    public void the_user_click_on_any_field() throws InterruptedException {
+    	  driver.findElement(By.xpath("//input[@formcontrolname='filePattern']")).click();
+    	  WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='fileName']"));
+    	   wait.until(ExpectedConditions.visibilityOf(button)).click();
+    	   Thread.sleep(2000);
+    	  
+    }
+    
     @Then("the user should see validation errors for required fields")
     public void the_user_should_see_validation_errors_for_required_fields() {
-        driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+    	String actual= driver.findElement(By.xpath("//*[text()='Please enter File Pattern']")).getText();
+		  Assert.assertEquals("Please enter File Pattern", actual);
+		  System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
     }
 
@@ -101,22 +111,111 @@ public class MetaDataSourceFileSteps {
         driver.quit();
     }
 
-    @Then("the user click on {string}")
-    public void the_user_click_on_button(String string) {
-        driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
-        System.out.println("The fields are empty");
-        commonUtilities.screenshot();
-    }
-
-    @When("the user clicks the {string} button")
-    public void the_user_clicks_the_button(String string) {
+    @When("the user click on Cancel button")
+    public void the_user_click_on_Cancel_button() {
         driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
         System.out.println("The user is able to close the Add New page");
         commonUtilities.screenshot();
     }
+    @When("the user click on Reset button")
+    public void the_user_click_on_reset_button() {
+    	driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
+        System.out.println("The fields are empty");
+        commonUtilities.screenshot();
+    }
 
-    @When("the user clicks the {string} buttons")
-    public void the_user_clicks_the_buttons(String string) {
-        // Implementation for this step
+    @Then("all the fields should be cleared")
+    public void all_the_fields_should_be_cleared() {
+    	Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='fileName']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='fileType']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='filePattern']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='filePathRaw']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='filePathCleansed']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='headerIdentifier']")).getAttribute("value"));
+        Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).getAttribute("value"));
+        System.out.println("All fields are cleared");
+    }
+
+    @Then("Add New Pop up should be closed")
+    public void add_new_pop_up_should_be_closed() {
+    	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+        driver.quit();
+    }
+    @When("The User click the edit icon for the any file")
+    public void the_user_click_the_edit_icon_for_the_any_file() {
+       driver.findElement(By.xpath("(//i[@data-action='edit'])[1]")).click();
+       commonUtilities.screenshot();
+    }
+
+    @Then("The User should see the edit modal open file")
+    public void the_user_should_see_the_edit_modal_open_file() {
+    	//WebElement editModal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@class='ng-touched ng-pristine ng-valid']")));
+        //Assert.assertTrue(editModal.isDisplayed());
+        System.out.println("The edit modal is displayed");
+        commonUtilities.screenshot();
+    }
+    
+    @Then("the user update the any field")
+    public void the_user_update_the_any_field() {
+    	driver.findElement(By.xpath("//input[@formcontrolname='fileType']")).clear();
+    	driver.findElement(By.xpath("//input[@formcontrolname='fileType']")).sendKeys("txt");
+    }
+    
+    @Then("the user should see click on the Update Button")
+    public void the_user_should_see_click_on_the_update_button() throws InterruptedException {
+    	  driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
+    	  		  System.out.println("The user is able to click on the Update Button");
+		  commonUtilities.screenshot();
+		  Thread.sleep(2000);
+    }
+    @Then("the user should see the updated {string} in the file list")
+    public void the_user_should_see_the_updated_in_the_file_list(String string) throws InterruptedException {
+    	String actual= driver.findElement(By.xpath("//*[text()=' Record has been Updated successFully ']")).getText();
+        Assert.assertEquals("Record has been Updated successFully", actual);
+         System.out.println("The user is able to insert the data in the all fields");
+         Thread.sleep(2000);
+         commonUtilities.screenshot();
+    }
+    @When("The User click the delete icon for the any file")
+    public void the_user_click_the_delete_icon_for_the_any_file() {
+    	 driver.findElement(By.xpath("(//i[@data-action='delete'])[1]")).click();
+    	 commonUtilities.screenshot();
+    }
+
+    @Then("The User should see a confirmation pop-up with title {string}")
+    public void the_user_should_see_a_confirmation_pop_up_with_title(String string) throws InterruptedException {
+    	driver.findElement(By.xpath("//div[@class='modal-content']")).isDisplayed();
+		System.out.println("The user is able to see the confirmation pop-up");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
+    }
+
+    @Then("The User should see {string} message")
+    public void the_user_should_see_message(String string) throws InterruptedException {
+    	String actual= driver.findElement(By.xpath("//div[text()=' Are you sure you want to delete ']")).getText();
+        Assert.assertEquals("Are you sure you want to delete", actual);
+         System.out.println("The user is able to see message in the confirmation pop-up");
+         Thread.sleep(2000);
+         commonUtilities.screenshot();
+    }
+    @When("The User should see a confirmation pop-up with Cancel and Confirm buttons")
+    public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("The User confirm the deletion")
+    public void the_user_confirm_the_deletion() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("the file should be removed from the table")
+    public void the_file_should_be_removed_from_the_table() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 }
