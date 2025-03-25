@@ -1,53 +1,58 @@
-Feature: Meta Data Form Submission
-
+Feature: Validation of the MetaData Data Source File
 
      Background:  the user navigate to the "Settlement Engine" page
      Given The Settlement Engine<URL>
      When user hit the Settlement Engine URL
      Then the user is able to navigate to the Settlement Engine homepage
-     And the user click on Data Source File 
      
 
- #Scenario: Verify Meta Data form submission with valid data
-  # When the user clicks the Add New button
-   # And the user enters the data in required fields
-    #And the user should see click on the Submit Button
-    #Then the user should see "test_file" in the file list
+ Scenario: Verify Meta Data form submission with valid data for the file
+   When the user click on Data Source File
+   And the user clicks the Add New button from the Data Source File page
+   And the user enters the data in required fields for the Data Source File
+    And the user should see click on the Submit Button for the file
+    Then the user should see "test_file" in the file list for the file
 
- #Scenario: Verify validation errors when mandatory fields are missing
-   #When the user clicks the Add New button
-   #And the user click on any field
-  # Then the user should see validation errors for required fields
+ Scenario: Verify validation errors when mandatory fields are missing for the file
+  When the user click on Data Source File
+   And the user clicks the Add New button from the Data Source File page
+   And the user click on any field for the file 
+  Then the user should see validation errors for required fields for the file
    
-  #Scenario: Verify that clicking "Reset" fields clears the fields
-    #When the user clicks the Add New button
-    #And the user enters the data in required fields
-   # And the user click on Reset button
-   # Then all the fields should be cleared
+  Scenario: Verify that clicking "Reset" fields clears the fields for the file
+   When the user click on Data Source File
+   And the user clicks the Add New button from the Data Source File page
+    And the user enters the data in required fields for the Data Source File
+    And the user click on Reset button for the file
+   Then all the fields should be cleared for the file
 
- #Scenario: Verify that clicking "Cancel" does not save data
-   #  When the user clicks the Add New button
-    # And the user click on Cancel button
-   #  Then Add New Pop up should be closed
+ Scenario: Verify that clicking "Cancel" does not save data for the file
+  When the user click on Data Source File
+   And the user clicks the Add New button from the Data Source File page
+     And the user click on Cancel button for the file
+    Then Add New Pop up should be closed for the file
     
-   #Scenario: Verify the edit icon functionality
-   #When The User click the edit icon for the any file 
-   # Then The User should see the edit modal open file
-   # And the user update the any field
-   # And the user should see click on the Update Button
-   # And the user should see the updated "test_file" in the file list
+   Scenario: Verify the edit icon functionality for the Data Source file
+   When the user click on Data Source File
+   And The User click the edit icon for the any Data Source file
+   Then The User should see the edit modal open Data Source file
+   And the user update the any field for the file
+   And the user should see click on the Update Button for the file
+   And the user should see the updated "test_file" in the file list for the Data Source file
     
     
- #Scenario: Verify delete confirmation pop-up appears
-  # When The User click the delete icon for the any file
-  # Then The User should see a confirmation pop-up with title "Confirmation deletion"
-   # And The User should see "Are you sure you want to delete" message
+ Scenario: Verify delete confirmation pop-up appears for the file
+ When the user click on Data Source File
+   And The User click the delete icon for the any Data Source file
+  Then The User should see a confirmation pop-up with title "Confirmation deletion" for the file
+   And The User should see "Are you sure you want to delete" message for the file
     
   Scenario: Confirm deletion of a file
-    When The User click the delete icon for the any file
-   And The User should see a confirmation pop-up with Cancel and Confirm buttons
-    And The User confirm the deletion
-    Then the file should be removed from the table
+    When the user click on Data Source File
+   And The User click the delete icon for the any Data Source file
+   And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Data Source file
+    And The User confirm the deletion for the Data Source file
+    Then the file should be removed from the table for the Data Source file
   
   
     
