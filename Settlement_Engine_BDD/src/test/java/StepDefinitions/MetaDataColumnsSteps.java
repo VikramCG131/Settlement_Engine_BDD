@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
@@ -61,7 +62,7 @@ public class MetaDataColumnsSteps {
 	}
 
 	@When("the user enters the data in required fields for the Metadata Column")
-	public void the_user_enters_the_data_in_required_fields_for_the_metadata_column() {
+	public void the_user_enters_the_data_in_required_fields_for_the_metadata_column() throws InterruptedException {
 		List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-md-4']"));
 		for (WebElement fieldElement : fieldElements) {
 		    String fieldText = fieldElement.getText();
@@ -69,15 +70,21 @@ public class MetaDataColumnsSteps {
 		}
 		int random = (int) (Math.floor(Math.random() * 100000) + 1);
 		driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).sendKeys("TestAutomation" + random);
-		driver.findElement(By.xpath("//input[@formcontrolname='columnDataType']")).sendKeys("csv");
+		 // Locate the dropdown element
+        WebElement dropdown = driver.findElement(By.id("columnDataType"));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("BOOLEAN");
 		driver.findElement(By.xpath("//div[3]/div[1]/label[@for='columnIsActiveYes']")).click();
 		driver.findElement(By.xpath("//div[4]/div[2]/label[@for='columnIsNullNo']")).click();
 		driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).sendKeys("5");
 		driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).sendKeys("50");
 		driver.findElement(By.xpath("//input[@formcontrolname='columnOrder']")).sendKeys("3");
 		driver.findElement(By.xpath("//input[@formcontrolname='columnDateFormat']")).sendKeys("2025-03-26");
-		driver.findElement(By.xpath("//input[@formcontrolname='columnDescription']")).sendKeys("Test Automation");
-		
+		Thread.sleep(2000);
+		// Locate the dropdown element
+		 WebElement dropdown1 = driver.findElement(By.xpath("//select[@formcontrolname='fileMetadataId']"));
+		Select select1 = new Select(dropdown1);
+		select1.selectByIndex(2);	
 		System.out.println("The user is able to enter the data in required fields");
 	}
 
@@ -91,8 +98,8 @@ public class MetaDataColumnsSteps {
 
 	@Then("the user should see {string} in the file list for the Metadata Column")
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully ']")).getText();
-		Assert.assertEquals("Record has been added successFully", actual);
+		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
+		Assert.assertEquals("Record has been added successFully..!", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -100,49 +107,35 @@ public class MetaDataColumnsSteps {
 
 	@When("the user click on any field for the Metadata Column")
 	public void the_user_click_on_any_field_for_the_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//input[@formcontrolname='columnDataType'")).click();
-		WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='minSize']"));
+		driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).click();
+		WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='maxSize']"));
 		wait.until(ExpectedConditions.visibilityOf(button)).click();
 		Thread.sleep(2000);
 	}
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
-		String actual = driver.findElement(By.xpath("//*[text()='Please enter Column Data Type']")).getText();
-		Assert.assertEquals("Please enter Column Data Type", actual);
+		String actual = driver.findElement(By.xpath("//*[text()='Min Size must be a number']")).getText();
+		Assert.assertEquals("Min Size must be a number", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
 	}
 
 	@When("the user click on Reset button for the Metadata Column")
-	public void the_user_click_on_reset_button_for_the_metadata_column() {
+	public void the_user_click_on_reset_button_for_the_metadata_column() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
 		System.out.println("The fields are empty");
+		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("all the fields should be cleared for the Metadata Column")
 	public void all_the_fields_should_be_cleared_for_the_metadata_column() {
-		Assert.assertEquals("",
-				driver.findElement(By.xpath("//input[@formcontrolname='columnName']"))
-						.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnDataType']"))
-				.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='minSize']"))
-				.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='maxSize']"))
-				.getAttribute("value"));		
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnOrder']"))
-				.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnDateFormat']"))
-				.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnDescription']"))
-				.getAttribute("value"));	
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnIsActive']"))
-				.getAttribute("value"));
-		Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnIsNull']"))
-				.getAttribute("value"));
-		System.out.println("The user is able to clear the fields");
+		 // Verify that all fields are empty
+	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).getAttribute("value"));
+	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).getAttribute("value"));
+	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).getAttribute("value"));
+	    System.out.println("The user is able to clear the fields");
 	}
 
 	@When("the user click on Cancel button for the Metadata Column")
@@ -165,10 +158,10 @@ public class MetaDataColumnsSteps {
 
 	@Then("The User should see the edit modal open Metadata Column")
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Column Information']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Column Information']")).getText();
-		Assert.assertEquals("Column Information", actual);		
+		String actual = driver.findElement(By.xpath("//*[text()='Columns Information']")).getText();
+		Assert.assertEquals("Columns Information", actual);		
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}

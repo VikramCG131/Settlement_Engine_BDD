@@ -7,6 +7,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/Features",
     glue = "StepDefinitions",monochrome = true,
-    		plugin = {"pretty", "html:target/cucumber-reports.html", "json:target/cucumber.json"}
+    		plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }
 )
 public class TestRunner {}
