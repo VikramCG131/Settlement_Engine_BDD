@@ -1,9 +1,9 @@
 Feature: Validation of the Metadata Column
 
      Background:  the user navigate to the "Settlement Engine" page
-     Given The Settlement Engine<URL>
-     When user hit the Settlement Engine URL
-     Then the user is able to navigate to the Settlement Engine homepage
+     Given Settlement Engine<URL>
+     When the user hit the Settlement Engine URL
+     Then the User is able to navigate to the Settlement Engine homepage
      
 
  Scenario: Verify Meta Data form submission with valid data for Metadata Column
