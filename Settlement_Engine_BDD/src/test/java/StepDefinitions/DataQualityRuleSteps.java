@@ -30,13 +30,13 @@ public class DataQualityRuleSteps {
 	public void the_settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
+		driver.get("http://localhost:62963");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@When("User hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:62963"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
@@ -96,14 +96,14 @@ public class DataQualityRuleSteps {
     public void the_user_should_click_on_the_Submit_Button() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
         System.out.println("The user is able to click on the Submit Button");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         commonUtilities.screenshot();
     }
 
     @Then("the user should see {string} in the file list for the DQ Rule")
     public void the_user_should_see_in_the_file_list(String string) throws InterruptedException {
-        String actual = driver.findElement(By.xpath("//*[text()=' Record Added SuccessFully ']")).getText();
-        Assert.assertEquals("Record Added SuccessFully", actual);
+        String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
+        Assert.assertEquals("Record has been added successFully..!", actual);
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
         commonUtilities.screenshot();
@@ -182,7 +182,7 @@ public class DataQualityRuleSteps {
         driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
         System.out.println("The user is able to click on the Update Button");
         commonUtilities.screenshot();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
     }
 
     @Then("the user should see the updated {string} in the file list for the DQ Rule")

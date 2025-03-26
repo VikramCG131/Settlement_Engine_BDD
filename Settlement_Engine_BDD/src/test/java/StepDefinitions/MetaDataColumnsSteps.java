@@ -26,13 +26,13 @@ public class MetaDataColumnsSteps {
 	public void the_settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
+		driver.get("http://localhost:62963");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@When("the user hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:62963"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
@@ -158,9 +158,9 @@ public class MetaDataColumnsSteps {
 
 	@Then("The User should see the edit modal open Metadata Column")
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Columns Information']")).getText();
+		String actual = driver.findElement(By.xpath("//*[text()='Columns Information ']")).getText();
 		Assert.assertEquals("Columns Information", actual);		
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
@@ -169,7 +169,7 @@ public class MetaDataColumnsSteps {
 	@Then("the user update the any field for the Metadata Column")
 	public void the_user_update_the_any_field_for_the_metadata_column() {
 		driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).clear();
-		driver.findElement(By.xpath("//input[@formcontrolname='ColumnDataType']")).sendKeys("txt");
+		driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).sendKeys("40");
 	}
 
 	@Then("the user should see click on the Update Button for the Metadata Column")
