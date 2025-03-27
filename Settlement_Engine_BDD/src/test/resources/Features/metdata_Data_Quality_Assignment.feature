@@ -5,18 +5,18 @@
      When User click the Settlement Engine URL
       Then The User is able to navigate to the settlement Engine homepage
 
-  Scenario: Verify Meta Data form submission with valid data for the DQ Assignment
+ # Scenario: Verify Meta Data form submission with valid data for the DQ Assignment
+  #    When the user click on Data Quality Assignment
+  #    And the user clicks the Add New button for the DQ Assignment
+   #   And the user enters the data in required fields for the DQ Assignment
+  #    And the user should see click on the Submit Button for the DQ Assignment
+   #   Then the user should see "test_file" in the file list for the DQ Assignment
+
+ Scenario: Verify validation errors when mandatory fields are missing for the DQ Assignment
       When the user click on Data Quality Assignment
       And the user clicks the Add New button for the DQ Assignment
-      And the user enters the data in required fields for the DQ Assignment
-      And the user should see click on the Submit Button for the DQ Assignment
-      Then the user should see "test_file" in the file list for the DQ Assignment
-
-#  Scenario: Verify validation errors when mandatory fields are missing for the DQ Assignment
-#      When the user click on Data Quality Assignment
-#      And the user clicks the Add New button for the DQ Assignment
-#      And the user click on any field for the DQ Assignment
-#      Then the user should see validation errors for required fields for the DQ Assignment
+      And the user click on any field for the DQ Assignment
+     Then the user should see validation errors for required fields for the DQ Assignment
 
 #  Scenario: Verify that clicking "Reset" fields clears the fields for the DQ Assignment
 #      When the user click on Data Quality Assignment

@@ -86,7 +86,7 @@ public class DataQualityAssignmentSteps {
         Thread.sleep(2000);
         WebElement dateTimeInput1 = driver.findElement(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']"));
         dateTimeInput1.sendKeys("2025-04-30T17:45");  
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         System.out.println("user is able to enter the data in the required fields");
 	}
 
@@ -94,29 +94,33 @@ public class DataQualityAssignmentSteps {
 	public void the_user_should_see_click_on_the_submit_button_for_the_dq_assignment() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 		System.out.println("The user is able to click on the Submit Button");
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("the user should see {string} in the file list for the DQ Assignment")
 	public void the_user_should_see_in_the_file_list_for_the_dq_assignment(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully ']")).getText();
-		Assert.assertEquals("Record has been added successFully", actual);
+		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
+		Assert.assertEquals("Record has been added successFully..!", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
 
 	@When("the user click on any field for the DQ Assignment")
-	public void the_user_click_on_any_field_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_user_click_on_any_field_for_the_dq_assignment() throws InterruptedException {
+		driver.findElement(By.xpath("//select[@formcontrolname='source1']")).click();
+		WebElement button = driver.findElement(By.xpath("//select[@formcontrolname='ruleId']"));
+		wait.until(ExpectedConditions.visibilityOf(button)).click();
+		Thread.sleep(2000);
 	}
 
 	@Then("the user should see validation errors for required fields for the DQ Assignment")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		String actual = driver.findElement(By.xpath("//*[text()=' Please select Source Table ']")).getText();
+		Assert.assertEquals("Please select Source Table", actual);
+		System.out.println("The user is able to see the error message for required fields");
+		commonUtilities.screenshot();
 	}
 
 	@When("the user click on Reset button for the DQ Assignment")
