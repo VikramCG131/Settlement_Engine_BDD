@@ -1,0 +1,35 @@
+package locators;
+
+import org.openqa.selenium.By;
+
+public class DataQualityAssignmentLocators {
+	
+	/******Data Quality Assignment Page******/
+	public static final By DataQualityAssignmentTab = By.xpath("//a[contains(text(),'Data Quality Assignment')]");
+	public static final By DQAAddNewButton = By.xpath("//*[text()='Add New']");
+	public static final By DQASuccessPopupMessage = By.xpath("//*[contains(text(),'Record has been added successFully..!')]");
+	public static final By DQADeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
+	public static final By DQADeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
+	public static final By DQADeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
+	
+	/******Data Quality Assignment Category******/
+	public static final By DQASourceTableDropdown = By.xpath("//select[@formcontrolname='source1']");
+	public static final By DQASourceAttributeDropdown = By.xpath("//select[@formcontrolname='source1Attribute']");
+	public static final By DQADQRuleDropdown = By.xpath("//select[@formcontrolname='ruleId']");
+	public static final By DQADQStartDate = By.xpath("//input[@formcontrolname='ruleStartTimeStamp']");
+	public static final By DQADQEndDate = By.xpath("//input[@formcontrolname='ruleEndTimeStamp']");
+	public static final By DQASubmitButton = By.xpath("//button[contains(text(),'Submit')]");
+	public static final By DQASourceTableValidation = By.xpath("//*[text()=' Please select Source Table ']");
+	public static final By DQADQRuleValidation = By.xpath("//*[text()=' Please select DQ Rule ']");
+	public static final By DQAResetButton = By.xpath("//button[contains(text(),'Reset')]");
+	public static final By DQACancelButton = By.xpath("//button[contains(text(),'Cancel')]");
+	public static final By DQAUpdateButton = By.xpath("//button[contains(text(),'Update')]");
+	public static final By DQACategoryTextVisible = By.xpath("//*[text() = 'Data Quality Assignment Category ']");
+	
+	/******Data Quality Assignment Grid******/
+	public static final By DQAAssignmentGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
+	public static final By DQAEditButton = By.xpath("(//i[@data-action='edit'])[1]");
+	public static final By DQADeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
+	//public static final By DQAFilename = By.xpath("//div[@data-ref='rootWrapperBody']//div[1]//div[1]");
+	
+}

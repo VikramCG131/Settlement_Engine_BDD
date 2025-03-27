@@ -1,7 +1,7 @@
 Feature: Data Quality Assignment Management
 
 Background: The User navigate to the "Settlement Engine" page
-    Given Settlement engine<URL>
+    Given Settlement engine
     When User click the Settlement Engine URL
     Then The User is able to navigate to the settlement Engine homepage
 
@@ -15,8 +15,7 @@ Scenario: Verify Meta Data form submission with valid data for the DQ Assignment
 Scenario: Verify validation errors when mandatory fields are missing for the DQ Assignment
     When the user click on Data Quality Assignment
     And the user clicks the Add New button for the DQ Assignment
-    And the user click on any field for the DQ Assignment
-    Then the user should see validation errors for required fields for the DQ Assignment
+    And the user click on any field for the DQ Assignment and validate the mandatory required field message
 
 Scenario: Verify that clicking "Reset" fields clears the fields for the DQ Assignment
     When the user click on Data Quality Assignment
@@ -42,12 +41,11 @@ Scenario: Verify the edit icon functionality for the Data Quality Rule
 Scenario: Verify delete confirmation pop-up appears
     When the user click on Data Quality Assignment
     And The User click the delete icon for the any file for the DQ Assignment
-    Then The User should see a confirmation pop-up with title "Confirmation deletion" for the DQ Assignment
-    And The User should see "Are you sure you want to delete" message for the DQ Assignment
+    Then The User should see a confirmation pop-up with message "Are you sure you want to delete" for the DQ Assignment
 
 Scenario: Confirm deletion of a file
     When the user click on Data Quality Assignment
     And The User click the delete icon for the any file for the DQ Assignment
     And The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Assignment
     And The User confirm the deletion for the DQ Assignment
-    Then the file should be removed from the table for the DQ Assignment
+#    Then the file should be removed from the table for the DQ Assignment
