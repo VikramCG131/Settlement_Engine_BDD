@@ -5,8 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import Utilities.CommonUtilities;
 import io.cucumber.java.en.Given;
@@ -18,25 +21,25 @@ public class DataQualityAssignmentSteps {
 	CommonUtilities commonUtilities = new CommonUtilities();
 	WebDriverWait wait;
 
-	@Given("the Settlement Engine<URL>")
-	public void the_settlement_engine_url() {
+	@Given("Settlement engine<URL>")
+	public void Settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:62963");
+		driver.get("http://localhost:4200");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
-	@When("User hit the Settlement Engine URL")
-	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:62963"));
+	@When("User click the Settlement Engine URL")
+	public void User_click_the_Settlement_Engine_URL() throws InterruptedException {
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
 	
 	
 	
-	@Then("The user is able to navigate to the Settlement Engine homepage")
-	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
+	@Then("The User is able to navigate to the settlement Engine homepage")
+	public void The_User_is_able_to_navigate_to_the_settlement_Engine_homepage() throws InterruptedException {
 		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
@@ -60,9 +63,31 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@When("the user enters the data in required fields for the DQ Assignment")
-	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() throws InterruptedException {
+		// Method for dropdown element
+        WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='source1']"));
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByVisibleText("tallyman_raw");
+        System.out.println("Selected Source Table: tallyman_raw"); 
+        Thread.sleep(1000);
+        WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='source1Attribute']"));
+        Select dropdown1 = new Select(dropdownElement1);
+        dropdown1.selectByVisibleText("product_code");
+        System.out.println("Selected Source Attribute: product_code"); 
+        Thread.sleep(1000);
+        WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='ruleId']"));
+        Select dropdown2 = new Select(dropdownElement2);
+        dropdown2.selectByIndex(2);
+        System.out.println("Selected Rule ID:");
+        Thread.sleep(1000);
+     // Locate the datetime-local input field
+        WebElement dateTimeInput = driver.findElement(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']"));
+        dateTimeInput.sendKeys("2025-02-25T14:30");
+        Thread.sleep(2000);
+        WebElement dateTimeInput1 = driver.findElement(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']"));
+        dateTimeInput1.sendKeys("2025-04-30T17:45");  
+        Thread.sleep(2000);
+        System.out.println("user is able to enter the data in the required fields");
 	}
 
 	@When("the user should see click on the Submit Button for the DQ Assignment")
@@ -193,7 +218,5 @@ public class DataQualityAssignmentSteps {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
-
-
 
 }

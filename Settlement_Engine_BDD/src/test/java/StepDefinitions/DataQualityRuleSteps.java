@@ -30,13 +30,13 @@ public class DataQualityRuleSteps {
 	public void the_settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:62963");
+		driver.get("http://localhost:4200");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@When("User hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:62963"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
@@ -75,8 +75,8 @@ public class DataQualityRuleSteps {
         // Method for dropdown element
         WebElement dropdownElement = driver.findElement(By.id("severityLevel"));
         Select dropdown = new Select(dropdownElement);
-        dropdown.selectByVisibleText("High");
-        System.out.println("Selected severity: High");
+        dropdown.selectByVisibleText("Medium");
+        System.out.println("Selected severity: Medium");
         Thread.sleep(2000);
 
         // Locate the radio button elements
