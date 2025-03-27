@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -68,6 +67,10 @@ public class DataQualityRuleSteps {
 
     @Then("the user enters the data in required fields for the DQ Rule")
     public void the_user_enters_the_data_in_required_fields() throws InterruptedException {
+    	List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-md-4']"));
+		for (WebElement fieldElement : fieldElements) {
+		    String fieldText = fieldElement.getText();
+		    System.out.println("Field: " + fieldText);}
         int random = (int) (Math.floor(Math.random() * 100000) + 1);
         driver.findElement(By.xpath("//input[@formcontrolname='ruleExpression']")).sendKeys("TestAutomation" + random);
         driver.findElement(By.xpath("//input[@formcontrolname='ruleDescription']")).sendKeys("Testing Automation");
@@ -91,7 +94,7 @@ public class DataQualityRuleSteps {
         Thread.sleep(2000);
             System.out.println("The user is able to insert the data in all fields");
     }
-
+    
     @When("the user should see click on the Submit Button for the DQ Rule")
     public void the_user_should_click_on_the_Submit_Button() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
@@ -187,8 +190,8 @@ public class DataQualityRuleSteps {
 
     @Then("the user should see the updated {string} in the file list for the DQ Rule")
     public void the_user_should_see_the_updated_in_the_file_list(String string) throws InterruptedException {
-        String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
-        Assert.assertEquals("Record has been added successFully", actual);
+        String actual = driver.findElement(By.xpath("//*[text()=' Record has been updated successfully..! ']")).getText();
+        Assert.assertEquals("Record has been updated successfully..!", actual);
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
         commonUtilities.screenshot();

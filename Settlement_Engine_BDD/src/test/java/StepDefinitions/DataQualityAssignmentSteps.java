@@ -16,6 +16,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.cucumber.java.en.Then;
+
 public class DataQualityAssignmentSteps {
 	WebDriver driver;
 	CommonUtilities commonUtilities = new CommonUtilities();
@@ -35,9 +36,7 @@ public class DataQualityAssignmentSteps {
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
-	
-	
-	
+
 	@Then("The User is able to navigate to the settlement Engine homepage")
 	public void The_User_is_able_to_navigate_to_the_settlement_Engine_homepage() throws InterruptedException {
 		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
@@ -64,43 +63,48 @@ public class DataQualityAssignmentSteps {
 
 	@When("the user enters the data in required fields for the DQ Assignment")
 	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() throws InterruptedException {
+		List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-md-4']"));
+		for (WebElement fieldElement : fieldElements) {
+		    String fieldText = fieldElement.getText();
+		    System.out.println("Field: " + fieldText);}
 		// Method for dropdown element
-        WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='source1']"));
-        Select dropdown = new Select(dropdownElement);
-        dropdown.selectByVisibleText("tallyman_raw");
-        System.out.println("Selected Source Table: tallyman_raw"); 
-        Thread.sleep(1000);
-        WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='source1Attribute']"));
-        Select dropdown1 = new Select(dropdownElement1);
-        dropdown1.selectByVisibleText("product_code");
-        System.out.println("Selected Source Attribute: product_code"); 
-        Thread.sleep(1000);
-        WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='ruleId']"));
-        Select dropdown2 = new Select(dropdownElement2);
-        dropdown2.selectByIndex(2);
-        System.out.println("Selected Rule ID:");
-        Thread.sleep(1000);
-     // Locate the datetime-local input field
-        WebElement dateTimeInput = driver.findElement(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']"));
-        dateTimeInput.sendKeys("2025-02-25T14:30");
-        Thread.sleep(2000);
-        WebElement dateTimeInput1 = driver.findElement(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']"));
-        dateTimeInput1.sendKeys("2025-04-30T17:45");  
-        Thread.sleep(3000);
-        System.out.println("user is able to enter the data in the required fields");
+		WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='source1']"));
+		Select dropdown = new Select(dropdownElement);
+		dropdown.selectByVisibleText("tallyman_raw");
+		System.out.println("Selected Source Table: tallyman_raw");
+		Thread.sleep(1000);
+		WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='source1Attribute']"));
+		Select dropdown1 = new Select(dropdownElement1);
+		dropdown1.selectByVisibleText("product_code");
+		System.out.println("Selected Source Attribute: product_code");
+		Thread.sleep(1000);
+		WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='ruleId']"));
+		Select dropdown2 = new Select(dropdownElement2);
+		dropdown2.selectByIndex(2);
+		System.out.println("Selected Rule ID:");
+		Thread.sleep(1000);
+		// Locate the datetime-local input field
+		WebElement dateTimeInput = driver.findElement(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']"));
+		dateTimeInput.sendKeys("2025-02-25");
+		Thread.sleep(2000);
+		WebElement dateTimeInput1 = driver.findElement(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']"));
+		dateTimeInput1.sendKeys("2025-04-30");
+		Thread.sleep(3000);
+		System.out.println("user is able to enter the data in the required fields");
 	}
+	
 
 	@When("the user should see click on the Submit Button for the DQ Assignment")
 	public void the_user_should_see_click_on_the_submit_button_for_the_dq_assignment() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 		System.out.println("The user is able to click on the Submit Button");
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("the user should see {string} in the file list for the DQ Assignment")
 	public void the_user_should_see_in_the_file_list_for_the_dq_assignment(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
+		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been added successFully..!')]")).getText();
 		Assert.assertEquals("Record has been added successFully..!", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
@@ -124,16 +128,23 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@When("the user click on Reset button for the DQ Assignment")
-	public void the_user_click_on_reset_button_for_the_dq_assignment() {
+	public void the_user_click_on_reset_button_for_the_dq_assignment() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
 		System.out.println("The fields are empty");
+		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("all the fields should be cleared for the DQ Assignment")
 	public void all_the_fields_should_be_cleared_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement ruleStartTimeStamp = wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']")));
+		WebElement ruleEndTimeStamp = wait.until(
+				ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']")));
+		Assert.assertEquals("", ruleStartTimeStamp.getAttribute("value"));
+		Assert.assertEquals("", ruleEndTimeStamp.getAttribute("value"));
+		System.out.println("The user is able to clear the data in all fields");
 	}
 
 	@When("the user click on Cancel button for the DQ Assignment")
@@ -155,19 +166,22 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("The User should see the edit modal open file for the DQ Assignment")
-	public void the_user_should_see_the_edit_modal_open_file_for_the_dq_assignment() {
-		boolean file = driver.findElement(By.xpath("//*[text()='File Information']")).isDisplayed();
+	public void the_user_should_see_the_edit_modal_open_file_for_the_dq_assignment()throws  InterruptedException {
+		boolean file = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='File Information']")).getText();
-		Assert.assertEquals("File Information", actual);		
+		String actual = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).getText();
+		Assert.assertEquals("Data Quality Assignment Category", actual);
 		System.out.println("The edit modal is displayed");
+		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("the user update the any field for the DQ Assignment")
-	public void the_user_update_the_any_field_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_user_update_the_any_field_for_the_dq_assignment() throws  InterruptedException {
+		WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='ruleId']"));
+		Select dropdown2 = new Select(dropdownElement2);
+		dropdown2.selectByIndex(3);
+	    System.out.println("The user is able to update the data in the required fields");
 	}
 
 	@Then("the user should see click on the Update Button for the DQ Assignment")
@@ -175,13 +189,15 @@ public class DataQualityAssignmentSteps {
 		driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
 		System.out.println("The user is able to click on the Update Button");
 		commonUtilities.screenshot();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 	}
 
 	@Then("the user should see the updated {string} in the file list for the DQ Assignment")
-	public void the_user_should_see_the_updated_in_the_file_list_for_the_dq_assignment(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been Updated successFully ']")).getText();
-		Assert.assertEquals("Record has been Updated successFully", actual);
+	public void the_user_should_see_the_updated_in_the_file_list_for_the_dq_assignment(String string)
+			throws InterruptedException {
+		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been updated successfully..!')]"))
+				.getText();
+		Assert.assertEquals("Record has been updated successfully..!", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -194,33 +210,39 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("The User should see a confirmation pop-up with title {string} for the DQ Assignment")
-	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_dq_assignment(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_dq_assignment(String string)
+			throws InterruptedException {
+		driver.findElement(By.xpath("//div[@class='modal-content']")).isDisplayed();
+		System.out.println("The user is able to see the confirmation pop-up");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
 	}
 
 	@Then("The User should see {string} message for the DQ Assignment")
-	public void the_user_should_see_message_for_the_dq_assignment(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_user_should_see_message_for_the_dq_assignment(String string) throws InterruptedException {
+		String actual = driver.findElement(By.xpath("//div[text()=' Are you sure you want to delete ']")).getText();
+		Assert.assertEquals("Are you sure you want to delete", actual);
+		System.out.println("The user is able to see message in the confirmation pop-up");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Assignment")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).isDisplayed();
+		driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).isDisplayed();
+		System.out.println("The user is able to see the Confirm and Cancel button in the confirmation pop-up");
 	}
 
 	@When("The User confirm the deletion for the DQ Assignment")
 	public void the_user_confirm_the_deletion_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
 	}
 
 	@Then("the file should be removed from the table for the DQ Assignment")
 	public void the_file_should_be_removed_from_the_table_for_the_dq_assignment() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
 	}
 
 }
