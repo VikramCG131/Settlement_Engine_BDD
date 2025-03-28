@@ -167,10 +167,10 @@ public class DataQualityAssignmentSteps {
 
 	@Then("The User should see the edit modal open file for the DQ Assignment")
 	public void the_user_should_see_the_edit_modal_open_file_for_the_dq_assignment()throws  InterruptedException {
-		boolean file = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Data quality assignment category ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).getText();
-		Assert.assertEquals("Data Quality Assignment Category", actual);
+		String actual = driver.findElement(By.xpath("//*[text()='Data quality assignment category ']")).getText();
+		Assert.assertEquals("Data quality assignment category", actual);
 		System.out.println("The edit modal is displayed");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
