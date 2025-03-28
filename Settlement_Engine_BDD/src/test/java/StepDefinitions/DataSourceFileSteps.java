@@ -75,7 +75,7 @@ public class DataSourceFileSteps {
 		driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).sendKeys("10");
 		driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("MetadataSourceFile");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).sendKeys(",");
-		driver.findElement(By.xpath("//input[@formcontrolname='headerIdentifier']")).sendKeys(",");
+		driver.findElement(By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']")).click();
 		driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).sendKeys(",");
 		System.out.println("The user is able to insert the data in the all fields");
 	}
@@ -153,8 +153,6 @@ public class DataSourceFileSteps {
 		Assert.assertEquals("",
 				driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).getAttribute("value"));
 		Assert.assertEquals("",
-				driver.findElement(By.xpath("//input[@formcontrolname='headerIdentifier']")).getAttribute("value"));
-		Assert.assertEquals("",
 				driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).getAttribute("value"));
 		System.out.println("All fields are cleared");
 	}
@@ -172,10 +170,10 @@ public class DataSourceFileSteps {
 
 	@Then("The User should see the edit modal open Data Source file")
 	public void the_user_should_see_the_edit_modal_open_file() {
-		boolean file = driver.findElement(By.xpath("//*[text()='File Information']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='File information']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='File Information']")).getText();
-		Assert.assertEquals("File Information", actual);		
+		String actual = driver.findElement(By.xpath("//*[text()='File information']")).getText();
+		Assert.assertEquals("File information", actual);		
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}

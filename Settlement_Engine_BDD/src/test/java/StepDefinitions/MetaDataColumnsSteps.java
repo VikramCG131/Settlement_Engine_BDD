@@ -158,10 +158,10 @@ public class MetaDataColumnsSteps {
 
 	@Then("The User should see the edit modal open Metadata Column")
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information ']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Columns information ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Columns Information ']")).getText();
-		Assert.assertEquals("Columns Information", actual);		
+		String actual = driver.findElement(By.xpath("//*[text()='Columns information ']")).getText();
+		Assert.assertEquals("Columns information", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}
