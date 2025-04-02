@@ -22,10 +22,10 @@ public class DataSourceFileSteps {
 
 	@Given("The Settlement Engine<URL>")
 	public void the_settlement_engine_url() {
-		driver = WebDriverManager.chromedriver().create();
-		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		driver = WebDriverManager.chromedriver().create(); //user can use multiple browser drivers  
+		driver.manage().window().maximize(); //maximize the window
+		driver.get("http://localhost:4200"); //local host URL
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait for 10 seconds	
 	}
 
 	@When("user hit the Settlement Engine URL")
@@ -43,9 +43,43 @@ public class DataSourceFileSteps {
 		commonUtilities.screenshot();
 	}
 
+	@When("the user clicks on Metadata UI screen")
+	public void the_user_clicks_on_metadata_ui_screen() {
+		driver.findElement(By.xpath("//a[contains(text(),'Metadata')]")).click();
+		System.out.println("The user is able to navigate to Metadata UI screen");
+		commonUtilities.screenshot();
+	    
+	}
+
+	@When("click on the expand button for the left panel")
+	public void click_on_the_expand_button_for_the_left_panel() {
+		    WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container collapsed']"));
+		    boolean isCollapsed = panel.getAttribute("class").contains("collapsed");
+		    if (isCollapsed) {
+		        panel.findElement(By.xpath(".//button")).click();
+		    } 
+	}
+
+	@Then("the user should see the left panel expanded")
+	public void the_user_should_see_the_left_panel_expanded() throws InterruptedException {
+		WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container']"));
+		panel.isDisplayed();
+		Thread.sleep(2000);
+	}
+
+	@Then("the menu items should be visible")
+	public void the_menu_items_should_be_visible() {
+	 List<WebElement> panel2 = driver.findElements(By.xpath("//div[@class=\"sidebar_container\"]/ul/li"));
+	 for (WebElement element : panel2) {
+	     System.out.println(element.getText());
+	 }
+	System.out.println("The user is able to see the left panel menu items");
+	}
+
+
 	@When("the user click on Data Source File")
 	public void the_user_click_on_data_source_file() throws InterruptedException {
-		driver.findElement(By.xpath("//a[contains(text(),'Data Source File')]")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'Data Source File')]")).click();
 		Thread.sleep(3000);
 		System.out.println("The user is able to navigate to Data Source File page");
 		commonUtilities.screenshot();
@@ -108,8 +142,8 @@ public class DataSourceFileSteps {
 
 	@Then("the user should see validation errors for required fields for the file")
 	public void the_user_should_see_validation_errors_for_required_fields() {
-		String actual = driver.findElement(By.xpath("//*[text()='Please enter File Pattern']")).getText();
-		Assert.assertEquals("Please enter File Pattern", actual);
+		String actual = driver.findElement(By.xpath("//*[text()='Please Enter File Pattern']")).getText();
+		Assert.assertEquals("Please Enter File Pattern", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
 	}
@@ -170,10 +204,10 @@ public class DataSourceFileSteps {
 
 	@Then("The User should see the edit modal open Data Source file")
 	public void the_user_should_see_the_edit_modal_open_file() {
-		boolean file = driver.findElement(By.xpath("//*[text()='File information']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='File Information']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='File information']")).getText();
-		Assert.assertEquals("File information", actual);		
+		String actual = driver.findElement(By.xpath("//*[text()='File Information']")).getText();
+		Assert.assertEquals("File Information", actual);		
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}

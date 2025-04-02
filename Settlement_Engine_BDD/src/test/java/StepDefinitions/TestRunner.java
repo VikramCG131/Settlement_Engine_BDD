@@ -1,4 +1,4 @@
-//Extent report 
+//Extent report + regression suite
 
 package StepDefinitions;
 import io.cucumber.junit.Cucumber;
@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
     		"src/test/resources/Features/b_meta_data_Column.feature",
     		"src/test/resources/Features/c_data_Quality_Rule.feature",
     		"src/test/resources/Features/d_metdata_Data_Quality_Assignment.feature"
+    		
     },
     glue = "StepDefinitions",monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }

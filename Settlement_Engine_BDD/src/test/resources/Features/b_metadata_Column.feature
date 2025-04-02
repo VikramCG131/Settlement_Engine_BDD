@@ -3,7 +3,11 @@ Feature: Validation of the Metadata Column
    Background:  the user navigate to the "Settlement Engine" page
        Given Settlement Engine<URL>
       When the user hit the Settlement Engine URL
+      And the User clicks on Metadata UI screen
+    And click on the Expand button for the left panel
       Then the User is able to navigate to the Settlement Engine homepage
+      And the User should see the left panel expanded
+    And the Menu items should be visible
      
   Scenario: Verify Meta Data form submission with valid data for Metadata Column
    When the user click on Metadata Column

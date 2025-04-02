@@ -44,10 +44,42 @@ public class DataQualityAssignmentSteps {
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
 		commonUtilities.screenshot();
 	}
+	@When("The User clicks on Metadata UI screen")
+	public void The_User_clicks_on_metadata_ui_screen() {
+		driver.findElement(By.xpath("//a[contains(text(),'Metadata')]")).click();
+		System.out.println("The user is able to navigate to Metadata UI screen");
+		commonUtilities.screenshot();
+	    
+	}
+
+	@When("Click on the Expand button for the left panel")
+	public void Click_on_the_Expand_button_for_the_left_panel() {
+		    WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container collapsed']"));
+		    boolean isCollapsed = panel.getAttribute("class").contains("collapsed");
+		    if (isCollapsed) {
+		        panel.findElement(By.xpath(".//button")).click();
+		    } 
+	}
+
+	@Then("The User should see the left panel expanded")
+	public void The_User_should_see_the_left_panel_expanded() throws InterruptedException {
+		WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container']"));
+		panel.isDisplayed();
+		Thread.sleep(2000);
+	}
+
+	@Then("The Menu items should be visible")
+	public void The_Menu_items_should_be_visible() {
+	 List<WebElement> panel2 = driver.findElements(By.xpath("//div[@class=\"sidebar_container\"]/ul/li"));
+	 for (WebElement element : panel2) {
+	     System.out.println(element.getText());
+	 }
+	System.out.println("The user is able to see the left panel menu items");
+	}
 
 	@When("the user click on Data Quality Assignment")
 	public void the_user_click_on_data_quality_assignment() throws InterruptedException {
-		driver.findElement(By.xpath("//a[contains(text(),'Data Quality Assignment')]")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'Data Quality Assignment')]")).click();
 		Thread.sleep(3000);
 		System.out.println("The user is able to navigate to Data Source File page");
 		commonUtilities.screenshot();
@@ -83,12 +115,33 @@ public class DataQualityAssignmentSteps {
 		dropdown2.selectByIndex(2);
 		System.out.println("Selected Rule ID:");
 		Thread.sleep(1000);
-		// Locate the datetime-local input field
-		WebElement dateTimeInput = driver.findElement(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']"));
-		dateTimeInput.sendKeys("2025-02-25");
-		Thread.sleep(2000);
-		WebElement dateTimeInput1 = driver.findElement(By.xpath("//input[@formcontrolname='ruleEndTimeStamp']"));
-		dateTimeInput1.sendKeys("2025-04-30");
+		// Click the Datepicker toggle button to open the calendar
+        WebElement datePickerToggle = driver.findElement(By.xpath("//button[@aria-label='Open calendar']"));
+        datePickerToggle.click();
+        Thread.sleep(1000);
+ 
+        // Select a specific date (e.g., 1st of the current month)
+        WebElement targetDate = driver.findElement(By.xpath("//td[not(contains(@class,'disabled'))]//span[text()=' 1 ']"));
+        targetDate.click();
+ 
+        // Verify if the date is selected
+        WebElement dateInput = driver.findElement(By.id("ruleStartTimeStamp"));
+        String selectedDate = dateInput.getAttribute("value");
+        System.out.println("Selected Date: " + selectedDate);
+		Thread.sleep(3000);
+		// Click the Datepicker toggle button to open the calendar
+        WebElement datePickerToggle1 = driver.findElement(By.xpath("(//button[@aria-label='Open calendar'])[2]"));
+        datePickerToggle1.click();
+        Thread.sleep(1000);
+ 
+        // Select a specific date (e.g., 1st of the current month)
+        WebElement targetDate1 = driver.findElement(By.xpath("//td[not(contains(@class,'disabled'))]//span[text()=' 15 ']"));
+        targetDate1.click();
+ 
+        // Verify if the date is selected
+        WebElement dateInput1 = driver.findElement(By.id("ruleEndTimeStamp"));
+        String selectedDate1 = dateInput1.getAttribute("value");
+        System.out.println("Selected Date: " + selectedDate1);
 		Thread.sleep(3000);
 		System.out.println("user is able to enter the data in the required fields");
 	}

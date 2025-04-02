@@ -44,10 +44,43 @@ public class MetaDataColumnsSteps {
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
 		commonUtilities.screenshot();
 	}
+
+	@When("the User clicks on Metadata UI screen")
+	public void the_user_clicks_on_metadata_ui_screen() {
+		driver.findElement(By.xpath("//a[contains(text(),'Metadata')]")).click();
+		System.out.println("The user is able to navigate to Metadata UI screen");
+		commonUtilities.screenshot();
+	    
+	}
+
+	@When("click on the Expand button for the left panel")
+	public void click_on_the_expand_button_for_the_left_panel() {
+		    WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container collapsed']"));
+		    boolean isCollapsed = panel.getAttribute("class").contains("collapsed");
+		    if (isCollapsed) {
+		        panel.findElement(By.xpath(".//button")).click();
+		    } 
+	}
+
+	@Then("the User should see the left panel expanded")
+	public void the_user_should_see_the_left_panel_expanded() throws InterruptedException {
+		WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container']"));
+		panel.isDisplayed();
+		Thread.sleep(2000);
+	}
+
+	@Then("the Menu items should be visible")
+	public void the_menu_items_should_be_visible() {
+	 List<WebElement> panel2 = driver.findElements(By.xpath("//div[@class=\"sidebar_container\"]/ul/li"));
+	 for (WebElement element : panel2) {
+	     System.out.println(element.getText());
+	 }
+	System.out.println("The user is able to see the left panel menu items");
+	}
 	
 	@When("the user click on Metadata Column")
 	public void the_user_click_on_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//a[contains(text(),'Meta Data Column')]")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'Metadata Column')]")).click();
 		Thread.sleep(3000);
 		System.out.println("The user is able to navigate to Meta Data Column page");
 		commonUtilities.screenshot();
@@ -115,8 +148,8 @@ public class MetaDataColumnsSteps {
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
-		String actual = driver.findElement(By.xpath("//*[text()='Min Size must be a number']")).getText();
-		Assert.assertEquals("Min Size must be a number", actual);
+		String actual = driver.findElement(By.xpath("//*[text()='Min Size Must be a Number']")).getText();
+		Assert.assertEquals("Min Size Must be a Number", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
 	}
@@ -158,10 +191,10 @@ public class MetaDataColumnsSteps {
 
 	@Then("The User should see the edit modal open Metadata Column")
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Columns information ']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Columns information ']")).getText();
-		Assert.assertEquals("Columns information", actual);	
+		String actual = driver.findElement(By.xpath("//*[text()='Columns Information ']")).getText();
+		Assert.assertEquals("Columns Information", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}

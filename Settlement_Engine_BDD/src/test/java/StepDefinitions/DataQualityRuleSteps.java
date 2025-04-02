@@ -29,13 +29,13 @@ public class DataQualityRuleSteps {
 	public void the_settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
+		driver.get("http://localhost:63343");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@When("User hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:63343"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
