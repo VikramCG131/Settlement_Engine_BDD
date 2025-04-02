@@ -174,8 +174,8 @@ public class DataQualityAssignmentSteps {
 
 	@Then("the user should see validation errors for required fields for the DQ Assignment")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_dq_assignment() {
-		String actual = driver.findElement(By.xpath("//*[text()=' Please select Source Table ']")).getText();
-		Assert.assertEquals("Please select Source Table", actual);
+		String actual = driver.findElement(By.xpath("//*[text()=' Please Select Source Table ']")).getText();
+		Assert.assertEquals("Please Select Source Table", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
 	}
@@ -220,10 +220,10 @@ public class DataQualityAssignmentSteps {
 
 	@Then("The User should see the edit modal open file for the DQ Assignment")
 	public void the_user_should_see_the_edit_modal_open_file_for_the_dq_assignment()throws  InterruptedException {
-		boolean file = driver.findElement(By.xpath("//*[text()='Data quality assignment category ']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Data quality assignment category ']")).getText();
-		Assert.assertEquals("Data quality assignment category", actual);
+		String actual = driver.findElement(By.xpath("//*[text()='Data Quality Assignment Category ']")).getText();
+		Assert.assertEquals("Data Quality Assignment Category", actual);
 		System.out.println("The edit modal is displayed");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
