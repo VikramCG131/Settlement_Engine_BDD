@@ -9,12 +9,12 @@ Feature: Validation of the Client Mapping Reference LookUp UI Screen
       And the User should see the Left panel expanded
     And the Menu Items should be visible
      
-  Scenario: Verify Meta Data form submission with valid data for Client Mapping
+  Scenario: Verify reference data form submission with valid data for Client Mapping
    When the user click on Client Mapping
    And the user clicks the Add New button from the Client Mapping page
     And the user enters the data in required fields for the Client Mapping
      And the user should see click on the Submit Button for the Client Mapping
-    Then the user should see "test_file" in the file list for the Client Mapping
+    Then the user should see "test_data" in the file list for the Client Mapping
 
   Scenario: Verify validation errors when mandatory fields are missing for the Client Mapping
   When the user click on Client Mapping

@@ -23,53 +23,81 @@ public class ClientMappingSteps {
 	
 	@Given("Settlement_Engine<URL>")
 	public void settlement_engine_url() {
-	   
+		driver = WebDriverManager.chromedriver().create();
+		driver.manage().window().maximize();
+		driver.get("http://localhost:50448");
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));   
 	}
 
 	@When("the user clicks Settlement Engine URL")
-	public void the_user_clicks_settlement_engine_url() {
-	 
+	public void the_user_clicks_settlement_engine_url() throws InterruptedException {
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:50448"));
+		Thread.sleep(2000);
+		System.out.println("The user is able to login with Settlement Engine URL");
 	}
 
 	@When("the User clicks on Reference LookUp UI screen")
 	public void the_user_clicks_on_reference_look_up_ui_screen() {
-	   
+		driver.findElement(By.xpath("//a[contains(text(),'Metadata')]")).click();
+		System.out.println("The user is able to navigate to Metadata UI screen");
+		commonUtilities.screenshot();
 	}
 
 	@When("clicks on the Expand button for the left panel")
 	public void clicks_on_the_expand_button_for_the_left_panel() {
-	    
+		 WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container collapsed']"));
+		    boolean isCollapsed = panel.getAttribute("class").contains("collapsed");
+		    if (isCollapsed) {
+		        panel.findElement(By.xpath(".//button")).click();
+		    }
 	}
 
 	@Then("the User is able to navigate to the Settlement Engine Homepage")
-	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() {
-	   
+	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
+		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+		Thread.sleep(2000);
+		System.out.println("The user is able to navigate to the Settlement Engine homepage");
+		commonUtilities.screenshot();
 	}
 
 	@Then("the User should see the Left panel expanded")
-	public void the_user_should_see_the_left_panel_expanded() {
-
+	public void the_user_should_see_the_left_panel_expanded() throws InterruptedException {
+		WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container']"));
+		panel.isDisplayed();
+		Thread.sleep(2000);
 	}
 
 	@Then("the Menu Items should be visible")
 	public void the_menu_items_should_be_visible() {
-	  
+		List<WebElement> panel2 = driver.findElements(By.xpath("//div[@class=\"sidebar_container\"]/ul/li"));
+		 for (WebElement element : panel2) {
+		     System.out.println(element.getText());
+		 }
+		System.out.println("The user is able to see the left panel menu items");
 	}
 
 	@When("the user click on Client Mapping")
-	public void the_user_click_on_client_mapping() {
-	  
+	public void the_user_click_on_client_mapping() throws InterruptedException {
+		driver.findElement(By.xpath("//a/span[contains(text(),'Client Mapping')]")).click();
+		Thread.sleep(3000);
+		System.out.println("The user is able to navigate to Client Mapping page");
+		commonUtilities.screenshot();
 	}
 
 	@When("the user clicks the Add New button from the Client Mapping page")
 	public void the_user_clicks_the_add_new_button_from_the_client_mapping_page() {
-	    
+		WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
+		wait.until(ExpectedConditions.visibilityOf(button)).click();
+		System.out.println("The user is able to click on Add New Button");
+		commonUtilities.screenshot();
 	}
 
 	@When("the user enters the data in required fields for the Client Mapping")
 	public void the_user_enters_the_data_in_required_fields_for_the_client_mapping() {
-	   
-	    
+		int random = (int) (Math.floor(Math.random() * 100000) + 1);
+	   driver.findElement(By.xpath("//input[@formcontrolname='payable_e2']")).sendKeys("500"+random);
+	   driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).sendKeys("0.5");
+	   dri
 	}
 
 	@When("the user should see click on the Submit Button for the Client Mapping")
