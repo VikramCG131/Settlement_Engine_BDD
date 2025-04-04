@@ -157,8 +157,8 @@ public class DataQualityAssignmentSteps {
 
 	@Then("the user should see {string} in the file list for the DQ Assignment")
 	public void the_user_should_see_in_the_file_list_for_the_dq_assignment(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been added successFully..!')]")).getText();
-		Assert.assertEquals("Record has been added successFully..!", actual);
+		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been added successfully..!')]")).getText();
+		Assert.assertEquals("Record has been added successfully..!", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();

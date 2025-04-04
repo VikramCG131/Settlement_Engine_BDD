@@ -45,7 +45,7 @@ public class MetaDataColumnsSteps {
 		commonUtilities.screenshot();
 	}
 
-	@When("the User clicks on Reference LookUp UI screen")
+	@When("the User clicks on Metadata UI screen")
 	public void the_user_clicks_on_metadata_ui_screen() {
 		driver.findElement(By.xpath("//a[contains(text(),'Reference LookUp')]")).click();
 		System.out.println("The user is able to navigate to Reference LookUp UI screen");
