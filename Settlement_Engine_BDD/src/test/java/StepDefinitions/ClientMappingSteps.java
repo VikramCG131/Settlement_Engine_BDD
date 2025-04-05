@@ -1,11 +1,14 @@
 package StepDefinitions;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.interactions.Actions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,6 +23,8 @@ public class ClientMappingSteps {
     WebDriver driver;
     CommonUtilities commonUtilities = new CommonUtilities();
     WebDriverWait wait;
+    private File downloadDir;
+    private final String fileName = "example.csv"; 
 	private String filterType;
 	private String filterValue;
 
@@ -78,15 +83,15 @@ public class ClientMappingSteps {
         System.out.println("The user is able to see the left panel menu items");
     }
 
-    @When("the user click on the Client Mapping")
+    @When("the user click on the Client LookUp")
     public void the_user_click_on_the_client_mapping() throws InterruptedException {
         driver.findElement(By.xpath("//a/span[contains(text(),'Client LookUp')]")).click();
         Thread.sleep(3000);
-        System.out.println("The user is able to navigate to Client Mapping page");
+        System.out.println("The user is able to navigate to Client LookUp page");
         commonUtilities.screenshot();
     }
 
-    @When("the user clicks the Add button from the Client Mapping page")
+    @When("the user clicks the Add button from the Client LookUp page")
     public void the_user_clicks_the_add_button_from_the_client_mapping_page() {
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath("//*[text()=' Add ']"))).click().perform();
@@ -94,7 +99,7 @@ public class ClientMappingSteps {
         commonUtilities.screenshot();
     }
 
-    @When("the user enters the data in required fields for the Client Mapping")
+    @When("the user enters the data in required fields for the Client LookUp")
     public void the_user_enters_the_data_in_required_fields_for_the_client_mapping() {
         List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-md-4']"));
         for (WebElement fieldElement : fieldElements) {
@@ -109,7 +114,7 @@ public class ClientMappingSteps {
         driver.findElement(By.xpath("//input[@formcontrolname='dStype']")).sendKeys("Automation" + random);
     }
 
-    @When("the user should see click on the Submit Button for the Client Mapping")
+    @When("the user should see click on the Submit Button for the Client LookUp")
     public void the_user_should_see_click_on_the_submit_button_for_the_client_mapping() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
         System.out.println("The user is able to click on the Submit Button");
@@ -117,7 +122,7 @@ public class ClientMappingSteps {
         commonUtilities.screenshot();
     }
 
-    @Then("the user should see {string} in the file list for the Client Mapping")
+    @Then("the user should see {string} in the file list for the Client LookUp")
     public void the_user_should_see_in_the_file_list_for_the_client_mapping(String string) throws InterruptedException {
         String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successfully..! ']")).getText();
         Assert.assertEquals("Record has been added successfully..!", actual);
@@ -126,7 +131,7 @@ public class ClientMappingSteps {
         commonUtilities.screenshot();
     }
 
-    @When("the user click on any field for the Client Mapping")
+    @When("the user click on any field for the Client LookUp")
     public void the_user_click_on_any_field_for_the_client_mapping() throws InterruptedException {
         driver.findElement(By.xpath("//input[@formcontrolname='payableEl2']")).click();
         WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']"));
@@ -134,35 +139,186 @@ public class ClientMappingSteps {
         Thread.sleep(2000);
     }
 
-    @Then("the user should see validation errors for required fields for the Client Mapping")
+    @Then("the user should see validation errors for required fields for the Client LookUp")
     public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
-        String actual = driver.findElement(By.xpath("//*[text()='Please Enter Payable El2']")).getText();
+        String actual = driver.findElement(By.xpath("//*[text()='Please Enter Payable EL26']")).getText();
         Assert.assertEquals("Please Enter Payable El2", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
     }
+  
+    @When("the user click on Reset button for the Client LookUp")
+    public void the_user_click_on_reset_button_for_the_client_look_up() throws InterruptedException {
+    	driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
+		System.out.println("The fields are empty");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
+    }
+
+    @Then("all the fields should be cleared for the Client LookUp")
+    public void all_the_fields_should_be_cleared_for_the_client_look_up() {
+    	// Verify that all fields are empty
+  	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='payableEl2']")).getAttribute("value"));
+  	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).getAttribute("value"));
+  	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='shopCode']")).getAttribute("value"));
+  	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='shopName']")).getAttribute("value"));
+  	    System.out.println("The user is able to clear the fields");
+  	}
+
+    @When("the user click on Cancel button for the Client LookUp")
+    public void the_user_click_on_cancel_button_for_the_client_look_up() {
+    	driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+		System.out.println("The user is able to close the Add New page");
+		commonUtilities.screenshot();
+    }
+
+    @Then("Add Pop up should be closed for the Client LookUp")
+    public void add_new_pop_up_should_be_closed_for_the_client_look_up() {
+    	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    }
+
+    @When("The User click the edit icon for the any Client LookUp")
+    public void the_user_click_the_edit_icon_for_the_any_client_look_up() {
+    	driver.findElement(By.xpath("(//i[@data-action='edit'])[1]")).click();
+		commonUtilities.screenshot();
+    }
+
+    @Then("The User should see the edit modal open Client LookUp")
+    public void the_user_should_see_the_edit_modal_open_client_look_up() {
+    	boolean file = driver.findElement(By.xpath("//*[text()='Client lookup grid ']")).isDisplayed();
+		Assert.assertTrue(file);
+		String actual = driver.findElement(By.xpath("//*[text()='Client lookup grid ']")).getText();
+		Assert.assertEquals("Client lookup grid", actual);	
+		System.out.println("The edit modal is displayed");
+		commonUtilities.screenshot();
+    }
+
+    @Then("the user update the any field for the Client LookUp")
+    public void the_user_update_the_any_field_for_the_client_look_up() {
+    	driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).clear();
+		driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).sendKeys("0.5");
+    }
+
+    @Then("the user should see click on the Update Button for the Client LookUp")
+    public void the_user_should_see_click_on_the_update_button_for_the_client_look_up() throws InterruptedException {
+    	driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
+		System.out.println("The user is able to click on the Update Button");
+		commonUtilities.screenshot();
+		Thread.sleep(2000);
+    }
+
+    @Then("the user should see the updated {string} in the file list for the Client LookUp")
+    public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) {
+    	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    }
+
+    @When("The User click the delete icon for the any Client LookUp")
+    public void the_user_click_the_delete_icon_for_the_any_client_look_up() {
+    	driver.findElement(By.xpath("(//i[@data-action='delete'])[1]")).click();
+		commonUtilities.screenshot();
+    }
+
+    @Then("The User should see a confirmation pop-up with title {string} for the Client LookUp")
+    public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_client_look_up(String string) throws InterruptedException {
+    	driver.findElement(By.xpath("//div[@class='modal-content']")).isDisplayed();
+		System.out.println("The user is able to see the confirmation pop-up");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
+    }
+
+    @Then("The User should see {string} message for the Client LookUp")
+    public void the_user_should_see_message_for_the_client_look_up(String string) throws InterruptedException {
+    	String actual = driver.findElement(By.xpath("//div[text()=' Are you sure you want to delete ']")).getText();
+		Assert.assertEquals("Are you sure you want to delete", actual);
+		System.out.println("The user is able to see message in the confirmation pop-up");
+		Thread.sleep(2000);
+		commonUtilities.screenshot();
+    }
+
+    @When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client LookUp")
+    public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_client_look_up() {
+    	driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).isDisplayed();
+		driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).isDisplayed();
+		System.out.println("The user is able to see the Confirm and Cancel button in the confirmation pop-up");
+    }
+
+    @When("The User confirm the deletion for the Client LookUp")
+    public void the_user_confirm_the_deletion_for_the_client_look_up() {
+    	 driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
+    }
+
+    @Then("the file should be removed from the table for the Client LookUp")
+    public void the_file_should_be_removed_from_the_table_for_the_client_look_up() {
+    	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+    }
+     
+    @When("user clicks the download button")
+    public void userClicksDownloadButton() {
+        WebElement downloadButton = driver.findElement(By.xpath("//button[contains(text(),'Download')]"));
+        downloadButton.click();
+
+        // Wait for file to download (depends on file size)
+        try {
+            Thread.sleep(5000); // Or use polling logic for better wait
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Then("a file should be downloaded to the default download folder")
+    public void verifyFileDownloaded() {
+    	String downloadPath = System.getProperty("user.dir") + "/downloads";
+        File downloadDir = new File(downloadPath);
+        if (!downloadDir.exists())
+        	downloadDir.mkdir();
+        File downloadedFile = new File(downloadDir, fileName);
+        System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+    }
 
     @When("user clicks the Upload button")
     public void user_clicks_the_upload_button() throws InterruptedException {
-        WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
+      
+		//Locate the file input (hidden or blocked normally)
+    	WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
         uploadButton.click();
         System.out.println("The user is able to click on Upload Button");
         commonUtilities.screenshot();
         wait.until(ExpectedConditions.visibilityOf(uploadButton));
         System.out.println("The user is able to see the Upload button");
-        Thread.sleep(6000);
-        commonUtilities.screenshot();
+       Thread.sleep(6000);
+       commonUtilities.screenshot();
     }
 
     @Then("file selection dialog should appear")
-    public void file_selection_dialog_should_appear() {
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept=\'.csv\']"));
+    public void file_selection_dialog_should_appear() throws InterruptedException {
+    	//JavascriptExecutor js = (JavascriptExecutor) driver;
+		// Locate the file input (hidden or blocked normally)
+		//WebElement fileInput1 = driver. findElement(By.xpath("//button[contains(text(),'Upload')]"));
+		//js. executeScript("arguments[0].click();", fileInput1);
+		//new WebDriverWait(driver,Duration.ofSeconds(10));
+		//File file = new File("C://Users//userdev13//Downloads//clinet_Map.csv");
+		//fileInput1.sendKeys(file.getAbsolutePath());
+		//fileInput1. click();
+    	// System.out.print("file upload successfully");
+    	
+		WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
+		uploadButton.click();
+		System.out.println("The user is able to click on Upload Button");
+		commonUtilities.screenshot();
+		wait.until(ExpectedConditions.visibilityOf(uploadButton));
+		System.out.println("The user is able to see the Upload button");
+		Thread.sleep(6000);
+		commonUtilities.screenshot();
+		
+	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			   WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept=\'.csv\']"));
         
         System.out.println("The user is able to see the file selection dialog");
-        commonUtilities.screenshot();
-        wait.until(ExpectedConditions.visibilityOf(fileInput));
+       commonUtilities.screenshot();
+      wait.until(ExpectedConditions.visibilityOf(fileInput));
         
-        fileInput.sendKeys("src\\test\\resources\\TestData\\client_Map.csv");
+       fileInput.sendKeys("src\\test\\resources\\TestData\\client_Map.csv");
        
         System.out.println("The user is able to select the file");
         commonUtilities.screenshot();

@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
     		
     
     glue = "StepDefinitions",
-    name="Verify file Upload functionality"
+    name="User downloads a file successfully"
     ,monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }
     

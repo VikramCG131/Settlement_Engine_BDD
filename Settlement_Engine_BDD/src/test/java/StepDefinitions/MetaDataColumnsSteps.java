@@ -206,16 +206,16 @@ public class MetaDataColumnsSteps {
 	}
 
 	@Then("the user should see click on the Update Button for the Metadata Column")
-	public void the_user_should_see_click_on_the_update_button_for_the_metadata_column() {
-	    
-	}
-
-	@Then("the user should see the updated {string} in the file list for the Metadata Column")
-	public void the_user_should_see_the_updated_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
+	public void the_user_should_see_click_on_the_update_button_for_the_metadata_column() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
 		System.out.println("The user is able to click on the Update Button");
 		commonUtilities.screenshot();
 		Thread.sleep(2000);
+	}
+
+	@Then("the user should see the updated {string} in the file list for the Metadata Column")
+	public void the_user_should_see_the_updated_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
+		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 	}
 
 	@When("The User click the delete icon for the any Metadata Column")
