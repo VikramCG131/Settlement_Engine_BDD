@@ -56,34 +56,35 @@ Feature: Validation of the Client Mapping Reference LookUp UI Screen
 #     And The User confirm the deletion for the Client Mapping
 #     Then the file should be removed from the table for the Client Mapping
      
-  #  Scenario: Verify file Upload functionality 
-  #  When the user click on the Client Mapping
-  #  And user clicks the Upload button
-   # Then file selection dialog should appear
-   # And user selects a valid file to upload
-  #  And the file should be successfully uploaded
+   Scenario: Verify file Upload functionality 
+   When the user click on the Client Mapping
+   And user clicks the Upload button
+   Then file selection dialog should appear
+   And user selects a valid file to upload
+   And the file should be successfully uploaded
     
-     Scenario: Verify Send for Approval button triggers approval process
-    When user click the Send for Approval button
-    Then the file should be submitted for approval
-   And a confirmation message should be displayed with Confirm and Cancel buttons
-    And by clicking on Confirm button the file should be sent for approval
+  #   Scenario: Verify Send for Approval button triggers approval process
+ #   When user click the Send for Approval button
+  #  Then the file should be submitted for approval
+  # And a confirmation message should be displayed with Confirm and Cancel buttons
+  #  And by clicking on Confirm button the file should be sent for approval
     
-     
-#  Scenario Outline: Validate filter options in the Client Mapping Grid
-#    Given I navigate to the Client Mapping Grid
-#    When I select "<Filter Type>" from the filter dropdown
-#    And I enter "<Filter Value>" in the filter input (if applicable)
-#    And I apply the filter
-#    Then the displayed rows should match the "<Expected Outcome>"
+  
+  #Scenario Outline: Validate filter options in the Client Mapping Grid
+   # When the user click on the Client Mapping 
+   # And user navigate to the Client LookUp Grid
+   # And user select "<Filter Type>" from the filter dropdown
+   # And user enter "<Filter Value>" in the filter input (if applicable)
+   # And user apply the filter
+   # Then the displayed rows should match the "<Expected Outcome>"
 
-#    Examples:
-#      | Filter Type        | Filter Value | Expected Outcome                                      |
-#      | Contains          | S            | Rows where Shop Code contains "S"                    |
-#      | Does not contain | S            | Rows where Shop Code does not contain "S"            |
-#      | Equals           | YY           | Only rows where Shop Code is "YY"                    |
-#      | Does not equal   | YY           | Rows where Shop Code is not "YY"                     |
-#      | Begins with      | S            | Rows where Shop Code starts with "S"                 |
-#      | Ends with        | Y            | Rows where Shop Code ends with "Y"                   |
-#      | Blank            |              | Only rows where Shop Code is blank                   |
-#      | Not blank        |              | Only rows where Shop Code is not blank               |
+   # Examples:
+    #  | Filter Type        | Filter Value | Expected Outcome                                   |
+     # | Contains          | S            | Rows where Shop Code contains "S"                   |
+     #| Does not contain | S            | Rows where Shop Code does not contain "S"            |
+     # | Equals           | YY           | Only rows where Shop Code is "YY"                    |
+     # | Does not equal   | YY           | Rows where Shop Code is not "YY"                     |
+     # | Begins with      | S            | Rows where Shop Code starts with "S"                 |
+     # | Ends with        | Y            | Rows where Shop Code ends with "Y"                   |
+     # | Blank            |              | Only rows where Shop Code is blank                   |
+     # | Not blank        |              | Only rows where Shop Code is not blank               |
