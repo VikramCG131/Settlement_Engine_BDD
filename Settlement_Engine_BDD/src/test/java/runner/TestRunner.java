@@ -3,12 +3,30 @@
 package runner;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import utils.ReportUtil;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = "src/test/resources/Features/metdata_Data_Quality_Assignment.feature",
-    glue = "steps",monochrome = true,
-    		plugin = {"pretty","html:target/cucumber-reports.html" }
+    glue = {"steps", "hooks" , "listeners"},
+    monochrome = true,
+    		plugin = {"pretty","listeners.ExtentReportListener","html:target/cucumber-reports.html" }
 )
-public class TestRunner {}
+public class TestRunner {
+	
+	@BeforeClass
+	public static void setup() {
+		// Initialize the report
+		ReportUtil.initReport();
+	}
+	
+	@AfterClass
+	public static void tearDown() {
+		// Flush the report
+		ReportUtil.flushReport();
+	}
+}

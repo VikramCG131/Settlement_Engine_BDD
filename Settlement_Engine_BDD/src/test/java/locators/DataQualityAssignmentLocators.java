@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class DataQualityAssignmentLocators {
 	
 	/******Data Quality Assignment Page******/
-	public static final By DataQualityAssignmentTab = By.xpath("//a[contains(text(),'Data Quality Assignment')]");
+	public static final By DataQualityAssignmentTab = By.xpath("//span[contains(text(),'Data Quality Assignment')]");
 	public static final By DQAAddNewButton = By.xpath("//*[text()='Add New']");
 	public static final By DQASuccessPopupMessage = By.xpath("//*[contains(text(),'Record has been added successFully..!')]");
 	public static final By DQADeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
@@ -16,8 +16,10 @@ public class DataQualityAssignmentLocators {
 	public static final By DQASourceTableDropdown = By.xpath("//select[@formcontrolname='source1']");
 	public static final By DQASourceAttributeDropdown = By.xpath("//select[@formcontrolname='source1Attribute']");
 	public static final By DQADQRuleDropdown = By.xpath("//select[@formcontrolname='ruleId']");
-	public static final By DQADQStartDate = By.xpath("//input[@formcontrolname='ruleStartTimeStamp']");
-	public static final By DQADQEndDate = By.xpath("//input[@formcontrolname='ruleEndTimeStamp']");
+	public static final By DQADQStartDate = By.xpath("(//button[@aria-label='Open calendar'])[1]");
+	public static final By DQADQStartDateSelect= By.xpath("//td[not(contains(@class,'disabled'))]//span[text()=' 1 ']");
+	public static final By DQADQEndDate = By.xpath("(//button[@aria-label='Open calendar'])[2]");
+	public static final By DQADQEndDateSelect= By.xpath("//td[not(contains(@class,'disabled'))]//span[text()=' 15 ']");
 	public static final By DQASubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By DQASourceTableValidation = By.xpath("//*[text()=' Please select Source Table ']");
 	public static final By DQADQRuleValidation = By.xpath("//*[text()=' Please select DQ Rule ']");

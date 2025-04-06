@@ -10,20 +10,28 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
  
 public class ScreenshotUtil {
+	
+		private static String screenshotPath;
  
     // Capture screenshot and return file path
     public static String captureScreenshot(WebDriver driver, String stepName) {
-        String screenshotPath = "";
+        
         try {
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            screenshotPath = "target/screenshots/" + stepName + "_" + timestamp + ".png";
-            File destFile = new File(screenshotPath);
+            String safeStepName = stepName.replaceAll("[^a-zA-Z0-9-_]", "_");
+            String screenshotName = safeStepName + "_" + timestamp + ".png";
+            
+            String screenshotPath = "target/screenshots/";
+            File destFile = new File(screenshotPath + screenshotName);
             FileUtils.copyFile(srcFile, destFile);
+            System.out.println("Screenshot saved at: " + destFile.getAbsolutePath());
+            return "screenshots/" + screenshotName; // Return relative path for reporting
+            
         } catch (IOException e) {
             e.printStackTrace();
+            return null; // Return null if screenshot capture fails
         }
-        return screenshotPath;
     }
 }
  

@@ -49,6 +49,18 @@ public class DataQualityAssignmentSteps {
 	public void The_User_is_able_to_navigate_to_the_settlement_Engine_homepage() throws InterruptedException {
 		DataQualityAssignmentTab.verifyTitle();
 	}
+	
+	@When("User Clicks on MetaData Button")
+	public void the_user_click_on_the_metadata_button() {
+		
+		DataQualityAssignmentTab.clickMetaDataButton();
+	}
+	
+	@When("User Clicks on Hamburger Button")
+	public void the_user_click_on_the_hamburger_icon() {
+		
+		DataQualityAssignmentTab.clickHamburgerMenuButton();
+	}
 
 	@When("the user click on Data Quality Assignment")
 	public void the_user_click_on_data_quality_assignment(){
@@ -64,7 +76,7 @@ public class DataQualityAssignmentSteps {
 	@When("the user enters the data in required fields for the DQ Assignment")
 	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment(){
 
-		DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "product_code", "2025-02-25", "2025-04-30");
+		DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "product_code");
 		
 	}
 	
@@ -127,7 +139,7 @@ public class DataQualityAssignmentSteps {
 	@Then("the user update the any field for the DQ Assignment")
 	public void the_user_update_the_any_field_for_the_dq_assignment(){
 		
-		 DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "client_code", "2025-02-25", "2025-04-30");
+		 DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "client_code");
 	}
 
 	@Then("the user should see click on the Update Button for the DQ Assignment")

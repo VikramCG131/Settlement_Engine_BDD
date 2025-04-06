@@ -1,41 +1,38 @@
 package hooks;
-
-import io.cucumber.java.Before;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import io.cucumber.java.Scenario;
-import utils.DriverManager;
-import Utilities.ExtentManager;
+ 
 import io.cucumber.java.After;
-
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.WebDriver;
+import utils.DriverManager;
+import utils.ReportUtil;
+ 
 public class Hooks {
-
-	private static ExtentReports extent = ExtentManager.getInstance();
-	private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
-
-	@Before
-	public void BeforeScenario(Scenario scenario) {
-		System.out.println("Running @Before Hook: Initializing driver");
-		DriverManager.initializeDriver();
-		ExtentTest extentTest = extent.createTest(scenario.getName());
-		test.set(extentTest);
-		test.get().log(Status.INFO, "Scenario Started : " + scenario.getName());
-		System.out.println("Setting up before the scenario");
-	}
-
-	@After
-    public void AfterScenario(Scenario scenario) {
-				DriverManager.closeDriver();
-    	if (scenario.isFailed()) {
-    		test.get().fail(scenario.getName() + " is failed");
-    		} else { 
-    		test.get().pass(scenario.getName() + " is passed");
-    		
-    		}
-    		extent.flush();
-    		 
-        System.out.println("Tearing down after the scenario");
+    private WebDriver driver;
+ 
+    @Before
+    public void setup(Scenario scenario) {
+        DriverManager.initializeDriver();
+        driver = DriverManager.getDriver();
+ 
+        // Start Feature & Scenario Logging
+        String featureFile = scenario.getUri().getPath();
+        String[] parts = featureFile.split("/");
+        String featureName = parts[parts.length - 1].replace(".feature", "");
+        ReportUtil.createFeature(featureName);
+        ReportUtil.createScenario(scenario.getName());
+        ReportUtil.logInfo("Starting Scenario: " + scenario.getName());
+    }
+ 
+    @After
+    public void teardown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            ReportUtil.logFail("Test Failed: " + scenario.getName(), driver);
+        } else {
+            ReportUtil.logPass("Test Passed: " + scenario.getName(), driver);
+        }
+ 
+        DriverManager.closeDriver();
     }
 }
+ 

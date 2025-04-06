@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import locators.DataQualityAssignmentLocators;
+import locators.MainPageLocators;
 import utils.DriverManager;
 
 public class DataQualityAssignmentTab {
@@ -27,7 +28,7 @@ public class DataQualityAssignmentTab {
 		if (this.driver == null) {
 			throw new IllegalStateException("Driver is null in login page");
 		}
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
 	
 	//Open the login page
@@ -39,7 +40,7 @@ public class DataQualityAssignmentTab {
 	//Verify health check of the URL
 	public void verifyHealthCheck() throws IOException {
 		String url = driver.getCurrentUrl();
-		Assert.assertEquals(url, "http://localhost:63343/");
+		Assert.assertEquals(url, "http://localhost:4200/");
 		System.out.println("The user is able to verify the correct URL");
 //		try {
 //			HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost:4200/").openConnection();
@@ -63,6 +64,20 @@ public class DataQualityAssignmentTab {
 		System.out.println("The user is able to verify the title of the page");
 	}
 	
+	//Click on MetaData Button
+	public  void clickMetaDataButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.MetaDataButton));
+		driver.findElement(MainPageLocators.MetaDataButton).click();
+		System.out.println("The user is able to click on MetaData Button");
+	}
+	
+	//Click on Hamburger Menu Button
+	public   void clickHamburgerMenuButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.HamburgerButton));
+		driver.findElement(MainPageLocators.HamburgerButton).click();
+		System.out.println("The user is able to click on Hamburger Menu Button");
+	}
+	
 	//Click on Data Quality Assignment Tab
 	public   void clickDataQualityAssignmentTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DataQualityAssignmentTab));
@@ -78,19 +93,27 @@ public class DataQualityAssignmentTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterDQACategoryFieldValue(String sourceTable, String sourceAttribute, String dqStartDate, String dqEndDate) {
+	public   void enterDQACategoryFieldValue(String sourceTable, String sourceAttribute) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown));
 		Select sourcetabledropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceTableDropdown));
 		sourcetabledropdown.selectByVisibleText(sourceTable);
 		System.out.println("Selected Source Table: tallyman_raw");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
 		Select sourceattributedropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
 		sourceattributedropdown.selectByVisibleText(sourceAttribute);
 		System.out.println("Selected Source Attribute: product_code");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQRuleDropdown));
 		Select dqruledropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQADQRuleDropdown));
 		dqruledropdown.selectByIndex(2);
 		System.out.println("Selected DQ Rule by Index: 2");
-		driver.findElement(DataQualityAssignmentLocators.DQADQStartDate).sendKeys(dqStartDate);
-		driver.findElement(DataQualityAssignmentLocators.DQADQEndDate).sendKeys(dqEndDate);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQStartDate));
+		driver.findElement(DataQualityAssignmentLocators.DQADQStartDate).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQStartDateSelect));
+		driver.findElement(DataQualityAssignmentLocators.DQADQStartDateSelect).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDate));
+		driver.findElement(DataQualityAssignmentLocators.DQADQEndDate).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDateSelect));
+		driver.findElement(DataQualityAssignmentLocators.DQADQEndDateSelect).click();
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
 	}
 	
