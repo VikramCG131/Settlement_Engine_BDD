@@ -63,8 +63,7 @@ Scenario: User downloads a file successfully
      
 Scenario: Verify file Upload functionality 
   When the user click on the Client LookUp
-  And user clicks the Upload button
-  Then file selection dialog should appear
+  And the User Navigates to upload Button
   And user selects a valid file to upload
   And the file should be successfully uploaded
     
@@ -74,21 +73,4 @@ Scenario: Verify Send for Approval button triggers approval process
   And a confirmation message should be displayed with Confirm and Cancel buttons
   And by clicking on Confirm button the file should be sent for approval   
   
-  #Scenario Outline: Validate filter options in the Client LookUp Grid
-   # When the user click on the Client LookUp 
-   # And user navigate to the Client LookUp Grid
-   # And user select "<Filter Type>" from the filter dropdown
-   # And user enter "<Filter Value>" in the filter input (if applicable)
-   # And user apply the filter
-   # Then the displayed rows should match the "<Expected Outcome>"
-
-   # Examples:
-    #  | Filter Type        | Filter Value | Expected Outcome                                   |
-     # | Contains          | S            | Rows where Shop Code contains "S"                   |
-     #| Does not contain | S            | Rows where Shop Code does not contain "S"            |
-     # | Equals           | YY           | Only rows where Shop Code is "YY"                    |
-     # | Does not equal   | YY           | Rows where Shop Code is not "YY"                     |
-     # | Begins with      | S            | Rows where Shop Code starts with "S"                 |
-     # | Ends with        | Y            | Rows where Shop Code ends with "Y"                   |
-     # | Blank            |              | Only rows where Shop Code is blank                   |
-     # | Not blank        |              | Only rows where Shop Code is not blank               |
+  

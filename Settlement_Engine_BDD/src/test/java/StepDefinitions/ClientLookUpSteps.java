@@ -19,7 +19,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ClientMappingSteps {
+public class ClientLookUpSteps {
     WebDriver driver;
     CommonUtilities commonUtilities = new CommonUtilities();
     WebDriverWait wait;
@@ -142,7 +142,7 @@ public class ClientMappingSteps {
     @Then("the user should see validation errors for required fields for the Client LookUp")
     public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
         String actual = driver.findElement(By.xpath("//*[text()='Please Enter Payable EL26']")).getText();
-        Assert.assertEquals("Please Enter Payable El2", actual);
+        Assert.assertEquals("Please Enter Payable EL26", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
     }
@@ -276,88 +276,55 @@ public class ClientMappingSteps {
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
     }
 
-    @When("user clicks the Upload button")
+    @When("the User Navigates to upload Button")
     public void user_clicks_the_upload_button() throws InterruptedException {
       
 		//Locate the file input (hidden or blocked normally)
     	WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
-        uploadButton.click();
-        System.out.println("The user is able to click on Upload Button");
+        Assert.assertTrue(uploadButton.isDisplayed());
+        Assert.assertTrue(wait.until(ExpectedConditions.elementToBeClickable(uploadButton)) != null);
+        System.out.println("The upload button is visible and is clickable");
         commonUtilities.screenshot();
-        wait.until(ExpectedConditions.visibilityOf(uploadButton));
-        System.out.println("The user is able to see the Upload button");
+        //wait.until(ExpectedConditions.visibilityOf(uploadButton));
+        //System.out.println("The user is able to see the Upload button");
        Thread.sleep(6000);
        commonUtilities.screenshot();
     }
 
-    @Then("file selection dialog should appear")
-    public void file_selection_dialog_should_appear() throws InterruptedException {
-    	//JavascriptExecutor js = (JavascriptExecutor) driver;
-		// Locate the file input (hidden or blocked normally)
-		//WebElement fileInput1 = driver. findElement(By.xpath("//button[contains(text(),'Upload')]"));
-		//js. executeScript("arguments[0].click();", fileInput1);
-		//new WebDriverWait(driver,Duration.ofSeconds(10));
-		//File file = new File("C://Users//userdev13//Downloads//clinet_Map.csv");
-		//fileInput1.sendKeys(file.getAbsolutePath());
-		//fileInput1. click();
-    	// System.out.print("file upload successfully");
-    	
-		WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
-		uploadButton.click();
-		System.out.println("The user is able to click on Upload Button");
-		commonUtilities.screenshot();
-		wait.until(ExpectedConditions.visibilityOf(uploadButton));
-		System.out.println("The user is able to see the Upload button");
-		Thread.sleep(6000);
-		commonUtilities.screenshot();
-		
-	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			   WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept=\'.csv\']"));
-        
-        System.out.println("The user is able to see the file selection dialog");
-       commonUtilities.screenshot();
-      wait.until(ExpectedConditions.visibilityOf(fileInput));
-        
-       fileInput.sendKeys("src\\test\\resources\\TestData\\client_Map.csv");
-       
-        System.out.println("The user is able to select the file");
-        commonUtilities.screenshot();
-    }
+    
 
-    @Then("user selects a valid file to upload")
-    public void user_selects_a_valid_file_to_upload() {
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-        Assert.assertTrue(fileInput.isDisplayed());
+    @When("user selects a valid file to upload")
+    public void user_selects_a_valid_file_to_upload() throws InterruptedException {
+        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='.csv']"));
+        //Assert.assertTrue(fileInput.isDisplayed());
         System.out.println("The user is able to select a valid file to upload");
         commonUtilities.screenshot();
-        wait.until(ExpectedConditions.visibilityOf(fileInput));
+        //wait.until(ExpectedConditions.visibilityOf(fileInput));
         System.out.println("The user is able to select a valid file to upload");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String projectPath = System.getProperty("user.dir");
-        File file = new File(projectPath + "src\\test\\resources\\TestData\\client_Map.csv");
+        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
         String absolutePath = file.getAbsolutePath();
-
+        System.out.println(absolutePath);
         // Upload the file by sending the path
         fileInput.sendKeys(absolutePath);
+        Thread.sleep(22000);
 
         // Optionally, confirm upload success
         System.out.println("✅ File uploaded successfully!");
     }
 
-    @Then("the file should be successfully uploaded")
+    @When("the file should be successfully uploaded")
     public void the_file_should_be_successfully_uploaded() {
-        /* String actual = driver.findElement(By.xpath("//*[text()='File uploaded successfully..!']")).getText();
-        Assert.assertEquals("File uploaded successfully..!", actual);
-        System.out.println("The user is able to upload the file successfully");
-        commonUtilities.screenshot();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[text()='File uploaded successfully..!']"))));
+    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successFully..! ']"))).getText();
+        Assert.assertEquals("Record has been uploaded successFully..!", actual);
         System.out.println("The user is able to upload the file successfully");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
         System.out.println("The user is able to click on OK button");
-        commonUtilities.screenshot(); */
+        commonUtilities.screenshot(); 
     }
 
     @When("user click the Send for Approval button")
@@ -397,37 +364,5 @@ public class ClientMappingSteps {
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
     }
-
-    @When("user navigate to the Client LookUp Grid")
-    public void i_navigate_to_the_client_mapping_grid() {
-        WebElement clientLookUpGrid = driver.findElement(By.xpath("//span[contains(text(),'Client lookup grid')]"));
-        wait.until(ExpectedConditions.visibilityOf(clientLookUpGrid));
-        Assert.assertTrue(clientLookUpGrid.isDisplayed());
-    }
-
-    @When("user selects {string} from the filter dropdown")
-    public void selectFilterType(String filterType) {
-        this.filterType = filterType;
-
-        WebElement filterDropdownWrapper = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@aria-colindex=\"2\"]//button[@aria-label=\"Open Filter Menu\"]")));
-        filterDropdownWrapper.click();
-        
-        WebElement searchingvaluefilter = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class=\"ag-input-field-input ag-text-field-input\" and @aria-label=\"Filter Value\"]")));
-        searchingvaluefilter.sendKeys("016");
-        //searchingvaluefilter.clear();
-        WebElement AndRadio = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@class=\"ag-input-field-input ag-text-field-input\" and @aria-label=\"Filter Value\"]")));
-        searchingvaluefilter.sendKeys("016");
-        System.out.println("Clicked on filter dropdown");
-        
-        
-        //
-        // Select the filter option
-        WebElement option = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(@class, 'ag-picker-field')]//span[text()='" + filterType + "']")));
-        option.click();
-        System.out.println("Selected filter type: " + filterType);
-    }
-    
-    
 
 }

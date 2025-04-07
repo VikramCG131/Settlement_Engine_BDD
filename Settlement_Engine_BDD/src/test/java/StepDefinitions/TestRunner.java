@@ -8,12 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = 
-    		"src/test/resources/Features/a_metadata_Data_Source_File.feature",
-    		
-    		
-    
+    		"src/test/resources/Features/client_LookUp.feature", 		
     glue = "StepDefinitions",
-    name="User downloads a file successfully"
+    name="Verify file Upload functionality"
     ,monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }
     
