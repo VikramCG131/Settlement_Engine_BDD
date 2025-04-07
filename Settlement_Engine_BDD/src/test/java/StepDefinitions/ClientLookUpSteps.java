@@ -141,7 +141,7 @@ public class ClientLookUpSteps {
 
     @Then("the user should see validation errors for required fields for the Client LookUp")
     public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
-        String actual = driver.findElement(By.xpath("//*[text()='Please Enter Payable EL26']")).getText();
+        String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Enter Payable EL2')]")).getText();
         Assert.assertEquals("Please Enter Payable EL26", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();

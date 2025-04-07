@@ -7,11 +7,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = 
-    		"src/test/resources/Features/client_LookUp.feature", 		
+    features = {
+    		"src/test/resources/Features/client_LookUp.feature", 	
+    		"src/test/resources/Features/Brand_mapping.feature"
+    },
     glue = "StepDefinitions",
-    name="Verify file Upload functionality"
-    ,monochrome = true,
+   
+    monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }
     
 )
