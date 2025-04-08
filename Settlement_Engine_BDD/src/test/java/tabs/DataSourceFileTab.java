@@ -74,7 +74,7 @@ public class DataSourceFileTab {
 	}
 	
 	//Click on Data Quality Assignment Tab
-	public   void clickDataQualityAssignmentTab() {
+	public   void clickDataSourceFileTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DataSourceFileTab));
 		driver.findElement(DataSourceFileLocators.DataSourceFileTab).click();
 		System.out.println("The user is able to click on Data Quality Assignment Tab");
@@ -88,7 +88,7 @@ public class DataSourceFileTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterDSFCategoryFieldValue(String sourceTable, String sourceAttribute) {
+	public   void enterDSFFieldValue(String sourceTable, String sourceAttribute) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
 		driver.findElement(DataSourceFileLocators.DSFFileName).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));

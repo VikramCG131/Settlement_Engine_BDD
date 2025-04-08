@@ -6,57 +6,63 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
-
+import tabs.DataSourceFileTab;
 import Utilities.CommonUtilities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import tabs.DataQualityAssignmentTab;
 import io.cucumber.java.en.Then;
 
 public class DataSourceFileSteps {
 	WebDriver driver;
 	CommonUtilities commonUtilities = new CommonUtilities();
 	WebDriverWait wait;
+	DataSourceFileTab DataSourceFileTab = new DataSourceFileTab();
 
 	@Given("The Settlement Engine<URL>")
 	public void the_settlement_engine_url() {
-		driver = WebDriverManager.chromedriver().create();
-		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		DataSourceFileTab.openLoginPage();
 	}
 
 	@When("user hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
-		Thread.sleep(2000);
-		System.out.println("The user is able to login with Settlement Engine URL");
+try {
+			
+	 DataSourceFileTab.verifyHealthCheck();
+			
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("the user is able to Navigate to the Settlement Engine homepage")
 	public void the_user_is_able_to_Navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
-		Thread.sleep(2000);
-		System.out.println("The user is able to navigate to the Settlement Engine homepage");
-		commonUtilities.screenshot();
+		DataSourceFileTab.verifyTitle();
+	}
+	
+	@When("the user clicks on Metadata UI screen")
+	public void the_user_clicks_on_metadata_ui_screen() {
+		DataSourceFileTab.clickMetaDataButton();	    
+	}
+	@When("User Clicks on Hamburger Button")
+	public void click_on_hamburger_button() {
+		DataSourceFileTab.clickHamburgerMenuButton();
 	}
 
 	@When("the user click on Data Source File")
 	public void the_user_click_on_data_source_file() throws InterruptedException {
-		driver.findElement(By.xpath("//a[contains(text(),'Data Source File')]")).click();
-		Thread.sleep(3000);
-		System.out.println("The user is able to navigate to Data Source File page");
-		commonUtilities.screenshot();
+		DataSourceFileTab.clickDataSourceFileTab();
 	}
 
 	@When("the user clicks the Add New button from the Data Source File page")
 	public void the_user_clicks_the_add_new_button() {
-		WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
-		wait.until(ExpectedConditions.visibilityOf(button)).click();
-		System.out.println("The user is able to click on Add New Button");
-		commonUtilities.screenshot();
+		DataSourceFileTab.clickDSFAddNewButton();
 	}
 
 	@Then("the user enters the data in required fields for the Data Source File")
