@@ -1,6 +1,6 @@
 package constants;
 
-public enum Settlement_Constants {
+public enum DataSourceFile {
 	
 	FILE_NAME("Test Automation"),
 	FILE_TYPE("csv"),
@@ -14,7 +14,7 @@ public enum Settlement_Constants {
 	
 	
 	private final String value;
-	Settlement_Constants(String value)
+	DataSourceFile(String value)
 	{
 		this.value=value;
 	}
