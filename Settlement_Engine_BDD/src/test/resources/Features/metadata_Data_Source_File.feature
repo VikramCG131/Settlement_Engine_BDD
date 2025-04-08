@@ -17,8 +17,7 @@ Feature: Validation of the MetaData Data Source File
  Scenario: Verify validation errors when mandatory fields are missing for the file
   When the user click on Data Source File
    And the user clicks the Add New button from the Data Source File page
-   And the user click on any field for the file 
-  Then the user should see validation errors for required fields for the file
+  And the user click on any field for the Data source file and validate the mandatory required field message
    
   Scenario: Verify that clicking "Reset" fields clears the fields for the file
    When the user click on Data Source File

@@ -2,9 +2,12 @@ package tabs;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -77,7 +80,7 @@ public class DataSourceFileTab {
 	public   void clickDataSourceFileTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DataSourceFileTab));
 		driver.findElement(DataSourceFileLocators.DataSourceFileTab).click();
-		System.out.println("The user is able to click on Data Quality Assignment Tab");
+		System.out.println("The user is able to click on Data Source File Tab");
 	}
 	
 	//Click on Add New Button
@@ -87,8 +90,8 @@ public class DataSourceFileTab {
 		System.out.println("The user is able to click on Add New Button");
 	}
 	
-	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterDSFFieldValue(String sourceTable, String sourceAttribute) {
+	//Enter the Field Value in Data Source File Category
+	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
 		driver.findElement(DataSourceFileLocators.DSFFileName).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
@@ -213,7 +216,7 @@ public class DataSourceFileTab {
 	}
 	
 	//Verify the Data Source File Grid is visible and File Information is Not Visible
-	public   void verifyDSFAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
+	public   void verifyDSFGridVisibleandFileInformationNotVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFGridVisible));
 		boolean grid = driver.findElement(DataSourceFileLocators.DSFGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
@@ -245,6 +248,8 @@ public class DataSourceFileTab {
 		Assert.assertTrue(cancel);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Cancel Button");
 	}
+
+
 	
 	
 }
