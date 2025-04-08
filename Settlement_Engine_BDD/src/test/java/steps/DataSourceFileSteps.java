@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.List;
 import tabs.DataSourceFileTab;
 import Utilities.CommonUtilities;
+import constants.Settlement_Constants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -67,7 +68,8 @@ try {
 
 	@Then("the user enters the data in required fields for the Data Source File")
 	public void the_user_enters_the_data_in_required_fields() {
-		DataSourceFileTab.enterDSFFieldValue("TestAutomation", "csv","raw","C://local","D://local","10","MetadataSourceFile",",",",");
+	String random=CommonUtilities.getRandomInteger();
+		DataSourceFileTab.enterDSFFieldValue(Settlement_Constants.FILE_NAME.getValue()+random, Settlement_Constants.FILE_TYPE.getValue(),Settlement_Constants.FILE_PATTERN.getValue(),Settlement_Constants.FILE_PATH_RAW.getValue(),Settlement_Constants.FILE_PATH_CLEANSED.getValue(),Settlement_Constants.FILE_MAX_SIZE.getValue(),Settlement_Constants.FILE_TABLE_NAME.getValue(),Settlement_Constants.FILE_DELIMETER.getValue(),Settlement_Constants.COLUMN_IDENTIFIER.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 

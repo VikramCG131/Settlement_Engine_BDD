@@ -35,4 +35,10 @@ public class CommonUtilities {
 	            e.printStackTrace();
 	        }
 	    }
+		
+		public static String getRandomInteger()
+		{
+		int random = (int) (Math.floor(Math.random() * 100000) + 1);
+		return "TestAutomation"+random;
+		}
 	}
