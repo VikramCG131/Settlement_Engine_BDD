@@ -28,7 +28,7 @@ public class ClientLookUpSteps {
 	private String filterType;
 	private String filterValue;
 
-    @Given("Settlement_Engine<URL>")
+    @Given("Settlement_Engine<URL> for the Client Mapping")
     public void settlement_engine_url() {
         driver = WebDriverManager.chromedriver().create();
         driver.manage().window().maximize();
@@ -45,7 +45,7 @@ public class ClientLookUpSteps {
 
     @When("the User clicks on Reference LookUp UI screen")
     public void the_user_clicks_on_reference_look_up_ui_screen() {
-        driver.findElement(By.xpath("//a[contains(text(),'Reference LookUp')]")).click();
+        driver.findElement(By.xpath("//a[contains(text(),'Reference Look Up')]")).click();
         System.out.println("The user is able to navigate to Reference LookUp UI screen");
         commonUtilities.screenshot();
     }

@@ -40,7 +40,7 @@ public class BrandMappingSteps {
 
 	    @When("the User clicks on Reference LookUp UI Screen")
 	    public void the_user_clicks_on_reference_look_up_ui_screen() {
-	    	 driver.findElement(By.xpath("//a[contains(text(),'Reference LookUp')]")).click();
+	    	 driver.findElement(By.xpath("//a[contains(text(),'Reference Look Up')]")).click();
 	         System.out.println("The user is able to navigate to Reference LookUp UI screen");
 	         commonUtilities.screenshot();
 	    }
@@ -117,9 +117,9 @@ public class BrandMappingSteps {
 		public void the_user_should_see_in_the_file_list_for_the_brand_mapping(String string)
 				throws InterruptedException {
 			String actual = driver
-					.findElement(By.xpath("//div[contains(text(),'Record has been added successFully..! ')]"))
+					.findElement(By.xpath("//div[contains(text(),' Record has been added successfully..! ')]"))
 					.getText();
-			Assert.assertEquals(" Record has been added successFully..! ", actual);
+			Assert.assertEquals(" Record has been added successfully..! ", actual);
 			System.out.println("The user is able to insert the data in the all fields");
 			Thread.sleep(2000);
 			commonUtilities.screenshot();
@@ -172,7 +172,7 @@ public class BrandMappingSteps {
 
 		@When("The User click the edit icon for the any Brand Mapping")
 		public void the_user_click_the_edit_icon_for_the_any_brand_mapping() {
-			driver.findElement(By.xpath("(//i[@data-action='edit'])[1]")).click();
+			driver.findElement(By.xpath("(//button[@class='edit-btn' and @id='edit'])[1]")).click();
 			commonUtilities.screenshot();
 		}
 
