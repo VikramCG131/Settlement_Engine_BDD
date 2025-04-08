@@ -87,7 +87,7 @@ public class DataSourceFileSteps {
 
 	@When("the user clicks the Add New button from the Data Source File page")
 	public void the_user_clicks_the_add_new_button() {
-		WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
+		WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add')]"));
 		wait.until(ExpectedConditions.visibilityOf(button)).click();
 		System.out.println("The user is able to click on Add New Button");
 		commonUtilities.screenshot();
@@ -124,8 +124,8 @@ public class DataSourceFileSteps {
 
 	@Then("the user should see {string} in the file list for the file")
 	public void the_user_should_see_in_the_file_list(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully ']")).getText();
-		Assert.assertEquals("Record has been added successFully", actual);
+		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successfully ']")).getText();
+		Assert.assertEquals("Record has been added successfully", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -228,8 +228,8 @@ public class DataSourceFileSteps {
 
 	@Then("the user should see the updated {string} in the file list for the Data Source file")
 	public void the_user_should_see_the_updated_in_the_file_list(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been Updated successFully ']")).getText();
-		Assert.assertEquals("Record has been Updated successFully", actual);
+		String actual = driver.findElement(By.xpath("//*[text()=' Record has been updated successfully ']")).getText();
+		Assert.assertEquals("Record has been updated successfully", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();

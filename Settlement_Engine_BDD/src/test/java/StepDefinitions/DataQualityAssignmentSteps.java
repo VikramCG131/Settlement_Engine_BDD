@@ -87,7 +87,7 @@ public class DataQualityAssignmentSteps {
 
 	@When("the user clicks the Add New button for the DQ Assignment")
 	public void the_user_clicks_the_add_new_button_for_the_dq_assignment() {
-		WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
+		WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add')]"));
 		wait.until(ExpectedConditions.visibilityOf(button)).click();
 		System.out.println("The user is able to click on Add New Button");
 		commonUtilities.screenshot();
