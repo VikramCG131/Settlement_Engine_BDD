@@ -93,28 +93,28 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterMDCCategoryFieldValue(String sourceTable, String sourceAttribute) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSourceTableDropdown));
-		Select sourcetabledropdown = new Select(driver.findElement(MetaDataColumnsLocators.MDCSourceTableDropdown));
-		sourcetabledropdown.selectByVisibleText(sourceTable);
-		System.out.println("Selected Source Table: tallyman_raw");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSourceAttributeDropdown));
-		Select sourceattributedropdown = new Select(driver.findElement(MetaDataColumnsLocators.MDCSourceAttributeDropdown));
-		sourceattributedropdown.selectByVisibleText(sourceAttribute);
-		System.out.println("Selected Source Attribute: product_code");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQRuleDropdown));
-		Select dqruledropdown = new Select(driver.findElement(MetaDataColumnsLocators.MDCDQRuleDropdown));
-		dqruledropdown.selectByIndex(2);
-		System.out.println("Selected DQ Rule by Index: 2");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQStartDate));
-		driver.findElement(MetaDataColumnsLocators.MDCDQStartDate).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQStartDateSelect));
-		driver.findElement(MetaDataColumnsLocators.MDCDQStartDateSelect).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQEndDate));
-		driver.findElement(MetaDataColumnsLocators.MDCDQEndDate).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQEndDateSelect));
-		driver.findElement(MetaDataColumnsLocators.MDCDQEndDateSelect).click();
-		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
+	public   void enterMDCCategoryFieldValue(String name, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
+		driver.findElement(MetaDataColumnsLocators.MDCName).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
+		Select datatypedropdown = new Select(driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown));
+		datatypedropdown.selectByIndex(3);
+		System.out.println("Selected Data Type: "+datatypedropdown);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnActive));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnActive).click();	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnIsNull));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
+		driver.findElement(MetaDataColumnsLocators.MDCMinSize).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize));
+		driver.findElement(MetaDataColumnsLocators.MDCMaxSize).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnOrder));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnDateFormat));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown));
+		driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown).click();
+		System.out.println("The user is able to enter the field value in Columns Information");
 	}
 	
 	//Click on Submit Button
@@ -133,56 +133,19 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Source Table Dropdown
-	public   void clickMDCSourceTableDropdown() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSourceTableDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCSourceTableDropdown).click();
-		System.out.println("The user is able to click on Source Table Dropdown");
+	public   void clickMDCDataTypeDropdown() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
+		driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown).click();
+		System.out.println("The user is able to click on Data Type Dropdown");
 	}
 	
 	//Click on Source Table Dropdown and Blank Selection
 	public   void clickMDCSourceTableDropdownandblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSourceTableDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCSourceTableDropdown).click();
-		String actual = driver.findElement(MetaDataColumnsLocators.MDCSourceTableValidation).getText();
-		Assert.assertEquals("Please select Source Table", actual);
-		System.out.println("The user is able to click on Source Table Dropdown and validate the error message");
-	}
-	
-	//Click on DQ Rule Dropdown
-	public   void clickMDCDQRuleDropdown() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQRuleDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCDQRuleDropdown).click();
-		String actual = driver.findElement(MetaDataColumnsLocators.MDCDQRuleValidation).getText();
-		Assert.assertEquals("Please select DQ Rule", actual);
-		System.out.println("The user is able to click on DQ Rule Dropdown and validate the error message");
-	}
-	
-	//Click on DQ Rule Dropdown and Blank Selection
-	public   void clickMDCDQRuleDropdownandBlankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQRuleDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCDQRuleDropdown).click();
-		System.out.println("The user is able to click on DQ Rule Dropdown");
-	}
-	
-	//Click on Source Attribute Dropdown
-	public   void clickMDCSourceAttributeDropdown() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSourceAttributeDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCSourceAttributeDropdown).click();
-		System.out.println("The user is able to click on Source Attribute Dropdown");
-	}
-	
-	//Click on DQ Start Date
-	public   void clickMDCDQStartDate() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQStartDate));
-		driver.findElement(MetaDataColumnsLocators.MDCDQStartDate).click();
-		System.out.println("The user is able to click on DQ Start Date");
-	}
-	
-	//Click on DQ End Date
-	public   void clickMDCDQEndDate() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDQEndDate));
-		driver.findElement(MetaDataColumnsLocators.MDCDQEndDate).click();
-		System.out.println("The user is able to click on DQ End Date");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
+		driver.findElement(MetaDataColumnsLocators.MDCMinSize).click();
+		String actual = driver.findElement(MetaDataColumnsLocators.MDCMinSizeValidation).getText();
+		Assert.assertEquals("Min Size Must be a Number", actual);
+		System.out.println("The user is able to click on Min Size field and validate the error message");
 	}
 	
 	//Click on Reset Button
@@ -215,10 +178,10 @@ public class MetaDataColumnsTab {
 	
 	//Verify Assignment Category Text is Visible
 	public   void verifyMDCCategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCCategoryTextVisible));
-		boolean category = driver.findElement(MetaDataColumnsLocators.MDCCategoryTextVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnInformationVisible));
+		boolean category = driver.findElement(MetaDataColumnsLocators.MDCColumnInformationVisible).isDisplayed();
 		Assert.assertTrue(category);
-		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
+		System.out.println("The user is able to verify the Column Information Text is visible");
 	}
 	
 	//Click on Delete Button
@@ -253,12 +216,12 @@ public class MetaDataColumnsTab {
 	
 	//Verify the Data Quality Assignment Grid is Visible and Data Assignment Category is Not Visible
 	public   void verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCAssignmentGridVisible));
-		boolean grid = driver.findElement(MetaDataColumnsLocators.MDCAssignmentGridVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCGridVisible));
+		boolean grid = driver.findElement(MetaDataColumnsLocators.MDCGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
-		boolean category = driver.findElement(MetaDataColumnsLocators.MDCCategoryTextVisible).isDisplayed();
+		boolean category = driver.findElement(MetaDataColumnsLocators.MDCGridVisible).isDisplayed();
 		Assert.assertFalse(category);
-		System.out.println("The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
+		System.out.println("The user is able to verify the Metadata Column Grid is visible and Column Information is not visible");
 	}
 	
 	//Verify the Delete Confirmation Popup Message
