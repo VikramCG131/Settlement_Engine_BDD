@@ -1,6 +1,6 @@
 package constants;
 
-public enum DataSourceFile {
+public enum DataSourceFileConstants {
 	
 	FILE_NAME("Test Automation"),
 	FILE_TYPE("csv"),
@@ -14,7 +14,7 @@ public enum DataSourceFile {
 	
 	
 	private final String value;
-	DataSourceFile(String value)
+	DataSourceFileConstants(String value)
 	{
 		this.value=value;
 	}
