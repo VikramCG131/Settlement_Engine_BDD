@@ -1,5 +1,6 @@
 package steps;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import tabs.MetaDataColumnsTab;
 import Utilities.CommonUtilities;
+import constants.DataSourceFileConstants;
+import constants.MetadataColumnConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,68 +26,54 @@ public class MetaDataColumnsSteps {
 	WebDriverWait wait;
 	
     @Given("Settlement Engine<URL>")
-	public void the_settlement_engine_url() {
-		driver = WebDriverManager.chromedriver().create();
-		driver.manage().window().maximize();
-		driver.get("http://localhost:4200");
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void the_settlement_engine_url() {
+    	MetaDataColumnsTab.openLoginPage();
 	}
 
 	@When("the user hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
-		Thread.sleep(2000);
-		System.out.println("The user is able to login with Settlement Engine URL");
+		try {
+
+			MetaDataColumnsTab.verifyHealthCheck();
+
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	@Then("the User is able to navigate to the Settlement Engine homepage")
 	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
-		Thread.sleep(2000);
-		System.out.println("The user is able to navigate to the Settlement Engine homepage");
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.verifyTitle();
+	}
+	@When("the user clicks on Metadata UI screen")
+	public void the_user_clicks_on_metadata_ui_screen() {
+		MetaDataColumnsTab.clickMetaDataButton();
 	}
 	
+	@When("User Clicks on Hamburger Button")
+	public void click_on_hamburger_button() {
+		MetaDataColumnsTab.clickHamburgerMenuButton();
+	}
 	@When("the user click on Metadata Column")
 	public void the_user_click_on_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//a[contains(text(),'Meta Data Column')]")).click();
-		Thread.sleep(3000);
-		System.out.println("The user is able to navigate to Meta Data Column page");
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.clickMetadataColumnTab();
 	}
-
-	@When("the user clicks the Add New button from the Metadata Column page")
+	
+	@When("the user clicks the Add button from the Metadata Column page")
 	public void the_user_clicks_the_add_new_button_from_the_metadata_column_page() {
-		WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
-		wait.until(ExpectedConditions.visibilityOf(button)).click();
-		System.out.println("The user is able to click on Add New Button");
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.clickMDCAddNewButton();
 	}
 
 	@When("the user enters the data in required fields for the Metadata Column")
 	public void the_user_enters_the_data_in_required_fields_for_the_metadata_column() throws InterruptedException {
-		List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-md-4']"));
-		for (WebElement fieldElement : fieldElements) {
-		    String fieldText = fieldElement.getText();
-		    System.out.println("Field: " + fieldText);
-		}
-		int random = (int) (Math.floor(Math.random() * 100000) + 1);
-		driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).sendKeys("TestAutomation" + random);
-		 // Locate the dropdown element
-        WebElement dropdown = driver.findElement(By.id("columnDataType"));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText("BOOLEAN");
-		driver.findElement(By.xpath("//div[3]/div[1]/label[@for='columnIsActiveYes']")).click();
-		driver.findElement(By.xpath("//div[4]/div[2]/label[@for='columnIsNullNo']")).click();
-		driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).sendKeys("5");
-		driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).sendKeys("50");
-		driver.findElement(By.xpath("//input[@formcontrolname='columnOrder']")).sendKeys("3");
-		driver.findElement(By.xpath("//input[@formcontrolname='columnDateFormat']")).sendKeys("2025-03-26");
-		Thread.sleep(2000);
-		// Locate the dropdown element
-		 WebElement dropdown1 = driver.findElement(By.xpath("//select[@formcontrolname='fileMetadataId']"));
-		Select select1 = new Select(dropdown1);
-		select1.selectByIndex(2);	
+		String random = CommonUtilities.getRandomInteger();
+		MetaDataColumnsTab.enterDSFFieldValue(MetadataColumnConstants.NAME.getValue() + random,
+				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants..getValue(),
+				MetadataColumnConstants.FILE_PATH_RAW.getValue(), MetadataColumnConstants.FILE_PATH_CLEANSED.getValue(),
+				MetadataColumnConstants.FILE_MAX_SIZE.getValue(), MetadataColumnConstants.FILE_TABLE_NAME.getValue(),
+				MetadataColumnConstants.FILE_DELIMETER.getValue(),
+				MetadataColumnConstants.COLUMN_IDENTIFIER.getValue());
 		System.out.println("The user is able to enter the data in required fields");
 	}
 

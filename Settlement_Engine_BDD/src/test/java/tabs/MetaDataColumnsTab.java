@@ -13,13 +13,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import locators.MetaDataColumnsLocators;
+import locators.DataSourceFileLocators;
 import locators.MainPageLocators;
 import utils.DriverManager;
 
 public class MetaDataColumnsTab {
 	
-	private WebDriver driver;
-	private WebDriverWait wait;
+	private static WebDriver driver;
+	private static WebDriverWait wait;
 	
 	//Constructor to initialize the driver and wait
 	public MetaDataColumnsTab() {
@@ -32,13 +33,13 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Open the login page
-	public void openLoginPage() {
+	public static void openLoginPage() {
 		driver.get("http://localhost:4200");
 		System.out.println("The user is able to open the login page");
 	}
 	
 	//Verify health check of the URL
-	public void verifyHealthCheck() throws IOException {
+	public static void verifyHealthCheck() throws IOException {
 		String url = driver.getCurrentUrl();
 		Assert.assertEquals(url, "http://localhost:4200/");
 		System.out.println("The user is able to verify the correct URL");
@@ -58,42 +59,42 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify the Title of the Page
-	public    void verifyTitle() {
+	public static void verifyTitle() {
 		String title = driver.getTitle();
 		Assert.assertEquals(title, "Starter Kit PF Angular");
 		System.out.println("The user is able to verify the title of the page");
 	}
 	
 	//Click on MetaData Button
-	public  void clickMetaDataButton() {
+	public static void clickMetaDataButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.MetaDataButton));
 		driver.findElement(MainPageLocators.MetaDataButton).click();
 		System.out.println("The user is able to click on MetaData Button");
 	}
 	
 	//Click on Hamburger Menu Button
-	public   void clickHamburgerMenuButton() {
+	public static void clickHamburgerMenuButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.HamburgerButton));
 		driver.findElement(MainPageLocators.HamburgerButton).click();
 		System.out.println("The user is able to click on Hamburger Menu Button");
 	}
 	
 	//Click on Data Quality Assignment Tab
-	public   void clickDataQualityAssignmentTab() {
+	public static void clickMetadataColumnTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MetaDataColumnTab));
 		driver.findElement(MetaDataColumnsLocators.MetaDataColumnTab).click();
 		System.out.println("The user is able to click on Data Quality Assignment Tab");
 	}
 	
 	//Click on Add New Button
-	public   void clickMDCAddNewButton() {
+	public static void clickMDCAddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCAddNewButton));
 		driver.findElement(MetaDataColumnsLocators.MDCAddNewButton).click();
 		System.out.println("The user is able to click on Add New Button");
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterMDCCategoryFieldValue(String name, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
+	public static void enterMDCCategoryFieldValue(String name, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
 		driver.findElement(MetaDataColumnsLocators.MDCName).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
@@ -118,14 +119,14 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Submit Button
-	public   void clickMDCSubmitButton() {
+	public static void clickMDCSubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSubmitButton));
 		driver.findElement(MetaDataColumnsLocators.MDCSubmitButton).click();
 		System.out.println("The user is able to click on Submit Button");
 	}
 	
 	//Verify the Success Popup Message
-	public   void verifyMDCSuccessPopupMessage() {
+	public static void verifyMDCSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSuccessPopupMessage));
 		String successMessage = driver.findElement(MetaDataColumnsLocators.MDCSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successFully..!");
@@ -133,14 +134,14 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Source Table Dropdown
-	public   void clickMDCDataTypeDropdown() {
+	public static void clickMDCDataTypeDropdown() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
 		driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown).click();
 		System.out.println("The user is able to click on Data Type Dropdown");
 	}
 	
 	//Click on Source Table Dropdown and Blank Selection
-	public   void clickMDCSourceTableDropdownandblankSelection() {
+	public static void clickMDCSourceTableDropdownandblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
 		driver.findElement(MetaDataColumnsLocators.MDCMinSize).click();
 		String actual = driver.findElement(MetaDataColumnsLocators.MDCMinSizeValidation).getText();
@@ -149,35 +150,35 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Reset Button
-	public   void clickMDCResetButton() {
+	public static void clickMDCResetButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCResetButton));
 		driver.findElement(MetaDataColumnsLocators.MDCResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
 	}
 	
 	//Click on Cancel Button
-	public   void clickMDCCancelButton() {
+	public static void clickMDCCancelButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCCancelButton));
 		driver.findElement(MetaDataColumnsLocators.MDCCancelButton).click();
 		System.out.println("The user is able to click on Cancel Button");
 	}
 	
 	//Click on Update Button
-	public   void clickMDCUpdateButton() {
+	public static void clickMDCUpdateButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCUpdateButton));
 		driver.findElement(MetaDataColumnsLocators.MDCUpdateButton).click();
 		System.out.println("The user is able to click on Update Button");
 	}
 	
 	//Click on Edit Button
-	public   void clickMDCEditButton() {
+	public static void clickMDCEditButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCEditButton));
 		driver.findElement(MetaDataColumnsLocators.MDCEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
 	}
 	
 	//Verify Assignment Category Text is Visible
-	public   void verifyMDCCategoryTextVisible() {
+	public static void verifyMDCCategoryTextVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnInformationVisible));
 		boolean category = driver.findElement(MetaDataColumnsLocators.MDCColumnInformationVisible).isDisplayed();
 		Assert.assertTrue(category);
@@ -185,37 +186,52 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Delete Button
-	public   void clickMDCDeleteButton() {
+	public static void clickMDCDeleteButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteButton));
 		driver.findElement(MetaDataColumnsLocators.MDCDeleteButton).click();
 		System.out.println("The user is able to click on Delete Button");
 	}
 	
 	//Click on Delete Confirmation Popup Confirm Button
-	public   void clickMDCDeleteConfirmationPopupConfirmButton() {
+	public static void clickMDCDeleteConfirmationPopupConfirmButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteConfirmationPopupConfirmButton));
 		driver.findElement(MetaDataColumnsLocators.MDCDeleteConfirmationPopupConfirmButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Confirm Button");
 	}
 	
 	//Click on Delete Confirmation Popup Cancel Button
-	public   void clickMDCDeleteConfirmationPopupCancelButton() {
+	public static void clickMDCDeleteConfirmationPopupCancelButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteConfirmationPopupCancelButton));
 		driver.findElement(MetaDataColumnsLocators.MDCDeleteConfirmationPopupCancelButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Cancel Button");
 	}
 	
 	//Verify All the Fields are Cleared after Reset Button
-	public   void verifyAllFieldsClearedforResetButton() {
-		String ruleStartTimeStamp = driver.findElement(MetaDataColumnsLocators.MDCDQStartDate).getAttribute("value");
-		String ruleEndTimeStamp = driver.findElement(MetaDataColumnsLocators.MDCDQEndDate).getAttribute("value");
-		Assert.assertEquals("", ruleStartTimeStamp);
-		Assert.assertEquals("", ruleEndTimeStamp);
+	public static void verifyAllFieldsClearedforResetButton() {
+		String name = driver.findElement(MetaDataColumnsLocators.MDCName).getAttribute("value");
+		String dataType = driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown).getAttribute("value");
+		String columnActive = driver.findElement(MetaDataColumnsLocators.MDCColumnActive).getAttribute("value");
+		String ColumnIsNull = driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).getAttribute("value");
+		String minSize = driver.findElement(MetaDataColumnsLocators.MDCMinSize).getAttribute("value");
+		String maxSize = driver.findElement(MetaDataColumnsLocators.MDCMaxSize).getAttribute("value");
+		String columnOrder = driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).getAttribute("value");
+		String columnDateFormat = driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).getAttribute("value");
+		String tableName = driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown).getAttribute("value");
+		
+		Assert.assertEquals("", name);
+		Assert.assertEquals("", dataType);
+		Assert.assertEquals("", columnActive);
+		Assert.assertEquals("", ColumnIsNull);
+		Assert.assertEquals("", minSize);
+		Assert.assertEquals("", maxSize);
+		Assert.assertEquals("", columnOrder);
+		Assert.assertEquals("", columnDateFormat);
+		Assert.assertEquals("", tableName);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 	
-	//Verify the Data Quality Assignment Grid is Visible and Data Assignment Category is Not Visible
-	public   void verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
+	//Verify the Metadata Column Grid is Visible and Column Information is Not Visible
+	public static void verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCGridVisible));
 		boolean grid = driver.findElement(MetaDataColumnsLocators.MDCGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
@@ -225,7 +241,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify the Delete Confirmation Popup Message
-	public   void verifyMDCDeleteConfirmationPopupMessage() {
+	public static void verifyMDCDeleteConfirmationPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteConfirmationPopupMessage));
 		String deleteMessage = driver.findElement(MetaDataColumnsLocators.MDCDeleteConfirmationPopupMessage).getText();
 		Assert.assertEquals(deleteMessage, "Are you sure you want to delete");
@@ -233,7 +249,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify in the Delete Popup Confirm button is Visible
-	public   void verifyMDCDeleteConfirmationPopupConfirmButton() {
+	public static void verifyMDCDeleteConfirmationPopupConfirmButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteConfirmationPopupConfirmButton));
 		boolean confirm = driver.findElement(MetaDataColumnsLocators.MDCDeleteConfirmationPopupConfirmButton).isDisplayed();
 		Assert.assertTrue(confirm);
@@ -241,7 +257,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify in the Delete Popup Cancel button is Visible
-	public   void verifyMDCDeleteConfirmationPopupCancelButton() {
+	public static void verifyMDCDeleteConfirmationPopupCancelButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteConfirmationPopupCancelButton));
 		boolean cancel = driver.findElement(MetaDataColumnsLocators.MDCDeleteConfirmationPopupCancelButton).isDisplayed();
 		Assert.assertTrue(cancel);

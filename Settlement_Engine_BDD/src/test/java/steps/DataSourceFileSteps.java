@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.List;
 import tabs.DataSourceFileTab;
 import Utilities.CommonUtilities;
-import constants.DataSourceFile;
+import constants.DataSourceFileConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,10 +32,10 @@ public class DataSourceFileSteps {
 
 	@When("user hit the Settlement Engine URL")
 	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-try {
-			
-	 DataSourceFileTab.verifyHealthCheck();
-			
+		try {
+
+			DataSourceFileTab.verifyHealthCheck();
+
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 			e.printStackTrace();
@@ -46,11 +46,12 @@ try {
 	public void the_user_is_able_to_Navigate_to_the_settlement_engine_homepage() throws InterruptedException {
 		DataSourceFileTab.verifyTitle();
 	}
-	
+
 	@When("the user clicks on Metadata UI screen")
 	public void the_user_clicks_on_metadata_ui_screen() {
-		DataSourceFileTab.clickMetaDataButton();	    
+		DataSourceFileTab.clickMetaDataButton();
 	}
+
 	@When("User Clicks on Hamburger Button")
 	public void click_on_hamburger_button() {
 		DataSourceFileTab.clickHamburgerMenuButton();
@@ -68,8 +69,13 @@ try {
 
 	@Then("the user enters the data in required fields for the Data Source File")
 	public void the_user_enters_the_data_in_required_fields() {
-	String random=CommonUtilities.getRandomInteger();
-		DataSourceFileTab.enterDSFFieldValue(DataSourceFile.FILE_NAME.getValue()+random, DataSourceFile.FILE_TYPE.getValue(),DataSourceFile.FILE_PATTERN.getValue(),DataSourceFile.FILE_PATH_RAW.getValue(),DataSourceFile.FILE_PATH_CLEANSED.getValue(),DataSourceFile.FILE_MAX_SIZE.getValue(),DataSourceFile.FILE_TABLE_NAME.getValue(),DataSourceFile.FILE_DELIMETER.getValue(),DataSourceFile.COLUMN_IDENTIFIER.getValue());
+		String random = CommonUtilities.getRandomInteger();
+		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue() + random,
+				DataSourceFileConstants.FILE_TYPE.getValue(), DataSourceFileConstants.FILE_PATTERN.getValue(),
+				DataSourceFileConstants.FILE_PATH_RAW.getValue(), DataSourceFileConstants.FILE_PATH_CLEANSED.getValue(),
+				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue(),
+				DataSourceFileConstants.FILE_DELIMETER.getValue(),
+				DataSourceFileConstants.COLUMN_IDENTIFIER.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -111,7 +117,7 @@ try {
 
 	@Then("Add New Pop up should be closed for the file")
 	public void add_new_pop_up_should_be_closed() {
-		DataSourceFileTab.verifyDSFGridVisibleandFileInformationNotVisible();	
+		DataSourceFileTab.verifyDSFGridVisibleandFileInformationNotVisible();
 	}
 
 	@When("The User click the edit icon for the any Data Source file")
@@ -126,7 +132,8 @@ try {
 
 	@Then("the user update the any field for the file")
 	public void the_user_update_the_any_field() {
-		DataSourceFileTab.enterDSFFieldValue("TestAutomation", "txt","raw","C://local","D://local","10","MetadataSourceFile",",",",");
+		DataSourceFileTab.enterDSFFieldValue("TestAutomation", "txt", "raw", "C://local", "D://local", "10",
+				"MetadataSourceFile", ",", ",");
 	}
 
 	@Then("the user should see click on the Update Button for the file")
@@ -151,7 +158,7 @@ try {
 
 	@Then("The User should see {string} message for the file")
 	public void the_user_should_see_message(String string) throws InterruptedException {
-		DataSourceFileTab.clickDSFDeleteConfirmationPopupConfirmButton();	
+		DataSourceFileTab.clickDSFDeleteConfirmationPopupConfirmButton();
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Data Source file")
