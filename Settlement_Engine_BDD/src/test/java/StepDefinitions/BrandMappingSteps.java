@@ -56,7 +56,7 @@ public class BrandMappingSteps {
 
 	    @Then("the User is able to navigate to the Settlement_Engine Homepage")
 	    public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-	    	 Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+	    	 Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
 	         Thread.sleep(2000);
 	         System.out.println("The user is able to navigate to the Settlement Engine homepage");
 	         commonUtilities.screenshot();
@@ -117,9 +117,9 @@ public class BrandMappingSteps {
 		public void the_user_should_see_in_the_file_list_for_the_brand_mapping(String string)
 				throws InterruptedException {
 			String actual = driver
-					.findElement(By.xpath("//div[contains(text(),' Record has been added successfully..! ')]"))
+					.findElement(By.xpath("//div[contains(text(),'Record has been added successfully..! ')]"))
 					.getText();
-			Assert.assertEquals(" Record has been added successfully..! ", actual);
+			Assert.assertEquals("Record has been added successfully..!", actual);
 			System.out.println("The user is able to insert the data in the all fields");
 			Thread.sleep(2000);
 			commonUtilities.screenshot();
@@ -128,15 +128,13 @@ public class BrandMappingSteps {
 		@When("the user click on any field for the Brand Mapping")
 		public void the_user_click_on_any_field_for_the_brand_mapping() throws InterruptedException {
 			driver.findElement(By.xpath("//input[@formcontrolname='clientCode']")).click();
-			WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='brandCode']"));
-			wait.until(ExpectedConditions.visibilityOf(button)).click();
-			Thread.sleep(2000);
+			 driver.findElement(By.xpath("//input[@formcontrolname='brandCode']")).click();
 		}
 
 		@Then("the user should see validation errors for required fields for the Brand Mapping")
 		public void the_user_should_see_validation_errors_for_required_fields_for_the_brand_mapping() {
-			String actual = driver.findElement(By.xpath("//div[text()='Please enter Client Code ']")).getText();
-			Assert.assertEquals("Please enter Client Code ", actual);
+			String actual = driver.findElement(By.xpath("//div[contains(text(),'Please enter Client Code')]")).getText();
+			Assert.assertEquals("Please enter Client Code", actual);
 			System.out.println("The user is able to see the error message for required fields");
 			commonUtilities.screenshot();
 		}
@@ -178,10 +176,10 @@ public class BrandMappingSteps {
 
 	@Then("The User should see the edit modal open Brand Mapping")
 	public void the_user_should_see_the_edit_modal_open_brand_mapping() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Brand mapping grid ']")).isDisplayed();
+		boolean file = driver.findElement(By.xpath("//span[contains(text(),'Brand Mapping Grid')]")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Brand mapping grid ']")).getText();
-		Assert.assertEquals("Brand mapping grid", actual);	
+		String actual = driver.findElement(By.xpath("//span[contains(text(),'Brand Mapping Grid')]")).getText();
+		Assert.assertEquals("Brand Mapping Grid", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}
@@ -287,7 +285,7 @@ public class BrandMappingSteps {
    
     @When("user selects a valid file to upload from the Brand Mapping page")
     public void user_selects_a_valid_file_to_upload() throws InterruptedException {
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='.csv']"));
+        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
         //Assert.assertTrue(fileInput.isDisplayed());
         System.out.println("The user is able to select a valid file to upload");
         commonUtilities.screenshot();
@@ -296,7 +294,7 @@ public class BrandMappingSteps {
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String projectPath = System.getProperty("user.dir");
-        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Brandmapping.csv");
         String absolutePath = file.getAbsolutePath();
         System.out.println(absolutePath);
         // Upload the file by sending the path
@@ -309,8 +307,8 @@ public class BrandMappingSteps {
 
     @When("the file should be successfully Uploaded from the Brand Mapping page")
     public void the_file_should_be_successfully_uploaded() {
-    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successFully..! ']"))).getText();
-        Assert.assertEquals("Record has been uploaded successFully..!", actual);
+    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Record has been uploaded successfully..!')]"))).getText();
+        Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

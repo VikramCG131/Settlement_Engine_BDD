@@ -60,7 +60,7 @@ public class ClientMappingSteps {
 
 	    @Then("the User is able to navigate to the Settlement Engine Homepage for the Client Mapping")
 	    public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-	        Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+	        Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
 	        Thread.sleep(2000);
 	        System.out.println("The user is able to navigate to the Settlement Engine homepage");
 	        commonUtilities.screenshot();
@@ -132,13 +132,12 @@ public class ClientMappingSteps {
 	    @When("the user click on any field for the Client Mapping")
 	    public void the_user_click_on_any_field_for_the_client_mapping() throws InterruptedException {
 	        driver.findElement(By.xpath("//input[@formcontrolname='clientCode']")).click();
-	        WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='shopCode']"));
-	        wait.until(ExpectedConditions.visibilityOf(button)).click();
-	        Thread.sleep(2000);
+	        driver.findElement(By.xpath("//input[@formcontrolname='shopCode']")).click();
+	        
 	    }
 	    @Then("the user should see validation errors for required fields for the Client Mapping")
 	    public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
-	        String actual = driver.findElement(By.xpath("//input[@formcontrolname='clientCode']")).getText();
+	        String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Enter Client Code')]")).getText();
 	        Assert.assertEquals("Please Enter Client Code", actual);
 	        System.out.println("The user is able to see the error message for required fields");
 	        commonUtilities.screenshot();
@@ -176,10 +175,10 @@ public class ClientMappingSteps {
 	    }
 	    @Then("The User should see the edit modal open Client Mapping")
 	    public void the_user_should_see_the_edit_modal_open_client_look_up() {
-	    	boolean file = driver.findElement(By.xpath("//span[contains(text(),'Client mapping grid ')]")).isDisplayed();
+	    	boolean file = driver.findElement(By.xpath("//span[contains(text(),'Client Mapping Grid')]")).isDisplayed();
 			Assert.assertTrue(file);
-			String actual = driver.findElement(By.xpath("//span[contains(text(),'Client mapping grid ')]")).getText();
-			Assert.assertEquals("Client mapping grid", actual);	
+			String actual = driver.findElement(By.xpath("//span[contains(text(),'Client Mapping Grid')]")).getText();
+			Assert.assertEquals("Client Mapping Grid", actual);	
 			System.out.println("The edit modal is displayed");
 			commonUtilities.screenshot();
 	    }
@@ -281,7 +280,7 @@ public class ClientMappingSteps {
 
 	    @When("user selects a valid file to upload for the Client Mapping")
 	    public void user_selects_a_valid_file_to_upload() throws InterruptedException {
-	        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='.csv']"));
+	        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
 	        //Assert.assertTrue(fileInput.isDisplayed());
 	        System.out.println("The user is able to select a valid file to upload");
 	        commonUtilities.screenshot();
@@ -290,7 +289,7 @@ public class ClientMappingSteps {
 	        commonUtilities.screenshot();
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Clientmapping.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path
@@ -303,12 +302,12 @@ public class ClientMappingSteps {
 
 	    @When("the file should be successfully uploaded for the Client Mapping")
 	    public void the_file_should_be_successfully_uploaded() {
-	    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successFully..! ']"))).getText();
-	        Assert.assertEquals("Record has been uploaded successFully..!", actual);
+	    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),' Record has been uploaded successfully..! ')]"))).getText();
+	        Assert.assertEquals("Record has been uploaded successfully..!", actual);
 	        System.out.println("The user is able to upload the file successfully");
 	        commonUtilities.screenshot();
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+	       driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
 	        System.out.println("The user is able to click on OK button");
 	        commonUtilities.screenshot(); 
 	    }

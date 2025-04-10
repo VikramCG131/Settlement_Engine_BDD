@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = {
-    		"src/test/resources/Features/client_LookUp.feature", 	
-    		"src/test/resources/Features/Brand_mapping.feature"
-    },
+    features = 
+    		"src/test/resources/Features/ExceptionRuleMetaData.feature", 	
+    		name="Verify validation errors when mandatory fields are missing for the Exception Rule Meta Data",
+    
     glue = "StepDefinitions",
    
     monochrome = true,

@@ -25,7 +25,7 @@ public class EL3MappingSteps {
     CommonUtilities commonUtilities = new CommonUtilities();
     WebDriverWait wait;
     private File downloadDir;
-    private final String fileName = "example.csv"; 
+    private final String fileName = "El3mapping.csv"; 
 	private String filterType;
 	private String filterValue;
 
@@ -62,7 +62,7 @@ public class EL3MappingSteps {
 
     @Then("The User is able to navigate to the Settlement Engine Homepage")
     public void The_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-        Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+        Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
         Thread.sleep(2000);
         System.out.println("The user is able to navigate to the Settlement Engine homepage");
         commonUtilities.screenshot();
@@ -120,7 +120,7 @@ public class EL3MappingSteps {
     }
     @Then("the user should see {string} in the file list for the EL3 Mapping")
     public void the_user_should_see_in_the_file_list_for_the_EL3_mapping(String string) throws InterruptedException {
-        String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successfully..! ']")).getText();
+        String actual = driver.findElement(By.xpath("//div[contains(text(),'Record has been added successfully..!')]")).getText();
         Assert.assertEquals("Record has been added successfully..!", actual);
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
@@ -131,6 +131,7 @@ public class EL3MappingSteps {
         driver.findElement(By.xpath("//input[@formcontrolname='productCode']")).click();
         WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='elmcode']"));
         wait.until(ExpectedConditions.visibilityOf(button)).click();
+        driver.findElement(By.xpath("//input[@formcontrolname='productCode']")).click();
         Thread.sleep(2000);
     }
     
@@ -173,10 +174,10 @@ public class EL3MappingSteps {
     }
     @Then("The User should see the edit modal open EL3 Mapping")
     public void the_user_should_see_the_edit_modal_open_EL3_Mapping() {
-    	boolean file = driver.findElement(By.xpath("//span[text()='EL3 mapping grid ']")).isDisplayed();
+    	boolean file = driver.findElement(By.xpath("//span[text()='EL3 Mapping Grid ']")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//span[text()='EL3 mapping grid ']")).getText();
-		Assert.assertEquals("EL3 mapping grid", actual);	
+		String actual = driver.findElement(By.xpath("//span[text()='EL3 Mapping Grid ']")).getText();
+		Assert.assertEquals("EL3 Mapping Grid", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
     }
@@ -255,9 +256,8 @@ public class EL3MappingSteps {
         File downloadedFile = new File(downloadDir, fileName);
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
     }
-    
-    @When("the User Navigates to upload Button EL3 Mapping")
-    public void user_clicks_the_upload_button_EL3_Mapping() throws InterruptedException {
+    @When("the User Navigates to upload Button from the EL3 Mapping page")
+    public void user_clicks_the_upload_button() throws InterruptedException {
       
 		//Locate the file input (hidden or blocked normally)
     	WebElement uploadButton = driver.findElement(By.xpath("//button[contains(text(),'Upload')]"));
@@ -270,9 +270,12 @@ public class EL3MappingSteps {
        Thread.sleep(6000);
        commonUtilities.screenshot();
     }
-    @When("user selects a valid file to upload EL3 Mapping")
+
+    
+
+    @When("user selects a valid file to upload for the EL3 Mapping")
     public void user_selects_a_valid_file_to_upload() throws InterruptedException {
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='.csv']"));
+        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
         //Assert.assertTrue(fileInput.isDisplayed());
         System.out.println("The user is able to select a valid file to upload");
         commonUtilities.screenshot();
@@ -281,7 +284,7 @@ public class EL3MappingSteps {
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String projectPath = System.getProperty("user.dir");
-        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\El3mapping.csv");
         String absolutePath = file.getAbsolutePath();
         System.out.println(absolutePath);
         // Upload the file by sending the path
@@ -291,11 +294,11 @@ public class EL3MappingSteps {
         // Optionally, confirm upload success
         System.out.println("✅ File uploaded successfully!");
     }
-    
-    @When("the file should be successfully uploaded EL3 Mapping")
-    public void the_file_should_be_successfully_uploaded_EL3_Mapping() {
-    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successFully..! ']"))).getText();
-        Assert.assertEquals("Record has been uploaded successFully..!", actual);
+
+    @When("the file should be successfully uploaded for EL3 Client Mapping")
+    public void the_file_should_be_successfully_uploaded() {
+    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Record has been uploaded successfully..!')]"))).getText();
+        Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -303,23 +306,27 @@ public class EL3MappingSteps {
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
     }
+
+
     
     @When("user click the Send for Approval button EL3 Mapping")
-    public void user_click_the_send_for_approval_button_EL3_Mapping() {
+    public void user_click_the_send_for_approval_button() {
         WebElement sendForApprovalButton = driver.findElement(By.xpath("//button[contains(text(),'Send for Approval')]"));
         wait.until(ExpectedConditions.visibilityOf(sendForApprovalButton));
         sendForApprovalButton.click();
         System.out.println("The user is able to click on Send for Approval Button");
         commonUtilities.screenshot();
     }
+
     @Then("the file should be submitted for approval EL3 Mapping")
-    public void the_file_should_be_submitted_for_approval_EL3_Mapping() {
+    public void the_file_should_be_submitted_for_approval() {
         WebElement popup = driver.findElement(By.xpath("//div[@class='modal-content']"));
         wait.until(ExpectedConditions.visibilityOf(popup));
         Assert.assertTrue(popup.isDisplayed());
     }
+
     @Then("a confirmation message should be displayed with Confirm and Cancel Buttons")
-    public void a_confirmation_message_should_be_displayed_with_confirm_and_cancel_Buttons() {
+    public void a_confirmation_message_should_be_displayed_with_confirm_and_cancel_buttons() {
         WebElement confirmButton = driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         WebElement cancelButton = driver.findElement(By.xpath("//button[contains(text(),'Cancel')]"));
         Assert.assertTrue(confirmButton.isDisplayed());
@@ -329,8 +336,9 @@ public class EL3MappingSteps {
         System.out.println("The user is able to see the confirmation message with Confirm and Cancel buttons");
         commonUtilities.screenshot();
     }
+
     @Then("by clicking on Confirm button the file should be sent for Approval")
-    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_Approval() {
+    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() {
         WebElement confirmButton = driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         wait.until(ExpectedConditions.visibilityOf(confirmButton));
         confirmButton.click();
@@ -338,4 +346,6 @@ public class EL3MappingSteps {
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
     }
+
 }
+
