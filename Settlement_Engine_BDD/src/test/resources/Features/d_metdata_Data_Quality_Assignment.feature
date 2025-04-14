@@ -27,7 +27,7 @@ Scenario: Verify that clicking "Reset" fields clears the fields for the DQ Assig
     And the user clicks the Add New button for the DQ Assignment
     And the user enters the data in required fields for the DQ Assignment
     And the user click on Reset button for the DQ Assignment
-    Then all the fields should be cleared for the DQ Assignment
+   Then all the fields should be cleared for the DQ Assignment
 
 Scenario: Verify that clicking "Cancel" does not save data for the DQ Assignment
     When the user click on Data Quality Assignment
@@ -36,12 +36,12 @@ Scenario: Verify that clicking "Cancel" does not save data for the DQ Assignment
     Then Add New Pop up should be closed for the DQ Assignment
 
 Scenario: Verify the edit icon functionality for the Data Quality Rule
-    When the user click on Data Quality Assignment
-    And The User click the edit icon for the any file for the DQ Assignment
+   When the user click on Data Quality Assignment
+   And The User click the edit icon for the any file for the DQ Assignment
     Then The User should see the edit modal open file for the DQ Assignment
     And the user update the any field for the DQ Assignment
-    And the user should see click on the Update Button for the DQ Assignment
-    And the user should see the updated "test_file" in the file list for the DQ Assignment
+   And the user should see click on the Update Button for the DQ Assignment
+   And the user should see the updated "test_file" in the file list for the DQ Assignment
 
 Scenario: Verify delete confirmation pop-up appears
     When the user click on Data Quality Assignment

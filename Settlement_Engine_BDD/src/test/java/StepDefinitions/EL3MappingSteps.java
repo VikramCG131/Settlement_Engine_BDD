@@ -86,7 +86,7 @@ public class EL3MappingSteps {
     
     @When("the user click on the EL3 Mapping")
     public void the_user_click_on_the_EL3_mapping() throws InterruptedException {
-        driver.findElement(By.xpath("//span[text()='EL3 Mapping']")).click();
+        driver.findElement(By.xpath("//span[contains(text(),'Element 3 Mapping')]")).click();
         Thread.sleep(3000);
         System.out.println("The user is able to navigate to EL3 Mapping page");
         commonUtilities.screenshot();
@@ -108,8 +108,7 @@ public class EL3MappingSteps {
         }
         int random = (int) (Math.floor(Math.random() * 100000) + 1);
         driver.findElement(By.xpath("//input[@formcontrolname='productCode']")).sendKeys("500" + random);
-        driver.findElement(By.xpath("//input[@formcontrolname='elmcode']")).sendKeys("123" + random);
-        
+        driver.findElement(By.xpath("//input[@formcontrolname='elmcode']")).sendKeys("123" + random); 
     }
     @When("the user should see click on the Submit Button for the EL3 Mapping")
     public void the_user_should_see_click_on_the_submit_button_for_the_EL3_mapping() throws InterruptedException {
@@ -137,8 +136,8 @@ public class EL3MappingSteps {
     
     @Then("the user should see validation errors for required fields for the EL3 Mapping")
     public void the_user_should_see_validation_errors_for_required_fields_for_the_EL3_mapping() {
-        String actual = driver.findElement(By.xpath("//div[contains(text(),'Please Enter EL3 Code')]")).getText();
-        Assert.assertEquals("Please Enter EL3 Code", actual);
+        String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Element 3 Code')]")).getText();
+        Assert.assertEquals("Please Element 3 Code", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
     }
@@ -174,10 +173,10 @@ public class EL3MappingSteps {
     }
     @Then("The User should see the edit modal open EL3 Mapping")
     public void the_user_should_see_the_edit_modal_open_EL3_Mapping() {
-    	boolean file = driver.findElement(By.xpath("//span[text()='EL3 Mapping Grid ']")).isDisplayed();
+    	boolean file = driver.findElement(By.xpath("//span[contains(text(),'Element 3 Mapping Grid ')]")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//span[text()='EL3 Mapping Grid ']")).getText();
-		Assert.assertEquals("EL3 Mapping Grid", actual);	
+		String actual = driver.findElement(By.xpath("//span[contains(text(),'Element 3 Mapping Grid ')]")).getText();
+		Assert.assertEquals("Element 3 Mapping Grid", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
     }
@@ -302,7 +301,7 @@ public class EL3MappingSteps {
         System.out.println("The user is able to upload the file successfully");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
     }
@@ -310,7 +309,8 @@ public class EL3MappingSteps {
 
     
     @When("user click the Send for Approval button EL3 Mapping")
-    public void user_click_the_send_for_approval_button() {
+    public void user_click_the_send_for_approval_button() throws InterruptedException {
+    	this.the_user_click_on_the_EL3_mapping();
         WebElement sendForApprovalButton = driver.findElement(By.xpath("//button[contains(text(),'Send for Approval')]"));
         wait.until(ExpectedConditions.visibilityOf(sendForApprovalButton));
         sendForApprovalButton.click();
@@ -345,6 +345,7 @@ public class EL3MappingSteps {
         System.out.println("The user is able to click on Confirm button");
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
+        driver.quit();
     }
 
 }

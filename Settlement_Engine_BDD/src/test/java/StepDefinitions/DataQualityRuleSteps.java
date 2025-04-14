@@ -17,49 +17,76 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.cucumber.java.en.Then;
 
 public class DataQualityRuleSteps {
-    private WebDriver driver;
-    private WebDriverWait wait;
-    CommonUtilities commonUtilities = new CommonUtilities();
-
-    // Zero-argument constructor
-    public DataQualityRuleSteps() {
-
-    }
-    @Given("the Settlement Engine<URL>")
-	public void the_settlement_engine_url() {
+	WebDriver driver;
+	CommonUtilities commonUtilities = new CommonUtilities();
+	WebDriverWait wait;
+	
+    @Given("Settlement Engine<URL> for data Quality")
+	public void the_settlement_engine_url_data_Quality() {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:63343");
+		driver.get("http://localhost:4200");
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
-	@When("User hit the Settlement Engine URL")
-	public void the_user_hits_the_settlement_engine_url() throws InterruptedException {
-		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:63343"));
+	@When("the user hit the Settlement Engine URL for data Quality")
+	public void the_user_hits_the_settlement_engine_url_data_Quality() throws InterruptedException {
+		Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to login with Settlement Engine URL");
 	}
 
-	@Then("The user is able to navigate to the Settlement Engine homepage")
+	@Then("the User is able to navigate to the for data Quality home page")
 	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+		Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
 		commonUtilities.screenshot();
 	}
 
-    @When("the user click on Data Quality Rules")
-    public void the_user_click_on_data_quality_rules() throws InterruptedException {
-        WebElement dataQualityRulesButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[text()='Data Quality Rule ']")));
-        dataQualityRulesButton.click();
-        System.out.println("The user is able to navigate to Data Quality Rule page");
-        Thread.sleep(3000);
-        commonUtilities.screenshot();
-    }
+	@When("the User clicks on Metadata UI screen for data Quality")
+	public void the_user_clicks_on_metadata_ui_screen_data_Quality() {
+		driver.findElement(By.xpath("//a[contains(text(),'Metadata')]")).click();
+		System.out.println("The user is able to navigate to Reference LookUp UI screen");
+		commonUtilities.screenshot();
+	    
+	}
 
+	@When("click on the Expand button for the left panel for data Quality")
+	public void click_on_the_expand_button_for_the_left_panel_data_Quality() {
+		    WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container collapsed']"));
+		    boolean isCollapsed = panel.getAttribute("class").contains("collapsed");
+		    if (isCollapsed) {
+		        panel.findElement(By.xpath(".//button")).click();
+		    } 
+	}
+
+	@Then("the User should see the left panel expanded for data Quality")
+	public void the_user_should_see_the_left_panel_expanded_data_Quality() throws InterruptedException {
+		WebElement panel = driver.findElement(By.xpath("//div[@class='sidebar_container']"));
+		panel.isDisplayed();
+		Thread.sleep(2000);
+	}
+
+	@Then("the Menu items should be visible for data Quality")
+	public void the_menu_items_should_be_visible_data_quality() {
+	 List<WebElement> panel2 = driver.findElements(By.xpath("//div[@class=\"sidebar_container\"]/ul/li"));
+	 for (WebElement element : panel2) {
+	     System.out.println(element.getText());
+	 }
+	System.out.println("The user is able to see the left panel menu items");
+	}
+	@When("the user click on Data Quality Rules")
+	public void the_user_click_on_metadata_column_Quality_Rules() throws InterruptedException {
+		driver.findElement(By.xpath("//span[contains(text(),'Data Quality Assignment') and @class='label label_center']")).click();
+		Thread.sleep(3000);
+		System.out.println("The user is able to navigate to Meta Data Column page");
+		commonUtilities.screenshot();
+	}
+	
     @When("the user clicks the Add New button for the DQ Rule")
     public void the_user_clicks_the_add_new_button() {
-        WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
+        WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add')]"));
         wait.until(ExpectedConditions.visibilityOf(button)).click();
         System.out.println("The user is able to click on Add New Button");
         commonUtilities.screenshot();
@@ -223,7 +250,7 @@ public class DataQualityRuleSteps {
     @When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Rule")
     public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons() {
         driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).isDisplayed();
-        driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).isDisplayed();
+        driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).isDisplayed();
         System.out.println("The user is able to see the Confirm and Cancel button in the confirmation pop-up");
     }
 

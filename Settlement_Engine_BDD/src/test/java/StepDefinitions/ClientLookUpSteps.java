@@ -20,27 +20,24 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ClientLookUpSteps {
-    WebDriver driver;
-    CommonUtilities commonUtilities = new CommonUtilities();
-    WebDriverWait wait;
-    private File downloadDir;
-    private final String fileName = "example.csv"; 
-	private String filterType;
-	private String filterValue;
+	 WebDriver driver;
+	    CommonUtilities commonUtilities = new CommonUtilities();
+	    WebDriverWait wait;
+	    private final String fileName = "example.csv"; 
+	    
+	    @Given("Settlement_Engine<URL> for Client LookUp page")
+	    public void Settlement_Enginefor_Client_LookUp_page()  {
+	    	driver = WebDriverManager.chromedriver().create();
+	        driver.manage().window().maximize();
+	        driver.get("http://localhost:4200");
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    }
 
-    @Given("Settlement_Engine<URL> for the Client Mapping")
-    public void settlement_engine_url() {
-        driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        driver.get("http://localhost:4200");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    @When("the user clicks Settlement Engine URL")
-    public void the_user_clicks_settlement_engine_url() throws InterruptedException {
-        Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
-        Thread.sleep(2000);
-        System.out.println("The user is able to login with Settlement Engine URL");
+	    @When("the user clicks Settlement Engine URL for Client LookUp page")
+	    public void the_user_clicks_Settlement_Engine_URL_for_Client_LookUp_page() throws InterruptedException {
+	    	Assert.assertTrue(driver.getCurrentUrl().contains("http://localhost:4200"));
+	        Thread.sleep(2000);
+	        System.out.println("The user is able to login with Settlement Engine URL");
     }
 
     @When("the User clicks on Reference LookUp UI screen")
@@ -61,7 +58,7 @@ public class ClientLookUpSteps {
 
     @Then("the User is able to navigate to the Settlement Engine Homepage")
     public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() throws InterruptedException {
-        Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+        Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
         Thread.sleep(2000);
         System.out.println("The user is able to navigate to the Settlement Engine homepage");
         commonUtilities.screenshot();
@@ -85,7 +82,7 @@ public class ClientLookUpSteps {
 
     @When("the user click on the Client LookUp")
     public void the_user_click_on_the_client_mapping() throws InterruptedException {
-        driver.findElement(By.xpath("//a/span[contains(text(),'Client LookUp')]")).click();
+        driver.findElement(By.xpath("//a/span[contains(text(),'Client Look Up')]")).click();
         Thread.sleep(3000);
         System.out.println("The user is able to navigate to Client LookUp page");
         commonUtilities.screenshot();
@@ -141,8 +138,8 @@ public class ClientLookUpSteps {
 
     @Then("the user should see validation errors for required fields for the Client LookUp")
     public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
-        String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Enter Payable EL2')]")).getText();
-        Assert.assertEquals("Please Enter Payable EL26", actual);
+        String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Enter Payable Element 2')]")).getText();
+        Assert.assertEquals("Please Enter Payable Element 2", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
     }
@@ -185,10 +182,10 @@ public class ClientLookUpSteps {
 
     @Then("The User should see the edit modal open Client LookUp")
     public void the_user_should_see_the_edit_modal_open_client_look_up() {
-    	boolean file = driver.findElement(By.xpath("//*[text()='Client lookup grid ']")).isDisplayed();
+    	boolean file = driver.findElement(By.xpath("//span[contains(text(),'Client Look Up Grid')]")).isDisplayed();
 		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Client lookup grid ']")).getText();
-		Assert.assertEquals("Client lookup grid", actual);	
+		String actual = driver.findElement(By.xpath("//span[contains(text(),'Client Look Up Grid')]")).getText();
+		Assert.assertEquals("Client Look Up Grid", actual);	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
     }
@@ -295,7 +292,7 @@ public class ClientLookUpSteps {
 
     @When("user selects a valid file to upload")
     public void user_selects_a_valid_file_to_upload() throws InterruptedException {
-        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file' and @accept='.csv']"));
+        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
         //Assert.assertTrue(fileInput.isDisplayed());
         System.out.println("The user is able to select a valid file to upload");
         commonUtilities.screenshot();
@@ -317,12 +314,12 @@ public class ClientLookUpSteps {
 
     @When("the file should be successfully uploaded")
     public void the_file_should_be_successfully_uploaded() {
-    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successFully..! ']"))).getText();
-        Assert.assertEquals("Record has been uploaded successFully..!", actual);
+    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successfully..! ']"))).getText();
+        Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
         commonUtilities.screenshot();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
     }

@@ -3,6 +3,7 @@ package StepDefinitions;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -42,7 +43,7 @@ public class ExceptionRuleMetaData {
 
 	@Then("The User is able to navigate to the settlement Engine homepage on Exception")
 	public void The_User_is_able_to_navigate_to_the_settlement_Engine_homepage_on_Exception() throws InterruptedException {
-		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+		Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
 		commonUtilities.screenshot();
@@ -116,12 +117,40 @@ public class ExceptionRuleMetaData {
 		WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
 		Exceptionowner.sendKeys("Test");
 		Thread.sleep(1000);
-	
+		//ng-multiselect-dropdown[@formcontrolname='standaloneSelectedItems']
+		WebElement inputsource = driver.findElement(By.xpath("//select[@formcontrolname='lookupSource1']"));
+		Select dropdown3 = new Select(inputsource);
+		dropdown3.selectByValue("tallyman_raw");
+		Thread.sleep(5000);
+		WebElement selectattr1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[1]/div[2]/ng-multiselect-dropdown/div"));
+		selectattr1.click();
+		//select input source for select attribute
+		List<WebElement> options = driver.findElements(By.xpath("//div[@class='dropdown-list']//ul[@class='item2']/li"));
+		Random random = new Random();
+		int randomIndex = random.nextInt(options.size());
+		options.get(randomIndex).click();
+		//Click on Add Lookup button
+		WebElement addlookupbutton = driver.findElement(By.xpath("//button[@class='btn btn_color text-white']"));
+		addlookupbutton.click();
+		//select the reference file drop down
+		Thread.sleep(2000);
+		WebElement referencefile = driver.findElement(By.xpath("//select[@formcontrolname='referenceSource1']"));
+		Select dropdown4 = new Select(referencefile);
+		List<WebElement> options1 = dropdown4.getOptions();
+		int randomindex = new Random().nextInt(options1.size());
+		dropdown4.selectByIndex(randomindex);
+		//click on the reference file for select attribute
+		WebElement referenceattribute = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[1]/span"));
+		referenceattribute.click();
+		// select the reference file for select attribute
+		Thread.sleep(3000);
+		WebElement referencefile1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[2]/ul[2]"));
+		referencefile1.click();
 	}
 	
 	@When("the user should see click on the Submit Button for the Exception Rule Meta Data")
 	public void the_user_should_see_click_on_the_submit_button_for_the_Exception_Rule_Meta_Data() throws InterruptedException {
-		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+		driver.findElement(By.xpath("(//button[@type='submit'])[1]")).click();
 		System.out.println("The user is able to click on the Submit Button");
 		Thread.sleep(8000);
 		commonUtilities.screenshot();
@@ -130,8 +159,8 @@ public class ExceptionRuleMetaData {
 	@Then("the user should see {string} in the file list for the Exception Rule Meta Data")
 	
 	public void the_user_should_see_in_the_file_list_for_the_Exception_Rule_meta_data(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been added successfully..!')]")).getText();
-		Assert.assertEquals("Record has been added successfully..!", actual);
+		String actual = driver.findElement(By.xpath("//div[contains(text(),'Record has been added successfully')]")).getText();
+		Assert.assertEquals("Record has been added successfully", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -156,6 +185,10 @@ public class ExceptionRuleMetaData {
 	
 	@When("the user click on Reset button for the Exception Rule Meta Data")
 	public void the_user_click_on_reset_button_for_the_dq_assignment() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement lookupexplorer = driver.findElement(By.xpath("//span[text()='Lookup explorer ']"));
+		lookupexplorer.click();
+		
 		driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
 		System.out.println("The fields are empty");
 		Thread.sleep(2000);
@@ -204,10 +237,9 @@ public class ExceptionRuleMetaData {
 	}
 	@When("The User should see the edit modal open file for the Exception Rule Meta Data")
 	public void the_user_should_see_the_edit_modal_open_file_for_the_dq_assignment()throws  InterruptedException {
-		boolean file = driver.findElement(By.xpath("//h5[text()='EL3 Mapping Category ']")).isDisplayed();
-		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//h5[text()='EL3 Mapping Category ']")).getText();
-		Assert.assertEquals("EL3 Mapping Category ", actual);
+	
+		String actual = driver.findElement(By.xpath("//h6[text()='Exception Category ']")).getText();
+		Assert.assertEquals("Exception Category", actual);
 		System.out.println("The edit modal is displayed");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -216,7 +248,15 @@ public class ExceptionRuleMetaData {
 	public void the_user_update_the_any_field_for_the_Exception_Rule_meta() throws  InterruptedException {
 		WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
 		Select dropdown2 = new Select(dropdownElement2);
-		dropdown2.selectByIndex(3);
+		dropdown2.selectByIndex(2);
+		WebElement selectattr1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[1]/div[2]/ng-multiselect-dropdown/div"));
+		selectattr1.click();
+		//select input source for select attribute
+		List<WebElement> options = driver.findElements(By.xpath("//div[@class='dropdown-list']//ul[@class='item2']/li"));
+		Random random = new Random();
+		int randomIndex = random.nextInt(options.size());
+		options.get(randomIndex).click();
+		
 	    System.out.println("The user is able to update the data in the required fields");
 	}
 	@Then("the user should see click on the Update Button for the Exception Rule Meta Data")
@@ -229,9 +269,9 @@ public class ExceptionRuleMetaData {
 	@Then("the user should see the updated {string} in the file list for the Exception Rule Meta Data")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_Exveption_rule_meta(String string)
 			throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[contains(text(),'Record has been updated successfully..!')]"))
+		String actual = driver.findElement(By.xpath("//div[contains(text(),' Record has been updated successfully')]"))
 				.getText();
-		Assert.assertEquals("Record has been updated successfully..!", actual);
+		Assert.assertEquals("Record has been updated successfully", actual);
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
@@ -261,7 +301,7 @@ public class ExceptionRuleMetaData {
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Exception Rule Meta Data")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_Exception_Rule() {
 		driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).isDisplayed();
-		driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).isDisplayed();
+		driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).isDisplayed();
 		System.out.println("The user is able to see the Confirm and Cancel button in the confirmation pop-up");
 	}
 	@When("The User confirm the deletion for the Exception Rule Meta Data")
@@ -296,38 +336,8 @@ public class ExceptionRuleMetaData {
         	downloadDir.mkdir();
         File downloadedFile = new File(downloadDir, fileName);
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+        driver.quit();
     }
     
-    @When("the user select Rule type dropdown")
-    
-    public void the_user_select_Rule_type_dropdown() {
-    	this.the_user_clicks_the_add_new_button_for_the_dq_assignment();
-    	WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
-		Select dropdown = new Select(dropdownElement);
-		dropdown.selectByVisibleText("Lookup");
-		System.out.println("Selected Source Table: Lookup");
-    }
-
-	@When("Lookup explorer should be come and AddLookup button should be visible")
-	public void Lookup_explorer_should_be_visible() {
-		String lookupexplorer = driver.findElement(By.xpath("//span[text()='Lookup explorer ']")).getText();
-		Assert.assertEquals("Lookup explorer", lookupexplorer);
-		System.out.println("The user is able to see the page Lookup explorer");
-		commonUtilities.screenshot();
-		String Addbutton = driver.findElement(By.xpath("//span[text()='Lookup explorer ']")).getText();
-		Assert.assertEquals("Lookup explorer", Addbutton);
-		System.out.println("The user is able to see the Add button");
-		commonUtilities.screenshot();
-	}
-    @Then("Click on Add Lookup button")
-    public void Click_on_Add_Lookup_button() {
-    	WebElement addbutton = driver.findElement(By.xpath("//button[text()='Add Look Up']"));
-    	addbutton.click();
-    }
-    @Then("Reference file Dropdown should be visible")
-    public void Reference_file_Dropdown_should_be_visible() {
-    	String lookupexplorer = driver.findElement(By.xpath("//label[text()='Reference File']")).getText();
-		Assert.assertEquals("Reference File", lookupexplorer);
-    }
     
 }

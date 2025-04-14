@@ -307,13 +307,14 @@ public class ClientMappingSteps {
 	        System.out.println("The user is able to upload the file successfully");
 	        commonUtilities.screenshot();
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	       driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+	       driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
 	        System.out.println("The user is able to click on OK button");
 	        commonUtilities.screenshot(); 
 	    }
 
 	    @When("user click the Send for Approval button for the Client Mapping")
-	    public void user_click_the_send_for_approval_button() {
+	    public void user_click_the_send_for_approval_button() throws InterruptedException {
+	    	this.the_user_click_on_the_client_mapping();
 	        WebElement sendForApprovalButton = driver.findElement(By.xpath("//button[contains(text(),'Send for Approval')]"));
 	        wait.until(ExpectedConditions.visibilityOf(sendForApprovalButton));
 	        sendForApprovalButton.click();

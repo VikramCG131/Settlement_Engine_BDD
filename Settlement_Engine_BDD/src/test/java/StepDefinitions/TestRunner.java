@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = 
-    		"src/test/resources/Features/ExceptionRuleMetaData.feature", 	
-    		name="Verify validation errors when mandatory fields are missing for the Exception Rule Meta Data",
-    
+    		"src/test/resources/Features/ExceptionRuleMetaData.feature"
+    , //the path of the feature files			  
+    		
     glue = "StepDefinitions",
    
     monochrome = true,
@@ -18,4 +18,4 @@ import org.junit.runner.RunWith;
     
 )
 public class TestRunner {}
-
+//This is the test runner class for running the cucumber tests.

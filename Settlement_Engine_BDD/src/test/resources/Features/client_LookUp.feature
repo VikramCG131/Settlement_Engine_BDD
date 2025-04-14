@@ -1,8 +1,8 @@
 Feature: Validation of the Client LookUp Reference LookUp UI Screen
 
    Background:  the user navigate to the Settlement Engine page
-      Given Settlement_Engine<URL>
-      When the user clicks Settlement Engine URL
+      Given Settlement_Engine<URL> for Client LookUp page
+      When the user clicks Settlement Engine URL for Client LookUp page
       And the User clicks on Reference LookUp UI screen
     And clicks on the Expand button for the left panel
       Then the User is able to navigate to the Settlement Engine Homepage
@@ -18,7 +18,7 @@ Feature: Validation of the Client LookUp Reference LookUp UI Screen
 
 Scenario: Verify validation errors when mandatory fields are missing for the Client LookUp
   When the user click on the Client LookUp
-  And the user clicks the Add button from the Client LookUp page
+ And the user clicks the Add button from the Client LookUp page
   And the user click on any field for the Client LookUp
   Then the user should see validation errors for required fields for the Client LookUp
    
@@ -40,7 +40,7 @@ Scenario: Verify the edit icon functionality for the Client LookUp
   And The User click the edit icon for the any Client LookUp
   Then The User should see the edit modal open Client LookUp
   And the user update the any field for the Client LookUp
-  And the user should see click on the Update Button for the Client LookUp
+ And the user should see click on the Update Button for the Client LookUp
   And the user should see the updated "test_file" in the file list for the Client LookUp
     
 Scenario: Verify delete confirmation pop-up appears for the Client LookUp
@@ -65,11 +65,11 @@ Scenario: Verify file Upload functionality
   When the user click on the Client LookUp
   And the User Navigates to upload Button
   And user selects a valid file to upload
-  And the file should be successfully uploaded
+ And the file should be successfully uploaded
     
 Scenario: Verify Send for Approval button triggers approval process
   When user click the Send for Approval button
-  Then the file should be submitted for approval
+ Then the file should be submitted for approval
   And a confirmation message should be displayed with Confirm and Cancel buttons
   And by clicking on Confirm button the file should be sent for approval   
   

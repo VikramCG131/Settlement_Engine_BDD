@@ -20,7 +20,7 @@ Scenario: Verify validation errors when mandatory fields are missing for the Cli
  When the user click on the Client Mapping
  And the user clicks the Add button from the Client Mapping page
  And the user click on any field for the Client Mapping
-  Then the user should see validation errors for required fields for the Client Mapping
+ Then the user should see validation errors for required fields for the Client Mapping
    
 Scenario: Verify that clicking "Reset" fields clears the fields for the Client Mapping
   When the user click on the Client Mapping
@@ -54,7 +54,7 @@ Scenario: Confirm deletion of a Client Mapping
  And The User click the delete icon for the any Client Mapping
   And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client Mapping
   And The User confirm the deletion for the Client Mapping
-  Then the file should be removed from the table for the Client Mapping
+ Then the file should be removed from the table for the Client Mapping
 
 Scenario: User downloads a file successfully
   When the user click on the Client Mapping
@@ -63,7 +63,7 @@ Scenario: User downloads a file successfully
      
 Scenario: Verify file Upload functionality 
   When the user click on the Client Mapping
-  And the User Navigates to upload Button from the Client Mapping page
+ And the User Navigates to upload Button from the Client Mapping page
   And user selects a valid file to upload for the Client Mapping
   And the file should be successfully uploaded for the Client Mapping
     

@@ -29,19 +29,19 @@ Feature: Validation of the Metadata Column
     And the user click on Reset button for the Metadata Column
    Then all the fields should be cleared for the Metadata Column
 
-  Scenario: Verify that clicking "Cancel" does not save data for the Metadata Column
+ Scenario: Verify that clicking "Cancel" does not save data for the Metadata Column
    When the user click on Metadata Column
     And the user clicks the Add New button from the Metadata Column page
       And the user click on Cancel button for the Metadata Column
      Then Add New Pop up should be closed for the Metadata Column
     
   Scenario: Verify the edit icon functionality for the Metadata Column
-   When the user click on Metadata Column
+  When the user click on Metadata Column
     And The User click the edit icon for the any Metadata Column
     Then The User should see the edit modal open Metadata Column
     And the user update the any field for the Metadata Column
-    And the user should see click on the Update Button for the Metadata Column
-    And the user should see the updated "test_file" in the file list for the Metadata Column
+   And the user should see click on the Update Button for the Metadata Column
+   And the user should see the updated "test_file" in the file list for the Metadata Column
     
   Scenario: Verify delete confirmation pop-up appears for the Metadata Column
   When the user click on Metadata Column

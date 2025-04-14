@@ -39,7 +39,7 @@ public class DataQualityAssignmentSteps {
 
 	@Then("The User is able to navigate to the settlement Engine homepage")
 	public void The_User_is_able_to_navigate_to_the_settlement_Engine_homepage() throws InterruptedException {
-		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
+		Assert.assertTrue(driver.getTitle().contains("Settlement Engine"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
 		commonUtilities.screenshot();
