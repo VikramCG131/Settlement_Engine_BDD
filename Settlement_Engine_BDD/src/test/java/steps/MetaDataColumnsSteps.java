@@ -68,38 +68,28 @@ public class MetaDataColumnsSteps {
 	@When("the user enters the data in required fields for the Metadata Column")
 	public void the_user_enters_the_data_in_required_fields_for_the_metadata_column() throws InterruptedException {
 		String random = CommonUtilities.getRandomInteger();
-		MetaDataColumnsTab.enterDSFFieldValue(MetadataColumnConstants.NAME.getValue() + random,
-				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants..getValue(),
-				MetadataColumnConstants.FILE_PATH_RAW.getValue(), MetadataColumnConstants.FILE_PATH_CLEANSED.getValue(),
-				MetadataColumnConstants.FILE_MAX_SIZE.getValue(), MetadataColumnConstants.FILE_TABLE_NAME.getValue(),
-				MetadataColumnConstants.FILE_DELIMETER.getValue(),
-				MetadataColumnConstants.COLUMN_IDENTIFIER.getValue());
+		MetaDataColumnsTab.enterMDCFieldValue(MetadataColumnConstants.NAME.getValue() + random,
+				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants.IS_ACTIVE.getValue(),
+				MetadataColumnConstants.IS_NULL.getValue(), MetadataColumnConstants.MIN_SIZE.getValue(),
+				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.ORDER.getValue(),
+				MetadataColumnConstants.DATE_FORMAT.getValue(),
+				MetadataColumnConstants.TABLE_NAME.getValue());
 		System.out.println("The user is able to enter the data in required fields");
 	}
 
 	@When("the user should see click on the Submit Button for the Metadata Column")
 	public void the_user_should_see_click_on_the_submit_button_for_the_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
-		System.out.println("The user is able to click on the Submit Button");
-		Thread.sleep(2000);
-		commonUtilities.screenshot(); 
+		MetaDataColumnsTab.clickMDCSubmitButton();
 	}
 
 	@Then("the user should see {string} in the file list for the Metadata Column")
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successFully..! ']")).getText();
-		Assert.assertEquals("Record has been added successFully..!", actual);
-		System.out.println("The user is able to insert the data in the all fields");
-		Thread.sleep(2000);
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.verifyMDCSuccessPopupMessage();
 	}
 
 	@When("the user click on any field for the Metadata Column")
 	public void the_user_click_on_any_field_for_the_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).click();
-		WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='maxSize']"));
-		wait.until(ExpectedConditions.visibilityOf(button)).click();
-		Thread.sleep(2000);
+		MetaDataColumnsTab.clickMDCMinSizeandblankSelection();
 	}
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")

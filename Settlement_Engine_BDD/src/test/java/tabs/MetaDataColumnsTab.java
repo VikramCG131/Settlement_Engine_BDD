@@ -94,7 +94,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public static void enterMDCCategoryFieldValue(String name, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
+	public static void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
 		driver.findElement(MetaDataColumnsLocators.MDCName).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
@@ -141,7 +141,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Source Table Dropdown and Blank Selection
-	public static void clickMDCSourceTableDropdownandblankSelection() {
+	public static void clickMDCMinSizeandblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
 		driver.findElement(MetaDataColumnsLocators.MDCMinSize).click();
 		String actual = driver.findElement(MetaDataColumnsLocators.MDCMinSizeValidation).getText();
