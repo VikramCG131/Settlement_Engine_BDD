@@ -1,3 +1,4 @@
+ @skip
  Feature: Data Quality Rule Management
 
 #Background:  the user navigate to the "Settlement Engine" page

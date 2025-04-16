@@ -162,6 +162,8 @@ public class DataQualityAssignmentSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on any field for the DQ Assignment")
@@ -173,11 +175,13 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("the user should see validation errors for required fields for the DQ Assignment")
-	public void the_user_should_see_validation_errors_for_required_fields_for_the_dq_assignment() {
+	public void the_user_should_see_validation_errors_for_required_fields_for_the_dq_assignment() throws InterruptedException {
 		String actual = driver.findElement(By.xpath("//*[text()=' Please Select Source Table ']")).getText();
 		Assert.assertEquals("Please Select Source Table", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on Reset button for the DQ Assignment")
@@ -189,7 +193,7 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("all the fields should be cleared for the DQ Assignment")
-	public void all_the_fields_should_be_cleared_for_the_dq_assignment() {
+	public void all_the_fields_should_be_cleared_for_the_dq_assignment() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement ruleStartTimeStamp = wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("//input[@formcontrolname='ruleStartTimeStamp']")));
@@ -198,6 +202,8 @@ public class DataQualityAssignmentSteps {
 		Assert.assertEquals("", ruleStartTimeStamp.getAttribute("value"));
 		Assert.assertEquals("", ruleEndTimeStamp.getAttribute("value"));
 		System.out.println("The user is able to clear the data in all fields");
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on Cancel button for the DQ Assignment")
@@ -208,8 +214,10 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("Add New Pop up should be closed for the DQ Assignment")
-	public void add_new_pop_up_should_be_closed_for_the_dq_assignment() {
+	public void add_new_pop_up_should_be_closed_for_the_dq_assignment() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the edit icon for the any file for the DQ Assignment")
@@ -254,6 +262,8 @@ public class DataQualityAssignmentSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the delete icon for the any file for the DQ Assignment")
@@ -278,6 +288,8 @@ public class DataQualityAssignmentSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Assignment")
@@ -293,9 +305,10 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@Then("the file should be removed from the table for the DQ Assignment")
-	public void the_file_should_be_removed_from_the_table_for_the_dq_assignment() {
+	public void the_file_should_be_removed_from_the_table_for_the_dq_assignment() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
 	}
 
 }

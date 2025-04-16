@@ -136,6 +136,8 @@ public class MetaDataColumnsSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on any field for the Metadata Column")
@@ -147,11 +149,13 @@ public class MetaDataColumnsSteps {
 	}
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")
-	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
+	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() throws InterruptedException {
 		String actual = driver.findElement(By.xpath("//*[text()='Min Size Must be a Number']")).getText();
 		Assert.assertEquals("Min Size Must be a Number", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on Reset button for the Metadata Column")
@@ -163,12 +167,14 @@ public class MetaDataColumnsSteps {
 	}
 
 	@Then("all the fields should be cleared for the Metadata Column")
-	public void all_the_fields_should_be_cleared_for_the_metadata_column() {
+	public void all_the_fields_should_be_cleared_for_the_metadata_column() throws InterruptedException {
 		 // Verify that all fields are empty
 	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).getAttribute("value"));
 	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).getAttribute("value"));
 	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).getAttribute("value"));
 	    System.out.println("The user is able to clear the fields");
+	    driver.quit();
+	    Thread.sleep(2000);
 	}
 
 	@When("the user click on Cancel button for the Metadata Column")
@@ -179,8 +185,10 @@ public class MetaDataColumnsSteps {
 	}
 
 	@Then("Add New Pop up should be closed for the Metadata Column")
-	public void add_new_pop_up_should_be_closed_for_the_metadata_column() {
+	public void add_new_pop_up_should_be_closed_for_the_metadata_column() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the edit icon for the any Metadata Column")
@@ -216,6 +224,8 @@ public class MetaDataColumnsSteps {
 	@Then("the user should see the updated {string} in the file list for the Metadata Column")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the delete icon for the any Metadata Column")
@@ -239,6 +249,8 @@ public class MetaDataColumnsSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Metadata Column")
@@ -254,12 +266,10 @@ public class MetaDataColumnsSteps {
 	}
 
 	@Then("the file should be removed from the table for the Metadata Column")
-	public void the_file_should_be_removed_from_the_table_for_the_metadata_column() {
+	public void the_file_should_be_removed_from_the_table_for_the_metadata_column() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
 	}
-
-
-
 
 }

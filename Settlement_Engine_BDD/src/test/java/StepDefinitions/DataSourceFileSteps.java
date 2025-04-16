@@ -129,6 +129,8 @@ public class DataSourceFileSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("the user click on any field for the file")
@@ -141,11 +143,13 @@ public class DataSourceFileSteps {
 	}
 
 	@Then("the user should see validation errors for required fields for the file")
-	public void the_user_should_see_validation_errors_for_required_fields() {
+	public void the_user_should_see_validation_errors_for_required_fields() throws InterruptedException {
 		String actual = driver.findElement(By.xpath("//*[text()='Please Enter File Pattern']")).getText();
 		Assert.assertEquals("Please Enter File Pattern", actual);
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@Then("{string} should not be in the file list for the file")
@@ -189,11 +193,14 @@ public class DataSourceFileSteps {
 		Assert.assertEquals("",
 				driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).getAttribute("value"));
 		System.out.println("All fields are cleared");
+		driver.quit();
 	}
 
 	@Then("Add New Pop up should be closed for the file")
-	public void add_new_pop_up_should_be_closed() {
+	public void add_new_pop_up_should_be_closed() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the edit icon for the any Data Source file")
@@ -233,6 +240,8 @@ public class DataSourceFileSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the delete icon for the any Data Source file")
@@ -256,6 +265,7 @@ public class DataSourceFileSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Data Source file")
@@ -271,8 +281,9 @@ public class DataSourceFileSteps {
 	}
 
 	@Then("the file should be removed from the table for the Data Source file")
-	public void the_file_should_be_removed_from_the_table() {
+	public void the_file_should_be_removed_from_the_table() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
 	}
 }

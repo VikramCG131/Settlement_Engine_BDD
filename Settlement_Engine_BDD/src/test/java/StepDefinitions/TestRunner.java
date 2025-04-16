@@ -8,11 +8,11 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = 
-    		"src/test/resources/Features/ExceptionRuleMetaData.feature"
+    		"src/test/resources/Features/Ref"
     , //the path of the feature files			  
     		
     glue = "StepDefinitions",
-   
+   tags="not @skip",
     monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }
     

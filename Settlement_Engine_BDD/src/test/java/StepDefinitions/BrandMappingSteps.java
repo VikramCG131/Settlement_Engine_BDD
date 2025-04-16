@@ -123,6 +123,8 @@ public class BrandMappingSteps {
 			System.out.println("The user is able to insert the data in the all fields");
 			Thread.sleep(2000);
 			commonUtilities.screenshot();
+			driver.quit();
+			Thread.sleep(2000);
 		}
 
 		@When("the user click on any field for the Brand Mapping")
@@ -132,11 +134,13 @@ public class BrandMappingSteps {
 		}
 
 		@Then("the user should see validation errors for required fields for the Brand Mapping")
-		public void the_user_should_see_validation_errors_for_required_fields_for_the_brand_mapping() {
+		public void the_user_should_see_validation_errors_for_required_fields_for_the_brand_mapping() throws InterruptedException {
 			String actual = driver.findElement(By.xpath("//div[contains(text(),'Please enter Client Code')]")).getText();
 			Assert.assertEquals("Please enter Client Code", actual);
 			System.out.println("The user is able to see the error message for required fields");
 			commonUtilities.screenshot();
+			driver.quit();
+			Thread.sleep(2000);
 		}
 
 		@When("the user click on Reset button for the Brand Mapping")
@@ -148,12 +152,14 @@ public class BrandMappingSteps {
 		}
 
 		@Then("all the fields should be cleared for the Brand Mapping")
-		public void all_the_fields_should_be_cleared_for_the_brand_mapping() {
+		public void all_the_fields_should_be_cleared_for_the_brand_mapping() throws InterruptedException {
 			Assert.assertEquals("",
 					driver.findElement(By.xpath("//input[@formcontrolname='clientCode']")).getAttribute("value"));
 			Assert.assertEquals("",
 					driver.findElement(By.xpath("//input[@formcontrolname='brandCode']")).getAttribute("value"));
 			System.out.println("The user is able to clear the fields");
+			driver.quit();
+			Thread.sleep(2000);
 		}
 
 		@When("the user click on Cancel button for the Brand Mapping")
@@ -164,8 +170,10 @@ public class BrandMappingSteps {
 		}
 
 		@Then("Add Pop up should be closed for the Brand Mapping")
-		public void add_pop_up_should_be_closed_for_the_brand_mapping() {
+		public void add_pop_up_should_be_closed_for_the_brand_mapping() throws InterruptedException {
 			driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+			driver.quit();
+			Thread.sleep(2000);
 		}
 
 		@When("The User click the edit icon for the any Brand Mapping")
@@ -199,8 +207,10 @@ public class BrandMappingSteps {
 	}
 
 	@Then("the user should see the updated {string} in the file list for the Brand Mapping")
-	public void the_user_should_see_the_updated_in_the_file_list_for_the_brand_mapping(String string) {
+	public void the_user_should_see_the_updated_in_the_file_list_for_the_brand_mapping(String string) throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User click the delete icon for the any Brand Mapping")
@@ -224,6 +234,8 @@ public class BrandMappingSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Brand Mapping")
@@ -239,9 +251,10 @@ public class BrandMappingSteps {
 	}
 
 	@Then("the file should be removed from the table for the Brand Mapping")
-	public void the_file_should_be_removed_from_the_table_for_the_brand_mapping() {
+	public void the_file_should_be_removed_from_the_table_for_the_brand_mapping() throws InterruptedException {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
 	}
 	
 	@When("user clicks the download button from the Brand Mapping page")
@@ -258,13 +271,15 @@ public class BrandMappingSteps {
     }
 
     @Then("a file should be downloaded to the default download folder from the Brand Mapping page")
-    public void verifyFileDownloaded() {
+    public void verifyFileDownloaded() throws InterruptedException {
     	String downloadPath = System.getProperty("user.dir") + "/downloads";
         File downloadDir = new File(downloadPath);
         if (!downloadDir.exists())
         	downloadDir.mkdir();
         File downloadedFile = new File(downloadDir, fileName);
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+        driver.quit();
+        Thread.sleep(2000);
     }
 
     @When("the User Navigates to upload Button from the Brand Mapping page")
@@ -306,7 +321,7 @@ public class BrandMappingSteps {
     }
 
     @When("the file should be successfully Uploaded from the Brand Mapping page")
-    public void the_file_should_be_successfully_uploaded() {
+    public void the_file_should_be_successfully_uploaded() throws InterruptedException {
     	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Record has been uploaded successfully..!')]"))).getText();
         Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
@@ -315,6 +330,8 @@ public class BrandMappingSteps {
         driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
+        driver.quit();
+        Thread.sleep(2000);
     }
 
     @When("user click the Send for Approval button from the Brand Mapping page")
@@ -347,12 +364,14 @@ public class BrandMappingSteps {
     }
 
     @Then("by clicking on Confirm button the file should be sent for approval from brand mapping page")
-    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() {
+    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() throws InterruptedException {
         WebElement confirmButton = driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         wait.until(ExpectedConditions.visibilityOf(confirmButton));
         confirmButton.click();
         System.out.println("The user is able to click on Confirm button");
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
+        driver.quit();
+        Thread.sleep(2000);
     }
 }

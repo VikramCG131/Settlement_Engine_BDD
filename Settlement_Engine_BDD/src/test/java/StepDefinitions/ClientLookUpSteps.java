@@ -126,6 +126,8 @@ public class ClientLookUpSteps {
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
         commonUtilities.screenshot();
+        driver.quit();
+        Thread.sleep(2000);
     }
 
     @When("the user click on any field for the Client LookUp")
@@ -137,11 +139,13 @@ public class ClientLookUpSteps {
     }
 
     @Then("the user should see validation errors for required fields for the Client LookUp")
-    public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
+    public void the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() throws InterruptedException {
         String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Enter Payable Element 2')]")).getText();
         Assert.assertEquals("Please Enter Payable Element 2", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
+        driver.quit();
+        Thread.sleep(2000);
     }
   
     @When("the user click on Reset button for the Client LookUp")
@@ -153,13 +157,15 @@ public class ClientLookUpSteps {
     }
 
     @Then("all the fields should be cleared for the Client LookUp")
-    public void all_the_fields_should_be_cleared_for_the_client_look_up() {
+    public void all_the_fields_should_be_cleared_for_the_client_look_up() throws InterruptedException {
     	// Verify that all fields are empty
   	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='payableEl2']")).getAttribute("value"));
   	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).getAttribute("value"));
   	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='shopCode']")).getAttribute("value"));
   	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='shopName']")).getAttribute("value"));
   	    System.out.println("The user is able to clear the fields");
+  	    driver.quit();
+  	  Thread.sleep(2000);
   	}
 
     @When("the user click on Cancel button for the Client LookUp")
@@ -170,8 +176,10 @@ public class ClientLookUpSteps {
     }
 
     @Then("Add Pop up should be closed for the Client LookUp")
-    public void add_new_pop_up_should_be_closed_for_the_client_look_up() {
+    public void add_new_pop_up_should_be_closed_for_the_client_look_up() throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    	driver.quit();
+    	Thread.sleep(2000);
     }
 
     @When("The User click the edit icon for the any Client LookUp")
@@ -205,8 +213,10 @@ public class ClientLookUpSteps {
     }
 
     @Then("the user should see the updated {string} in the file list for the Client LookUp")
-    public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) {
+    public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    	driver.quit();
+    	Thread.sleep(2000);
     }
 
     @When("The User click the delete icon for the any Client LookUp")
@@ -230,6 +240,8 @@ public class ClientLookUpSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
     }
 
     @When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client LookUp")
@@ -245,9 +257,10 @@ public class ClientLookUpSteps {
     }
 
     @Then("the file should be removed from the table for the Client LookUp")
-    public void the_file_should_be_removed_from_the_table_for_the_client_look_up() {
+    public void the_file_should_be_removed_from_the_table_for_the_client_look_up() throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
     }
      
     @When("user clicks the download button")
@@ -264,13 +277,15 @@ public class ClientLookUpSteps {
     }
 
     @Then("a file should be downloaded to the default download folder")
-    public void verifyFileDownloaded() {
+    public void verifyFileDownloaded() throws InterruptedException {
     	String downloadPath = System.getProperty("user.dir") + "/downloads";
         File downloadDir = new File(downloadPath);
         if (!downloadDir.exists())
         	downloadDir.mkdir();
         File downloadedFile = new File(downloadDir, fileName);
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+        driver.quit();
+        Thread.sleep(2000);
     }
 
     @When("the User Navigates to upload Button")
@@ -313,7 +328,7 @@ public class ClientLookUpSteps {
     }
 
     @When("the file should be successfully uploaded")
-    public void the_file_should_be_successfully_uploaded() {
+    public void the_file_should_be_successfully_uploaded() throws InterruptedException {
     	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Record has been uploaded successfully..! ']"))).getText();
         Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
@@ -322,6 +337,8 @@ public class ClientLookUpSteps {
         driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
+        driver.quit();
+        Thread.sleep(2000);
     }
 
     @When("user click the Send for Approval button")
@@ -353,13 +370,15 @@ public class ClientLookUpSteps {
     }
 
     @Then("by clicking on Confirm button the file should be sent for approval")
-    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() {
+    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() throws InterruptedException {
         WebElement confirmButton = driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         wait.until(ExpectedConditions.visibilityOf(confirmButton));
         confirmButton.click();
         System.out.println("The user is able to click on Confirm button");
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
+        driver.quit();
+        Thread.sleep(2000);
     }
 
 }

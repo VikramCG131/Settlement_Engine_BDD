@@ -124,6 +124,8 @@ public class EL3MappingSteps {
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
         commonUtilities.screenshot();
+        driver.quit();
+        Thread.sleep(2000);
     }
     @When("the user click on any field for the EL3 Mapping")
     public void the_user_click_on_any_field_for_the_EL3_mapping() throws InterruptedException {
@@ -135,11 +137,13 @@ public class EL3MappingSteps {
     }
     
     @Then("the user should see validation errors for required fields for the EL3 Mapping")
-    public void the_user_should_see_validation_errors_for_required_fields_for_the_EL3_mapping() {
+    public void the_user_should_see_validation_errors_for_required_fields_for_the_EL3_mapping() throws InterruptedException {
         String actual = driver.findElement(By.xpath("//span[contains(text(),'Please Element 3 Code')]")).getText();
         Assert.assertEquals("Please Element 3 Code", actual);
         System.out.println("The user is able to see the error message for required fields");
         commonUtilities.screenshot();
+        driver.quit();
+        Thread.sleep(2000);
     }
     @When("the user click on Reset button for the EL3 Mapping")
     public void the_user_click_on_reset_button_for_the_EL3_Mapping() throws InterruptedException {
@@ -149,11 +153,13 @@ public class EL3MappingSteps {
 		commonUtilities.screenshot();
     }
     @Then("all the fields should be cleared for the EL3 Mapping")
-    public void all_the_fields_should_be_cleared_for_the_client_look_up() {
+    public void all_the_fields_should_be_cleared_for_the_client_look_up() throws InterruptedException {
     	// Verify that all fields are empty
   	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='productCode']")).getAttribute("value"));
   	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='elmcode']")).getAttribute("value"));
   	    System.out.println("The user is able to clear the fields");
+  	    driver.quit();
+  	  Thread.sleep(2000);
   	}
     @When("the user click on Cancel button for the EL3 Mapping")
     public void the_user_click_on_cancel_button_for_the_EL3_Mapping() {
@@ -163,8 +169,11 @@ public class EL3MappingSteps {
     }
     
     @Then("Add Pop up should be closed for the EL3 Mapping")
-    public void add_new_pop_up_should_be_closed_for_the_EL3_Mapping() {
+    public void add_new_pop_up_should_be_closed_for_the_EL3_Mapping() throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    	driver.quit();
+    	Thread.sleep(2000);
+    	
     }
     @When("The User click the edit icon for the any EL3 Mapping")
     public void the_user_click_the_edit_icon_for_the_EL3_Mapping() {
@@ -194,8 +203,10 @@ public class EL3MappingSteps {
 		Thread.sleep(2000);
     }
     @Then("the user should see the updated {string} in the file list for the EL3 Mapping")
-    public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) {
+    public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+    	driver.quit();
+    	Thread.sleep(2000);
     }
     @When("The User click the delete icon for the any EL3 Mapping")
     public void the_user_click_the_delete_icon_for_the_any_EL3_Mapping() {
@@ -216,6 +227,8 @@ public class EL3MappingSteps {
 		System.out.println("The user is able to see message in the confirmation pop-up");
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
+		driver.quit();
+		Thread.sleep(2000);
     }
     @When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the EL3 Mapping")
     public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_client_look_up() {
@@ -229,9 +242,10 @@ public class EL3MappingSteps {
     	 driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
     }
     @Then("the file should be removed from the table for the EL3 Mapping")
-    public void the_file_should_be_removed_from_the_table_for_the_EL3_Mapping() {
+    public void the_file_should_be_removed_from_the_table_for_the_EL3_Mapping() throws InterruptedException {
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
+		Thread.sleep(2000);
     }
     @When("user clicks the download button EL3 Mapping")
     public void userClicksDownloadButtonEL3Mapping() {
@@ -247,13 +261,15 @@ public class EL3MappingSteps {
     }
     
     @Then("a file should be downloaded to the default download folder for the EL3 Mapping")
-    public void verifyFileDownloaded() {
+    public void verifyFileDownloaded() throws InterruptedException {
     	String downloadPath = System.getProperty("user.dir") + "/downloads";
         File downloadDir = new File(downloadPath);
         if (!downloadDir.exists())
         	downloadDir.mkdir();
         File downloadedFile = new File(downloadDir, fileName);
         System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+        driver.quit();
+        Thread.sleep(2000);
     }
     @When("the User Navigates to upload Button from the EL3 Mapping page")
     public void user_clicks_the_upload_button() throws InterruptedException {
@@ -295,7 +311,7 @@ public class EL3MappingSteps {
     }
 
     @When("the file should be successfully uploaded for EL3 Client Mapping")
-    public void the_file_should_be_successfully_uploaded() {
+    public void the_file_should_be_successfully_uploaded() throws InterruptedException {
     	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Record has been uploaded successfully..!')]"))).getText();
         Assert.assertEquals("Record has been uploaded successfully..!", actual);
         System.out.println("The user is able to upload the file successfully");
@@ -304,6 +320,8 @@ public class EL3MappingSteps {
         driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to click on OK button");
         commonUtilities.screenshot(); 
+        driver.quit();
+        Thread.sleep(2000);
     }
 
 
@@ -338,7 +356,7 @@ public class EL3MappingSteps {
     }
 
     @Then("by clicking on Confirm button the file should be sent for Approval")
-    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() {
+    public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() throws InterruptedException {
         WebElement confirmButton = driver.findElement(By.xpath("//button[contains(text(),'Confirm')]"));
         wait.until(ExpectedConditions.visibilityOf(confirmButton));
         confirmButton.click();
@@ -346,6 +364,7 @@ public class EL3MappingSteps {
         commonUtilities.screenshot();
         System.out.println("The user is able to send the file for approval successfully");
         driver.quit();
+        Thread.sleep(2000);
     }
 
 }
