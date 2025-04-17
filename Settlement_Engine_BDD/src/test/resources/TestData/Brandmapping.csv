@@ -1,3 +1,3 @@
-﻿ClientCode,BrandCode
-C123,123
-500805,128056
+﻿BrandId,ClientCode,BrandCode,Status
+8,0.5,B502,Not Approved
+11,G5A,B503,Not Approved

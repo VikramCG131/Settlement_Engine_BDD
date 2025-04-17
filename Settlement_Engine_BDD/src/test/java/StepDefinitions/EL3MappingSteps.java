@@ -204,6 +204,8 @@ public class EL3MappingSteps {
     }
     @Then("the user should see the updated {string} in the file list for the EL3 Mapping")
     public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) throws InterruptedException {
+    	String actual = driver.findElement(By.xpath("//*[text()=' Record has been updated successfully..! ']")).getText();
+		Assert.assertEquals("Record has been updated successfully..!", actual);
     	driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
     	driver.quit();
     	Thread.sleep(2000);

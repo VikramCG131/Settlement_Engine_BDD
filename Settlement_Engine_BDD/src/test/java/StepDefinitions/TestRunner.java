@@ -8,11 +8,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = 
-    		"src/test/resources/Features/Ref"
+    		"src/test/resources/Features/Reference_LookUp/client_LookUp.feature" //the path of the feature files
     , //the path of the feature files			  
     		
     glue = "StepDefinitions",
-   tags="not @skip",
     monochrome = true,
     		plugin = {"pretty","html:target/cucumber-reports.html" }
     
