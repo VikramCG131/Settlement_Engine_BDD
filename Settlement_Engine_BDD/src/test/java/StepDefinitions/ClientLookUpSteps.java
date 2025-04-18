@@ -21,6 +21,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ClientLookUpSteps {
 	 WebDriver driver;
+	
 	    CommonUtilities commonUtilities = new CommonUtilities();
 	    WebDriverWait wait;
 	    private final String fileName = "example.csv"; 
@@ -30,6 +31,11 @@ public class ClientLookUpSteps {
 	    	driver = WebDriverManager.chromedriver().create();
 	        driver.manage().window().maximize();
 	        driver.get("http://localhost:4200");
+	        WebElement smartcard = driver.findElement(By.id("smart-card"));
+			smartcard.sendKeys("12345");
+			WebElement loginbutton = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
+			loginbutton.click();
+	        
 	        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    }
 

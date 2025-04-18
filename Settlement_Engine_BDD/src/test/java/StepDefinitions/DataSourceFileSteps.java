@@ -114,8 +114,8 @@ public class DataSourceFileSteps {
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
-	@When("the user should see click on the Submit Button for the file")
-	public void the_user_should_click_on_the_Submit_Button() throws InterruptedException {
+	@When("the user should see click on the Submit Button for email Template")
+	public void the_user_should_click_on_the_Submit_Button_for_rmail_Template() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 		System.out.println("The user is able to click on the Submit Button");
 		Thread.sleep(2000);
