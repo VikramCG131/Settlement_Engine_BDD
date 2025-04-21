@@ -47,13 +47,13 @@ public class DataSourceFileSteps {
 		DataSourceFileTab.verifyTitle();
 	}
 
-	@When("the user clicks on Metadata UI screen")
+	@When("the user clicks on Metadata UI Screen")
 	public void the_user_clicks_on_metadata_ui_screen() {
 		DataSourceFileTab.clickMetaDataButton();
 	}
 
-	@When("User Clicks on Hamburger Button")
-	public void click_on_hamburger_button() {
+	@When("User clicks on Hamburger Button")
+	public void click_on_Hamburger_button() {
 		DataSourceFileTab.clickHamburgerMenuButton();
 	}
 

@@ -6,8 +6,9 @@ public class DataQualityAssignmentLocators {
 	
 	/******Data Quality Assignment Page******/
 	public static final By DataQualityAssignmentTab = By.xpath("//span[contains(text(),'Data Quality Assignment')]");
-	public static final By DQAAddNewButton = By.xpath("//*[text()='Add New']");
-	public static final By DQASuccessPopupMessage = By.xpath("//*[contains(text(),'Record has been added successFully..!')]");
+	public static final By DQAAddNewButton = By.xpath("//button[contains(text(),'Add')]");
+	public static final By DQASuccessPopupMessage = By.xpath("//div[contains(text(),' Record has been added successfully..! ')]");
+	public static final By DQAUpdatePopupMessage = By.xpath("//*[contains(text(),'Record has been updated successfully..!')]");
 	public static final By DQADeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By DQADeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By DQADeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -21,12 +22,12 @@ public class DataQualityAssignmentLocators {
 	public static final By DQADQEndDate = By.xpath("(//button[@aria-label='Open calendar'])[2]");
 	public static final By DQADQEndDateSelect= By.xpath("//td[not(contains(@class,'disabled'))]//span[text()=' 15 ']");
 	public static final By DQASubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By DQASourceTableValidation = By.xpath("//*[text()=' Please select Source Table ']");
+	public static final By DQASourceTableValidation = By.xpath("//div[contains(text(),' Please Select Source Table')]");
 	public static final By DQADQRuleValidation = By.xpath("//*[text()=' Please select DQ Rule ']");
 	public static final By DQAResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By DQACancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By DQAUpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By DQACategoryTextVisible = By.xpath("//*[text() = 'Data Quality Assignment Category ']");
+	public static final By DQACategoryTextVisible = By.xpath("//h6[contains(text(),'Data Quality Assignment Category')]");
 	
 	/******Data Quality Assignment Grid******/
 	public static final By DQAAssignmentGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
