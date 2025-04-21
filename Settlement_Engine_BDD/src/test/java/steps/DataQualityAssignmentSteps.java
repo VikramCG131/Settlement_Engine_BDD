@@ -28,7 +28,7 @@ public class DataQualityAssignmentSteps {
 	DataQualityAssignmentTab DataQualityAssignmentTab = new DataQualityAssignmentTab();
 
 	@Given("Settlement engine")
-	public void Settlement_engine_url() {
+	public void Settlement_engine() {
 		
 		DataQualityAssignmentTab.openLoginPage();
 	}

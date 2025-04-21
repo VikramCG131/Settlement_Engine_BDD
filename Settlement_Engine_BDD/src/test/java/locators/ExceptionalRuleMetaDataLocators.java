@@ -2,7 +2,7 @@ package locators;
 
 import org.openqa.selenium.By;
 
-public class ExceptionalRuleMetaData {
+public class ExceptionalRuleMetaDataLocators {
 	/******Exception Update ******/
 	public static final By EXRAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By EXRDataColumnTab = By.xpath("//span[text()='Exception Rules Metadata']");

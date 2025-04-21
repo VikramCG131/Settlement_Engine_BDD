@@ -60,7 +60,7 @@ public class DataQualityAssignmentTab {
 	//Verify the Title of the Page
 	public    void verifyTitle() {
 		String title = driver.getTitle();
-		Assert.assertEquals(title, "Starter Kit PF Angular");
+		Assert.assertEquals(title, "Settlement Engine");
 		System.out.println("The user is able to verify the title of the page");
 	}
 	
@@ -78,9 +78,10 @@ public class DataQualityAssignmentTab {
 		System.out.println("The user is able to click on Hamburger Menu Button");
 	}
 	
-	//Click on Data Quality Assignment Tab
-	public   void clickDataQualityAssignmentTab() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DataQualityAssignmentTab));
+	// Click on Data Quality Assignment Tab
+	public void clickDataQualityAssignmentTab() {
+		wait.until(
+				ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DataQualityAssignmentTab));
 		driver.findElement(DataQualityAssignmentLocators.DataQualityAssignmentTab).click();
 		System.out.println("The user is able to click on Data Quality Assignment Tab");
 	}

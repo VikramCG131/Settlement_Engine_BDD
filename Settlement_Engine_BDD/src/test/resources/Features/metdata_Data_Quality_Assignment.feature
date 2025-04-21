@@ -41,13 +41,13 @@ Scenario: Verify Meta Data form submission with valid data for the DQ Assignment
     And the user should see the updated "test_file" in the file list for the DQ Assignment
 
 #Scenario: Verify delete confirmation pop-up appears
-    When the user click on Data Quality Assignment
-    And The User click the delete icon for the any file for the DQ Assignment
+   When the user click on Data Quality Assignment
+   And The User click the delete icon for the any file for the DQ Assignment
     Then The User should see a confirmation pop-up with message "Are you sure you want to delete" for the DQ Assignment
 
 #Scenario: Confirm deletion of a file
     When the user click on Data Quality Assignment
     And The User click the delete icon for the any file for the DQ Assignment
-    And The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Assignment
-    And The User confirm the deletion for the DQ Assignment
-#    Then the file should be removed from the table for the DQ Assignment
+   And The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Assignment
+   And The User confirm the deletion for the DQ Assignment
+  Then the file should be removed from the table for the DQ Assignment
