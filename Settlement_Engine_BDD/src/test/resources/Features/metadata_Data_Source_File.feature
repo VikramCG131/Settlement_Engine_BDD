@@ -3,9 +3,9 @@ Feature: Validation of the MetaData Data Source File
      Background:  the user navigate to the "Settlement Engine" page
      Given The Settlement Engine<URL>
      When user hit the Settlement Engine URL
-     And the user clicks on Metadata UI Screen
+     And the user clicks on Metadata UI screen
      Then the user is able to Navigate to the Settlement Engine homepage
-     And User clicks on Hamburger Button
+     And User Clicks on Hamburger Button
    
  Scenario: Verify Meta Data form submission with valid data for the file
    When the user click on Data Source File

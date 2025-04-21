@@ -56,7 +56,7 @@ public class DataQualityAssignmentSteps {
 		DataQualityAssignmentTab.clickMetaDataButton();
 	}
 	
-	@When("User Clicks on Hamburger Button icon")
+	@When("User Clicks on Hamburger Button")
 	public void the_user_click_on_the_hamburger_icon() {
 		
 		DataQualityAssignmentTab.clickHamburgerMenuButton();
@@ -93,10 +93,11 @@ public class DataQualityAssignmentSteps {
 		DataQualityAssignmentTab.verifyDQASuccessPopupMessage();
 	}
 
-	@When("the user click on any field for the DQ Assignment and validate the mandatory required field message DQ Assignment")
+	@When("the user click on any field for the DQ Assignment and validate the mandatory required field message")
 	public void the_user_click_on_any_field_for_the_dq_assignment() throws InterruptedException {
 		
 		DataQualityAssignmentTab.clickDQASourceTableDropdownandblankSelection();
+		DataQualityAssignmentTab.clickDQADQRuleDropdownandBlankSelection();
 	}
 
 	@When("the user click on Reset button for the DQ Assignment")
@@ -138,7 +139,7 @@ public class DataQualityAssignmentSteps {
 	@Then("the user update the any field for the DQ Assignment")
 	public void the_user_update_the_any_field_for_the_dq_assignment(){
 		
-		 DataQualityAssignmentTab.editSourceAttributeValue();
+		 DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "client_code");
 	}
 
 	@Then("the user should see click on the Update Button for the DQ Assignment")
@@ -150,17 +151,13 @@ public class DataQualityAssignmentSteps {
 	@Then("the user should see the updated {string} in the file list for the DQ Assignment")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_dq_assignment(String string) {
 		
-		DataQualityAssignmentTab.verifyDQAUpdatePopupMessage();		
+		DataQualityAssignmentTab.verifyDQASuccessPopupMessage();		
 	}
 
 	@When("The User click the delete icon for the any file for the DQ Assignment")
 	public void the_user_click_the_delete_icon_for_the_any_file_for_the_dq_assignment() {
 		
 		DataQualityAssignmentTab.clickDQADeleteButton();
-	}
-	@Then("the file should be removed from the table for the DQ Assignment")
-	public void the_file_should_be_removed_from_the_table_for_the_dq_assignment() {
-	    		DataQualityAssignmentTab.verifyDQAFileRemoval();
 	}
 
 	@Then("The User should see a confirmation pop-up with message {string} for the DQ Assignment")
