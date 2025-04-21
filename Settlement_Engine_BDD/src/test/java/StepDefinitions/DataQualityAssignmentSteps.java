@@ -27,6 +27,9 @@ public class DataQualityAssignmentSteps {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
 		driver.get("http://localhost:4200");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); //wait for 10 seconds
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("smart-card"))).sendKeys("12345");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Continue')]"))).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 

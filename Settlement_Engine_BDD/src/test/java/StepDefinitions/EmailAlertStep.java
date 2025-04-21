@@ -153,8 +153,7 @@ public class EmailAlertStep {
 	public void the_user_click_on_any_field_for_the_Email_Alert() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//input[@formcontrolname='emailAddress']")).click();
-		WebElement button = driver.findElement(By.xpath("//input[@formcontrolname='subject']"));
-		wait.until(ExpectedConditions.visibilityOf(button)).click();
+		driver.findElement(By.xpath("//input[@formcontrolname='subject']")).click();
 		Thread.sleep(2000);
 	}
 
@@ -167,7 +166,7 @@ public class EmailAlertStep {
 		driver.quit();
 		Thread.sleep(2000);
 	}
-
+	
 	@When("the user click on Reset button for the Email Alert")
 	public void the_user_click_on_reset_button_for_the_Email_Alert() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
@@ -175,6 +174,9 @@ public class EmailAlertStep {
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
+
+	
+	
 
 	@Then("all the fields should be cleared for the Email Alert")
 	public void all_the_fields_should_be_cleared_for_the_Email_Alert() throws InterruptedException {
@@ -206,6 +208,7 @@ public class EmailAlertStep {
 		driver.quit();
 		Thread.sleep(5000);
 	}
+	
 
 	@When("The User click the edit icon for the any file for the Email Alert")
 	public void the_user_click_the_edit_icon_for_the_any_file_for_the_Email_Alert() {
