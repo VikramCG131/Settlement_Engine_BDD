@@ -2,7 +2,7 @@ package constants;
 
 public enum DataSourceFileConstants {
 	
-	FILE_NAME("Test Automation"),
+	FILE_NAME("Test"),
 	FILE_TYPE("csv"),
 	FILE_PATTERN("raw"),
 	FILE_PATH_RAW("C://local"),
@@ -11,7 +11,6 @@ public enum DataSourceFileConstants {
 	FILE_TABLE_NAME("MetadataSourceFile"),
 	FILE_DELIMETER(","),
 	COLUMN_IDENTIFIER(",");
-	
 	
 	private final String value;
 	DataSourceFileConstants(String value)
