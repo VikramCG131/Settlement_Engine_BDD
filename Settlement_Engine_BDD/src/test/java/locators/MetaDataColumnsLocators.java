@@ -29,7 +29,7 @@ public class MetaDataColumnsLocators {
 	public static final By MDCCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By MDCUpdateButton = By.xpath("//button[contains(text(),'Update')]");
 	public static final By MDCColumnInformationVisible = By.xpath("//*[text()='Columns Information ']");
-	
+	public static final By MDCCategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Column Metadata Grid')]");
 	/******MetaData Column Grid******/
 	public static final By MDCGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By MDCEditButton = By.xpath("(//i[@data-action='edit'])[1]");
