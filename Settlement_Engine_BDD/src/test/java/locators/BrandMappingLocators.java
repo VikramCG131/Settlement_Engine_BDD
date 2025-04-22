@@ -8,6 +8,7 @@ public class BrandMappingLocators {
 	public static final By BMBrandMapingTab = By.xpath("//span[contains(text(),'Brand Mapping')]");
 	public static final By BMAddNewButton = By.xpath("//*[text()='Add New']");
 	public static final By BMSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
+	public static final By BMUpdatePopupMessage = By.xpath("//*[contains(text(),'Record has been updated successfully..!')]");
 	public static final By BMDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By BMDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By BMDeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

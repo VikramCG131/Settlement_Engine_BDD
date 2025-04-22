@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import locators.DataQualityAssignmentLocators;
-import locators.MainPageLocators;
+import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
@@ -72,15 +72,15 @@ public class DataQualityAssignmentTab {
 	
 	//Click on MetaData Button
 	public  void clickMetaDataButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.MetaDataButton));
-		driver.findElement(MainPageLocators.MetaDataButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.MetaDataButton));
+		driver.findElement(LoginPageLocators.MetaDataButton).click();
 		System.out.println("The user is able to click on MetaData Button");
 	}
 	
 	//Click on Hamburger Menu Button
 	public   void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.HamburgerButton));
-		driver.findElement(MainPageLocators.HamburgerButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
+		driver.findElement(LoginPageLocators.HamburgerButton).click();
 		System.out.println("The user is able to click on Hamburger Menu Button");
 	}
 	

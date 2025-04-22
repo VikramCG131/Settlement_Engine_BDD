@@ -1,0 +1,194 @@
+package steps;
+
+import java.io.IOException;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import tabs.ClientLookUpTab;
+
+public class ClientLookUpSteps {
+	ClientLookUpTab ClientLookUpTab = new ClientLookUpTab();
+	
+	@Given("Settlement_Engine<URL> for Client LookUp page")
+	public void settlement_engine_url_for_client_look_up_page() {
+		ClientLookUpTab.openLoginPage();
+	}
+
+	@When("the user clicks Settlement Engine URL for Client LookUp page")
+	public void the_user_clicks_settlement_engine_url_for_client_look_up_page() {
+try {
+			
+	ClientLookUpTab.verifyHealthCheck();
+			
+		} catch (IOException e) {
+			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	@Then("The User is able to navigate to the settlement Engine Homepage")
+	public void The_User_is_able_to_navigate_to_the_settlement_Engine_Homepage() {
+		ClientLookUpTab.verifyTitle();
+	}
+	
+	@Then("And the User clicks on Reference LookUp UI screen")
+	public void the_User_clicks_on_Reference_LookUp_UI_screen() {
+		ClientLookUpTab.clickReferenceLookUpButton();
+	}
+	
+	@When("User Clicks on Hamburger Button Icon")
+	public void the_user_click_on_the_hamburger_Icon() {
+		
+		ClientLookUpTab.clickHamburgerMenuButton();
+	}
+
+
+	@When("the user click on the Client LookUp")
+	public void the_user_click_on_the_client_look_up() {
+		ClientLookUpTab.clickClientLookUpTab();
+	}
+
+	@When("the user clicks the Add button from the Client LookUp page")
+	public void the_user_clicks_the_add_button_from_the_client_look_up_page() {
+		ClientLookUpTab.clickCLUAddNewButton();
+	}
+
+	@When("the user enters the data in required fields for the Client LookUp")
+	public void the_user_enters_the_data_in_required_fields_for_the_client_look_up() {
+		ClientLookUpTab.enterCLUCategoryFieldValue("500", "0.5", "shop", "Test", "Automation");
+	}
+
+	@When("the user should see click on the Submit Button for the Client LookUp")
+	public void the_user_should_see_click_on_the_submit_button_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUSubmitButton();
+	}
+
+	@Then("the user should see {string} in the file list for the Client LookUp")
+	public void the_user_should_see_in_the_file_list_for_the_client_look_up(String string) {
+		ClientLookUpTab.verifyCLUSuccessPopupMessage();
+	}
+
+	@When("the user click on any field for the Client LookUp")
+	public void the_user_click_on_any_field_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUPayableElement2blankSelection();
+	}
+
+	@When("the user click on Reset button for the Client LookUp")
+	public void the_user_click_on_reset_button_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUResetButton();
+	}
+
+	@Then("all the fields should be cleared for the Client LookUp")
+	public void all_the_fields_should_be_cleared_for_the_client_look_up() {
+		ClientLookUpTab.verifyCLUUpdatePopupMessage();
+	}
+
+	@When("the user click on Cancel button for the Client LookUp")
+	public void the_user_click_on_cancel_button_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUCancelButton();
+	}
+
+	@Then("Add Pop up should be closed for the Client LookUp")
+	public void add_pop_up_should_be_closed_for_the_client_look_up() {
+		ClientLookUpTab.verifyCLUCategoryTextVisible();
+	}
+
+	@When("The User click the edit icon for the any Client LookUp")
+	public void the_user_click_the_edit_icon_for_the_any_client_look_up() {
+		ClientLookUpTab.clickCLUEditButton();
+	}
+
+	@Then("The User should see the edit modal open Client LookUp")
+	public void the_user_should_see_the_edit_modal_open_client_look_up() {
+		ClientLookUpTab.verifyCLUCategoryTextVisible();
+	}
+
+	@Then("the user update the any field for the Client LookUp")
+	public void the_user_update_the_any_field_for_the_client_look_up() {
+		ClientLookUpTab.editadvanceComissionValue();
+	}
+
+	@Then("the user should see click on the Update Button for the Client LookUp")
+	public void the_user_should_see_click_on_the_update_button_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUUpdateButton();
+	}
+
+	@Then("the user should see the updated {string} in the file list for the Client LookUp")
+	public void the_user_should_see_the_updated_in_the_file_list_for_the_client_look_up(String string) {
+		ClientLookUpTab.verifyCLUUpdatePopupMessage();
+	}
+
+	@When("The User click the delete icon for the any Client LookUp")
+	public void the_user_click_the_delete_icon_for_the_any_client_look_up() {
+		ClientLookUpTab.clickCLUDeleteButton();
+	}
+
+	@Then("The User should see a confirmation pop-up with message {string} for the Client LookUp")
+	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_dq_assignment(String string) {	
+		ClientLookUpTab.verifyCLUDeleteConfirmationPopupMessage();
+	}
+
+
+	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client LookUp")
+	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUDeleteConfirmationPopupCancelButton();
+		ClientLookUpTab.clickCLUDeleteConfirmationPopupConfirmButton();
+	}
+
+	@When("The User confirm the deletion for the Client LookUp")
+	public void the_user_confirm_the_deletion_for_the_client_look_up() {
+		ClientLookUpTab.clickCLUDeleteConfirmationPopupConfirmButton();
+	}
+
+	@Then("the file should be removed from the table for the Client LookUp")
+	public void the_file_should_be_removed_from_the_table_for_the_client_look_up() {
+		ClientLookUpTab.verifyCLUFileRemoval();
+	}
+
+	@When("user clicks the download button")
+	public void user_clicks_the_download_button() {
+		ClientLookUpTab.clickCLUDownloadButton();
+	}
+
+	@Then("a file should be downloaded to the default download folder")
+	public void a_file_should_be_downloaded_to_the_default_download_folder() {
+		ClientLookUpTab.verifyFileDownloaded();
+	}
+
+	@When("the User Navigates to upload Button")
+	public void the_user_navigates_to_upload_button() {
+		ClientLookUpTab.clickCLUUploadButton();
+	}
+
+	@When("user selects a valid file to upload")
+	public void user_selects_a_valid_file_to_upload() {
+		ClientLookUpTab.selectFileToUpload();
+	}
+
+	@When("the file should be successfully uploaded")
+	public void the_file_should_be_successfully_uploaded() {
+		ClientLookUpTab.verifyUploadSuccessMessage();
+	}
+
+	@When("user click the Send for Approval button")
+	public void user_click_the_send_for_approval_button() {
+		ClientLookUpTab.clickSendForApprovalButton();
+	}
+
+	@Then("the file should be submitted for approval")
+	public void the_file_should_be_submitted_for_approval() {
+		ClientLookUpTab.fileSubmittedForApproval();
+	  
+	}
+
+	@Then("a confirmation message should be displayed with Confirm and Cancel buttons")
+	public void a_confirmation_message_should_be_displayed_with_confirm_and_cancel_buttons() {
+		ClientLookUpTab.ConfirmationMessageConfirmAndCancelButtons();
+	}
+
+	@Then("by clicking on Confirm button the file should be sent for approval")
+	public void by_clicking_on_confirm_button_the_file_should_be_sent_for_approval() {
+		ClientLookUpTab.ConfirmButtonSentForApproval();
+	}
+
+}

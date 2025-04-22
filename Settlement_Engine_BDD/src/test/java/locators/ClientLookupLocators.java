@@ -6,9 +6,11 @@ public class ClientLookupLocators {
 	
 	/******Client Lookup Page******/
 	
-	public static final By CLUientLookupTab = By.xpath("//a/span[contains(text(),'Client Look Up')]");
+	public static final By ClientLookupTab = By.xpath("//a/span[contains(text(),'Client Look Up')]");
 	public static final By CLUAddNewButton = By.xpath("//*[text()='Add New']");
+	public static final By CLUFields = By.xpath("//div[@class='form-group col-md-4']");
 	public static final By CLUSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
+	public static final By CLUUpdatePopupMessage = By.xpath("//*[contains(text(),'Record has been updated successfully..!')]");
 	public static final By CLUDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By CLUDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By CLUDeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
