@@ -45,7 +45,7 @@ public class BrandMappingTab {
 
 	// Open the login page
 	public void openLoginPage() {
-		driver.get("http://localhost:4200/login");
+		driver.get(LoginPageLocators.SE_URL);
 		System.out.println("The user is able to open the login page");
 	}
 
@@ -142,15 +142,15 @@ public class BrandMappingTab {
 	}
 
 	// Click on Source Table Dropdown and Blank Selection
-	public void clickBMPayableElement2blankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMPayableElement2));
-		driver.findElement(BrandMappingLocators.BMPayableElement2).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMAdvanComission));
-		driver.findElement(BrandMappingLocators.BMAdvanComission).click();
+	public void clickBMClientCodeblankSelection() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
+		driver.findElement(BrandMappingLocators.BMClientCode).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMBrandCode));
+		driver.findElement(BrandMappingLocators.BMBrandCode).click();
 
-		String actual = driver.findElement(BrandMappingLocators.BMASourceErrorValidation).getText();
-		Assert.assertEquals("Please Enter Payable Element 2", actual);
-		System.out.println("The user is able to click on Payable Element 2 and validate the error message");
+		String actual = driver.findElement(BrandMappingLocators.BMErrorValidation).getText();
+		Assert.assertEquals("Please enter Client Code", actual);
+		System.out.println("The user is able to click on Client code and validate the error message");
 	}
 
 	// Click on Reset Button
@@ -172,6 +172,13 @@ public class BrandMappingTab {
 		System.out.println("The user is able to click on Cancel Button");
 
 	}
+	//Verify the Data Source File Grid is visible and File Information is Not Visible
+		public void verifyBMGridVisibleandFileInformationNotVisible() {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			boolean category = driver.findElement(BrandMappingLocators.BMCategoryTextPageVisible).isDisplayed();
+			Assert.assertTrue(category);
+			System.out.println("The user is able to verify the Data Source File Grid is visible and File Information is not visible");
+		}
 
 	// Click on Update Button
 	public void clickBMUpdateButton() {
@@ -195,11 +202,11 @@ public class BrandMappingTab {
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
 
-	public void editadvanceComissionValue() {
+	public void editClientCodeValue() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMAdvanComission));
-		driver.findElement(BrandMappingLocators.BMAdvanComission).clear();
-		driver.findElement(BrandMappingLocators.BMAdvanComission).sendKeys("0.9");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
+		driver.findElement(BrandMappingLocators.BMClientCode).clear();
+		driver.findElement(BrandMappingLocators.BMClientCode).sendKeys("0.9");
 
 	}
 
@@ -228,17 +235,11 @@ public class BrandMappingTab {
 
 	// Verify All the Fields are Cleared after Reset Button
 	public void verifyAllFieldsClearedforResetButton() {
-		String payableElement2 = driver.findElement(BrandMappingLocators.BMPayableElement2).getAttribute("value");
-		String advanceCommission = driver.findElement(BrandMappingLocators.BMAdvanComission).getAttribute("value");
-		String shopCode = driver.findElement(BrandMappingLocators.BMShopCode).getAttribute("value");
-		String shopName = driver.findElement(BrandMappingLocators.BMShopName).getAttribute("value");
-		String dataSourceType = driver.findElement(BrandMappingLocators.BMDataSourceType).getAttribute("value");
-
-		Assert.assertEquals("", payableElement2);
-		Assert.assertEquals("", advanceCommission);
-		Assert.assertEquals("", shopCode);
-		Assert.assertEquals("", shopName);
-		Assert.assertEquals("", dataSourceType);
+		String clientCode = driver.findElement(BrandMappingLocators.BMClientCode).getAttribute("value");
+		String brandCode = driver.findElement(BrandMappingLocators.BMBrandCode).getAttribute("value");
+		
+		Assert.assertEquals("", clientCode);
+		Assert.assertEquals("", brandCode);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 
@@ -323,7 +324,7 @@ public class BrandMappingTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Brandmapping.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path

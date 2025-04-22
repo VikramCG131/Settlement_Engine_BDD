@@ -2,6 +2,9 @@ package steps;
 
 import java.io.IOException;
 
+import Utilities.CommonUtilities;
+import constants.ClientLookUpConstants;
+import constants.DataSourceFileConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,7 +12,7 @@ import tabs.ClientLookUpTab;
 
 public class ClientLookUpSteps {
 	ClientLookUpTab ClientLookUpTab = new ClientLookUpTab();
-	
+
 	@Given("Settlement_Engine<URL> for Client LookUp page")
 	public void settlement_engine_url_for_client_look_up_page() {
 		ClientLookUpTab.openLoginPage();
@@ -17,31 +20,31 @@ public class ClientLookUpSteps {
 
 	@When("the user clicks Settlement Engine URL for Client LookUp page")
 	public void the_user_clicks_settlement_engine_url_for_client_look_up_page() {
-try {
-			
-	ClientLookUpTab.verifyHealthCheck();
-			
+		try {
+
+			ClientLookUpTab.verifyHealthCheck();
+
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
+
 	@Then("The User is able to navigate to the settlement Engine Homepage")
 	public void The_User_is_able_to_navigate_to_the_settlement_Engine_Homepage() {
 		ClientLookUpTab.verifyTitle();
 	}
-	
+
 	@Then("And the User clicks on Reference LookUp UI screen")
 	public void the_User_clicks_on_Reference_LookUp_UI_screen() {
 		ClientLookUpTab.clickReferenceLookUpButton();
 	}
-	
+
 	@When("User Clicks on Hamburger Button Icon")
 	public void the_user_click_on_the_hamburger_Icon() {
-		
+
 		ClientLookUpTab.clickHamburgerMenuButton();
 	}
-
 
 	@When("the user click on the Client LookUp")
 	public void the_user_click_on_the_client_look_up() {
@@ -55,9 +58,11 @@ try {
 
 	@When("the user enters the data in required fields for the Client LookUp")
 	public void the_user_enters_the_data_in_required_fields_for_the_client_look_up() {
-		ClientLookUpTab.enterCLUCategoryFieldValue("500", "0.5", "shop", "Test", "Automation");
+		String random = CommonUtilities.getRandomInteger();
+		ClientLookUpTab.enterCLUCategoryFieldValue(ClientLookUpConstants.PAYABLE_ELEMENT_2.getValue(),ClientLookUpConstants.ADVANCE_COMMISSION.getValue(), ClientLookUpConstants.SHOP_CODE.getValue(),ClientLookUpConstants.SHOPE_NAME.getValue()+random,ClientLookUpConstants.DATA_SOURCE_TYPE.getValue()+random);
+		System.out.println("The user is able to insert the data in the all fields");
 	}
-
+		
 	@When("the user should see click on the Submit Button for the Client LookUp")
 	public void the_user_should_see_click_on_the_submit_button_for_the_client_look_up() {
 		ClientLookUpTab.clickCLUSubmitButton();
@@ -80,7 +85,7 @@ try {
 
 	@Then("all the fields should be cleared for the Client LookUp")
 	public void all_the_fields_should_be_cleared_for_the_client_look_up() {
-		ClientLookUpTab.verifyCLUUpdatePopupMessage();
+		ClientLookUpTab.verifyAllFieldsClearedforResetButton();
 	}
 
 	@When("the user click on Cancel button for the Client LookUp")
@@ -124,15 +129,14 @@ try {
 	}
 
 	@Then("The User should see a confirmation pop-up with message {string} for the Client LookUp")
-	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_dq_assignment(String string) {	
+	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_dq_assignment(String string) {
 		ClientLookUpTab.verifyCLUDeleteConfirmationPopupMessage();
 	}
 
-
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client LookUp")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_client_look_up() {
-		ClientLookUpTab.clickCLUDeleteConfirmationPopupCancelButton();
-		ClientLookUpTab.clickCLUDeleteConfirmationPopupConfirmButton();
+		ClientLookUpTab.verifyCLUDeleteConfirmationPopupCancelButton();
+		ClientLookUpTab.verifyCLUDeleteConfirmationPopupConfirmButton();
 	}
 
 	@When("The User confirm the deletion for the Client LookUp")
@@ -178,7 +182,7 @@ try {
 	@Then("the file should be submitted for approval")
 	public void the_file_should_be_submitted_for_approval() {
 		ClientLookUpTab.fileSubmittedForApproval();
-	  
+
 	}
 
 	@Then("a confirmation message should be displayed with Confirm and Cancel buttons")

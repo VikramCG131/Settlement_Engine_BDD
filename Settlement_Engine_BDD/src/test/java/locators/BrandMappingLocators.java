@@ -26,7 +26,7 @@ public class BrandMappingLocators {
 	public static final By BMClientCode = By.xpath("//input[@formcontrolname='clientCode']");
 	public static final By BMBrandCode = By.xpath("//input[@formcontrolname='brandCode']");
 	public static final By BMSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By BMSourceErrorValidation = By.xpath("//div[contains(text(),'Please enter Client Code')]");
+	public static final By BMErrorValidation = By.xpath("//div[contains(text(),'Please enter Client Code')]");
 	public static final By BMPageGridValidation = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
 	public static final By BMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By BMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

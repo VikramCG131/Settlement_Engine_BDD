@@ -45,7 +45,7 @@ public class ClientLookUpTab {
 
 	// Open the login page
 	public void openLoginPage() {
-		driver.get("http://localhost:4200/login");
+		driver.get(LoginPageLocators.SE_URL);
 		System.out.println("The user is able to open the login page");
 	}
 

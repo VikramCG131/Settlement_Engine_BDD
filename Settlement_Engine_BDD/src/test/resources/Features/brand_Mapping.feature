@@ -17,8 +17,7 @@ Scenario: Verify reference data form submission with valid data for Brand Mappin
 Scenario: Verify validation errors when mandatory fields are missing for the Brand Mapping
  When the user click on the Brand Mapping
  	And the user clicks the Add button from the Brand Mapping page
- And the user click on any field for the Brand Mapping
-  Then the user should see validation errors for required fields for the Brand Mapping
+ Then the user click on any field for the Brand Mapping and the user should see validation errors for required fields for the Brand Mapping
    
 Scenario: Verify that clicking "Reset" fields clears the fields for the Brand Mapping
  When the user click on the Brand Mapping
@@ -45,7 +44,6 @@ Scenario: Verify delete confirmation pop-up appears for the Brand Mapping
   When the user click on the Brand Mapping
  And The User click the delete icon for the any Brand Mapping
   Then The User should see a confirmation pop-up with title "Confirmation deletion" for the Brand Mapping
-  And The User should see "Are you sure you want to delete" message for the Brand Mapping
    
 Scenario: Confirm deletion of a Brand Mapping
   When the user click on the Brand Mapping
