@@ -5,9 +5,10 @@ import org.openqa.selenium.By;
 public class MetaDataColumnsLocators {
 	
 	/******MetaData Column Page******/
-	public static final By MetaDataColumnTab = By.xpath("//span[contains(text(),'MetaData Column')]");
+	public static final By MetaDataColumnTab = By.xpath("//span[contains(text(),'Metadata Column')]");
 	public static final By MDCAddNewButton = By.xpath("//button[contains(text(),'Add')]");
-	public static final By MDCSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
+	public static final By MDCSuccessPopupMessage = By.xpath("//div[contains(text(),'Record has been added successfully..! ')]");
+	public static final By MDCUpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By MDCDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By MDCDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By MDCDeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -18,11 +19,11 @@ public class MetaDataColumnsLocators {
 	public static final By MDCColumnActive = By.xpath("//div[3]/div[1]/label[@for='columnIsActiveYes']");
 	public static final By MDCColumnIsNull = By.xpath("//div[4]/div[2]/label[@for='columnIsNullNo']");
 	public static final By MDCMinSize= By.xpath("//input[@formcontrolname='minSize']");
-	public static final By MDCMaxSize = By.xpath("(//input[@formcontrolname='maxSize']");
+	public static final By MDCMaxSize = By.xpath("//input[@formcontrolname='maxSize']");
 	public static final By MDCColumnOrder= By.xpath("//input[@formcontrolname='columnOrder']");
 	public static final By MDCColumnDateFormat = By.xpath("//input[@formcontrolname='columnDateFormat']");
 	public static final By MDCTableNameDropdown =By.xpath("//select[@formcontrolname='fileMetadataId']");	
-	public static final By MDCMinSizeValidation = By.xpath("//*[text()='Min Size Must be a Number']");
+	public static final By MDCMinSizeValidation = By.xpath("//div[contains(text(),'Min Size Must be a Number')]");
 	public static final By MDCSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By MDCResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By MDCCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

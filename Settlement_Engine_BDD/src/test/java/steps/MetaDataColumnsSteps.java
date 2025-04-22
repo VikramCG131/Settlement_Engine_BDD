@@ -24,6 +24,7 @@ public class MetaDataColumnsSteps {
 	WebDriver driver;
 	CommonUtilities commonUtilities = new CommonUtilities();
 	WebDriverWait wait;
+	MetaDataColumnsTab MetaDataColumnsTab = new MetaDataColumnsTab();
 	
     @Given("Settlement Engine<URL>")
     public void the_settlement_engine_url() {
@@ -60,7 +61,7 @@ public class MetaDataColumnsSteps {
 		MetaDataColumnsTab.clickMetadataColumnTab();
 	}
 	
-	@When("the user clicks the Add button from the Metadata Column page")
+	@When("the user clicks the Add New button from the Metadata Column page")
 	public void the_user_clicks_the_add_new_button_from_the_metadata_column_page() {
 		MetaDataColumnsTab.clickMDCAddNewButton();
 	}
@@ -84,7 +85,7 @@ public class MetaDataColumnsSteps {
 
 	@Then("the user should see {string} in the file list for the Metadata Column")
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
-		MetaDataColumnsTab.verifyMDCSuccessPopupMessage();
+		MetaDataColumnsTab.verifyDSFSuccessPopupMessage();
 	}
 
 	@When("the user click on any field for the Metadata Column")
@@ -94,27 +95,21 @@ public class MetaDataColumnsSteps {
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
-		String actual = driver.findElement(By.xpath("//*[text()='Min Size must be a number']")).getText();
-		Assert.assertEquals("Min Size must be a number", actual);
+		MetaDataColumnsTab.clickMDCMinSizeandblankSelection();
 		System.out.println("The user is able to see the error message for required fields");
 		commonUtilities.screenshot();
 	}
 
 	@When("the user click on Reset button for the Metadata Column")
 	public void the_user_click_on_reset_button_for_the_metadata_column() throws InterruptedException {
-		driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
-		System.out.println("The fields are empty");
+		MetaDataColumnsTab.clickMDCResetButton();
 		Thread.sleep(2000);
 		commonUtilities.screenshot();
 	}
 
 	@Then("all the fields should be cleared for the Metadata Column")
 	public void all_the_fields_should_be_cleared_for_the_metadata_column() {
-		 // Verify that all fields are empty
-	  Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).getAttribute("value"));
-	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='minSize']")).getAttribute("value"));
-	    Assert.assertEquals("", driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).getAttribute("value"));
-	    System.out.println("The user is able to clear the fields");
+		MetaDataColumnsTab.verifyAllFieldsClearedforResetButton();
 	}
 
 	@When("the user click on Cancel button for the Metadata Column")
