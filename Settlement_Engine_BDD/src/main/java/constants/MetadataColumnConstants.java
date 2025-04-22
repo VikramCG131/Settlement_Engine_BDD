@@ -1,7 +1,7 @@
 package constants;
 
 public enum MetadataColumnConstants {
-	NAME("Test Automation"),
+	NAME("Test"),
 	DATA_TYPE(""),
 	IS_ACTIVE(""),
 	IS_NULL(""),

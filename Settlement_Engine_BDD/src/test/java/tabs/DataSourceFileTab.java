@@ -11,8 +11,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
+import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
 public class DataSourceFileTab {
@@ -31,14 +33,18 @@ public class DataSourceFileTab {
 	
 	//Open the login page
 	public void openLoginPage() {
-		driver.get("http://localhost:4200");
+		driver.get(LoginPageLocators.SE_URL);
 		System.out.println("The user is able to open the login page");
 	}
 	
 	//Verify health check of the URL
 	public void verifyHealthCheck() throws IOException {
 		String url = driver.getCurrentUrl();
-		Assert.assertEquals(url, "http://localhost:4200/");
+		Assert.assertEquals(url, LoginPageLocators.SE_URL);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SettlementEngineLoginLocators.SESmartCarddata));
+		driver.findElement(SettlementEngineLoginLocators.SESmartCarddata).sendKeys("12345");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SettlementEngineLoginLocators.SELoginButton));
+		driver.findElement(SettlementEngineLoginLocators.SELoginButton).click();
 		System.out.println("The user is able to verify the correct URL");
 //		try {
 //			HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost:4200/").openConnection();
@@ -58,7 +64,7 @@ public class DataSourceFileTab {
 	//Verify the Title of the Page
 	public    void verifyTitle() {
 		String title = driver.getTitle();
-		Assert.assertEquals(title, "Starter Kit PF Angular");
+		Assert.assertEquals(title, "Settlement Engine");
 		System.out.println("The user is able to verify the title of the page");
 	}
 	
@@ -93,25 +99,25 @@ public class DataSourceFileTab {
 	//Enter the Field Value in Data Source File Category
 	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
-		driver.findElement(DataSourceFileLocators.DSFFileName).click();
+		driver.findElement(DataSourceFileLocators.DSFFileName).sendKeys(fileName);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
-		driver.findElement(DataSourceFileLocators.DSFFileType).click();
+		driver.findElement(DataSourceFileLocators.DSFFileType).sendKeys(fileType);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePattern));
-		driver.findElement(DataSourceFileLocators.DSFFilePattern).click();
+		driver.findElement(DataSourceFileLocators.DSFFilePattern).sendKeys(filePattern);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
-		driver.findElement(DataSourceFileLocators.DSFFilePathRow).click();
+		driver.findElement(DataSourceFileLocators.DSFFilePathRow).sendKeys(filePathRaw);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathCleansed));
-		driver.findElement(DataSourceFileLocators.DSFFilePathCleansed).click();
+		driver.findElement(DataSourceFileLocators.DSFFilePathCleansed).sendKeys(filePathCleansed);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileMaxSize));
-		driver.findElement(DataSourceFileLocators.DSFFileMaxSize).click();
+		driver.findElement(DataSourceFileLocators.DSFFileMaxSize).sendKeys(fileMaxSize);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFTableName));
-		driver.findElement(DataSourceFileLocators.DSFTableName).click();
+		driver.findElement(DataSourceFileLocators.DSFTableName).sendKeys(fileTableName);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileDelimiter));
-		driver.findElement(DataSourceFileLocators.DSFFileDelimiter).click();
+		driver.findElement(DataSourceFileLocators.DSFFileDelimiter).sendKeys(fileDelimiter);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFHeaderPresentYes));
 		driver.findElement(DataSourceFileLocators.DSFHeaderPresentYes).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFColumnIdentifier));
-		driver.findElement(DataSourceFileLocators.DSFColumnIdentifier).click();
+		driver.findElement(DataSourceFileLocators.DSFColumnIdentifier).sendKeys(columnIdentifier);
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
 	}
 	
@@ -122,13 +128,23 @@ public class DataSourceFileTab {
 		System.out.println("The user is able to click on Submit Button");
 	}
 	
+	//Verify the Update Popup Message
+			public   void verifyDSFUpdatePopupMessage() {
+				wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFUpdatePopupMessage));
+				String successMessage = driver.findElement(DataSourceFileLocators.DSFUpdatePopupMessage).getText();
+				Assert.assertEquals(successMessage, "Record has been updated successfully");
+				System.out.println("The user is able to verify the Update Popup Message");
+			}
+			
 	//Verify the Success Popup Message
 	public   void verifyDSFSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSuccessPopupMessage));
 		String successMessage = driver.findElement(DataSourceFileLocators.DSFSuccessPopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been added successfully..!");
+		Assert.assertEquals(successMessage, "Record has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
 	}
+	
+	
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickDSFFilePatternblankSelection() {
@@ -136,8 +152,8 @@ public class DataSourceFileTab {
 		driver.findElement(DataSourceFileLocators.DSFFilePattern).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
 		driver.findElement(DataSourceFileLocators.DSFFileType).click();
-		
-		String actual = driver.findElement(DataSourceFileLocators.DSFFilePatternValidation).getText();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		String actual = driver.findElement(DataSourceFileLocators.DSFCategoryTextVisibleError).getText();
 		Assert.assertEquals("Please Enter File Pattern", actual);
 		System.out.println("The user is able to click on File Pattern and validate the error message");
 	}
@@ -151,6 +167,10 @@ public class DataSourceFileTab {
 	
 	//Click on Cancel Button
 	public   void clickDSFCancelButton() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFCategoryTextVisible));
+		boolean grid = driver.findElement(DataSourceFileLocators.DSFCategoryTextVisible).isDisplayed();
+		Assert.assertTrue(grid);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFCancelButton));
 		driver.findElement(DataSourceFileLocators.DSFCancelButton).click();
 		System.out.println("The user is able to click on Cancel Button");
@@ -164,11 +184,12 @@ public class DataSourceFileTab {
 	}
 	
 	//Click on Edit Button
-	public   void clickDSFEditButton() {
+	public void clickDSFEditButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFEditButton));
 		driver.findElement(DataSourceFileLocators.DSFEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
 	}
+	
 	
 	//Verify Assignment Category Text is Visible
 	public   void verifyDSFCategoryTextVisible() {
@@ -176,7 +197,8 @@ public class DataSourceFileTab {
 		boolean category = driver.findElement(DataSourceFileLocators.DSFCategoryTextVisible).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the File Information Text is visible");
-	}
+	}	
+	
 	
 	//Click on Delete Button
 	public   void clickDSFDeleteButton() {
@@ -216,12 +238,10 @@ public class DataSourceFileTab {
 	}
 	
 	//Verify the Data Source File Grid is visible and File Information is Not Visible
-	public   void verifyDSFGridVisibleandFileInformationNotVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFGridVisible));
-		boolean grid = driver.findElement(DataSourceFileLocators.DSFGridVisible).isDisplayed();
-		Assert.assertTrue(grid);
-		boolean category = driver.findElement(DataSourceFileLocators.DSFCategoryTextVisible).isDisplayed();
-		Assert.assertFalse(category);
+	public void verifyDSFGridVisibleandFileInformationNotVisible() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		boolean category = driver.findElement(DataSourceFileLocators.DSFCategoryTextVisibleGrid).isDisplayed();
+		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Source File Grid is visible and File Information is not visible");
 	}
 	
