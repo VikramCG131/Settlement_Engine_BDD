@@ -94,12 +94,13 @@ public class DataSourceFileSteps {
 	public void the_user_click_on_any_field() throws InterruptedException {
 		DataSourceFileTab.clickDSFFilePatternblankSelection();
 	}
-
+/*
 	@Then("{string} should not be in the file list for the file")
 	public void should_not_be_in_the_file_list(String string) {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
 	}
+	*/
 
 	@When("the user click on Cancel button for the file")
 	public void the_user_click_on_Cancel_button() {
@@ -133,8 +134,8 @@ public class DataSourceFileSteps {
 
 	@Then("the user update the any field for the file")
 	public void the_user_update_the_any_field() {
-		DataSourceFileTab.enterDSFFieldValue("TestAutomation", "txt", "raw", "C://local", "D://local", "10",
-				"MetadataSourceFile", ",", ",");
+		DataSourceFileTab.enterDSFFieldValue("Test", "txt", "raw", "C://local", "D://local", "10",
+				"MetadataSourceFile", "", "");
 	}
 
 	@Then("the user should see click on the Update Button for the file")
