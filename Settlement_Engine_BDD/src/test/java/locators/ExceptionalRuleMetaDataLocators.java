@@ -32,7 +32,7 @@ public class ExceptionalRuleMetaDataLocators {
 	public static final By EXRDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By EXRDeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By EXRValidationErrorRuleType = By.xpath("//div[text()=' Please Select Rule Type ']");
-	public static final By EXRUpdatepopmessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
+	public static final By EXRUpdatePopUuMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By EXRAfterDeletingPopup= By.xpath("//button[contains(text(),'Ok')]");
 	public static final By EXRClickExceptionCotegeryPage= By.xpath("//h6[text()='Exception Category ']");
 	
