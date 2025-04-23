@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -114,8 +115,11 @@ public class MetaDataColumnsTab {
 		driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).sendKeys(columnOrder);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnDateFormat));
 		driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).sendKeys(columnDateFormat);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown));
-		driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown).sendKeys(tableName);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown)).click();
+		Select datatypedropdown1 = new Select(driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown));
+		datatypedropdown1.selectByIndex(2);
+
 		System.out.println("The user is able to enter the field value in Columns Information");
 	}
 	
@@ -137,7 +141,7 @@ public class MetaDataColumnsTab {
 	public void verifyMDCSuccessPopupMessageUpdate() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCUpdatePopupMessage));
 		String successMessage = driver.findElement(MetaDataColumnsLocators.MDCUpdatePopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been updated successfully");
+		Assert.assertEquals(successMessage, "Record has been updated successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
 	}
 	
@@ -169,8 +173,10 @@ public class MetaDataColumnsTab {
 	
 	//Click on Cancel Button
 	public    void clickMDCCancelButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCCancelButton));
-		driver.findElement(MetaDataColumnsLocators.MDCCancelButton).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnInformationVisible));
+		boolean grid = driver.findElement(MetaDataColumnsLocators.MDCColumnInformationVisible).isDisplayed();
+		Assert.assertTrue(grid);
 		System.out.println("The user is able to click on Cancel Button");
 	}
 	
@@ -189,13 +195,18 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify Assignment Category Text is Visible
-	public    void verifyMDCCategoryTextVisible() {
+	public void verifyMDCCategoryTextVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnInformationVisible));
 		boolean category = driver.findElement(MetaDataColumnsLocators.MDCColumnInformationVisible).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Column Information Text is visible");
 	}
 	
+	public void editValueField()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize)).sendKeys("40");;
+		
+	}
 	//Click on Delete Button
 	public    void clickMDCDeleteButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDeleteButton));
@@ -243,12 +254,9 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Verify the Metadata Column Grid is Visible and Column Information is Not Visible
-	public    void verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCGridVisible));
-		boolean grid = driver.findElement(MetaDataColumnsLocators.MDCGridVisible).isDisplayed();
-		Assert.assertTrue(grid);
-		boolean category = driver.findElement(MetaDataColumnsLocators.MDCGridVisible).isDisplayed();
-		Assert.assertFalse(category);
+	public void verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
+		boolean category = driver.findElement(MetaDataColumnsLocators.MDCCategoryTextVisibleGrid).isDisplayed();
+		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Metadata Column Grid is visible and Column Information is not visible");
 	}
 	

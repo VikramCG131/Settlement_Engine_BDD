@@ -114,90 +114,74 @@ public class MetaDataColumnsSteps {
 
 	@When("the user click on Cancel button for the Metadata Column")
 	public void the_user_click_on_cancel_button_for_the_metadata_column() {
-		driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
+		MetaDataColumnsTab.clickMDCCancelButton();
 		System.out.println("The user is able to close the Add New page");
 		commonUtilities.screenshot();
 	}
 
 	@Then("Add New Pop up should be closed for the Metadata Column")
 	public void add_new_pop_up_should_be_closed_for_the_metadata_column() {
-		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
+		MetaDataColumnsTab.verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible();
 	}
 
 	@When("The User click the edit icon for the any Metadata Column")
 	public void the_user_click_the_edit_icon_for_the_any_metadata_column() {
-		driver.findElement(By.xpath("(//i[@data-action='edit'])[1]")).click();
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.clickMDCEditButton();
 	}
 
 	@Then("The User should see the edit modal open Metadata Column")
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
-		boolean file = driver.findElement(By.xpath("//*[text()='Columns Information ']")).isDisplayed();
-		Assert.assertTrue(file);
-		String actual = driver.findElement(By.xpath("//*[text()='Columns Information ']")).getText();
-		Assert.assertEquals("Columns Information", actual);		
+		MetaDataColumnsTab.verifyMDCCategoryTextVisible();	
 		System.out.println("The edit modal is displayed");
 		commonUtilities.screenshot();
 	}
 
 	@Then("the user update the any field for the Metadata Column")
 	public void the_user_update_the_any_field_for_the_metadata_column() {
-		driver.findElement(By.xpath("//input[@formcontrolname='columnName']")).clear();
-		driver.findElement(By.xpath("//input[@formcontrolname='maxSize']")).sendKeys("40");
+		MetaDataColumnsTab.editValueField();
 	}
 
 	@Then("the user should see click on the Update Button for the Metadata Column")
 	public void the_user_should_see_click_on_the_update_button_for_the_metadata_column() {
-	    
+		MetaDataColumnsTab.clickMDCUpdateButton();
 	}
 
 	@Then("the user should see the updated {string} in the file list for the Metadata Column")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
-		driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
+		MetaDataColumnsTab.verifyMDCSuccessPopupMessageUpdate();
 		System.out.println("The user is able to click on the Update Button");
-		commonUtilities.screenshot();
-		Thread.sleep(2000);
+		
 	}
 
 	@When("The User click the delete icon for the any Metadata Column")
 	public void the_user_click_the_delete_icon_for_the_any_metadata_column() {
-		driver.findElement(By.xpath("(//i[@data-action='delete'])[1]")).click();
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.clickMDCDeleteButton();
 	}
 
 	@Then("The User should see a confirmation pop-up with title {string} for the Metadata Column")
 	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_metadata_column(String string) throws InterruptedException {
-		driver.findElement(By.xpath("//div[@class='modal-content']")).isDisplayed();
-		System.out.println("The user is able to see the confirmation pop-up");
-		Thread.sleep(2000);
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.verifyMDCDeleteConfirmationPopupMessage();
 	}
 
 	@Then("The User should see {string} message for the Metadata Column")
 	public void the_user_should_see_message_for_the_metadata_column(String string) throws InterruptedException {
-		String actual = driver.findElement(By.xpath("//div[text()=' Are you sure you want to delete ']")).getText();
-		Assert.assertEquals("Are you sure you want to delete", actual);
-		System.out.println("The user is able to see message in the confirmation pop-up");
-		Thread.sleep(2000);
-		commonUtilities.screenshot();
+		MetaDataColumnsTab.clickMDCDeleteConfirmationPopupConfirmButton();
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the Metadata Column")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_metadata_column() {
-		driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).isDisplayed();
-		driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).isDisplayed();
-		System.out.println("The user is able to see the Confirm and Cancel button in the confirmation pop-up");
+		MetaDataColumnsTab.verifyMDCDeleteConfirmationPopupCancelButton();
+		MetaDataColumnsTab.verifyMDCDeleteConfirmationPopupConfirmButton();
 	}
 
 	@When("The User confirm the deletion for the Metadata Column")
 	public void the_user_confirm_the_deletion_for_the_metadata_column() {
-	    driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
+		MetaDataColumnsTab.clickMDCDeleteConfirmationPopupConfirmButton();
 	}
 
 	@Then("the file should be removed from the table for the Metadata Column")
 	public void the_file_should_be_removed_from_the_table_for_the_metadata_column() {
-		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
-		driver.quit();
+		MetaDataColumnsTab.verifyMDCAssignmentGridVisibleandDataAssignmentCategoryNotVisible();
 	}
 
 

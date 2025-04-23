@@ -150,6 +150,7 @@ public class DataSourceFileTab {
 	public   void clickDSFFilePatternblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePattern));
 		driver.findElement(DataSourceFileLocators.DSFFilePattern).click();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
 		driver.findElement(DataSourceFileLocators.DSFFileType).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
