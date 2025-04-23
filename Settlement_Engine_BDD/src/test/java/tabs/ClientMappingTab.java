@@ -94,7 +94,7 @@ public class ClientMappingTab {
 	}
 
 	// Click on Client Lookup Tab
-	public void clickClientLookUpTab() {
+	public void clickClientMappingTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientMappingTab));
 		driver.findElement(ClientMappingLocators.CLMClientMappingTab).click();
 		System.out.println("The user is able to click on Client Lookup Tab");
@@ -109,19 +109,15 @@ public class ClientMappingTab {
 	}
 
 	// Enter the Field Value in Client Lookup Category
-	public void enterCLMCategoryFieldValue(String payableEl2, String advanceComission, String shopCode, String shopName,
-			String dStype) {
+	public void enterCLMCategoryFieldValue(String clientCode, String shopCode, String mappedCode) {
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMPayableElement2));
-		driver.findElement(ClientMappingLocators.CLMPayableElement2).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMAdvanComission));
-		driver.findElement(ClientMappingLocators.CLMAdvanComission).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientCode));
+		driver.findElement(ClientMappingLocators.CLMClientCode).sendKeys(clientCode);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
-		driver.findElement(ClientMappingLocators.CLMShopCode).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopName));
-		driver.findElement(ClientMappingLocators.CLMShopName).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMDataSourceType));
-		driver.findElement(ClientMappingLocators.CLMDataSourceType).click();
+		driver.findElement(ClientMappingLocators.CLMShopCode).sendKeys(shopCode);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMMappedCode));
+		driver.findElement(ClientMappingLocators.CLMMappedCode).sendKeys(mappedCode);
+		
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -149,15 +145,15 @@ public class ClientMappingTab {
 	}
 
 	// Click on Source Table Dropdown and Blank Selection
-	public void clickCLMPayableElement2blankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMPayableElement2));
-		driver.findElement(ClientMappingLocators.CLMPayableElement2).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMAdvanComission));
-		driver.findElement(ClientMappingLocators.CLMAdvanComission).click();
+	public void clickCLMClientCodeblankSelection() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientCode));
+		driver.findElement(ClientMappingLocators.CLMClientCode).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
+		driver.findElement(ClientMappingLocators.CLMShopCode).click();
 
-		String actual = driver.findElement(ClientMappingLocators.CLMASourceErrorValidation).getText();
-		Assert.assertEquals("Please Enter Payable Element 2", actual);
-		System.out.println("The user is able to click on Payable Element 2 and validate the error message");
+		String actual = driver.findElement(ClientMappingLocators.CLMClentCodeErrorValidation).getText();
+		Assert.assertEquals("Please Enter Client Code", actual);
+		System.out.println("The user is able to click onClient code and validate the error message");
 	}
 
 	// Click on Reset Button
@@ -170,7 +166,7 @@ public class ClientMappingTab {
 	// Click on Cancel Button
 	public void clickCLMCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisible).getText();
+		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).getText();
 		Assert.assertEquals("Client Look Up Category", actual);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCancelButton));
@@ -196,17 +192,17 @@ public class ClientMappingTab {
 
 	// Verify Client look up Category Text is Visible
 	public void verifyCLMCategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCategoryTextPageVisible));
-		boolean category = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit));
+		boolean category = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
 
-	public void editadvanceComissionValue() {
+	public void editShopCodeValue() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMAdvanComission));
-		driver.findElement(ClientMappingLocators.CLMAdvanComission).clear();
-		driver.findElement(ClientMappingLocators.CLMAdvanComission).sendKeys("0.9");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
+		driver.findElement(ClientMappingLocators.CLMShopCode).clear();
+		driver.findElement(ClientMappingLocators.CLMShopCode).sendKeys("40");
 
 	}
 
@@ -235,17 +231,14 @@ public class ClientMappingTab {
 
 	// Verify All the Fields are Cleared after Reset Button
 	public void verifyAllFieldsClearedforResetButton() {
-		String payableElement2 = driver.findElement(ClientMappingLocators.CLMPayableElement2).getAttribute("value");
-		String advanceCommission = driver.findElement(ClientMappingLocators.CLMAdvanComission).getAttribute("value");
+		String clientCode = driver.findElement(ClientMappingLocators.CLMClientCode).getAttribute("value");
 		String shopCode = driver.findElement(ClientMappingLocators.CLMShopCode).getAttribute("value");
-		String shopName = driver.findElement(ClientMappingLocators.CLMShopName).getAttribute("value");
-		String dataSourceType = driver.findElement(ClientMappingLocators.CLMDataSourceType).getAttribute("value");
+		String mappedCode = driver.findElement(ClientMappingLocators.CLMMappedCode).getAttribute("value");
 
-		Assert.assertEquals("", payableElement2);
-		Assert.assertEquals("", advanceCommission);
+
+		Assert.assertEquals("", clientCode);
 		Assert.assertEquals("", shopCode);
-		Assert.assertEquals("", shopName);
-		Assert.assertEquals("", dataSourceType);
+		Assert.assertEquals("", mappedCode);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 
@@ -253,7 +246,7 @@ public class ClientMappingTab {
 	// Category is Not Visible
 	public void verifyCLMAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 
-		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisible).getText();
+		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).getText();
 		Assert.assertNotEquals("Data Quality Assignment Category", actual);
 		System.out.println(
 				"The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
