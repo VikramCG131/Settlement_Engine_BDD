@@ -82,6 +82,7 @@ public class ClientLookUpTab {
 
 	// Click on Reference Look Up Button
 	public void clickReferenceLookUpButton() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.ReferenceLookUpButton));
 		driver.findElement(LoginPageLocators.ReferenceLookUpButton).click();
 		System.out.println("The user is able to click on Reference Look Up Button");
@@ -114,15 +115,15 @@ public class ClientLookUpTab {
 			String dStype) {
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUPayableElement2));
-		driver.findElement(ClientLookupLocators.CLUPayableElement2).click();
+		driver.findElement(ClientLookupLocators.CLUPayableElement2).sendKeys(payableEl2);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUAdvanComission));
-		driver.findElement(ClientLookupLocators.CLUAdvanComission).click();
+		driver.findElement(ClientLookupLocators.CLUAdvanComission).sendKeys(advanceComission);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUShopCode));
-		driver.findElement(ClientLookupLocators.CLUShopCode).click();
+		driver.findElement(ClientLookupLocators.CLUShopCode).sendKeys(shopCode);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUShopName));
-		driver.findElement(ClientLookupLocators.CLUShopName).click();
+		driver.findElement(ClientLookupLocators.CLUShopName).sendKeys(shopName);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDataSourceType));
-		driver.findElement(ClientLookupLocators.CLUDataSourceType).click();
+		driver.findElement(ClientLookupLocators.CLUDataSourceType).sendKeys(dStype);
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -171,7 +172,7 @@ public class ClientLookUpTab {
 	// Click on Cancel Button
 	public void clickCLUCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String actual = driver.findElement(ClientLookupLocators.CLUCategoryTextPageVisible).getText();
+		String actual = driver.findElement(ClientLookupLocators.CLUCategoryTextVisible).getText();
 		Assert.assertEquals("Client Look Up Category", actual);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUCancelButton));
@@ -315,30 +316,32 @@ public class ClientLookUpTab {
 		String fileName = "example.csv";
 		File downloadedFile = new File(downloadDir, fileName);
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
-		driver.quit();
+		
 	}
 
 	// Click on Upload Button
 	public void clickCLUUploadButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUUploadButton));
-		driver.findElement(ClientLookupLocators.CLUUploadButton).click();
+		WebElement uploadButton = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUUploadButton));
+		driver.findElement(ClientLookupLocators.CLUUploadButton).isDisplayed();
+		Assert.assertTrue(wait.until(ExpectedConditions.elementToBeClickable(uploadButton)) != null);
 		System.out.println("The upload button is visible and is clickable");
+
 	}
-	
+
 	//Verify Selection of file and upload
-	 public void selectFileToUpload() {
-		 WebElement fileInput= wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSelectValidFile));
-	        System.out.println("The user is able to select a valid file to upload");
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
-	        String absolutePath = file.getAbsolutePath();
-	        System.out.println(absolutePath);
-	        // Upload the file by sending the path
-	        fileInput.sendKeys(absolutePath);
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-	        System.out.println("File uploaded successfully!");
-	 }
+	public void selectFileToUpload() {
+		WebElement fileInput = driver.findElement(ClientLookupLocators.CLUSelectValidFile);
+		System.out.println("The user is able to select a valid file to upload");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		String projectPath = System.getProperty("user.dir");
+		File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+		String absolutePath = file.getAbsolutePath();
+		System.out.println(absolutePath);
+		// Upload the file by sending the path
+		fileInput.sendKeys(absolutePath);
+		System.out.println("File uploaded successfully!");
+	}
 	 
 	//Verify Success message of Upload
 	 public void verifyUploadSuccessMessage() {

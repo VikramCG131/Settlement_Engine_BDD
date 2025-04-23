@@ -22,6 +22,7 @@ import Utilities.CommonUtilities;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
 import locators.BrandMappingLocators;
+import locators.ClientLookupLocators;
 import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
@@ -112,9 +113,9 @@ public class BrandMappingTab {
 	// Enter the Field Value in Client Lookup Category
 	public void enterBMCategoryFieldValue(String clintCode, String brandCode) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
-		driver.findElement(BrandMappingLocators.BMBrandCode).click();
+		driver.findElement(BrandMappingLocators.BMClientCode).sendKeys(clintCode);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMBrandCode));
-		driver.findElement(BrandMappingLocators.BMBrandCode).click();
+		driver.findElement(BrandMappingLocators.BMBrandCode).sendKeys(brandCode);
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -143,11 +144,12 @@ public class BrandMappingTab {
 
 	// Click on Source Table Dropdown and Blank Selection
 	public void clickBMClientCodeblankSelection() {
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
 		driver.findElement(BrandMappingLocators.BMClientCode).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMBrandCode));
 		driver.findElement(BrandMappingLocators.BMBrandCode).click();
-
+		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		String actual = driver.findElement(BrandMappingLocators.BMErrorValidation).getText();
 		Assert.assertEquals("Please enter Client Code", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
@@ -163,9 +165,9 @@ public class BrandMappingTab {
 	// Click on Cancel Button
 	public void clickBMCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String actual = driver.findElement(BrandMappingLocators.BMCategoryTextPageVisible).getText();
-		Assert.assertEquals("Client Look Up Category", actual);
-
+		String actual = driver.findElement(BrandMappingLocators.BMCCategoryTextVisible).getText();
+		Assert.assertEquals("Brand Mapping Category", actual);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMCancelButton));
 		driver.findElement(BrandMappingLocators.BMCancelButton).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -175,7 +177,7 @@ public class BrandMappingTab {
 	//Verify the Data Source File Grid is visible and File Information is Not Visible
 		public void verifyBMGridVisibleandFileInformationNotVisible() {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			boolean category = driver.findElement(BrandMappingLocators.BMCategoryTextPageVisible).isDisplayed();
+			boolean category = driver.findElement(BrandMappingLocators.BMCCategoryTextPageVisible).isDisplayed();
 			Assert.assertTrue(category);
 			System.out.println("The user is able to verify the Data Source File Grid is visible and File Information is not visible");
 		}
@@ -194,10 +196,10 @@ public class BrandMappingTab {
 		System.out.println("The user is able to click on Edit Button");
 	}
 
-	// Verify Client look up Category Text is Visible
+	// Verify  Brannd Category Text is Visible
 	public void verifyBMCategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMCategoryTextPageVisible));
-		boolean category = driver.findElement(BrandMappingLocators.BMCategoryTextPageVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMCCategoryTextVisible));
+		boolean category = driver.findElement(BrandMappingLocators.BMCCategoryTextVisible).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
@@ -247,7 +249,7 @@ public class BrandMappingTab {
 	// Category is Not Visible
 	public void verifyBMAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 
-		String actual = driver.findElement(BrandMappingLocators.BMCategoryTextPageVisible).getText();
+		String actual = driver.findElement(BrandMappingLocators.BMCCategoryTextPageVisible).getText();
 		Assert.assertNotEquals("Data Quality Assignment Category", actual);
 		System.out.println(
 				"The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
@@ -308,19 +310,21 @@ public class BrandMappingTab {
 		String fileName = "example.csv";
 		File downloadedFile = new File(downloadDir, fileName);
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
-		driver.quit();
+		
 	}
 
 	// Click on Upload Button
 	public void clickBMUploadButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMUploadButton));
-		driver.findElement(BrandMappingLocators.BMUploadButton).click();
+		WebElement uploadButton = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMUploadButton));
+		driver.findElement(BrandMappingLocators.BMUploadButton).isDisplayed();
+		Assert.assertTrue(wait.until(ExpectedConditions.elementToBeClickable(uploadButton)) != null);
 		System.out.println("The upload button is visible and is clickable");
 	}
-	
+	//BMSelectValidFile
 	//Verify Selection of file and upload
 	 public void selectFileToUpload() {
-		 WebElement fileInput= wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSelectValidFile));
+		 WebElement fileInput= driver.findElement(BrandMappingLocators.BMSelectValidFile);
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");

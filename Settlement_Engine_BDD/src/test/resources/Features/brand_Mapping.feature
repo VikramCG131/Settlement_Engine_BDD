@@ -5,7 +5,7 @@ Feature: Validation of the Brand Mapping Reference LookUp UI Screen
       When the user clicks Settlement Engine_URL
       And the User clicks on Reference LookUp UI Screen
       Then the User is able to navigate to the Settlement_Engine Homepage
-      And User Clicks On Hamburger Button Icon
+      And User Clicks On Hamburger Button Icon Brand
      
 Scenario: Verify reference data form submission with valid data for Brand Mapping
  When the user click on the Brand Mapping

@@ -35,7 +35,13 @@ public class BrandMappingSteps {
 	public void the_user_clicks_on_reference_look_up_ui_screen() {
 		BrandMappingTab.clickReferenceLookUpButton();
 	}
+	
+	@When("User Clicks On Hamburger Button Icon Brand")
+	public void the_user_click_on_the_hamburger_Icon_Brand() {
 
+		BrandMappingTab.clickHamburgerMenuButton();
+	}
+	
 	@Then("the User is able to navigate to the Settlement_Engine Homepage")
 	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() {
 		BrandMappingTab.verifyTitle();
@@ -69,7 +75,7 @@ public class BrandMappingSteps {
 		BrandMappingTab.verifyBMSuccessPopupMessage();
 	}
 
-	@Then("the user click on any field for the Brand Mapping")
+	@Then("the user click on any field for the Brand Mapping and the user should see validation errors for required fields for the Brand Mapping")
 	public void the_user_click_on_any_field_for_the_brand_mapping() {
 		BrandMappingTab.clickBMClientCodeblankSelection();
 	}

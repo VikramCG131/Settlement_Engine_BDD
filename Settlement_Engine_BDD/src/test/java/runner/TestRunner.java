@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/metdata_Data_Quality_Assignment.feature",
+    features = "src/test/resources/Features/brand_Mapping.feature",
     glue = {"steps", "hooks" , "listeners"},
     monochrome = true,
     		plugin = {"pretty","listeners.ExtentReportListener","html:target/cucumber-reports.html" }

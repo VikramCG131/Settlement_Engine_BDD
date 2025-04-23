@@ -9,8 +9,8 @@ public enum DataSourceFileConstants {
 	FILE_PATH_CLEANSED("d://local"),
 	FILE_MAX_SIZE("30"),
 	FILE_TABLE_NAME("MetadataSourceFile"),
-	FILE_DELIMETER(","),
-	COLUMN_IDENTIFIER(",");
+	FILE_DELIMETER("Test1"),
+	COLUMN_IDENTIFIER("Test2");
 	
 	private final String value;
 	DataSourceFileConstants(String value)

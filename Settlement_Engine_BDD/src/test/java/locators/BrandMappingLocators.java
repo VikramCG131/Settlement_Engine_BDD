@@ -6,7 +6,7 @@ public class BrandMappingLocators {
 /******Brand Mapping Page******/
 	
 	public static final By BMBrandMapingTab = By.xpath("//span[contains(text(),'Brand Mapping')]");
-	public static final By BMAddNewButton = By.xpath("//*[text()='Add New']");
+	public static final By BMAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By BMSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
 	public static final By BMUpdatePopupMessage = By.xpath("//*[contains(text(),'Record has been updated successfully..!')]");
 	public static final By BMDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
@@ -31,7 +31,8 @@ public class BrandMappingLocators {
 	public static final By BMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By BMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By BMUpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By BMCategoryTextPageVisible = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
+	public static final By BMCCategoryTextVisible = By.xpath("//h6[contains(text(),'Brand Mapping Category')]");
+	public static final By BMCCategoryTextPageVisible = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
 	public static final By BMConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By BMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	

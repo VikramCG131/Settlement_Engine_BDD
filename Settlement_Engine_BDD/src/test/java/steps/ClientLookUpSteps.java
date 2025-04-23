@@ -35,7 +35,7 @@ public class ClientLookUpSteps {
 		ClientLookUpTab.verifyTitle();
 	}
 
-	@Then("And the User clicks on Reference LookUp UI screen")
+	@Then("the User clicks on Reference LookUp UI screen")
 	public void the_User_clicks_on_Reference_LookUp_UI_screen() {
 		ClientLookUpTab.clickReferenceLookUpButton();
 	}
@@ -73,7 +73,7 @@ public class ClientLookUpSteps {
 		ClientLookUpTab.verifyCLUSuccessPopupMessage();
 	}
 
-	@When("the user click on any field for the Client LookUp")
+	@When("the user click on any field for the Client LookUp and the user should see validation errors for required fields for the Client LookUp")
 	public void the_user_click_on_any_field_for_the_client_look_up() {
 		ClientLookUpTab.clickCLUPayableElement2blankSelection();
 	}
