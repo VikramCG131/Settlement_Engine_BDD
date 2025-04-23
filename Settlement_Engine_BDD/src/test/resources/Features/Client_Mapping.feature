@@ -5,7 +5,8 @@ Feature: Validation of the Client Mapping Reference LookUp UI Screen
       When the user clicks Settlement Engine URL for the Client Mapping
       And the User clicks on Reference LookUp UI screen for the Client Mapping
       Then the User is able to navigate to the Settlement Engine Homepage for the Client Mapping
-      And User Clicks on Hamburger Button Icon for the Client Mapping  
+      And User Clicks on Hamburger Button Icon for the Client Mapping 
+       
 Scenario: Verify reference data form submission with valid data for Client Mapping
 When the user click on the Client Mapping
 And the user clicks the Add button from the Client Mapping page
@@ -17,6 +18,7 @@ Scenario: Verify validation errors when mandatory fields are missing for the Cli
 When the user click on the Client Mapping
 And the user clicks the Add button from the Client Mapping page
 Then the user click on any field for the Client Mapping and the user should see validation errors for required fields for the Client Mapping
+
 Scenario: Verify that clicking "Reset" fields clears the fields for the Client Mapping
   When the user click on the Client Mapping
 And the user clicks the Add button from the Client Mapping page

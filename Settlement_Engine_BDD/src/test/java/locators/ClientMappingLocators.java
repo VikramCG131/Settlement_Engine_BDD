@@ -25,14 +25,15 @@ public class ClientMappingLocators {
 	
 	public static final By CLMClientCode = By.xpath("//input[@formcontrolname='clientCode']");
 	public static final By CLMShopCode = By.xpath("//input[@formcontrolname='shopCode']");
-	public static final By CLMMappedCode= By.xpath("//input[@formcontrolname='mappedCode'");
+	public static final By CLMMappedCode= By.xpath("//input[@formcontrolname='mappedCode']");
 	public static final By CLMSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By CLMClentCodeErrorValidation = By.xpath("//span[contains(text(),'Please Enter Client Code')]");
 	public static final By CLMPageGridValidation = By.xpath("//span[contains(text(),'Client Mapping Grid')]");
 	public static final By CLMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By CLMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By CLMUpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By CLMCategoryTextPageVisibleClickingonEdit = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
+	public static final By CLMCategoryTextVisible = By.xpath("//h6[contains(text(),'Client Mapping Category')]");
+	public static final By CLMCategoryTextPageVisible = By.xpath("//span[contains(text(),'Client Mapping Grid')]");
 	public static final By CLMConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By CLMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	

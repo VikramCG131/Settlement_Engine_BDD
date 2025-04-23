@@ -2,8 +2,8 @@ package constants;
  
 public enum ClientMappingConstants {
 	CLIENT_CODE("500"),
-	SHOP_CODE("Test"),
-	MAPPED_CODE("SHOP");
+	SHOP_CODE("12"),
+	MAPPED_CODE("123");
 	private final String value;
 	ClientMappingConstants(String value)
 	{

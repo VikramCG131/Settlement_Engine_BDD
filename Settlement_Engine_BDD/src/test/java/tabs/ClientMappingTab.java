@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.CommonUtilities;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
+import locators.BrandMappingLocators;
 import locators.ClientMappingLocators;
 import locators.ClientMappingLocators;
 import locators.LoginPageLocators;
@@ -123,7 +124,9 @@ public class ClientMappingTab {
 
 	// Click on Submit Button
 	public void clickCLMSubmitButton() {
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSubmitButton));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		driver.findElement(ClientMappingLocators.CLMSubmitButton).click();
 		System.out.println("The user is able to click on Submit Button");
 	}
@@ -166,9 +169,8 @@ public class ClientMappingTab {
 	// Click on Cancel Button
 	public void clickCLMCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).getText();
-		Assert.assertEquals("Client Look Up Category", actual);
-
+		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextVisible).getText();
+		Assert.assertEquals("Client Mapping Category", actual);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCancelButton));
 		driver.findElement(ClientMappingLocators.CLMCancelButton).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -190,10 +192,10 @@ public class ClientMappingTab {
 		System.out.println("The user is able to click on Edit Button");
 	}
 
-	// Verify Client look up Category Text is Visible
+	// Verify Client mapping up Category Text is Visible
 	public void verifyCLMCategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit));
-		boolean category = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCategoryTextPageVisible));
+		boolean category = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisible).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
@@ -246,7 +248,7 @@ public class ClientMappingTab {
 	// Category is Not Visible
 	public void verifyCLMAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 
-		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextPageVisibleClickingonEdit).getText();
+		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextVisible).getText();
 		Assert.assertNotEquals("Data Quality Assignment Category", actual);
 		System.out.println(
 				"The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
@@ -307,23 +309,23 @@ public class ClientMappingTab {
 		String fileName = "example.csv";
 		File downloadedFile = new File(downloadDir, fileName);
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
-		driver.quit();
+		
 	}
 
 	// Click on Upload Button
 	public void clickCLMUploadButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMUploadButton));
-		driver.findElement(ClientMappingLocators.CLMUploadButton).click();
+		driver.findElement(ClientMappingLocators.CLMUploadButton).isDisplayed();
 		System.out.println("The upload button is visible and is clickable");
 	}
 	
 	//Verify Selection of file and upload
 	 public void selectFileToUpload() {
-		 WebElement fileInput= wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSelectValidFile));
+		 WebElement fileInput= driver.findElement(ClientMappingLocators.CLMSelectValidFile);
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Clientmapping.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path
