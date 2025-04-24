@@ -20,8 +20,8 @@ Scenario: Verify validation errors when mandatory fields are missing for the Ema
   	And the user click on any field for the Email Alert and the user should see validation errors for required fields for the Email Alert
 
 Scenario: Verify that clicking "Reset" fields clears the fields for the Email Alert
-   When the user click on Email Alert
-    And the user clicks the Add New button for the Email Alert
+  When the user click on Email Alert
+   And the user clicks the Add New button for the Email Alert
    And the user enters the data in required fields for the Email Alert
     And the user click on Reset button for the Email Alert
  	Then all the fields should be cleared for the Email Alert
@@ -37,7 +37,7 @@ Scenario: Verify the edit icon functionality for the Data Quality Rule
    And The User click the edit icon for the any file for the Email Alert
    Then The User should see the edit modal open file for the Email Alert
    And the user update the any field for the Email Alert
-  And the user should see click on the Update Button for the Email Alert
+ And the user should see click on the Update Button for the Email Alert
   And the user should see the updated "test_file" in the file list for the Email Alert
 
 Scenario: Verify delete confirmation pop-up appears
@@ -50,4 +50,4 @@ Scenario: Confirm deletion of a file
     And The User click the delete icon for the any file for the Email Alert
     And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Email Alert
     And The User confirm the deletion for the Email Alert
-    Then the file should be removed from the table for the Email Alert
+   Then the file should be removed from the table for the Email Alert

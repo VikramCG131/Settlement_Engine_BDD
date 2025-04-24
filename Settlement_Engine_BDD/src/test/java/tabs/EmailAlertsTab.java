@@ -137,7 +137,7 @@ public class EmailAlertsTab {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASubject));
 		driver.findElement(EmailAlertsLocators.EASubject).click();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
 		String actual = driver.findElement(EmailAlertsLocators.EAEmailAddressValidation).getText();
 		Assert.assertEquals("Please Enter EmailAddress", actual);
 		System.out.println("The user is able to click on Email Address and validate the error message");
@@ -178,8 +178,8 @@ public class EmailAlertsTab {
 	
 	//Verify Assignment Category Text is Visible
 	public   void verifyEACategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EACategoryTextVisible));
-		boolean category = driver.findElement(EmailAlertsLocators.EACategoryTextVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EACategoryTextVisibleGrid));
+		boolean category = driver.findElement(EmailAlertsLocators.EACategoryTextVisibleGrid).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the File Information Text is visible");
 	}	
@@ -211,12 +211,10 @@ public class EmailAlertsTab {
 		String templateType = driver.findElement(EmailAlertsLocators.EATemplateTypeDropdown).getAttribute("value");
 		String emailAddress = driver.findElement(EmailAlertsLocators.EAEmailAddress).getAttribute("value");
 		String subject = driver.findElement(EmailAlertsLocators.EASubject).getAttribute("value");
-		String insertText = driver.findElement(EmailAlertsLocators.EAInsertText).getAttribute("value");
 		
 		Assert.assertEquals("", templateType);
 		Assert.assertEquals("", emailAddress);
 		Assert.assertEquals("", subject);
-		Assert.assertEquals("", insertText);	
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 	

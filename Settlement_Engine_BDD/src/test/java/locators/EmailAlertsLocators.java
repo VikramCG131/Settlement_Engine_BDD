@@ -27,7 +27,7 @@ public class EmailAlertsLocators {
 	public static final By EAUpdateButton = By.xpath("//button[contains(text(),'Update')]");
 	public static final By EACategoryTextVisible = By.xpath("//h6[contains(text(),'Compose Email')]");
 	public static final By EAEmailAddressValidation = By.xpath("//span[contains(text(),'Please Enter EmailAddress')]");
-	public static final By EACategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Data Source File Grid')]");
+	public static final By EACategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Email Template Grid')]");
 	
 	/******Data Source File Grid******/
 	public static final By EAGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
