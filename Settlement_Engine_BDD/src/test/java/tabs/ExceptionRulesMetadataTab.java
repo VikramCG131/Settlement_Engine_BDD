@@ -108,41 +108,48 @@ public class ExceptionRulesMetadataTab {
 
 	// Enter the Field Value in Client Lookup Category
 	public void enterEXRCategoryFieldValue(String ruleType, String severity, String exceptionOwners, String inputSource, String inputattributes, String refrenceFile, String refattributes) {
+		//Rule type drop down
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRRuleTypeDropDown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select ruletypedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRRuleTypeDropDown));
-		ruletypedropdown.selectByVisibleText(ruleType);
+		ruletypedropdown.selectByVisibleText("Lookup");
 		System.out.println("Selected Rule Type: Lookup");
+		//Servirity drop down
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRSeverityDropDown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select severitydropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRSeverityDropDown));
 		severitydropdown.selectByVisibleText(severity);
 		System.out.println("Selected Severity: Medium");
+		//Exception Owners
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRExceptionOwners));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).sendKeys(exceptionOwners);
+		//Input Source drop down
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceDropdown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select inputsourcedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRInputSourceDropdown));
-		inputsourcedropdown.selectByVisibleText(inputSource);
-		System.out.println("Selected Input Source: tallyman_raw");	
+		inputsourcedropdown.selectByVisibleText("tallyman_raw");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceTextClick)).click();
+		System.out.println("Selected Input Source: tallyman_raw");
+		//Input Source Attribute drop down
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownClick)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		Select inputattributedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownSelect));
-		inputattributedropdown.selectByVisibleText(inputattributes);
+		List<WebElement> options = driver.findElements(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownSelect);
+		Random random = new Random();
+		int randomIndex = random.nextInt(options.size());
+		options.get(randomIndex).click();
 		System.out.println("Selected Input Attributes: ");	
+		//Click on Add 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRAddLookUpButton));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRAddLookUpButton).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		//select the reference file drop down
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		WebElement reffile = driver.findElement(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown);
-		inputsourcedropdown.selectByVisibleText(refrenceFile);
-		Select reffiledropdown = new Select(reffile);
-		List<WebElement> options1 = reffiledropdown.getOptions();
-		int randomindex = new Random().nextInt(options1.size());
-		reffiledropdown.selectByIndex(randomindex);
+		WebElement referencefiledropdown = driver.findElement(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown);
+		Select dropdownreffile = new Select(referencefiledropdown);
+		List<WebElement> options1 = dropdownreffile.getOptions();
+		int randomindexreffiledrop = new Random().nextInt(options1.size());
+		dropdownreffile.selectByIndex(randomindexreffiledrop);
 		System.out.println("Selected Reference File: ");	
 		//click on the reference file for select attribute
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownClick)).click();

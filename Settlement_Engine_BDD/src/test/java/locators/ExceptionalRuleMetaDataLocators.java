@@ -10,10 +10,11 @@ public class ExceptionalRuleMetaDataLocators {
 	/******Lookup Explorer ******/
 	
 	public static final By EXRInputSourceDropdown = By.xpath("//select[@formcontrolname='lookupSource1']");
+	public static final By EXRInputSourceTextClick = By.xpath("//label[contains(text(),'Input Source ')]");
 	public static final By EXRInputSourceAttributeDropdownClick = By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[1]/div[2]/ng-multiselect-dropdown/div");
 	public static final By EXRInputSourceAttributeDropdownSelect = By.xpath("//div[@class='dropdown-list']//ul[@class='item2']/li");
 	public static final By EXRAddLookUpButton = By.xpath("//button[@class='btn btn_color text-white']");
-	public static final By EXRReferencefiledropdown = By.xpath("//select[@formcontrolname='referenceSource1']");
+	public static final By EXRReferencefiledropdown = By.xpath("//select[@class='form-select custom-select ng-pristine ng-valid ng-touched']");
 	public static final By EXRReferencefileAttributedropdownClick = By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[1]/span");
 	public static final By EXRReferencefileAttributedropdownSelect = By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[2]/ul[2]");
 	public static final By EXRSubmitButton = By.xpath("(//button[@type='submit'])[1]");

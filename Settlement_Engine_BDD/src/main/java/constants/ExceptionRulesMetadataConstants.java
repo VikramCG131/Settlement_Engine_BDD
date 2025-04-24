@@ -1,7 +1,7 @@
 package constants;
 
 public enum ExceptionRulesMetadataConstants {
-	RULE_TYPE("tallyman_raw"),
+	RULE_TYPE("Lookup"),
 	SEVERITY("Medium"),
 	EXCEPTION_OWNERS("Test"),
 	INPUT_SOURCE("tallyman_raw"),

@@ -39,6 +39,6 @@ public class CommonUtilities {
 		public static String getRandomInteger()
 		{
 		int random = (int) (Math.floor(Math.random() * 1000) + 1);
-		return "Test"+random;
+		return ""+random;
 		}
 	}

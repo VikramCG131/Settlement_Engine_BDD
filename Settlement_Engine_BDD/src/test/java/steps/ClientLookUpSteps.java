@@ -59,7 +59,7 @@ public class ClientLookUpSteps {
 	@When("the user enters the data in required fields for the Client LookUp")
 	public void the_user_enters_the_data_in_required_fields_for_the_client_look_up() {
 		String random = CommonUtilities.getRandomInteger();
-		ClientLookUpTab.enterCLUCategoryFieldValue(ClientLookUpConstants.PAYABLE_ELEMENT_2.getValue(),ClientLookUpConstants.ADVANCE_COMMISSION.getValue(), ClientLookUpConstants.SHOP_CODE.getValue(),ClientLookUpConstants.SHOPE_NAME.getValue()+random,ClientLookUpConstants.DATA_SOURCE_TYPE.getValue()+random);
+		ClientLookUpTab.enterCLUCategoryFieldValue(ClientLookUpConstants.PAYABLE_ELEMENT_2.getValue(),ClientLookUpConstants.ADVANCE_COMMISSION.getValue(), ClientLookUpConstants.SHOP_CODE.getValue()+random,ClientLookUpConstants.SHOPE_NAME.getValue()+random,ClientLookUpConstants.DATA_SOURCE_TYPE.getValue()+random);
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 		
