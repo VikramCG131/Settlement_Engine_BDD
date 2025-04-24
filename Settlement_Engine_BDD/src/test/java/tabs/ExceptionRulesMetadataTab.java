@@ -136,15 +136,16 @@ public class ExceptionRulesMetadataTab {
 		List<WebElement> options = driver.findElements(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownSelect);
 		Random random = new Random();
 		int randomIndex = random.nextInt(options.size());
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		options.get(randomIndex).click();
 		System.out.println("Selected Input Attributes: ");	
 		//Click on Add 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRAddLookUpButton));
-		driver.findElement(ExceptionalRuleMetaDataLocators.EXRAddLookUpButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRAddLookUpButton)).click();
 		//select the reference file drop down
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.findElement(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown).click();
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		WebElement referencefiledropdown = driver.findElement(ExceptionalRuleMetaDataLocators.EXRReferencefiledropdown);
 		Select dropdownreffile = new Select(referencefiledropdown);
 		List<WebElement> options1 = dropdownreffile.getOptions();
@@ -154,10 +155,13 @@ public class ExceptionRulesMetadataTab {
 		//click on the reference file for select attribute
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownClick)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		Select refattributedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownSelect));
-		refattributedropdown.selectByVisibleText(refattributes);
-		System.out.println("Selected Reference Attributes: ");	
-		
+		List<WebElement> options2att = driver.findElements(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownSelect);
+		Random randomattributeforfie = new Random();
+		int randomIndexfileatt = randomattributeforfie.nextInt(options2att.size());
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		options2att.get(randomIndexfileatt).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceTextClick)).click();
+		System.out.println("Selected Reference File Attributes: ");
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -172,7 +176,7 @@ public class ExceptionRulesMetadataTab {
 	public void verifyEXRSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRSuccessPopupMessage));
 		String successMessage = driver.findElement(ExceptionalRuleMetaDataLocators.EXRSuccessPopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been added successfully..!");
+		Assert.assertEquals(successMessage, "Record has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
 	}
 
@@ -180,7 +184,7 @@ public class ExceptionRulesMetadataTab {
 	public void verifyEXRUpdatePopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRUpdatePopUuMessage));
 		String successMessage = driver.findElement(ExceptionalRuleMetaDataLocators.EXRUpdatePopUuMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been updated successfully..!");
+		Assert.assertEquals(successMessage, "Record has been updated successfully");
 		System.out.println("The user is able to verify the Update Popup Message");
 	}
 
@@ -190,14 +194,14 @@ public class ExceptionRulesMetadataTab {
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRRuleTypeDropDown).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRSeverityDropDown));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRSeverityDropDown).click();
-
 		String actual = driver.findElement(ExceptionalRuleMetaDataLocators.EXRValidationErrorRuleType).getText();
-		Assert.assertEquals("Please Enter Client Code", actual);
+		Assert.assertEquals("Please Select Rule Type", actual);
 		System.out.println("The user is able to click on Rule Type and validate the error message");
 	}
 
 	// Click on Reset Button
 	public void clickEXRResetButton() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRResetButton));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
@@ -206,9 +210,9 @@ public class ExceptionRulesMetadataTab {
 	// Click on Cancel Button
 	public void clickEXRCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		String actual = driver.findElement(ExceptionalRuleMetaDataLocators.EXRGridVisible).getText();
-		Assert.assertEquals("Client Look Up Category", actual);
-
+		String actual = driver.findElement(ExceptionalRuleMetaDataLocators.EXRClickExceptionCotegeryPage).getText();
+		Assert.assertEquals("Exception Category", actual);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRCancelButton));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRCancelButton).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -232,8 +236,8 @@ public class ExceptionRulesMetadataTab {
 
 	// Verify Client look up Category Text is Visible
 	public void verifyEXRCategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRGridVisible));
-		boolean category = driver.findElement(ExceptionalRuleMetaDataLocators.EXRGridVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRCotegeryVisible));
+		boolean category = driver.findElement(ExceptionalRuleMetaDataLocators.EXRCotegeryVisible).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
@@ -284,8 +288,7 @@ public class ExceptionRulesMetadataTab {
 	// Verify the Data Quality Assignment Grid is Visible and Data Assignment
 	// Category is Not Visible
 	public void verifyEXRAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
-
-		String actual = driver.findElement(ExceptionalRuleMetaDataLocators.EXRGridVisible).getText();
+		String actual = driver.findElement(ExceptionalRuleMetaDataLocators.EXRCotegeryVisible).getText();
 		Assert.assertNotEquals("Data Quality Assignment Category", actual);
 		System.out.println(
 				"The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
@@ -321,7 +324,7 @@ public class ExceptionRulesMetadataTab {
 
 // 	//Verify the Data Quality Assignment Grid is Visible and Data Assignment Category is Not Visible
 	public void verifyEXRFileRemoval() {
-		boolean grid = driver.findElement(ExceptionalRuleMetaDataLocators.EXRGridVisible).isDisplayed();
+		boolean grid = driver.findElement(ExceptionalRuleMetaDataLocators.EXRCotegeryVisible).isDisplayed();
 		Assert.assertTrue(grid);
 	}
 
