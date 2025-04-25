@@ -19,17 +19,17 @@ Then the user should see "test_file" in the file list for the file
    And the user clicks the Add New button from the Data Source File page
   And the user click on any field for the Data source file and validate the mandatory required field message
    
-  Scenario: Verify that clicking "Reset" fields clears the fields for the file
+ Scenario: Verify that clicking "Reset" fields clears the fields for the file
    When the user click on Data Source File
   And the user clicks the Add New button from the Data Source File page
     And the user enters the data in required fields for the Data Source File
    And the user click on Reset button for the file
-  Then all the fields should be cleared for the file
+ Then all the fields should be cleared for the file
 
  Scenario: Verify that clicking "Cancel" does not save data for the file
- When the user click on Data Source File
+When the user click on Data Source File
   And the user clicks the Add New button from the Data Source File page
-   And the user click on Cancel button for the file
+  And the user click on Cancel button for the file
   Then Add New Pop up should be closed for the file
     
   Scenario: Verify the edit icon functionality for the Data Source file
@@ -43,7 +43,7 @@ Then the user should see "test_file" in the file list for the file
     
  Scenario: Verify delete confirmation pop-up appears for the file
  When the user click on Data Source File
-   And The User click the delete icon for the any Data Source file
+  And The User click the delete icon for the any Data Source file
   Then The User should see a confirmation pop-up with title "Confirmation deletion" for the file
  And The User should see "Are you sure you want to delete" message for the file
     

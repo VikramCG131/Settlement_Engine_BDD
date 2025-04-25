@@ -12,6 +12,7 @@ public enum DataSourceFileConstants {
 	FILE_DELIMETER("Test1"),
 	COLUMN_IDENTIFIER("Test2");
 	
+	
 	private final String value;
 	DataSourceFileConstants(String value)
 	{

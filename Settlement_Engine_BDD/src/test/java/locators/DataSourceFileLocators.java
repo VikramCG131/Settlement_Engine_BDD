@@ -25,6 +25,7 @@ public class DataSourceFileLocators {
 	public static final By DSFTableName= By.xpath("//input[@formcontrolname='stagingTableName']");
 	public static final By DSFFileDelimiter = By.xpath("//input[@formcontrolname='fileDelimiter']");
 	public static final By DSFHeaderPresentYes = By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']");
+	public static final By DSFIsReferenceyes = By.xpath("//input[@id='isRefYes']");
 	public static final By DSFColumnIdentifier = By.xpath("//input[@formcontrolname='columnIdentifier']");
 	public static final By DSFFilePatternValidation = By.xpath("//*[text()='Please Enter File Pattern']");
 	public static final By DSFSubmitButton = By.xpath("//button[contains(text(),'Submit')]");

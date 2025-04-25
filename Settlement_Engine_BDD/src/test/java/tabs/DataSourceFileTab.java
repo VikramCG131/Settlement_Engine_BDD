@@ -118,7 +118,10 @@ public class DataSourceFileTab {
 		driver.findElement(DataSourceFileLocators.DSFHeaderPresentYes).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFColumnIdentifier));
 		driver.findElement(DataSourceFileLocators.DSFColumnIdentifier).sendKeys(columnIdentifier);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFIsReferenceyes));
+		driver.findElement(DataSourceFileLocators.DSFIsReferenceyes).click();
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
+		
 	}
 	
 	//Click on Submit Button
@@ -148,6 +151,7 @@ public class DataSourceFileTab {
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickDSFFilePatternblankSelection() {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePattern));
 		driver.findElement(DataSourceFileLocators.DSFFilePattern).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
