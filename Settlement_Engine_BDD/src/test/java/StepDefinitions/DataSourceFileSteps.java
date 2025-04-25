@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import Utilities.CommonUtilities;
 import io.cucumber.java.en.Given;
@@ -24,7 +26,11 @@ public class DataSourceFileSteps {
 	public void the_settlement_engine_url() {
 		driver = WebDriverManager.chromedriver().create(); //user can use multiple browser drivers  
 		driver.manage().window().maximize(); //maximize the window
-		driver.get("http://localhost:4200"); //local host URL
+		 driver.get("http://localhost:4200");
+	        WebElement smartcard = driver.findElement(By.id("smart-card"));
+			smartcard.sendKeys("12345");
+			WebElement loginbutton = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
+			loginbutton.click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10)); //wait for 10 seconds	
 	}
 
@@ -107,14 +113,17 @@ public class DataSourceFileSteps {
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathRaw']")).sendKeys("C://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathCleansed']")).sendKeys("D://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).sendKeys("10");
-		driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("MetadataSourceFile");
+		//List<String>datalist=Arrays.asList("raw","cleansed","staging");
+		//Random randomGenerator = new Random();
+		//String datatosend=datalist.get(randomGenerator.nextInt(datalist.size()));
+		driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("qwert");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).sendKeys(",");
 		driver.findElement(By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']")).click();
 		driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).sendKeys(",");
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
-	@When("the user should see click on the Submit Button for email Template")
+	@When("the user should see click on the Submit Button for the file")
 	public void the_user_should_click_on_the_Submit_Button_for_rmail_Template() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 		System.out.println("The user is able to click on the Submit Button");

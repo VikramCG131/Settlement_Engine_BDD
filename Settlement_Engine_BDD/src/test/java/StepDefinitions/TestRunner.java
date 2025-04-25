@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = 
-    		"src/test/resources/Features/metadata/b_metadata_Column.feature" //the path of the feature files
+    		"src/test/resources/Features" //the path of the feature files
     , //the path of the feature files			  
     		
     glue = "StepDefinitions",

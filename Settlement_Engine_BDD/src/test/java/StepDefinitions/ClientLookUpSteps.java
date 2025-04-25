@@ -20,8 +20,8 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ClientLookUpSteps {
-	 WebDriver driver;
-	
+	 static WebDriver driver;
+	 static int random = (int) (Math.floor(Math.random() * 100000) + 1);
 	    CommonUtilities commonUtilities = new CommonUtilities();
 	    WebDriverWait wait;
 	    private final String fileName = "example.csv"; 
@@ -109,7 +109,7 @@ public class ClientLookUpSteps {
             String fieldText = fieldElement.getText();
             System.out.println("Field: " + fieldText);
         }
-        int random = (int) (Math.floor(Math.random() * 100000) + 1);
+       
         driver.findElement(By.xpath("//input[@formcontrolname='payableEl2']")).sendKeys("500" + random);
         driver.findElement(By.xpath("//input[@formcontrolname='advanceComission']")).sendKeys("0.5");
         driver.findElement(By.xpath("//input[@formcontrolname='shopCode']")).sendKeys("Shop" + random);
@@ -120,16 +120,28 @@ public class ClientLookUpSteps {
     @When("the user should see click on the Submit Button for the Client LookUp")
     public void the_user_should_see_click_on_the_submit_button_for_the_client_mapping() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+        
         System.out.println("The user is able to click on the Submit Button");
         Thread.sleep(2000);
         commonUtilities.screenshot();
-    }
+    }    
+    
 
     @Then("the user should see {string} in the file list for the Client LookUp")
     public void the_user_should_see_in_the_file_list_for_the_client_mapping(String string) throws InterruptedException {
         String actual = driver.findElement(By.xpath("//*[text()=' Record has been added successfully..! ']")).getText();
         Assert.assertEquals("Record has been added successfully..!", actual);
+        driver.findElement(By.xpath("//button[contains(text(),'Ok')]")).click();
         System.out.println("The user is able to insert the data in the all fields");
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+       
+       
+       //searching the data avilable or not after creating
+      // driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).click();
+      // driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).sendKeys("Shop" + random);
+       //serching the status column same data
+      // driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).click();
+      // driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).sendKeys("Not Approved");
         Thread.sleep(2000);
         commonUtilities.screenshot();
         driver.quit();

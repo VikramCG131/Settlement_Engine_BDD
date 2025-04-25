@@ -31,6 +31,10 @@ public class ExceptionRuleMetaData {
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
 		driver.get("http://localhost:4200");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); //wait for 10 seconds
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("smart-card"))).sendKeys("12345");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Continue')]"))).click();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
@@ -94,7 +98,7 @@ public class ExceptionRuleMetaData {
 	@When("the user clicks the Add New button for the Exception Rule Meta Data")
 	public void the_user_clicks_the_add_new_button_for_the_dq_assignment() {
 		WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add')]"));
-		wait.until(ExpectedConditions.visibilityOf(button)).click();
+		button.click();
 		System.out.println("The user is able to click on Add New Button");
 		commonUtilities.screenshot();
 	}
@@ -113,6 +117,7 @@ public class ExceptionRuleMetaData {
 		WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
 		Select dropdown1 = new Select(dropdownElement1);
 		dropdown1.selectByIndex(2);
+		
 		System.out.println("Selected Source Attribute: Select Severity");
 		Thread.sleep(1000);
 		WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
