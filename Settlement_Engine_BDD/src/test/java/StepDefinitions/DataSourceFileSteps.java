@@ -7,9 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import Utilities.CommonUtilities;
 import io.cucumber.java.en.Given;
@@ -113,16 +116,51 @@ public class DataSourceFileSteps {
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathRaw']")).sendKeys("C://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathCleansed']")).sendKeys("D://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).sendKeys("10");
-		//List<String>datalist=Arrays.asList("raw","cleansed","staging");
-		//Random randomGenerator = new Random();
-		//String datatosend=datalist.get(randomGenerator.nextInt(datalist.size()));
+		
+		//tableNameField();
 		driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("qwert");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).sendKeys(",");
 		driver.findElement(By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']")).click();
 		driver.findElement(By.xpath("//input[@formcontrolname='columnIdentifier']")).sendKeys(",");
+		driver.findElement(By.xpath("//input[@id='isRefYes']")).click();
 		System.out.println("The user is able to insert the data in the all fields");
 	}
-
+ /*
+  //filling the table name as given name
+	public void tableNameField()
+	{
+		 // Step 1: List of data options
+       List<String> dataList = Arrays.asList("el3_map_lkp", "exception_metadata", "tallyman_raw", "el3_mapping",
+			   "file_header_metadata", "file_processing", "pricing_lkp", "file_metadata", "dq_rule_metadata",
+			   "alert_metadata", "pricing_info", "exception_management", "dq_rule_validation_metadata", "brand_mapping",
+			   "pricing_raw_delta", "batch_metadata", "file_column_metadata", "pricing_lkp_new", "customer_dim",
+			   "client_map_lkp", "brand_map_lkp", "client_lkp");
+       // Step 2: Locate divs that act like table cells
+       
+       List<WebElement> cellElements = driver.findElements(By.xpath("//div[@col-id='stagingTableName']"));
+       Set<String> existingData = new HashSet<>();
+       for (WebElement cell : cellElements) {
+           existingData.add(cell.getText().trim());
+       }
+       // Step 3: Filter out data already in the table
+       List<String> availableData = new ArrayList<>();
+       for (String data : dataList) {
+           if (!existingData.contains(data)) {
+               availableData.add(data);
+           }
+       }
+       // Step 4: Send random unused data (if available)
+       if (!availableData.isEmpty()) {
+           Random rand = new Random();
+           String dataToSend = availableData.get(rand.nextInt(availableData.size()));
+           WebElement inputField = driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']"));
+           inputField.sendKeys(dataToSend);
+       } else {
+           System.out.println("No new data to send. All entries already exist.");
+       }
+	}
+	*/
+	
 	@When("the user should see click on the Submit Button for the file")
 	public void the_user_should_click_on_the_Submit_Button_for_rmail_Template() throws InterruptedException {
 		driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
