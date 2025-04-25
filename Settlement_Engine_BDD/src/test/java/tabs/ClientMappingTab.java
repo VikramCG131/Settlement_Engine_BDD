@@ -147,13 +147,13 @@ public class ClientMappingTab {
 		System.out.println("The user is able to verify the Update Popup Message");
 	}
 
-	// Click on Source Table Dropdown and Blank Selection
+	// Click Client mapping and Blank Selection
 	public void clickCLMClientCodeblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientCode));
 		driver.findElement(ClientMappingLocators.CLMClientCode).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
 		driver.findElement(ClientMappingLocators.CLMShopCode).click();
-
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(ClientMappingLocators.CLMClentCodeErrorValidation).getText();
 		Assert.assertEquals("Please Enter Client Code", actual);
 		System.out.println("The user is able to click onClient code and validate the error message");
