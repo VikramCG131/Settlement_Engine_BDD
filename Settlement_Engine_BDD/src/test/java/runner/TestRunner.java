@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/MetaData/ExceptionRulesMetaData.feature",
+    features = "src/test/resources/Features/ReferenceLookUp/brand_Mapping.feature",
     glue = {"steps", "hooks", "listeners"},
     monochrome = true,
     plugin = {"pretty", "listeners.ExtentReportListener", "html:target/cucumber-reports.html"}

@@ -8,7 +8,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class CommonUtilities {
-	
+	public static int random;
 	 // Method to take screenshot
 		public void  screenshot() {
 	        try {
@@ -38,7 +38,7 @@ public class CommonUtilities {
 		
 		public static String getRandomInteger()
 		{
-		int random = (int) (Math.floor(Math.random() * 1000) + 1);
+		random = (int) (Math.floor(Math.random() * 1000) + 1);
 		return ""+random;
 		}
 	}

@@ -35,10 +35,11 @@ public class ReportUtil {
      // Create Feature
     public static void createFeature(String featureName) {
         featureTest = extent.createTest(MarkupHelper.createLabel(featureName, ExtentColor.PURPLE).getMarkup());
-       /* if (extent == null) {
+        if (extent == null) {
             throw new IllegalStateException("ExtentReports is not initialized. Call initializeReport() first.");
         }
-        extent.createTest(featureName);*/
+        extent.createTest(featureName);
+        
     }
  
     // Create Scenario as a Child Step
