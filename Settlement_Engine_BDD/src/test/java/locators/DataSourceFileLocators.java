@@ -35,6 +35,7 @@ public class DataSourceFileLocators {
 	public static final By DSFCategoryTextVisible = By.xpath("//h6[contains(text(),'File Information')]");
 	public static final By DSFCategoryTextVisibleError = By.xpath("//span[contains(text(),'Please Enter File Pattern')]");
 	public static final By DSFCategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Data Source File Grid')]");
+	public static final By DSFTableCoulmnTableName = By.xpath("//div[@col-id='stagingTableName']");
 	//
 	
 	/******Data Source File Grid******/
