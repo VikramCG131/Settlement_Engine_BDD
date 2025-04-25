@@ -96,7 +96,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public    void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName) {
+	public    void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName,String businessName) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
 		driver.findElement(MetaDataColumnsLocators.MDCName).sendKeys(name);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
@@ -116,10 +116,12 @@ public class MetaDataColumnsTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnDateFormat));
 		driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).sendKeys(columnDateFormat);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown)).click();
 		Select datatypedropdown1 = new Select(driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown));
-		datatypedropdown1.selectByIndex(2);
-
+		datatypedropdown1.selectByIndex(2);		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCBusinessName));
+		driver.findElement(MetaDataColumnsLocators.MDCBusinessName).sendKeys(businessName);
 		System.out.println("The user is able to enter the field value in Columns Information");
 	}
 	

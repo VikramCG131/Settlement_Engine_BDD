@@ -9,7 +9,8 @@ public enum MetadataColumnConstants {
 	MAX_SIZE("30"),
 	ORDER("5"),
 	DATE_FORMAT("04/25/2025"),
-	TABLE_NAME("metadata");
+	TABLE_NAME("metadata"),
+	BUSINESS_NAME("ABC");
 	
 	
 	private final String value;

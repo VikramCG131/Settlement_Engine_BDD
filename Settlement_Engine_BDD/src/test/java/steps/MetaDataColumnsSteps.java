@@ -74,7 +74,7 @@ public class MetaDataColumnsSteps {
 				MetadataColumnConstants.IS_NULL.getValue(), MetadataColumnConstants.MIN_SIZE.getValue(),
 				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.ORDER.getValue(),
 				MetadataColumnConstants.DATE_FORMAT.getValue(),
-				MetadataColumnConstants.TABLE_NAME.getValue());
+				MetadataColumnConstants.TABLE_NAME.getValue(),MetadataColumnConstants.BUSINESS_NAME.getValue()+random);
 		System.out.println("The user is able to enter the data in required fields");
 	}
 

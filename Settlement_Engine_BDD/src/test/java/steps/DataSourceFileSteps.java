@@ -73,7 +73,7 @@ public class DataSourceFileSteps {
 		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue()+ random,
 				DataSourceFileConstants.FILE_TYPE.getValue(), DataSourceFileConstants.FILE_PATTERN.getValue(),
 				DataSourceFileConstants.FILE_PATH_RAW.getValue(), DataSourceFileConstants.FILE_PATH_CLEANSED.getValue(),
-				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue(),
+				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue()+random,
 				DataSourceFileConstants.FILE_DELIMETER.getValue(),
 				DataSourceFileConstants.COLUMN_IDENTIFIER.getValue());
 		

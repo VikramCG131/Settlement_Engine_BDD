@@ -23,6 +23,7 @@ public class MetaDataColumnsLocators {
 	public static final By MDCColumnOrder= By.xpath("//input[@formcontrolname='columnOrder']");
 	public static final By MDCColumnDateFormat = By.xpath("//input[@formcontrolname='columnDateFormat']");
 	public static final By MDCTableNameDropdown =By.xpath("//select[@formcontrolname='fileMetadataId']");	
+	public static final By MDCBusinessName = By.xpath("//input[@formcontrolname='businessName']");
 	public static final By MDCMinSizeValidation = By.xpath("//div[contains(text(),'Min Size Must be a Number')]");
 	public static final By MDCSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By MDCResetButton = By.xpath("//button[contains(text(),'Reset')]");
