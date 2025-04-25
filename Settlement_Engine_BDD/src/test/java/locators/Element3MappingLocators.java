@@ -6,8 +6,9 @@ public class Element3MappingLocators {
 /******Element 3 Mapping Page******/
 	
 	public static final By EL3Element3MappingTab = By.xpath("//span[contains(text(),'Element 3 Mapping')]");
-	public static final By EL3AddNewButton = By.xpath("//*[text()='Add New']");
+	public static final By EL3AddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By EL3SuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
+	public static final By EL3UpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By EL3DeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By EL3DeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By EL3DeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -25,12 +26,13 @@ public class Element3MappingLocators {
 	public static final By EL3ProductCode = By.xpath("//input[@formcontrolname='productCode']");
 	public static final By EL3Element3Code = By.xpath("//input[@formcontrolname='elmcode']");
 	public static final By EL3SubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By EL3SourceErrorValidation = By.xpath("//span[contains(text(),'Please Element 3 Code')]");
+	public static final By EL3CodeErrorValidation = By.xpath("//span[contains(text(),'Please Element 3 Code')]");
 	public static final By EL3ageGridValidation = By.xpath("//span[contains(text(),'Element 3 Mapping Grid ')]");
 	public static final By EL3ResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By EL3CancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By EL3UpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By EL3CategoryTextPageVisible = By.xpath("//span[contains(text(),'Element 3 Mapping Grid ')]");
+	public static final By EL3CategoryTextVisible = By.xpath("//h6[contains(text(),'Element 3 Mapping Category')]");
+	public static final By EL3CategoryTextPageVisible = By.xpath("//span[contains(text(),'Element 3 Mapping Grid')]");
 	public static final By EL3ConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	

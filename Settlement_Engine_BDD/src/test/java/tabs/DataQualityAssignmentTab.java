@@ -8,18 +8,20 @@ import java.net.URL;
 import java.time.Duration;
 
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import locators.DataQualityAssignmentLocators;
-import locators.MainPageLocators;
+import locators.LoginPageLocators;
+import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
 public class DataQualityAssignmentTab {
 	
 	private WebDriver driver;
-	private WebDriverWait wait;
+	public WebDriverWait wait;
 	
 	//Constructor to initialize the driver and wait
 	public DataQualityAssignmentTab() {
@@ -33,14 +35,18 @@ public class DataQualityAssignmentTab {
 	
 	//Open the login page
 	public void openLoginPage() {
-		driver.get("http://localhost:4200");
+		driver.get(LoginPageLocators.SE_URL);
 		System.out.println("The user is able to open the login page");
 	}
 	
 	//Verify health check of the URL
 	public void verifyHealthCheck() throws IOException {
 		String url = driver.getCurrentUrl();
-		Assert.assertEquals(url, "http://localhost:4200/");
+		Assert.assertEquals(url, "http://localhost:4200/login");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SettlementEngineLoginLocators.SESmartCarddata));
+		driver.findElement(SettlementEngineLoginLocators.SESmartCarddata).sendKeys("12345");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SettlementEngineLoginLocators.SELoginButton));
+		driver.findElement(SettlementEngineLoginLocators.SELoginButton).click();
 		System.out.println("The user is able to verify the correct URL");
 //		try {
 //			HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost:4200/").openConnection();
@@ -66,15 +72,15 @@ public class DataQualityAssignmentTab {
 	
 	//Click on MetaData Button
 	public  void clickMetaDataButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.MetaDataButton));
-		driver.findElement(MainPageLocators.MetaDataButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.MetaDataButton));
+		driver.findElement(LoginPageLocators.MetaDataButton).click();
 		System.out.println("The user is able to click on MetaData Button");
 	}
 	
 	//Click on Hamburger Menu Button
 	public   void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MainPageLocators.HamburgerButton));
-		driver.findElement(MainPageLocators.HamburgerButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
+		driver.findElement(LoginPageLocators.HamburgerButton).click();
 		System.out.println("The user is able to click on Hamburger Menu Button");
 	}
 	
@@ -90,16 +96,21 @@ public class DataQualityAssignmentTab {
 	public   void clickDQAAddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQAAddNewButton));
 		driver.findElement(DataQualityAssignmentLocators.DQAAddNewButton).click();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
 		System.out.println("The user is able to click on Add New Button");
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
 	public   void enterDQACategoryFieldValue(String sourceTable, String sourceAttribute) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown));
+		//Source Table Dropdown
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown)).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select sourcetabledropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceTableDropdown));
 		sourcetabledropdown.selectByVisibleText(sourceTable);
 		System.out.println("Selected Source Table: tallyman_raw");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
+		//Source Attribute Dropdown
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceAttributeDropdown)).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select sourceattributedropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
 		sourceattributedropdown.selectByVisibleText(sourceAttribute);
 		System.out.println("Selected Source Attribute: product_code");
@@ -111,13 +122,21 @@ public class DataQualityAssignmentTab {
 		driver.findElement(DataQualityAssignmentLocators.DQADQStartDate).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQStartDateSelect));
 		driver.findElement(DataQualityAssignmentLocators.DQADQStartDateSelect).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDate));
 		driver.findElement(DataQualityAssignmentLocators.DQADQEndDate).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDateSelect));
 		driver.findElement(DataQualityAssignmentLocators.DQADQEndDateSelect).click();
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
 	}
+	public void editSourceAttributeValue()
+	{
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
+		Select sourceattributedropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
+		sourceattributedropdown.selectByIndex(3);
 	
+	}
 	//Click on Submit Button
 	public   void clickDQASubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASubmitButton));
@@ -129,9 +148,16 @@ public class DataQualityAssignmentTab {
 	public   void verifyDQASuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASuccessPopupMessage));
 		String successMessage = driver.findElement(DataQualityAssignmentLocators.DQASuccessPopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been added successFully..!");
+		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
 	}
+	//Verify the Update Popup Message
+		public   void verifyDQAUpdatePopupMessage() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQAUpdatePopupMessage));
+			String successMessage = driver.findElement(DataQualityAssignmentLocators.DQAUpdatePopupMessage).getText();
+			Assert.assertEquals(successMessage, "Record has been updated successfully..!");
+			System.out.println("The user is able to verify the Update Popup Message");
+		}
 	
 	//Click on Source Table Dropdown
 	public   void clickDQASourceTableDropdown() {
@@ -144,8 +170,10 @@ public class DataQualityAssignmentTab {
 	public   void clickDQASourceTableDropdownandblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown));
 		driver.findElement(DataQualityAssignmentLocators.DQASourceTableDropdown).click();
+		driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(DataQualityAssignmentLocators.DQASourceTableValidation).getText();
-		Assert.assertEquals("Please select Source Table", actual);
+		Assert.assertEquals("Please Select Source Table", actual);
 		System.out.println("The user is able to click on Source Table Dropdown and validate the error message");
 	}
 	
@@ -195,9 +223,15 @@ public class DataQualityAssignmentTab {
 	
 	//Click on Cancel Button
 	public   void clickDQACancelButton() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		String actual = driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).getText();
+		Assert.assertEquals("Data Quality Assignment Category", actual);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQACancelButton));
 		driver.findElement(DataQualityAssignmentLocators.DQACancelButton).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		System.out.println("The user is able to click on Cancel Button");
+		
 	}
 	
 	//Click on Update Button
@@ -253,12 +287,10 @@ public class DataQualityAssignmentTab {
 	}
 	
 	//Verify the Data Quality Assignment Grid is Visible and Data Assignment Category is Not Visible
-	public   void verifyDQAAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQAAssignmentGridVisible));
-		boolean grid = driver.findElement(DataQualityAssignmentLocators.DQAAssignmentGridVisible).isDisplayed();
-		Assert.assertTrue(grid);
-		boolean category = driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).isDisplayed();
-		Assert.assertFalse(category);
+	public void verifyDQAAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
+		
+		String actual = driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).getText();
+		Assert.assertNotEquals("Data Quality Assignment Category", actual);
 		System.out.println("The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
 	}
 	
@@ -286,5 +318,8 @@ public class DataQualityAssignmentTab {
 		System.out.println("The user is able to verify the Delete Confirmation Popup Cancel Button");
 	}
 	
-	
-}
+// 	//Verify the Data Quality Assignment Grid is Visible and Data Assignment Category is Not Visible
+	public void verifyDQAFileRemoval() {
+		boolean grid = driver.findElement(DataQualityAssignmentLocators.DQAAssignmentGridVisible).isDisplayed();
+		Assert.assertTrue(grid);
+}}

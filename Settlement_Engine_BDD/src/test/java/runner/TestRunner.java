@@ -1,4 +1,4 @@
-//Extent report 
+// Test Runner for executing Cucumber tests with Extent Report integration
 
 package runner;
 import io.cucumber.junit.Cucumber;
@@ -11,22 +11,22 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/metdata_Data_Quality_Assignment.feature",
-    glue = {"steps", "hooks" , "listeners"},
+    features = "src/test/resources/Features/MetaData/ExceptionRulesMetaData.feature",
+    glue = {"steps", "hooks", "listeners"},
     monochrome = true,
-    		plugin = {"pretty","listeners.ExtentReportListener","html:target/cucumber-reports.html" }
+    plugin = {"pretty", "listeners.ExtentReportListener", "html:target/cucumber-reports.html"}
 )
 public class TestRunner {
 	
 	@BeforeClass
 	public static void setup() {
-		// Initialize the report
+		// Initialize the Extent Report
 		ReportUtil.initReport();
 	}
 	
 	@AfterClass
 	public static void tearDown() {
-		// Flush the report
+		// Flush and finalize the Extent Report
 		ReportUtil.flushReport();
 	}
 }

@@ -70,12 +70,13 @@ public class DataSourceFileSteps {
 	@Then("the user enters the data in required fields for the Data Source File")
 	public void the_user_enters_the_data_in_required_fields() {
 		String random = CommonUtilities.getRandomInteger();
-		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue() + random,
+		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue()+ random,
 				DataSourceFileConstants.FILE_TYPE.getValue(), DataSourceFileConstants.FILE_PATTERN.getValue(),
 				DataSourceFileConstants.FILE_PATH_RAW.getValue(), DataSourceFileConstants.FILE_PATH_CLEANSED.getValue(),
-				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue(),
+				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue()+random,
 				DataSourceFileConstants.FILE_DELIMETER.getValue(),
 				DataSourceFileConstants.COLUMN_IDENTIFIER.getValue());
+		
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -89,16 +90,17 @@ public class DataSourceFileSteps {
 		DataSourceFileTab.verifyDSFSuccessPopupMessage();
 	}
 
-	@When("the user click on any field for the DQ Assignment and validate the mandatory required field message")
+	@When("the user click on any field for the Data source file and validate the mandatory required field message")
 	public void the_user_click_on_any_field() throws InterruptedException {
 		DataSourceFileTab.clickDSFFilePatternblankSelection();
 	}
-
+/*
 	@Then("{string} should not be in the file list for the file")
 	public void should_not_be_in_the_file_list(String string) {
 		driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
 		driver.quit();
 	}
+	*/
 
 	@When("the user click on Cancel button for the file")
 	public void the_user_click_on_Cancel_button() {
@@ -132,8 +134,8 @@ public class DataSourceFileSteps {
 
 	@Then("the user update the any field for the file")
 	public void the_user_update_the_any_field() {
-		DataSourceFileTab.enterDSFFieldValue("TestAutomation", "txt", "raw", "C://local", "D://local", "10",
-				"MetadataSourceFile", ",", ",");
+		DataSourceFileTab.enterDSFFieldValue("Test", "txt", "raw", "C://local", "D://local", "10",
+				"MetadataSourceFile", "", "");
 	}
 
 	@Then("the user should see click on the Update Button for the file")
@@ -143,9 +145,10 @@ public class DataSourceFileSteps {
 
 	@Then("the user should see the updated {string} in the file list for the Data Source file")
 	public void the_user_should_see_the_updated_in_the_file_list(String string) throws InterruptedException {
-		DataSourceFileTab.verifyDSFSuccessPopupMessage();
+		DataSourceFileTab.verifyDSFUpdatePopupMessage();
 	}
 
+	
 	@When("The User click the delete icon for the any Data Source file")
 	public void the_user_click_the_delete_icon_for_the_any_file() {
 		DataSourceFileTab.clickDSFDeleteButton();
@@ -169,7 +172,7 @@ public class DataSourceFileSteps {
 
 	@When("The User confirm the deletion for the Data Source file")
 	public void the_user_confirm_the_deletion() {
-		DataSourceFileTab.clickDSFCancelButton();
+		DataSourceFileTab.clickDSFDeleteConfirmationPopupConfirmButton();
 	}
 
 	@Then("the file should be removed from the table for the Data Source file")

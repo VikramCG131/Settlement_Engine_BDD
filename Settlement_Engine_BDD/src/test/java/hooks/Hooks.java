@@ -14,6 +14,7 @@ public class Hooks {
     public void setup(Scenario scenario) {
         DriverManager.initializeDriver();
         driver = DriverManager.getDriver();
+       // ReportUtil.initReport();
  
         // Start Feature & Scenario Logging
         String featureFile = scenario.getUri().getPath();
