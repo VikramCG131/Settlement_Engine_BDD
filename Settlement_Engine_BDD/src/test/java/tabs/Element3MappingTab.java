@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
+import constants.BrandMappingConstants;
 import constants.Element3MappingConstants;
 import locators.BrandMappingLocators;
 import locators.Element3MappingLocators;
@@ -129,8 +130,20 @@ public class Element3MappingTab {
 		String successMessage = driver.findElement(Element3MappingLocators.EL3SuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SuccesspopupMessageUploadOk)).click();
 	}
 
+	//search for the added record
+		public void AddedRecorddSearch() throws InterruptedException
+		{
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+CommonUtilities.random);
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).click();;
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).sendKeys("Not Approved");
+			Thread.sleep(5000);
+		}
 	// Verify the Update Popup Message
 	public void verifyEL3UpdatePopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3UpdatePopupMessage));

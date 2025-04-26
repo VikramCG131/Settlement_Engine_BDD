@@ -13,6 +13,7 @@ Feature: Validation of the EL3 Mapping Reference LookUp UI Screen
 And the user enters the data in required fields for the EL3 Mapping
  	And the user should see click on the Submit Button for the EL3 Mapping
  	Then the user should see "test_data" in the file list for the EL3 Mapping
+ 	Then user can search and see the addded same record for EL3 Mapping
 
 Scenario: Verify validation errors when mandatory fields are missing for the EL3 Mapping
   When the user click on the EL3 Mapping
