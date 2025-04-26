@@ -58,7 +58,7 @@ public class ClientMappingSteps {
 	@When("the user enters the data in required fields for the Client Mapping")
 	public void the_user_enters_the_data_in_required_fields_for_the_client_mapping() {
 		String random = CommonUtilities.getRandomInteger();
-		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue(),ClientMappingConstants.SHOP_CODE.getValue()+random, ClientMappingConstants.MAPPED_CODE.getValue());
+		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue()+random,ClientMappingConstants.SHOP_CODE.getValue()+random, ClientMappingConstants.MAPPED_CODE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
  
@@ -71,7 +71,12 @@ public class ClientMappingSteps {
 	public void the_user_should_see_in_the_file_list_for_the_client_mapping(String string) {
 		ClientMappingTab.verifyCLMSuccessPopupMessage();
 	}
- 
+	
+	@Then("user can search and see the addded same record for the Client Mapping")
+	public void user_can_search_and_see_the_addded_same_record_for_the_Client_Mapping() throws InterruptedException {
+		ClientMappingTab.AddedRecorddSearch();
+	}
+	
 	@Then("the user click on any field for the Client Mapping and the user should see validation errors for required fields for the Client Mapping")
 	public void the_user_click_on_any_field_for_the_client_mapping_and_the_user_should_see_validation_errors_for_required_fields_for_the_client_mapping() {
 		ClientMappingTab.clickCLMClientCodeblankSelection();
