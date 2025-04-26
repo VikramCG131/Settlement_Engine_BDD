@@ -7,6 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Utilities.CommonUtilities;
+import constants.BrandMappingConstants;
+import constants.EmailAlertConstants;
+import locators.BrandMappingLocators;
 import locators.EmailAlertsLocators;
 import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
@@ -126,9 +131,17 @@ public class EmailAlertsTab {
 		String successMessage = driver.findElement(EmailAlertsLocators.EASuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASuccesspopupMessageUploadOk)).click();
 	}
 	
-	
+	//search for the added record
+		public void AddedRecorddSearch() throws InterruptedException
+		{
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).sendKeys(EmailAlertConstants.EMAIL_ADDRESS.getValue());
+			Thread.sleep(5000);
+		}
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickEAEmailAddressblankSelection() {
