@@ -135,15 +135,16 @@ public class BrandMappingTab {
 		System.out.println("The user is able to verify the Success Popup Message");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSuccesspopupMessageUploadOk)).click();
 	}
-	
+	//search for the added record
 	public void AddedRecorddSearch() throws InterruptedException
 	{
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).click();;
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).sendKeys("Not Approved");
+		Thread.sleep(5000);
 	}
 	
 	
