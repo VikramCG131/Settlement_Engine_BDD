@@ -140,7 +140,7 @@ public class BrandMappingTab {
 	{
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys("50"+""+CommonUtilities.random);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
 		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).click();;
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).sendKeys("Not Approved");
