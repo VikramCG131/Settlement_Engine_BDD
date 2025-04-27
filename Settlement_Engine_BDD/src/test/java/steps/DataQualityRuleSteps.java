@@ -45,7 +45,7 @@ public class DataQualityRuleSteps {
 		Assert.assertTrue(driver.getTitle().contains("Starter Kit PF Angular"));
 		Thread.sleep(2000);
 		System.out.println("The user is able to navigate to the Settlement Engine homepage");
-		commonUtilities.screenshot();
+		//commonUtilities.screenshot();
 	}
 
     @When("the user click on Data Quality Rules")
@@ -54,7 +54,7 @@ public class DataQualityRuleSteps {
         dataQualityRulesButton.click();
         System.out.println("The user is able to navigate to Data Quality Rule page");
         Thread.sleep(3000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @When("the user clicks the Add New button for the DQ Rule")
@@ -62,7 +62,7 @@ public class DataQualityRuleSteps {
         WebElement button = driver.findElement(By.xpath("//*[text()='Add New']"));
         wait.until(ExpectedConditions.visibilityOf(button)).click();
         System.out.println("The user is able to click on Add New Button");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("the user enters the data in required fields for the DQ Rule")
@@ -100,7 +100,7 @@ public class DataQualityRuleSteps {
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
         System.out.println("The user is able to click on the Submit Button");
         Thread.sleep(3000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("the user should see {string} in the file list for the DQ Rule")
@@ -109,7 +109,7 @@ public class DataQualityRuleSteps {
         Assert.assertEquals("Record has been added successFully..!", actual);
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @When("the user click on any field for the DQ Rule")
@@ -125,7 +125,7 @@ public class DataQualityRuleSteps {
         String actual = driver.findElement(By.xpath("//*[text()='Please enter Rule Description']")).getText();
         Assert.assertEquals("Please enter Rule Description", actual);
         System.out.println("The user is able to see the error message for required fields");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("{string} should not be in the file list for the DQ Rule")
@@ -138,14 +138,14 @@ public class DataQualityRuleSteps {
     public void the_user_click_on_Cancel_button() {
         driver.findElement(By.xpath("//button[contains(text(),'Cancel')]")).click();
         System.out.println("The user is able to close the Add New page");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @When("the user click on Reset button for the DQ Rule")
     public void the_user_click_on_reset_button() {
         driver.findElement(By.xpath("//button[contains(text(),'Reset')]")).click();
         System.out.println("The fields are empty");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("all the fields should be cleared for the DQ Rule")
@@ -165,13 +165,13 @@ public class DataQualityRuleSteps {
     @When("The User click the edit icon for the any file for the DQ Rule")
     public void the_user_click_the_edit_icon_for_the_any_file() {
         driver.findElement(By.xpath("(//i[@data-action='edit'])[1]")).click();
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("The User should see the edit modal open file for the DQ Rule")
     public void the_user_should_see_the_edit_modal_open_file() {
         System.out.println("The edit modal is displayed");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("the user update the any field for the DQ Rule")
@@ -184,7 +184,7 @@ public class DataQualityRuleSteps {
     public void the_user_should_see_click_on_the_update_button() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(text(),'Update')]")).click();
         System.out.println("The user is able to click on the Update Button");
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
         Thread.sleep(4000);
     }
 
@@ -194,13 +194,13 @@ public class DataQualityRuleSteps {
         Assert.assertEquals("Record has been updated successfully..!", actual);
         System.out.println("The user is able to insert the data in the all fields");
         Thread.sleep(2000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @When("The User click the delete icon for the any file for the DQ Rule")
     public void the_user_click_the_delete_icon_for_the_any_file() {
         driver.findElement(By.xpath("(//i[@data-action='delete'])[1]")).click();
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("The User should see a confirmation pop-up with title {string} for the DQ Rule")
@@ -208,7 +208,7 @@ public class DataQualityRuleSteps {
         driver.findElement(By.xpath("//div[@class='modal-content']")).isDisplayed();
         System.out.println("The user is able to see the confirmation pop-up");
         Thread.sleep(2000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @Then("The User should see {string} message for the DQ Rule")
@@ -217,7 +217,7 @@ public class DataQualityRuleSteps {
         Assert.assertEquals("Are you sure you want to delete", actual);
         System.out.println("The user is able to see message in the confirmation pop-up");
         Thread.sleep(2000);
-        commonUtilities.screenshot();
+        //commonUtilities.screenshot();
     }
 
     @When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the DQ Rule")
