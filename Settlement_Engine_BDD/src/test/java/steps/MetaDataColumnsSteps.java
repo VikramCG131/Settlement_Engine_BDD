@@ -87,6 +87,11 @@ public class MetaDataColumnsSteps {
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
 		MetaDataColumnsTab.verifyDSFSuccessPopupMessage();
 	}
+	
+	@Then("the user can see the added data for the meta data column")
+	public void the_user_can_see_the_added_data_for_the_meta_data_column() throws InterruptedException {
+		MetaDataColumnsTab.AddedRecorddSearch();
+	}
 
 	@When("the user click on any field for the Metadata Column")
 	public void the_user_click_on_any_field_for_the_metadata_column() throws InterruptedException {

@@ -10,8 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Utilities.CommonUtilities;
+import constants.BrandMappingConstants;
+import constants.MetadataColumnConstants;
 import locators.MetaDataColumnsLocators;
 import locators.SettlementEngineLoginLocators;
+import locators.BrandMappingLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
 import utils.DriverManager;
@@ -138,7 +143,18 @@ public class MetaDataColumnsTab {
 			String successMessage = driver.findElement(MetaDataColumnsLocators.MDCSuccessPopupMessage).getText();
 			Assert.assertEquals(successMessage, "Record has been added successfully..!");
 			System.out.println("The user is able to verify the Success Popup Message");
+			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSuccesspopupMessageUploadOk)).click();
 		}
+		
+		//search for the added record
+		public void AddedRecorddSearch() throws InterruptedException
+		{
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).sendKeys(MetadataColumnConstants.NAME.getValue()+CommonUtilities.random);
+			
+		}
+		
 	//Verify the Success Popup Message
 	public void verifyMDCSuccessPopupMessageUpdate() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCUpdatePopupMessage));
