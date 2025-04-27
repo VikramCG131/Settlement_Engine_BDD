@@ -17,8 +17,9 @@ public class MetaDataColumnsLocators {
 	/******MetaData Column Category******/
 	public static final By MDCName = By.xpath("//input[@formcontrolname='columnName']");
 	public static final By MDCDataTypeDropdown = By.id("columnDataType");
-	public static final By MDCColumnActive = By.xpath("//div[3]/div[1]/label[@for='columnIsActiveYes']");
-	public static final By MDCColumnIsNull = By.xpath("//div[4]/div[2]/label[@for='columnIsNullNo']");
+	public static final By MDCColumnActive = By.xpath("//input[@id='columnIsActiveYes']");
+	public static final By MDCColumnIsNull = By.xpath("//input[@id='columnIsNullNo']");
+	public static final By MDCColumnIsKey = By.xpath("//input[@id='isKeyYes']");
 	public static final By MDCMinSize= By.xpath("//input[@formcontrolname='minSize']");
 	public static final By MDCMaxSize = By.xpath("//input[@formcontrolname='maxSize']");
 	public static final By MDCColumnOrder= By.xpath("//input[@formcontrolname='columnOrder']");

@@ -101,7 +101,7 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public    void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName,String businessName) {
+	public    void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull,String columnIskey, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName,String businessName) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
 		driver.findElement(MetaDataColumnsLocators.MDCName).sendKeys(name);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
@@ -112,6 +112,8 @@ public class MetaDataColumnsTab {
 		driver.findElement(MetaDataColumnsLocators.MDCColumnActive).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnIsNull));
 		driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnIsKey));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnIsKey).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
 		driver.findElement(MetaDataColumnsLocators.MDCMinSize).sendKeys(minSize);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize));
@@ -152,7 +154,7 @@ public class MetaDataColumnsTab {
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).sendKeys(MetadataColumnConstants.NAME.getValue()+CommonUtilities.random);
-			
+			Thread.sleep(5000);
 		}
 		
 	//Verify the Success Popup Message
