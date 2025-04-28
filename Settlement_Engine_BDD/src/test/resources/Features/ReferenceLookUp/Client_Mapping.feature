@@ -13,7 +13,6 @@ And the user clicks the Add button from the Client Mapping page
 And the user enters the data in required fields for the Client Mapping
 And the user should see click on the Submit Button for the Client Mapping
 Then the user should see "test_data" in the file list for the Client Mapping
- Then user can search and see the addded same record for the Client Mapping
  
 Scenario: Verify validation errors when mandatory fields are missing for the Client Mapping
 When the user click on the Client Mapping

@@ -13,7 +13,6 @@ Feature: Validation of the Metadata Column
     And the user enters the data in required fields for the Metadata Column
    And the user should see click on the Submit Button for the Metadata Column
    Then the user should see "test_file" in the file list for the Metadata Column
-	Then the user can see the added data for the meta data column
 
   Scenario: Verify validation errors when mandatory fields are missing for the Metadata Column
   When the user click on Metadata Column

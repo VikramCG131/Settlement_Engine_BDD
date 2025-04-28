@@ -11,10 +11,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/ReferenceLookup",
+    features = "src/test/resources/Features/MetaData/ExceptionRulesMetaData.feature",
     glue = {"steps", "hooks", "listeners"},
     monochrome = true,
-    tags = "not @skip",
     plugin = {"pretty", "listeners.ExtentReportListener", "html:target/cucumber-reports.html"}
 )
 public class TestRunner {

@@ -8,7 +8,6 @@ public class MetaDataColumnsLocators {
 	public static final By MetaDataColumnTab = By.xpath("//span[contains(text(),'Metadata Column')]");
 	public static final By MDCAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By MDCSuccessPopupMessage = By.xpath("//div[contains(text(),'Record has been added successfully..! ')]");
-	public static final By MDCSuccesspopupMessageUploadOk = By.xpath("//button[contains(text(),'Ok')]");
 	public static final By MDCUpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By MDCDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By MDCDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
@@ -17,9 +16,8 @@ public class MetaDataColumnsLocators {
 	/******MetaData Column Category******/
 	public static final By MDCName = By.xpath("//input[@formcontrolname='columnName']");
 	public static final By MDCDataTypeDropdown = By.id("columnDataType");
-	public static final By MDCColumnActive = By.xpath("//input[@id='columnIsActiveYes']");
-	public static final By MDCColumnIsNull = By.xpath("//input[@id='columnIsNullNo']");
-	public static final By MDCColumnIsKey = By.xpath("//input[@id='isKeyYes']");
+	public static final By MDCColumnActive = By.xpath("//div[3]/div[1]/label[@for='columnIsActiveYes']");
+	public static final By MDCColumnIsNull = By.xpath("//div[4]/div[2]/label[@for='columnIsNullNo']");
 	public static final By MDCMinSize= By.xpath("//input[@formcontrolname='minSize']");
 	public static final By MDCMaxSize = By.xpath("//input[@formcontrolname='maxSize']");
 	public static final By MDCColumnOrder= By.xpath("//input[@formcontrolname='columnOrder']");
@@ -34,8 +32,6 @@ public class MetaDataColumnsLocators {
 	public static final By MDCColumnInformationVisible = By.xpath("//*[text()='Columns Information ']");
 	public static final By MDCCategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Column Metadata Grid')]");
 	/******MetaData Column Grid******/
-	//
-	public static final By MDCSearchName = By.xpath("//input[@data-ref='eInput' and @aria-label='Name Filter Input']");
 	public static final By MDCGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By MDCEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By MDCDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");

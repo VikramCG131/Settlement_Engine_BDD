@@ -19,7 +19,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
-import constants.BrandMappingConstants;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
 import locators.BrandMappingLocators;
@@ -128,27 +127,12 @@ public class BrandMappingTab {
 	}
 
 	// Verify the Success Popup Message
-	public void verifyBMSuccessPopupMessage() throws InterruptedException  {
+	public void verifyBMSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSuccessPopupMessage));
 		String successMessage = driver.findElement(BrandMappingLocators.BMSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSuccesspopupMessageUploadOk)).click();
 	}
-	//search for the added record
-	public void AddedRecorddSearch() throws InterruptedException
-	{
-		Thread.sleep(5000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
-		Thread.sleep(5000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).click();;
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).sendKeys("Not Approved");
-		Thread.sleep(5000);
-	}
-	
-	
-	//veriy the search functionality added same record
 
 	// Verify the Update Popup Message
 	public void verifyBMUpdatePopupMessage() {

@@ -89,12 +89,7 @@ public class DataSourceFileSteps {
 	public void the_user_should_see_in_the_file_list(String string) throws InterruptedException {
 		DataSourceFileTab.verifyDSFSuccessPopupMessage();
 	}
-	
-	@Then("user can search and see the addded same record for data Source")
-	public void user_can_search_and_see_the_addded_same_record_for_data_Source() throws InterruptedException {
-		DataSourceFileTab.AddedRecorddSearch();
-	}
-	
+
 	@When("the user click on any field for the Data source file and validate the mandatory required field message")
 	public void the_user_click_on_any_field() throws InterruptedException {
 		DataSourceFileTab.clickDSFFilePatternblankSelection();

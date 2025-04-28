@@ -44,8 +44,6 @@ public class ClientLookupLocators {
 	public static final By CLUDownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	//
 	/******Client Lookup Grid******/
-	public static final By CLUSearchforShopcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Shop Code Filter Input']");
-	public static final By CLUearchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");
 	public static final By CLUGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By CLUEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By CLUDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
