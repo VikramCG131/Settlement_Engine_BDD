@@ -1,8 +1,10 @@
 package constants;
 
+import Utilities.CommonUtilities;
+
 public enum EmailAlertConstants {
 	TEMPLATE_TYPE(""),
-	EMAIL_ADDRESS("abc@gmail.com"),
+	EMAIL_ADDRESS("ab"+CommonUtilities.random+"c@gmail.com"),
 	SUBJECT("TestAutomation"),
 	INSERT_TEXT("Testing is in progress");
 	

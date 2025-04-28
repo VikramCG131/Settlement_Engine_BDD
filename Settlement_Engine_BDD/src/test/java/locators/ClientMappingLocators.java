@@ -38,6 +38,8 @@ public class ClientMappingLocators {
 	public static final By CLMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	
 	/******Client Mapping Grid******/
+	public static final By CLMSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Client Code Filter Input']");
+	public static final By CLMSearchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");
 	public static final By CLMGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By CLMEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By CLMDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");

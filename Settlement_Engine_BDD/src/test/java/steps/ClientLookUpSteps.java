@@ -73,6 +73,11 @@ public class ClientLookUpSteps {
 		ClientLookUpTab.verifyCLUSuccessPopupMessage();
 	}
 
+	@Then("user can search and see the addded same record for the Client Lookup")
+	public void user_can_search_and_see_the_addded_same_recor_for_the_Client_Lookup() throws InterruptedException {
+		ClientLookUpTab.AddedRecorddSearch();
+	}
+
 	@When("the user click on any field for the Client LookUp and the user should see validation errors for required fields for the Client LookUp")
 	public void the_user_click_on_any_field_for_the_client_look_up() {
 		ClientLookUpTab.clickCLUPayableElement2blankSelection();
