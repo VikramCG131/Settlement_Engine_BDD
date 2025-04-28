@@ -118,7 +118,7 @@ public class ReportUtil {
     // Log Skip
     public static void logSkip(String message) {
 		if (scenarioTest != null) {
-		scenarioTest.skip(MarkupHelper.createLabel("SKIPPED: " + message, ExtentColor.AMBER));
+		scenarioTest.skip(MarkupHelper.createLabel("SKIPPED: " + message, ExtentColor.YELLOW));
 		
 		}
 	}
