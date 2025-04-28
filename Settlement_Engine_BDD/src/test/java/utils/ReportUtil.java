@@ -39,7 +39,7 @@ public class ReportUtil {
             throw new IllegalStateException("ExtentReports is not initialized. Call initializeReport() first.");
         }
         extent.createTest(featureName);
-        
+       
     }
  
     // Create Scenario as a Child Step
