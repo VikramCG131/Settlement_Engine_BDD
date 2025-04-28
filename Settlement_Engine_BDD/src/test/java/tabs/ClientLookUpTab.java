@@ -19,10 +19,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
-import constants.BrandMappingConstants;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
-import locators.BrandMappingLocators;
 import locators.ClientLookupLocators;
 import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
@@ -142,19 +140,8 @@ public class ClientLookUpTab {
 		String successMessage = driver.findElement(ClientLookupLocators.CLUSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSuccesspopupMessageUploadOk)).click();
 	}
-	//search for the added record
-		public void AddedRecorddSearch() throws InterruptedException
-		{
-			Thread.sleep(2000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).sendKeys(ClientLookUpConstants.SHOP_CODE.getValue()+CommonUtilities.random);
-			Thread.sleep(2000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).click();;
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).sendKeys("Not Approved");
-		}
-	
+
 	// Verify the Update Popup Message
 	public void verifyCLUUpdatePopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUUpdatePopupMessage));

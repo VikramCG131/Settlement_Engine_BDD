@@ -37,8 +37,6 @@ public class Element3MappingLocators {
 	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	
 	/******Element 3 Grid******/
-	public static final By EL3SearchforProductcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Product Code Filter Input']");
-	public static final By EL3Searchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");
 	public static final By EL3GridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By EL3EditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By EL3DeleteButton = By.xpath("(//i[@data-action='delete'])[1]");

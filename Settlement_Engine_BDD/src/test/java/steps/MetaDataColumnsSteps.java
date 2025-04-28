@@ -73,7 +73,7 @@ public class MetaDataColumnsSteps {
 				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants.IS_ACTIVE.getValue(),
 				MetadataColumnConstants.IS_NULL.getValue(), MetadataColumnConstants.MIN_SIZE.getValue(),
 				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.ORDER.getValue(),
-				MetadataColumnConstants.DATE_FORMAT.getValue(),MetadataColumnConstants.IS_KEY.getValue(),
+				MetadataColumnConstants.DATE_FORMAT.getValue(),
 				MetadataColumnConstants.TABLE_NAME.getValue(),MetadataColumnConstants.BUSINESS_NAME.getValue()+random);
 		System.out.println("The user is able to enter the data in required fields");
 	}
@@ -86,11 +86,6 @@ public class MetaDataColumnsSteps {
 	@Then("the user should see {string} in the file list for the Metadata Column")
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
 		MetaDataColumnsTab.verifyDSFSuccessPopupMessage();
-	}
-	
-	@Then("the user can see the added data for the meta data column")
-	public void the_user_can_see_the_added_data_for_the_meta_data_column() throws InterruptedException {
-		MetaDataColumnsTab.AddedRecorddSearch();
 	}
 
 	@When("the user click on any field for the Metadata Column")

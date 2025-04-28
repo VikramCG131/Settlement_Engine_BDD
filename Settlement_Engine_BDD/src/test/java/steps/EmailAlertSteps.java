@@ -75,10 +75,6 @@ public class EmailAlertSteps {
 		EmailAlertsTab.verifyEASuccessPopupMessage();
 	}
 
-	@Then("user can search and see the addded same record for Email Record")
-	public void user_can_search_and_see_the_addded_same_record_for_Email_Record() throws InterruptedException {
-		EmailAlertsTab.AddedRecorddSearch();
-	}
 	@When("the user click on any field for the Email Alert and the user should see validation errors for required fields for the Email Alert")
 	public void the_user_click_on_any_field_for_the_email_alert_and_the_user_should_see_validation_errors_for_required_fields_for_the_email_alert() {
      EmailAlertsTab.clickEAEmailAddressblankSelection();

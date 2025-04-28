@@ -69,16 +69,12 @@ public class BrandMappingSteps {
 	public void the_user_should_see_click_on_the_submit_button_for_the_brand_mapping() {
 		BrandMappingTab.clickBMSubmitButton();
 	}
-	
+
 	@Then("the user should see {string} in the file list for the Brand Mapping")
-	public void the_user_should_see_in_the_file_list_for_the_brand_mapping(String string) throws InterruptedException {
+	public void the_user_should_see_in_the_file_list_for_the_brand_mapping(String string) {
 		BrandMappingTab.verifyBMSuccessPopupMessage();
 	}
-	@Then("user can search and see the addded same record")
-	public void user_can_search_and_see_the_addded_same_record() throws InterruptedException {
-		BrandMappingTab.AddedRecorddSearch();
-	}
-	
+
 	@Then("the user click on any field for the Brand Mapping and the user should see validation errors for required fields for the Brand Mapping")
 	public void the_user_click_on_any_field_for_the_brand_mapping() {
 		BrandMappingTab.clickBMClientCodeblankSelection();

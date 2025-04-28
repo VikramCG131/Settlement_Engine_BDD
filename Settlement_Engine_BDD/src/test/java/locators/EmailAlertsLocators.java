@@ -8,7 +8,6 @@ public class EmailAlertsLocators {
 	public static final By EmailAlertTab = By.xpath("//span[contains(text(),'Email Alert')]");
 	public static final By EAAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By EASuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully ']");
-	public static final By EASuccesspopupMessageUploadOk = By.xpath("//button[contains(text(),'Ok')]");
 	public static final By EAUpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By EADeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By EADeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
@@ -31,7 +30,6 @@ public class EmailAlertsLocators {
 	public static final By EACategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Email Template Grid')]");
 	
 	/******Data Source File Grid******/
-	public static final By EASearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Email Address Filter Input']");
 	public static final By EAGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By EAEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By EADeleteButton = By.xpath("(//i[@data-action='delete'])[1]");

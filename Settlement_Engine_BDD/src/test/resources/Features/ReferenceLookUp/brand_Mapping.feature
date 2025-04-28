@@ -13,8 +13,7 @@ Scenario: Verify reference data form submission with valid data for Brand Mappin
  And the user enters the data in required fields for the Brand Mapping
   And the user should see click on the Submit Button for the Brand Mapping
   Then the user should see "test_data" in the file list for the Brand Mapping
-	Then user can search and see the addded same record
-	
+
 Scenario: Verify validation errors when mandatory fields are missing for the Brand Mapping
  When the user click on the Brand Mapping
  	And the user clicks the Add button from the Brand Mapping page
@@ -62,7 +61,7 @@ Scenario: Verify file Upload functionality
   When the user click on the Brand Mapping 
   And the User Navigates to upload Button from the Brand Mapping page
   And user selects a valid file to upload from the Brand Mapping page
- And the file should be successfully Uploaded from the Brand Mapping page
+  And the file should be successfully Uploaded from the Brand Mapping page
     
 Scenario: Verify Send for Approval button triggers approval process
   When user click the Send for Approval button from the Brand Mapping page

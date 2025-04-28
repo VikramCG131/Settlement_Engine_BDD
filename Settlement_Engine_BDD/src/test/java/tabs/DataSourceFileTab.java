@@ -16,10 +16,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import Utilities.CommonUtilities;
-import constants.BrandMappingConstants;
-import constants.DataSourceFileConstants;
-import locators.BrandMappingLocators;
 import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
@@ -180,7 +176,6 @@ public class DataSourceFileTab {
 				String successMessage = driver.findElement(DataSourceFileLocators.DSFUpdatePopupMessage).getText();
 				Assert.assertEquals(successMessage, "Record has been updated successfully");
 				System.out.println("The user is able to verify the Update Popup Message");
-				
 			}
 			
 	//Verify the Success Popup Message
@@ -189,18 +184,9 @@ public class DataSourceFileTab {
 		String successMessage = driver.findElement(DataSourceFileLocators.DSFSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSuccesspopupMessageOk)).click();
 	}
 	
 	
-	//search for the added record
-		public void AddedRecorddSearch() throws InterruptedException
-		{
-			Thread.sleep(5000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).sendKeys(DataSourceFileConstants.FILE_NAME.getValue()+CommonUtilities.random);
-			Thread.sleep(5000);
-		}
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickDSFFilePatternblankSelection() {

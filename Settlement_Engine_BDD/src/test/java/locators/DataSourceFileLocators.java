@@ -8,7 +8,6 @@ public class DataSourceFileLocators {
 	public static final By DataSourceFileTab = By.xpath("//span[contains(text(),'Data Source File')]");
 	public static final By DSFAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By DSFSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully ']");
-	public static final By DSFSuccesspopupMessageOk = By.xpath("//button[contains(text(),'Ok')]");
 	public static final By DSFUpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
 	public static final By DSFDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By DSFDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
@@ -40,7 +39,6 @@ public class DataSourceFileLocators {
 	//
 	
 	/******Data Source File Grid******/
-	public static final By DSFSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='File Name Filter Input']");
 	public static final By DSFGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By DSFEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By DSFDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
