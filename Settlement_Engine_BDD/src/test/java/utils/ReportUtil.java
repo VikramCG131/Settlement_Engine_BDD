@@ -42,7 +42,7 @@ public class ReportUtil {
         extent.setSystemInfo("Environment", "Local");
         extent.setSystemInfo("Test Runner", "Cucumber");
         extent.setSystemInfo("Browser", "Chrome");
-        extent.setSystemInfo("Run By", "Shilajeet Chakraborty");
+        extent.setSystemInfo("Run By", "Shanofar Bagwan");
     }
  
      // Create Feature
@@ -118,7 +118,7 @@ public class ReportUtil {
     // Log Skip
     public static void logSkip(String message) {
 		if (scenarioTest != null) {
-		scenarioTest.skip(MarkupHelper.createLabel("SKIPPED: " + message, ExtentColor.YELLOW));
+		scenarioTest.skip(MarkupHelper.createLabel("SKIPPED: " + message, ExtentColor.TEAL));
 		
 		}
 	}
