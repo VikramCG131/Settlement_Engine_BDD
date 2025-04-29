@@ -19,7 +19,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
+import constants.BrandMappingConstants;
 import constants.ClientLookUpConstants;
+import constants.ClientMappingConstants;
 import constants.DataSourceFileConstants;
 import locators.BrandMappingLocators;
 import locators.ClientMappingLocators;
@@ -137,8 +139,20 @@ public class ClientMappingTab {
 		String successMessage = driver.findElement(ClientMappingLocators.CLMSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSuccesspopupMessageUploadOk)).click();
 	}
 
+	//search for the added record
+		public void AddedRecorddSearch() throws InterruptedException
+		{
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
+			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).click();;
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).sendKeys("Not Approved");
+			Thread.sleep(5000);
+		}
 	// Verify the Update Popup Message
 	public void verifyCLMUpdatePopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMUpdatePopupMessage));

@@ -59,7 +59,7 @@ public class Element3MappingSteps {
 	@When("the user enters the data in required fields for the EL3 Mapping")
 	public void the_user_enters_the_data_in_required_fields_for_the_el3_mapping() {
 		String random = CommonUtilities.getRandomInteger();
-		Element3MappingTab.enterEL3CategoryFieldValue(Element3MappingConstants.PRODUCT_CODE.getValue(),Element3MappingConstants.ELEMENT3_CODE.getValue()+random);
+		Element3MappingTab.enterEL3CategoryFieldValue(Element3MappingConstants.PRODUCT_CODE.getValue()+random,Element3MappingConstants.ELEMENT3_CODE.getValue()+random);
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -72,7 +72,12 @@ public class Element3MappingSteps {
 	public void the_user_should_see_in_the_file_list_for_the_el3_mapping(String string) {
 		Element3MappingTab.verifyEL3SuccessPopupMessage();
 	}
-
+	
+	@Then("user can search and see the addded same record for EL3 Mapping")
+	public void user_can_search_and_see_the_addded_same_record_for_EL3_Mapping() throws InterruptedException {
+		Element3MappingTab.AddedRecorddSearch();
+	}
+	
 	@Then("the user click on any field for the EL3 Mapping and the user should see validation errors for required fields for the EL3 Mapping")
 	public void the_user_click_on_any_field_for_the_el3_mapping_and_the_user_should_see_validation_errors_for_required_fields_for_the_el3_mapping() {
 		Element3MappingTab.clickEL3ElementCodeblankSelection();

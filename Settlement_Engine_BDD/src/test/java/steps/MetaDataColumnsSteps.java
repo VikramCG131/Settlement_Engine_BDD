@@ -73,7 +73,7 @@ public class MetaDataColumnsSteps {
 				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants.IS_ACTIVE.getValue(),
 				MetadataColumnConstants.IS_NULL.getValue(), MetadataColumnConstants.MIN_SIZE.getValue(),
 				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.ORDER.getValue(),
-				MetadataColumnConstants.DATE_FORMAT.getValue(),
+				MetadataColumnConstants.DATE_FORMAT.getValue(),MetadataColumnConstants.IS_KEY.getValue(),
 				MetadataColumnConstants.TABLE_NAME.getValue(),MetadataColumnConstants.BUSINESS_NAME.getValue()+random);
 		System.out.println("The user is able to enter the data in required fields");
 	}
@@ -87,6 +87,11 @@ public class MetaDataColumnsSteps {
 	public void the_user_should_see_in_the_file_list_for_the_metadata_column(String string) throws InterruptedException {
 		MetaDataColumnsTab.verifyDSFSuccessPopupMessage();
 	}
+	
+	@Then("the user can see the added data for the meta data column")
+	public void the_user_can_see_the_added_data_for_the_meta_data_column() throws InterruptedException {
+		MetaDataColumnsTab.AddedRecorddSearch();
+	}
 
 	@When("the user click on any field for the Metadata Column")
 	public void the_user_click_on_any_field_for_the_metadata_column() throws InterruptedException {
@@ -97,14 +102,14 @@ public class MetaDataColumnsSteps {
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
 		MetaDataColumnsTab.clickMDCMinSizeandblankSelection();
 		System.out.println("The user is able to see the error message for required fields");
-		//commonUtilities.screenshot();
+		commonUtilities.screenshot();
 	}
 
 	@When("the user click on Reset button for the Metadata Column")
 	public void the_user_click_on_reset_button_for_the_metadata_column() throws InterruptedException {
 		MetaDataColumnsTab.clickMDCResetButton();
 		Thread.sleep(2000);
-		//commonUtilities.screenshot();
+		commonUtilities.screenshot();
 	}
 
 	@Then("all the fields should be cleared for the Metadata Column")
@@ -116,7 +121,7 @@ public class MetaDataColumnsSteps {
 	public void the_user_click_on_cancel_button_for_the_metadata_column() {
 		MetaDataColumnsTab.clickMDCCancelButton();
 		System.out.println("The user is able to close the Add New page");
-		//commonUtilities.screenshot();
+		commonUtilities.screenshot();
 	}
 
 	@Then("Add New Pop up should be closed for the Metadata Column")
@@ -133,7 +138,7 @@ public class MetaDataColumnsSteps {
 	public void the_user_should_see_the_edit_modal_open_metadata_column() {
 		MetaDataColumnsTab.verifyMDCCategoryTextVisible();	
 		System.out.println("The edit modal is displayed");
-		//commonUtilities.screenshot();
+		commonUtilities.screenshot();
 	}
 
 	@Then("the user update the any field for the Metadata Column")

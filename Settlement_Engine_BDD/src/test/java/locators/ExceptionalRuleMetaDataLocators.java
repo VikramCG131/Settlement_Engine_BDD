@@ -28,7 +28,7 @@ public class ExceptionalRuleMetaDataLocators {
 	public static final By EXRRuleTypeDropDown = By.xpath("//select[@formcontrolname='ruleType']");
 	public static final By EXRSeverityDropDown  = By.xpath("//select[@formcontrolname='severity']");
 	public static final By EXRExceptionOwners = By.xpath("//input[@placeholder='Enter Exception Owners']");
-	public static final By EXRSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
+	public static final By EXRSuccessPopupMessage = By.xpath("//div[contains(text(),' Record has been added successfully')]");
 	public static final By EXRDeleteConfirmationPopupMessage = By.xpath("//div[text()=' Are you sure you want to delete ']");
 	public static final By EXRDeleteConfirmationPopupConfirmButton = By.xpath("//button[contains(text(),'Confirm')]");
 	public static final By EXRDeleteConfirmationPopupCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -39,7 +39,7 @@ public class ExceptionalRuleMetaDataLocators {
 	public static final By EXRCotegeryVisible = By.xpath("//span[@class='grid_title_name d-inline-block']");
 	/******Exceptional Rules******/
 	//
-	
+	public static final By EXRSearchforRuleOwner = By.xpath("//input[@data-ref='eInput' and @aria-label='Rule Owner Filter Input']");
 	public static final By EXREditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By EXRDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
 	public static final By EXRDownloadButton= By.xpath("//button[contains(text(),'Download')]");

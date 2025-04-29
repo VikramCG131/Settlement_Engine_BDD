@@ -30,18 +30,10 @@ public class ExtentReportListener implements ConcurrentEventListener {
  
             if (event.getResult().getStatus() == Status.PASSED) {
                 ReportUtil.logPass("PASSED: " + stepText, DriverManager.getDriver());
-                
             } else if (event.getResult().getStatus() == Status.FAILED) {
-            	ReportUtil.logFail("FAILED: " + stepText, DriverManager.getDriver());
-            	Throwable error = event.getResult().getError();
-            	if (error != null) {
-                    ReportUtil.logFailWithException("Exception: " + error.getMessage(), DriverManager.getDriver(), error);
-                }
-            	ReportUtil.assignCategory("Failed Tests");
-            	
+                ReportUtil.logFail("FAILED: " + stepText, DriverManager.getDriver());
             } else {
-                ReportUtil.logSkip(stepText);
-                
+                ReportUtil.logInfo("SKIPPED: " + stepText);
             }
         }
     }

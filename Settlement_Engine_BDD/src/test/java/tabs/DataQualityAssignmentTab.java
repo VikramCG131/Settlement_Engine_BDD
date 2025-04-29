@@ -114,9 +114,11 @@ public class DataQualityAssignmentTab {
 		Select sourceattributedropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQASourceAttributeDropdown));
 		sourceattributedropdown.selectByVisibleText(sourceAttribute);
 		System.out.println("Selected Source Attribute: product_code");
+		//
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQRuleDropdown));
 		Select dqruledropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQADQRuleDropdown));
 		dqruledropdown.selectByIndex(2);
+		
 		System.out.println("Selected DQ Rule by Index: 2");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQStartDate));
 		driver.findElement(DataQualityAssignmentLocators.DQADQStartDate).click();

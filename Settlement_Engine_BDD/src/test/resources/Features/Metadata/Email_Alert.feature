@@ -13,6 +13,7 @@ Scenario: Verify Meta Data form submission with valid data for the file
   And the user enters the data in required fields for the Email Alert
   And the user should see click on the Submit Button for the file for the Email Alert
   Then the user should see "test_file" in the file list for the file email
+	Then user can search and see the addded same record for Email Record
 
 Scenario: Verify validation errors when mandatory fields are missing for the Email Alert
    When the user click on Email Alert

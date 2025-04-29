@@ -14,7 +14,7 @@ public class Hooks {
     public void setup(Scenario scenario) {
         DriverManager.initializeDriver();
         driver = DriverManager.getDriver();
-       // ReportUtil.initReport();
+       ReportUtil.initReport();
  
         // Start Feature & Scenario Logging
         String featureFile = scenario.getUri().getPath();
@@ -28,9 +28,9 @@ public class Hooks {
     @After
     public void teardown(Scenario scenario) {
         if (scenario.isFailed()) {
-            ReportUtil.logFail(scenario.getName(), driver);
+            ReportUtil.logFail("Test Failed: " + scenario.getName(), driver);
         } else {
-            ReportUtil.logPass(scenario.getName(), driver);
+            ReportUtil.logPass("Test Passed: " + scenario.getName(), driver);
         }
  
         DriverManager.closeDriver();
