@@ -104,6 +104,8 @@ public class ExceptionRuleMetaData {
 	}
 	@When("the user enters the data in required fields for the Exception Rule Meta Data")
 	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() throws InterruptedException {
+		//exceptionSelection();
+		
 		List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-4']"));
 		for (WebElement fieldElement : fieldElements) {
 		    String fieldText = fieldElement.getText();
@@ -140,7 +142,7 @@ public class ExceptionRuleMetaData {
 		addlookupbutton.click();
 		//select the reference file drop down
 		Thread.sleep(2000);
-		WebElement referencefile = driver.findElement(By.xpath("//select[@formcontrolname='referenceSource1']"));
+		WebElement referencefile = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[1]/select"));
 		Select dropdown4 = new Select(referencefile);
 		List<WebElement> options1 = dropdown4.getOptions();
 		int randomindex = new Random().nextInt(options1.size());
@@ -152,7 +154,160 @@ public class ExceptionRuleMetaData {
 		Thread.sleep(3000);
 		WebElement referencefile1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[2]/ul[2]"));
 		referencefile1.click();
+		
 	}
+/*	
+	public  void exceptionSelection() throws InterruptedException
+	{
+		WebElement ruleTypeDropdown = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
+		Select ruleSelect = new Select(ruleTypeDropdown);
+		List<WebElement> ruleOptions = ruleSelect.getOptions();
+		int randomIndexany = new Random().nextInt(ruleOptions.size());
+		ruleSelect.selectByIndex(randomIndexany);
+		String selectedRule = ruleOptions.get(randomIndexany).getText();
+		
+		// Now wait and handle based on the selection
+		if (selectedRule.equals("Lookup")) {
+			WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
+			Select dropdown = new Select(dropdownElement);	
+			dropdown.selectByVisibleText("Lookup");	
+			   System.out.println("Lookup rule selected and attribute chosen.");
+			WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+			Select dropdown1 = new Select(dropdownElement1);
+			dropdown1.selectByIndex(2);
+			System.out.println("Selected Source Attribute: Select Severity");
+			Thread.sleep(1000);
+			WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
+			Exceptionowner.sendKeys("Test");
+			Thread.sleep(1000);
+			//ng-multiselect-dropdown[@formcontrolname='standaloneSelectedItems']
+			WebElement inputsource = driver.findElement(By.xpath("//select[@formcontrolname='lookupSource1']"));
+			Select dropdown3 = new Select(inputsource);
+			dropdown3.selectByValue("tallyman_raw");
+			Thread.sleep(5000);
+			WebElement selectattr1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[1]/div[2]/ng-multiselect-dropdown/div"));
+			selectattr1.click();
+			//select input source for select attribute
+			List<WebElement> options = driver.findElements(By.xpath("//div[@class='dropdown-list']//ul[@class='item2']/li"));
+			Random random = new Random();
+			int randomIndex = random.nextInt(options.size());
+			options.get(randomIndex).click();
+			//Click on Add Lookup button
+			WebElement addlookupbutton = driver.findElement(By.xpath("//button[@class='btn btn_color text-white']"));
+			addlookupbutton.click();
+			//select the reference file drop down
+			Thread.sleep(2000);
+			WebElement referencefile = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[1]/select"));
+			referencefile.click();
+			Select dropdown4 = new Select(referencefile);
+			List<WebElement> options1 = dropdown4.getOptions();
+			int randomindex = new Random().nextInt(options1.size());
+			dropdown4.selectByIndex(randomindex);
+			//click on the reference file for select attribute
+			WebElement referenceattribute = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[1]/span"));
+			referenceattribute.click();
+			// select the reference file for select attribute
+			Thread.sleep(3000);
+			WebElement referencefile1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[2]/ul[2]"));
+			referencefile1.click();
+		   System.out.println("Lookup rule selected and attribute chosen.");
+		   
+		} 
+		
+		else if (selectedRule.equals("Comparison")) 
+		{
+			WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
+			Select dropdown = new Select(dropdownElement);	
+			dropdown.selectByVisibleText("Comparison");	
+			WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+			Select dropdown1 = new Select(dropdownElement1);
+			dropdown1.selectByIndex(2);
+			System.out.println("Selected Source Attribute: Select Severity");
+			Thread.sleep(1000);
+			WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
+			Exceptionowner.sendKeys("Test");
+			Thread.sleep(2000);
+			//input source
+			WebElement inputsourcedropdown = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource1']"));
+			Select dropdowninput = new Select(inputsourcedropdown);
+			dropdowninput.selectByValue("tallyman_raw");
+			//input source for select attribute
+			Thread.sleep(2000);
+			WebElement sourceatt=driver.findElement(By.xpath("//select[@formcontrolname='comparisonsource1Attribute']"));
+			sourceatt.click();
+			List<WebElement> optionsatt= driver.findElements(By.xpath("//select[@formcontrolname='comparisonsource1Attribute']"));
+			Random randomatt = new Random();
+			int randomIndexatt = randomatt.nextInt(optionsatt.size());
+			optionsatt.get(randomIndexatt);
+			
+			//comparision dropdown
+			Thread.sleep(2000);
+			WebElement cpmpari=driver.findElement(By.xpath("//select[@formcontrolname='comparisonOperator']"));
+			cpmpari.click();
+			List<WebElement> optionscom = driver.findElements(By.xpath("//select[@formcontrolname='comparisonOperator']"));
+			Random randomcom = new Random();
+			int randomIndexcom = randomcom.nextInt(optionscom.size());
+			optionscom.get(randomIndexcom);
+			//source 2
+			Thread.sleep(2000);
+			WebElement inputsource2 = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2']"));
+			Select dropdown2 = new Select(inputsource2);
+			dropdown2.selectByValue("tallyman_raw");
+			//source 2 attribute
+			Thread.sleep(1000);
+			WebElement sourceattri=driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
+			sourceattri.click();
+			List<WebElement> optionssource2 = driver.findElements(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
+			Random randomcomsou = new Random();
+			int randomIndexcomsource = randomcomsou.nextInt(optionssource2.size());
+			optionssource2.get(randomIndexcomsource);
+
+			//status
+			Thread.sleep(2000);
+			WebElement status=driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
+			status.click();
+			List<WebElement> optionsstatus = driver.findElements(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
+			Random randomstatus = new Random();
+			int randomIndexstatus = randomstatus.nextInt(optionsstatus.size());
+			optionsstatus.get(randomIndexstatus);
+			driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
+			
+		   System.out.println("Comparison rule selected and comparison section is visible.");
+	}
+		else if(selectedRule.equals("Unique"))
+		{
+			WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
+			Select dropdown = new Select(dropdownElement);	
+			dropdown.selectByVisibleText("Unique");	
+			WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+			Select dropdown1 = new Select(dropdownElement1);
+			dropdown1.selectByIndex(2);
+			System.out.println("Selected Source Attribute: Select Severity");
+			Thread.sleep(1000);
+			WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
+			Exceptionowner.sendKeys("Test");
+			//input source dropdown
+			WebElement sourcedropdown = driver.findElement(By.xpath("//select[@formcontrolname='uniquecomparisonSource1']"));
+			sourcedropdown.click();
+			Thread.sleep(2000);
+			Select dropdown3 = new Select(sourcedropdown);
+			dropdown3.selectByValue("tallyman_raw");
+			
+			//select attribute for input source
+			WebElement selectattrinputsource = driver.findElement(By.xpath("//div[@class='multiselect-dropdown']"));
+			selectattrinputsource.click();
+			Thread.sleep(2000);
+			//select input source for select attribute
+			List<WebElement> optionsi = driver.findElements(By.xpath("//li[@class='multiselect-item-checkbox']"));
+			Random randomi = new Random();
+			int randomIndexi = randomi.nextInt(optionsi.size());
+			optionsi.get(randomIndexi).click();
+			driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
+			Thread.sleep(1000);
+		}
+		
+	}
+	*/
 	
 	@When("the user should see click on the Submit Button for the Exception Rule Meta Data")
 	public void the_user_should_see_click_on_the_submit_button_for_the_Exception_Rule_Meta_Data() throws InterruptedException {

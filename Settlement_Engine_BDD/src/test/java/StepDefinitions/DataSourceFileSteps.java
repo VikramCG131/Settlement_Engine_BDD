@@ -116,7 +116,6 @@ public class DataSourceFileSteps {
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathRaw']")).sendKeys("C://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='filePathCleansed']")).sendKeys("D://local");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileSizeMB']")).sendKeys("10");
-		
 		//tableNameField();
 		driver.findElement(By.xpath("//input[@formcontrolname='stagingTableName']")).sendKeys("qwert");
 		driver.findElement(By.xpath("//input[@formcontrolname='fileDelimiter']")).sendKeys(",");

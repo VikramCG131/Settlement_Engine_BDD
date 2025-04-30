@@ -136,12 +136,12 @@ public class ClientLookUpSteps {
        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
        
        
-       //searching the data avilable or not after creating
-      // driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).click();
-      // driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).sendKeys("Shop" + random);
+      // searching the data avilable or not after creating
+      driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).click();
+       driver.findElement(By.xpath("//input[@aria-label='Shop Code Filter Input']")).sendKeys("Shop" + random);
        //serching the status column same data
-      // driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).click();
-      // driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).sendKeys("Not Approved");
+       driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).click();
+       driver.findElement(By.xpath("//input[@aria-label='Status Filter Input']")).sendKeys("Not Approved");
         Thread.sleep(2000);
         commonUtilities.screenshot();
         driver.quit();
