@@ -97,6 +97,7 @@ public class ExceptionRuleMetaData {
 
 	@When("the user clicks the Add New button for the Exception Rule Meta Data")
 	public void the_user_clicks_the_add_new_button_for_the_dq_assignment() {
+		driver.navigate().refresh();
 		WebElement button = driver.findElement(By.xpath("//button[contains(text(),'Add')]"));
 		button.click();
 		System.out.println("The user is able to click on Add New Button");
@@ -104,8 +105,10 @@ public class ExceptionRuleMetaData {
 	}
 	@When("the user enters the data in required fields for the Exception Rule Meta Data")
 	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() throws InterruptedException {
-		//exceptionSelection();
 		
+	
+		exceptionSelection();
+		/*
 		List<WebElement> fieldElements = driver.findElements(By.xpath("//div[@class='form-group col-4']"));
 		for (WebElement fieldElement : fieldElements) {
 		    String fieldText = fieldElement.getText();
@@ -154,19 +157,22 @@ public class ExceptionRuleMetaData {
 		Thread.sleep(3000);
 		WebElement referencefile1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[3]/div[2]/ng-multiselect-dropdown/div/div[2]/ul[2]"));
 		referencefile1.click();
-		
+		*/
 	}
-/*	
+	
+	
+
 	public  void exceptionSelection() throws InterruptedException
 	{
-		WebElement ruleTypeDropdown = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
-		Select ruleSelect = new Select(ruleTypeDropdown);
-		List<WebElement> ruleOptions = ruleSelect.getOptions();
-		int randomIndexany = new Random().nextInt(ruleOptions.size());
-		ruleSelect.selectByIndex(randomIndexany);
-		String selectedRule = ruleOptions.get(randomIndexany).getText();
 		
-		// Now wait and handle based on the selection
+		WebElement ruleTypeDropdown = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
+		Thread.sleep(2000);
+		Select ruleSelect = new Select(ruleTypeDropdown);
+		String[] ruleOptions = {"Lookup", "Comparison","Unique"};
+		String selectedRule = ruleOptions[new Random().nextInt(ruleOptions.length)];
+		ruleSelect.selectByVisibleText(selectedRule);
+		System.out.println("Selected Rule: " + selectedRule);
+		
 		if (selectedRule.equals("Lookup")) {
 			WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
 			Select dropdown = new Select(dropdownElement);	
@@ -214,63 +220,64 @@ public class ExceptionRuleMetaData {
 		   
 		} 
 		
-		else if (selectedRule.equals("Comparison")) 
+		 if (selectedRule.equals("Comparison")) 
 		{
 			WebElement dropdownElement = driver.findElement(By.xpath("//select[@formcontrolname='ruleType']"));
 			Select dropdown = new Select(dropdownElement);	
 			dropdown.selectByVisibleText("Comparison");	
-			WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
-			Select dropdown1 = new Select(dropdownElement1);
-			dropdown1.selectByIndex(2);
-			System.out.println("Selected Source Attribute: Select Severity");
 			Thread.sleep(1000);
-			WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
-			Exceptionowner.sendKeys("Test");
-			Thread.sleep(2000);
-			//input source
-			WebElement inputsourcedropdown = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource1']"));
-			Select dropdowninput = new Select(inputsourcedropdown);
-			dropdowninput.selectByValue("tallyman_raw");
-			//input source for select attribute
-			Thread.sleep(2000);
-			WebElement sourceatt=driver.findElement(By.xpath("//select[@formcontrolname='comparisonsource1Attribute']"));
-			sourceatt.click();
-			List<WebElement> optionsatt= driver.findElements(By.xpath("//select[@formcontrolname='comparisonsource1Attribute']"));
-			Random randomatt = new Random();
-			int randomIndexatt = randomatt.nextInt(optionsatt.size());
-			optionsatt.get(randomIndexatt);
-			
-			//comparision dropdown
-			Thread.sleep(2000);
-			WebElement cpmpari=driver.findElement(By.xpath("//select[@formcontrolname='comparisonOperator']"));
-			cpmpari.click();
-			List<WebElement> optionscom = driver.findElements(By.xpath("//select[@formcontrolname='comparisonOperator']"));
-			Random randomcom = new Random();
-			int randomIndexcom = randomcom.nextInt(optionscom.size());
-			optionscom.get(randomIndexcom);
-			//source 2
-			Thread.sleep(2000);
-			WebElement inputsource2 = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2']"));
-			Select dropdown2 = new Select(inputsource2);
-			dropdown2.selectByValue("tallyman_raw");
-			//source 2 attribute
-			Thread.sleep(1000);
-			WebElement sourceattri=driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
-			sourceattri.click();
-			List<WebElement> optionssource2 = driver.findElements(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
-			Random randomcomsou = new Random();
-			int randomIndexcomsource = randomcomsou.nextInt(optionssource2.size());
-			optionssource2.get(randomIndexcomsource);
-
-			//status
-			Thread.sleep(2000);
-			WebElement status=driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
-			status.click();
-			List<WebElement> optionsstatus = driver.findElements(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
-			Random randomstatus = new Random();
-			int randomIndexstatus = randomstatus.nextInt(optionsstatus.size());
-			optionsstatus.get(randomIndexstatus);
-			driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
+		WebElement dropdownElement1 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+		Select dropdown1 = new Select(dropdownElement1);
+		dropdown1.selectByIndex(2);
+		System.out.println("Selected Source Attribute: Select Severity");
+		Thread.sleep(1000);
+		WebElement Exceptionowner = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
+		Exceptionowner.sendKeys("Test");
+		Thread.sleep(1000);
+		WebElement inputsourcedropdown = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource1']"));
+		Select dropdowninput = new Select(inputsourcedropdown);
+		dropdowninput.selectByValue("tallyman_raw");
+		//input source for select attribute
+		WebElement attribute = driver.findElement(By.xpath("//select[@formcontrolname='comparisonsource1Attribute']"));
+		attribute.click();
+		Thread.sleep(2000);
+		Select dropdownatt = new Select(attribute);
+		List<WebElement> optionsatt = dropdownatt.getOptions();
+		int randomindexatt = new Random().nextInt(optionsatt.size());
+		dropdownatt.selectByIndex(randomindexatt);
+		//comparision dropdown
+		WebElement compra = driver.findElement(By.xpath("//select[@formcontrolname='comparisonOperator']"));
+		compra.click();
+		Thread.sleep(2000);
+		Select dropdownattcomp = new Select(compra);
+		List<WebElement> optionsattcomp = dropdownattcomp.getOptions();
+		int randomindexattcomp = new Random().nextInt(optionsattcomp.size());
+		dropdownattcomp.selectByIndex(randomindexattcomp);
+		//source 2
+		Thread.sleep(2000);
+		WebElement inputsource2 = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2']"));
+		inputsource2.click();
+		Thread.sleep(2000);
+		Select dropdown2 = new Select(inputsource2);
+		dropdown2.selectByValue("tallyman_raw");
+		//source 2 attribute
+		WebElement source2att = driver.findElement(By.xpath("//select[@formcontrolname='comparisonSource2Attribute']"));
+		source2att.click();
+		Thread.sleep(2000);
+		Select dropdownsource2 = new Select(source2att);
+		List<WebElement> optionssource2 = dropdownsource2.getOptions();
+		int randomindexsource2 = new Random().nextInt(optionssource2.size());
+		dropdownsource2.selectByIndex(randomindexsource2);
+		Thread.sleep(2000);
+		//status
+		WebElement status = driver.findElement(By.xpath("//select[@formcontrolname='comparisonStatus']"));
+		status.click();
+		Thread.sleep(2000);
+		Select dropdownstatus = new Select(status);
+		List<WebElement> optionsstatus = dropdownstatus.getOptions();
+		int randomindexstatus= new Random().nextInt(optionsstatus.size());
+		dropdownstatus.selectByIndex(randomindexstatus);
+		Thread.sleep(2000);
 			
 		   System.out.println("Comparison rule selected and comparison section is visible.");
 	}
@@ -302,16 +309,16 @@ public class ExceptionRuleMetaData {
 			Random randomi = new Random();
 			int randomIndexi = randomi.nextInt(optionsi.size());
 			optionsi.get(randomIndexi).click();
-			driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
-			Thread.sleep(1000);
+			
 		}
 		
+		
 	}
-	*/
+	
 	
 	@When("the user should see click on the Submit Button for the Exception Rule Meta Data")
 	public void the_user_should_see_click_on_the_submit_button_for_the_Exception_Rule_Meta_Data() throws InterruptedException {
-		driver.findElement(By.xpath("(//button[@type='submit'])[1]")).click();
+		driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
 		System.out.println("The user is able to click on the Submit Button");
 		Thread.sleep(8000);
 		commonUtilities.screenshot();
@@ -416,18 +423,19 @@ public class ExceptionRuleMetaData {
 	}
 	@Then("the user update the any field for the Exception Rule Meta Data")
 	public void the_user_update_the_any_field_for_the_Exception_Rule_meta() throws  InterruptedException {
-		WebElement dropdownElement2 = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
-		Select dropdown2 = new Select(dropdownElement2);
-		dropdown2.selectByIndex(2);
-		WebElement selectattr1 = driver.findElement(By.xpath("/html/body/app-root/div/div[2]/app-exceptions/div/form/div[2]/div/div/div/div[2]/div[1]/div[2]/ng-multiselect-dropdown/div"));
-		selectattr1.click();
-		//select input source for select attribute
-		List<WebElement> options = driver.findElements(By.xpath("//div[@class='dropdown-list']//ul[@class='item2']/li"));
-		Random random = new Random();
-		int randomIndex = random.nextInt(options.size());
-		options.get(randomIndex).click();
-		
-	    System.out.println("The user is able to update the data in the required fields");
+		WebElement servertyrandom = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+		servertyrandom.click();
+		Thread.sleep(2000);
+		Select dropdownrandom = new Select(servertyrandom);
+		List<WebElement> optionsrandom = dropdownrandom.getOptions();
+		int randomdrop= new Random().nextInt(optionsrandom.size());
+		dropdownrandom.selectByIndex(randomdrop);
+		System.out.println("Selected Source Attribute: Select Severity");
+		// owner name
+		WebElement ownername = driver.findElement(By.xpath("//input[@placeholder='Enter Exception Owners']"));
+		ownername.clear();
+		ownername.sendKeys("Test1");
+			    System.out.println("The user is able to update the data in the required fields");
 	}
 	@Then("the user should see click on the Update Button for the Exception Rule Meta Data")
 	public void the_user_should_see_click_on_the_update_button_for_the_Exception_Rule() throws InterruptedException {
