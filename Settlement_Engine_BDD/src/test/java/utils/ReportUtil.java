@@ -52,10 +52,12 @@ public class ReportUtil {
  
     // Create Scenario as a Child Step
     public static void createScenario(String scenarioName) {
+    	
     	if (featureTest == null) {
     		featureTest = extent.createTest("Default Feature");
     	}
-        scenarioTest = featureTest.createNode(MarkupHelper.createLabel(scenarioName, ExtentColor.INDIGO).getMarkup());
+      
+    	scenarioTest = featureTest.createNode(MarkupHelper.createLabel(scenarioName, ExtentColor.INDIGO).getMarkup());
     }
  
     // Log Step

@@ -1,4 +1,4 @@
-/*package tabs;
+package tabs;
 
 import java.io.File;
 import java.io.IOException;
@@ -397,4 +397,3 @@ public class CommonReferenceLookupTab {
 	    }
  
 }
-*/

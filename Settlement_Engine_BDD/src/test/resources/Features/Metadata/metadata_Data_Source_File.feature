@@ -21,7 +21,7 @@ Then user can search and see the addded same record for data Source
   And the user click on any field for the Data source file and validate the mandatory required field message
    
  Scenario: Verify that clicking "Reset" fields clears the fields for the file
-   When the user click on Data Source File
+  When the user click on Data Source File
   And the user clicks the Add New button from the Data Source File page
     And the user enters the data in required fields for the Data Source File
    And the user click on Reset button for the file
