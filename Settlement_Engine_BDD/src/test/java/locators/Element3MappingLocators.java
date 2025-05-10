@@ -23,19 +23,19 @@ public class Element3MappingLocators {
 	
 	/******Element 3 Category******/
 	
-	public static final By EL3ProductCode = By.xpath("//input[@formcontrolname='productCode']");
-	public static final By EL3Element3Code = By.xpath("//input[@formcontrolname='elmcode']");
+	public static final By EL3ProductCode = By.xpath("//input[@placeholder='Enter Product Code']");
+	public static final By EL3Element3Code = By.xpath("//input[@placeholder='Enter Element 3 Code ']");
 	public static final By EL3SubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By EL3CodeErrorValidation = By.xpath("//span[contains(text(),'Please Element 3 Code')]");
-	public static final By EL3ageGridValidation = By.xpath("//span[contains(text(),'Element 3 Mapping Grid ')]");
+	public static final By EL3CodeErrorValidation = By.xpath("//div[contains(text(),'Element 3 Code  is required.')]");
+	public static final By EL3ageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By EL3ResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By EL3CancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By EL3UpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By EL3CategoryTextVisible = By.xpath("//h6[contains(text(),'Element 3 Mapping Category')]");
-	public static final By EL3CategoryTextPageVisible = By.xpath("//span[contains(text(),'Element 3 Mapping Grid')]");
+	public static final By EL3CategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category ')]");
+	public static final By EL3CategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By EL3ConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download')]");
-	
+	public static final By EL3SourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	/******Element 3 Grid******/
 	public static final By EL3SearchforProductcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Product Code Filter Input']");
 	public static final By EL3Searchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");

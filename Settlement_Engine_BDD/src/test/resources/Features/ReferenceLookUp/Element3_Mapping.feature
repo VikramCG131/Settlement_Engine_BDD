@@ -5,7 +5,7 @@ Feature: Validation of the EL3 Mapping Reference LookUp UI Screen
       When The user Clicks Settlement Engine URL
       And the User Clicks on Reference LookUp UI screen
       Then The User is able to navigate to the Settlement Engine Homepage
-     And User Clicks on Hamburger Button Icon for the EL3 Mapping 
+      
      
  Scenario: Verify reference data form submission with valid data for EL3 Mapping
   When the user click on the EL3 Mapping
@@ -67,6 +67,7 @@ Scenario: Verify file Upload functionality
      
     
 Scenario: Verify Send for Approval button triggers approval process
+	When the user click on the EL3 Mapping
   When user click the Send for Approval button EL3 Mapping
   Then the file should be submitted for approval EL3 Mapping
  And a confirmation message should be displayed with Confirm and Cancel Buttons

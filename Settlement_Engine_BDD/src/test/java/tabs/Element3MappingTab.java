@@ -22,6 +22,7 @@ import Utilities.CommonUtilities;
 import constants.BrandMappingConstants;
 import constants.Element3MappingConstants;
 import locators.BrandMappingLocators;
+import locators.ClientMappingLocators;
 import locators.Element3MappingLocators;
 import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
@@ -85,13 +86,6 @@ public class Element3MappingTab {
 		System.out.println("The user is able to click on Reference Look Up Button");
 	}
 
-	// Click on Hamburger Menu Button
-	public void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
-		driver.findElement(LoginPageLocators.HamburgerButton).click();
-		System.out.println("The user is able to click on Hamburger Menu Button");
-	}
-
 	// Click on Element 3 Tab
 	public void clickElement3MappingTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Element3MappingTab));
@@ -141,7 +135,7 @@ public class Element3MappingTab {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+CommonUtilities.random);
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).click();;
-			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).sendKeys("Not Approved");
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).sendKeys("NEW");
 			Thread.sleep(5000);
 		}
 	// Verify the Update Popup Message
@@ -153,13 +147,14 @@ public class Element3MappingTab {
 	}
 
 	// Click on Source Table Dropdown and Blank Selection
-	public void clickEL3ElementCodeblankSelection() {
+	public void clickEL3ElementCodeblankSelection() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Element3Code));
 		driver.findElement(Element3MappingLocators.EL3Element3Code).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3ProductCode));
 		driver.findElement(Element3MappingLocators.EL3ProductCode).click();
+		Thread.sleep(2000);
 		String actual = driver.findElement(Element3MappingLocators.EL3CodeErrorValidation).getText();
-		Assert.assertEquals("Please Element 3 Code", actual);
+		Assert.assertEquals("Element 3 Code is required.", actual);
 		System.out.println("The user is able to click on Element 3 code and validate the error message");
 	}
 
@@ -174,7 +169,7 @@ public class Element3MappingTab {
 	public void clickEL3CancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(Element3MappingLocators.EL3CategoryTextVisible).getText();
-		Assert.assertEquals("Element 3 Mapping Category", actual);
+		Assert.assertEquals("Common Reference Look Up Category", actual);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3CancelButton));
 		driver.findElement(Element3MappingLocators.EL3CancelButton).click();
@@ -250,7 +245,7 @@ public class Element3MappingTab {
 	public void verifyEL3AssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 
 		String actual = driver.findElement(Element3MappingLocators.EL3CategoryTextPageVisible).getText();
-		Assert.assertNotEquals("Data Quality Assignment Category", actual);
+		Assert.assertNotEquals("Common Reference Look Up cotegery", actual);
 		System.out.println(
 				"The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
 	}
@@ -326,7 +321,7 @@ public class Element3MappingTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\El3mapping.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\El3_Mapping.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path
@@ -376,6 +371,14 @@ public class Element3MappingTab {
 	        confirmButton.click();
 	        System.out.println("The user is able to send the file for approval successfully");
 	 
+	    }
+	    public void el3_map_lkpSlection() throws InterruptedException
+	    {
+	    	WebElement dropdownElement = driver.findElement(Element3MappingLocators.EL3SourceTabledropdown); 
+	    	dropdownElement.click();
+	    	Thread.sleep(5000);
+            Select dropdown = new Select(dropdownElement);
+            dropdown.selectByValue("el3_map_lkp"); // Replace 'option_value' with the actual value
 	    }
  
 }

@@ -41,14 +41,9 @@ public class Element3MappingSteps {
 		Element3MappingTab.verifyTitle();
 	}
 
-	@Then("User Clicks on Hamburger Button Icon for the EL3 Mapping")
-	public void user_clicks_on_hamburger_button_icon_for_the_el3_mapping() {
-		Element3MappingTab.clickHamburgerMenuButton();
-	}
-
 	@When("the user click on the EL3 Mapping")
-	public void the_user_click_on_the_el3_mapping() {
-		Element3MappingTab.clickElement3MappingTab();
+	public void the_user_click_on_the_el3_mapping() throws InterruptedException {
+		Element3MappingTab.el3_map_lkpSlection();
 	}
 
 	@When("the user clicks the Add button from the EL3 Mapping page")
@@ -79,7 +74,7 @@ public class Element3MappingSteps {
 	}
 	
 	@Then("the user click on any field for the EL3 Mapping and the user should see validation errors for required fields for the EL3 Mapping")
-	public void the_user_click_on_any_field_for_the_el3_mapping_and_the_user_should_see_validation_errors_for_required_fields_for_the_el3_mapping() {
+	public void the_user_click_on_any_field_for_the_el3_mapping_and_the_user_should_see_validation_errors_for_required_fields_for_the_el3_mapping() throws InterruptedException {
 		Element3MappingTab.clickEL3ElementCodeblankSelection();
 	}
 
