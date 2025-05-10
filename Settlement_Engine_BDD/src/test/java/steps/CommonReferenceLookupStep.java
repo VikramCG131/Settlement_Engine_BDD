@@ -60,7 +60,7 @@ public class CommonReferenceLookupStep {
 	@When("the user enters the data in required fields for the Common_Reference_Lookup")
 	public void the_user_enters_the_data_in_required_fields_for_the_brand_mapping() {
 		String random = CommonUtilities.getRandomInteger();
-		CommonReferenceLookupTab.enterCRLCategoryFieldValue(BrandMappingConstants.CLIENT_CODE.getValue()+ random,
+		CommonReferenceLookupTab.enterCRLCategoryFieldValue(BrandMappingConstants.CLIENT_CODE.getValue() + random,
 				BrandMappingConstants.BRAND_CODE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}

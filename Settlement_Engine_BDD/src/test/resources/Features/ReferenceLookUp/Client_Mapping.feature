@@ -5,7 +5,7 @@ Feature: Validation of the Client Mapping Reference LookUp UI Screen
       When the user clicks Settlement Engine URL for the Client Mapping
       And the User clicks on Reference LookUp UI screen for the Client Mapping
       Then the User is able to navigate to the Settlement Engine Homepage for the Client Mapping
-      And User Clicks on Hamburger Button Icon for the Client Mapping 
+     
        
 Scenario: Verify reference data form submission with valid data for Client Mapping
 When the user click on the Client Mapping
@@ -15,7 +15,7 @@ And the user should see click on the Submit Button for the Client Mapping
 Then the user should see "test_data" in the file list for the Client Mapping
  Then user can search and see the addded same record for the Client Mapping
  
-Scenario: Verify validation errors when mandatory fields are missing for the Client Mapping
+ Scenario: Verify validation errors when mandatory fields are missing for the Client Mapping
 When the user click on the Client Mapping
 And the user clicks the Add button from the Client Mapping page
 Then the user click on any field for the Client Mapping and the user should see validation errors for required fields for the Client Mapping
@@ -43,7 +43,7 @@ And the user should see the updated "test_file" in the file list for the Client 
 
 Scenario: Verify delete confirmation pop-up appears for the Client Mapping
   When the user click on the Client Mapping
-  And The User click the delete icon for the any Client Mapping
+ And The User click the delete icon for the any Client Mapping
 Then The User should see a confirmation pop-up with title "Confirmation deletion" for the Client Mapping
 
 Scenario: Confirm deletion of a Client Mapping
@@ -65,6 +65,7 @@ And the User Navigates to upload Button from the Client Mapping page
   And the file should be successfully uploaded for the Client Mapping
   
 Scenario: Verify Send for Approval button triggers approval process
+ When the user click on the Client Mapping
   When user click the Send for Approval button for the Client Mapping
 Then the file should be submitted for approval for the Client Mapping
 And a confirmation message should be displayed with Confirm and Cancel buttons for the Client Mapping

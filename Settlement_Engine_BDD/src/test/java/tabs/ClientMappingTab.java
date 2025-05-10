@@ -89,13 +89,6 @@ public class ClientMappingTab {
 		System.out.println("The user is able to click on Reference Look Up Button");
 	}
 
-	// Click on Hamburger Menu Button
-	public void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
-		driver.findElement(LoginPageLocators.HamburgerButton).click();
-		System.out.println("The user is able to click on Hamburger Menu Button");
-	}
-
 	// Click on Client Lookup Tab
 	public void clickClientMappingTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientMappingTab));
@@ -150,7 +143,7 @@ public class ClientMappingTab {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).click();;
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).sendKeys("Not Approved");
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).sendKeys("NEW");
 			Thread.sleep(5000);
 		}
 	// Verify the Update Popup Message
@@ -169,7 +162,7 @@ public class ClientMappingTab {
 		driver.findElement(ClientMappingLocators.CLMShopCode).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(ClientMappingLocators.CLMClentCodeErrorValidation).getText();
-		Assert.assertEquals("Please Enter Client Code", actual);
+		Assert.assertEquals("Client Code is required.", actual);
 		System.out.println("The user is able to click onClient code and validate the error message");
 	}
 
@@ -184,7 +177,7 @@ public class ClientMappingTab {
 	public void clickCLMCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(ClientMappingLocators.CLMCategoryTextVisible).getText();
-		Assert.assertEquals("Client Mapping Category", actual);
+		Assert.assertEquals("Common Reference Look Up Category", actual);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMCancelButton));
 		driver.findElement(ClientMappingLocators.CLMCancelButton).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -339,7 +332,7 @@ public class ClientMappingTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Clientmapping.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Clinet_Mapping.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path
@@ -389,6 +382,15 @@ public class ClientMappingTab {
 	        confirmButton.click();
 	        System.out.println("The user is able to send the file for approval successfully");
 	 
+	    }
+	    
+	    public void client_map_lkpSlection() throws InterruptedException
+	    {
+	    	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
+	    	dropdownElement.click();
+	    	Thread.sleep(5000);
+            Select dropdown = new Select(dropdownElement);
+            dropdown.selectByValue("client_map_lkp"); // Replace 'option_value' with the actual value
 	    }
  
 }

@@ -40,14 +40,9 @@ public class ClientMappingSteps {
 		ClientMappingTab.verifyTitle();
 	}
  
-	@Then("User Clicks on Hamburger Button Icon for the Client Mapping")
-	public void user_clicks_on_hamburger_button_icon_for_the_client_mapping() {
-		ClientMappingTab.clickHamburgerMenuButton();
-	}
- 
 	@When("the user click on the Client Mapping")
-	public void the_user_click_on_the_client_mapping() {
-		ClientMappingTab.clickClientMappingTab();
+	public void the_user_click_on_the_client_mapping() throws InterruptedException {
+		ClientMappingTab.client_map_lkpSlection();
 	}
  
 	@When("the user clicks the Add button from the Client Mapping page")
