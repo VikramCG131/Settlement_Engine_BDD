@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/Metadata/ExceptionRulesMetaData.feature",
+    features = "src/test/resources/Features/Metadata/Email_Alert.feature",
     glue = {"steps", "hooks", "listeners"},
     monochrome = true,
     tags = "not @skip",

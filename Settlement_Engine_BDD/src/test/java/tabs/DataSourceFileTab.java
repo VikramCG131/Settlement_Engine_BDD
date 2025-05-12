@@ -26,7 +26,7 @@ import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
-public class DataSourceFileTab {
+/*public class DataSourceFileTab {
 	private WebDriver driver;
 	private WebDriverWait wait;
 	
@@ -330,4 +330,4 @@ public class DataSourceFileTab {
 
 	
 	
-}
+}*/

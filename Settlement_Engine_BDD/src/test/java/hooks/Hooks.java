@@ -20,7 +20,7 @@ public class Hooks {
         String featureFile = scenario.getUri().getPath();
         String[] parts = featureFile.split("/");
         String featureName = parts[parts.length - 1].replace(".feature", "");
-       // ReportUtil.createFeature(featureName);
+        ReportUtil.createFeature(featureName);
         ReportUtil.createScenario(scenario.getName());
         ReportUtil.logInfo("Starting Scenario: " + scenario.getName());
     }

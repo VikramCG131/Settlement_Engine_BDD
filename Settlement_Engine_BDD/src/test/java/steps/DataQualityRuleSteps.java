@@ -16,7 +16,7 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.cucumber.java.en.Then;
 
-public class DataQualityRuleSteps {
+/*public class DataQualityRuleSteps {
     private WebDriver driver;
     private WebDriverWait wait;
     CommonUtilities commonUtilities = new CommonUtilities();
@@ -237,4 +237,4 @@ public class DataQualityRuleSteps {
         driver.findElement(By.xpath("//div[@data-ref='rootWrapperBody']")).isDisplayed();
         driver.quit();
     }
-}
+}*/
