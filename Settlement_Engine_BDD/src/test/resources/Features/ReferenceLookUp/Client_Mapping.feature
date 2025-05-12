@@ -5,9 +5,7 @@ Feature: Validation of the Client Mapping Reference LookUp UI Screen
       When the user clicks Settlement Engine URL for the Client Mapping
       And the User clicks on Reference LookUp UI screen for the Client Mapping
       Then the User is able to navigate to the Settlement Engine Homepage for the Client Mapping & user is able to see the reference table dropdown
-      
    
-     
 Scenario: Verify reference data form submission with valid data for Client Mapping
 When the user select client_map_lkp from the common reference table
 And the user clicks the Add button from the Client Mapping page
@@ -54,15 +52,15 @@ And The User click the delete icon for the any Client Mapping
   And The User confirm the deletion for the Client Mapping
 Then the file should be removed from the table for the Client Mapping
  
-#Scenario: User downloads all record a file successfully
- # When the user select client_map_lkp from the common reference table
-#And user clicks the download all records button for the Client Mapping page 
-#Then a file should be downloaded all the records to the default download folder for the Client Mapping page
+Scenario: User downloads all record a file successfully
+  When the user select client_map_lkp from the common reference table
+And user clicks the download all records button for the Client Mapping page 
+Then a file should be downloaded all the records to the default download folder for the Brand Mapping Page
 
-#Scenario: User downloads a file successfully for approve record
-#  When the user select client_map_lkp from the common reference table
-#And user clicks the only approved records button for the Client Mapping page
-#Then a file should be downloaded approved record to the default download folder for the Client Mapping page
+Scenario: User downloads a file successfully for approve record
+ When the user select client_map_lkp from the common reference table
+And user clicks the only approved records button for the Client Mapping page
+Then a file should be downloaded approved record to the default download folder for the Client Mapping page
 
 
 #Scenario: Verify file Upload functionality 

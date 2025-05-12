@@ -4,12 +4,10 @@ import java.io.IOException;
 
 import Utilities.CommonUtilities;
 import constants.BrandMappingConstants;
-import constants.DataSourceFileConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import tabs.BrandMappingTab;
-
 
 public class BrandMappingSteps {
 	BrandMappingTab BrandMappingTab = new BrandMappingTab();
@@ -34,12 +32,6 @@ public class BrandMappingSteps {
 	@When("the User clicks on Reference LookUp UI Screen")
 	public void the_user_clicks_on_reference_look_up_ui_screen() {
 		BrandMappingTab.clickReferenceLookUpButton();
-	}
-	
-	@When("User Clicks On Hamburger Button Icon Brand")
-	public void the_user_click_on_the_hamburger_Icon_Brand() {
-
-		BrandMappingTab.clickHamburgerMenuButton();
 	}
 	
 	@Then("the User is able to navigate to the Settlement_Engine Homepage")

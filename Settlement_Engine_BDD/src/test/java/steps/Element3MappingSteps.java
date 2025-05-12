@@ -11,8 +11,10 @@ import io.cucumber.java.en.When;
 import tabs.Element3MappingTab;
 
 public class Element3MappingSteps {
+	public static String random;
+	
 	Element3MappingTab Element3MappingTab = new Element3MappingTab();
-
+	
 	
 	@Given("Settlement_Engine<URL> EL3_Mapping")
 	public void settlement_engine_url_el3_mapping() {
@@ -36,14 +38,14 @@ public class Element3MappingSteps {
 		Element3MappingTab.clickReferenceLookUpButton();
 	}
 
-	@Then("The User is able to navigate to the Settlement Engine Homepage")
+	@Then("the User is able to navigate to the Settlement Engine Homepage for the Element3 Mapping & user is able to see the reference table dropdown")
 	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage() {
 		Element3MappingTab.verifyTitle();
 	}
 
-	@When("the user click on the EL3 Mapping")
-	public void the_user_click_on_the_el3_mapping() throws InterruptedException {
-		Element3MappingTab.el3_map_lkpSlection();
+	@When("the user select el3_map_lkp from the common reference table")
+	public void the_user_select_el3_map_lkp_from_the_common_reference_table() throws InterruptedException {
+		Element3MappingTab.EL3_Map_LkpSlectionFromReferenceTableDropdown();
 	}
 
 	@When("the user clicks the Add button from the EL3 Mapping page")
@@ -53,8 +55,7 @@ public class Element3MappingSteps {
 
 	@When("the user enters the data in required fields for the EL3 Mapping")
 	public void the_user_enters_the_data_in_required_fields_for_the_el3_mapping() {
-		String random = CommonUtilities.getRandomInteger();
-		Element3MappingTab.enterEL3CategoryFieldValue(Element3MappingConstants.PRODUCT_CODE.getValue()+random,Element3MappingConstants.ELEMENT3_CODE.getValue()+random);
+		Element3MappingTab.enterEL3CategoryFieldValue(Element3MappingConstants.PRODUCT_CODE.getValue(),Element3MappingConstants.ELEMENT3_CODE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -149,14 +150,24 @@ public class Element3MappingSteps {
 		Element3MappingTab.verifyEL3FileRemoval();
 	}
 
-	@When("user clicks the download button EL3 Mapping")
-	public void user_clicks_the_download_button_el3_mapping() {
+	@When("user clicks the download all records button for the EL3 Mapping page")
+	public void user_clicks_the_download_all_records_button_for_the_EL3_Mapping_page() {
 		Element3MappingTab.clickEL3DownloadButton();
 	}
 
-	@Then("a file should be downloaded to the default download folder for the EL3 Mapping")
-	public void a_file_should_be_downloaded_to_the_default_download_folder_for_the_el3_mapping() {
+	@Then("a file should be downloaded all the records to the default download folder for the EL3 Mapping Page")
+	public void a_file_should_be_downloaded_to_the_default_download_folder_for_the_EL3_Mapping() {
 		Element3MappingTab.verifyFileDownloaded();
+	}
+	//approve all recrd download
+	@When("user clicks the only approved records button for the EL3 Mapping page")
+	public void user_clicks_the_only_approved_records_button_for_the_EL3_Mapping_page() {
+		Element3MappingTab.clickCLMDownloadButtonApproverecord();
+	}
+
+	@Then("a file should be downloaded approved record to the default download folder for the EL3 Mapping page")
+	public void a_file_should_be_downloaded_approved_record_to_the_default_download_folder_for_the_EL3_Mapping_Page() {
+		Element3MappingTab.verifyFileDownloadedForApprove();
 	}
 
 	@When("the User Navigates to upload Button from the EL3 Mapping page")

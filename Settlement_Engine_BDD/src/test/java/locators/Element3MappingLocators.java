@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class Element3MappingLocators {
 /******Element 3 Mapping Page******/
 	
-	public static final By EL3Element3MappingTab = By.xpath("//span[contains(text(),'Element 3 Mapping')]");
+	
 	public static final By EL3AddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By EL3SuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");
 	public static final By EL3UpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
@@ -36,6 +36,7 @@ public class Element3MappingLocators {
 	public static final By EL3ConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download')]");
 	public static final By EL3SourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
+	public static final By EL3DownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Download All Records')]");
 	/******Element 3 Grid******/
 	public static final By EL3SearchforProductcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Product Code Filter Input']");
 	public static final By EL3Searchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");

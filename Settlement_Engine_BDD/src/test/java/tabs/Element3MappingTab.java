@@ -31,7 +31,7 @@ public class Element3MappingTab {
 
 	private WebDriver driver;
 	public WebDriverWait wait;
-
+	static String random;
 	// Constructor to initialize the driver and wait
 	public Element3MappingTab() {
 		this.driver = DriverManager.getDriver();
@@ -86,13 +86,17 @@ public class Element3MappingTab {
 		System.out.println("The user is able to click on Reference Look Up Button");
 	}
 
-	// Click on Element 3 Tab
-	public void clickElement3MappingTab() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Element3MappingTab));
-		driver.findElement(Element3MappingLocators.EL3Element3MappingTab).click();
-		System.out.println("The user is able to click on Element 3 Tab");
-	}
-
+	
+// select drop down value from the reference table
+	 public void EL3_Map_LkpSlectionFromReferenceTableDropdown() throws InterruptedException
+	    {
+	    	WebElement dropdownElement = driver.findElement(Element3MappingLocators.EL3SourceTabledropdown); 
+	    	dropdownElement.click();
+	    	Thread.sleep(2000);
+         Select dropdown = new Select(dropdownElement);
+         dropdown.selectByValue("el3_map_lkp"); // Replace 'option_value' with the actual value
+	    }
+	 
 	// Click on Add New Button
 	public void clickEL3AddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3AddNewButton));
@@ -103,11 +107,11 @@ public class Element3MappingTab {
 
 	// Enter the Field Value in Element 3 Category
 	public void enterEL3CategoryFieldValue(String productCode, String el3Code) {
-
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3ProductCode));
-		driver.findElement(Element3MappingLocators.EL3ProductCode).sendKeys(productCode);
+		driver.findElement(Element3MappingLocators.EL3ProductCode).sendKeys(productCode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Element3Code));
-		driver.findElement(Element3MappingLocators.EL3Element3Code).sendKeys(el3Code);		
+		driver.findElement(Element3MappingLocators.EL3Element3Code).sendKeys(el3Code+random);		
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 
@@ -130,9 +134,9 @@ public class Element3MappingTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+CommonUtilities.getRandomInteger());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+random);
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).sendKeys("NEW");
@@ -330,6 +334,31 @@ public class Element3MappingTab {
 	        System.out.println("File uploaded successfully!");
 	 }
 	 
+
+//verify download only approve record
+	// Click on Download Button
+		public void clickCLMDownloadButtonApproverecord() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3DownloadButtonApproveRecord));
+			driver.findElement(Element3MappingLocators.EL3DownloadButtonApproveRecord).click();
+			try {
+				Thread.sleep(5000); // Or use polling logic for better wait
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("The user is able to click on Download Button");
+		}
+
+		// Verify Downloaded file
+		public void verifyFileDownloadedForApprove() {
+			String downloadPath = System.getProperty("user.dir") + "/downloads";
+			File downloadDir = new File(downloadPath);
+			if (!downloadDir.exists())
+				downloadDir.mkdir();
+			String fileName = "example.csv";
+			File downloadedFile = new File(downloadDir, fileName);
+			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+			
+		}
 	//Verify Success message of Upload
 	 public void verifyUploadSuccessMessage() {
 	    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SuccesspopupMessageUpload)).getText();
@@ -372,13 +401,6 @@ public class Element3MappingTab {
 	        System.out.println("The user is able to send the file for approval successfully");
 	 
 	    }
-	    public void el3_map_lkpSlection() throws InterruptedException
-	    {
-	    	WebElement dropdownElement = driver.findElement(Element3MappingLocators.EL3SourceTabledropdown); 
-	    	dropdownElement.click();
-	    	Thread.sleep(5000);
-            Select dropdown = new Select(dropdownElement);
-            dropdown.selectByValue("el3_map_lkp"); // Replace 'option_value' with the actual value
-	    }
+	   
  
 }
