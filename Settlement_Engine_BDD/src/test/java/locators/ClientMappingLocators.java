@@ -35,7 +35,8 @@ public class ClientMappingLocators {
 	public static final By CLMCategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category')]");
 	public static final By CLMCategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By CLMConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
-	public static final By CLMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
+	public static final By CLMDownloadButton= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By CLMDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Download All Records')]");
 	public static final By CLMSourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	
 	/******Client Mapping Grid******/

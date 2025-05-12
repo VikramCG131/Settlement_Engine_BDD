@@ -318,7 +318,30 @@ public class ClientMappingTab {
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 		
 	}
+// verify download only approve record
+	// Click on Download Button
+		public void clickCLMDownloadButtonApproverecord() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMDownloadButtonApproveRecord));
+			driver.findElement(ClientMappingLocators.CLMDownloadButtonApproveRecord).click();
+			try {
+				Thread.sleep(5000); // Or use polling logic for better wait
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("The user is able to click on Download Button");
+		}
 
+		// Verify Downloaded file
+		public void verifyFileDownloadedForApprove() {
+			String downloadPath = System.getProperty("user.dir") + "/downloads";
+			File downloadDir = new File(downloadPath);
+			if (!downloadDir.exists())
+				downloadDir.mkdir();
+			String fileName = "example.csv";
+			File downloadedFile = new File(downloadDir, fileName);
+			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+			
+		}
 	// Click on Upload Button
 	public void clickCLMUploadButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMUploadButton));
@@ -384,7 +407,7 @@ public class ClientMappingTab {
 	 
 	    }
 	    
-	    public void client_map_lkpSlection() throws InterruptedException
+	    public void Client_Map_LkpSlectionFromReferenceTableDropdown() throws InterruptedException
 	    {
 	    	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
 	    	dropdownElement.click();

@@ -35,14 +35,14 @@ public class ClientMappingSteps {
 		ClientMappingTab.clickReferenceLookUpButton();
 	}
  
-	@Then("the User is able to navigate to the Settlement Engine Homepage for the Client Mapping")
+	@Then("the User is able to navigate to the Settlement Engine Homepage for the Client Mapping & user is able to see the reference table dropdown")
 	public void the_user_is_able_to_navigate_to_the_settlement_engine_homepage_for_the_client_mapping() {
 		ClientMappingTab.verifyTitle();
 	}
  
-	@When("the user click on the Client Mapping")
+	@When("the user select client_map_lkp from the common reference table")
 	public void the_user_click_on_the_client_mapping() throws InterruptedException {
-		ClientMappingTab.client_map_lkpSlection();
+		ClientMappingTab.Client_Map_LkpSlectionFromReferenceTableDropdown();
 	}
  
 	@When("the user clicks the Add button from the Client Mapping page")
@@ -148,15 +148,26 @@ public class ClientMappingSteps {
 		ClientMappingTab.verifyCLMFileRemoval();
 	}
  
-	@When("user clicks the download button for the Client Mapping page")
+	@When("user clicks the download all records button for the Client Mapping page")
 	public void user_clicks_the_download_button_for_the_client_mapping_page() {
 		ClientMappingTab.clickCLMDownloadButton();
 	}
  
-	@Then("a file should be downloaded to the default download folder for the Client Mapping page")
+	@Then("a file should be downloaded all the records to the default download folder for the Client Mapping page")
 	public void a_file_should_be_downloaded_to_the_default_download_folder_for_the_client_mapping_page() {
 		ClientMappingTab.verifyFileDownloaded();
 	}
+	// approve record
+	@When("user clicks the only approved records button for the Client Mapping page")
+	public void user_clicks_the_download_button_for_the_Client_Mapping_page_for_approve_record() {
+		ClientMappingTab.clickCLMDownloadButtonApproverecord();
+	}
+	
+	@Then("a file should be downloaded approved record to the default download folder for the Client Mapping page")
+	public void a_file_should_be_downloaded_to_the_default_download_folder_for_the_Client_Mapping_page_for_approve() {
+		ClientMappingTab.verifyFileDownloadedForApprove();
+	}
+	
  
 	@When("the User Navigates to upload Button from the Client Mapping page")
 	public void the_user_navigates_to_upload_button_from_the_client_mapping_page() {
