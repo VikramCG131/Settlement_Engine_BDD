@@ -21,38 +21,38 @@ When the user select client_map_lkp from the common reference table
 And the user clicks the Add button from the Client Mapping page
 Then the user click on any field for the Client Mapping and the user should see validation errors for required fields for the Client Mapping
 
-#Scenario: Verify that clicking "Reset" fields clears the fields for the Client Mapping
-# When the user select client_map_lkp from the common reference table
-#And the user clicks the Add button from the Client Mapping page
-#And the user enters the data in required fields for the Client Mapping
-#And the user click on Reset button for the Client Mapping
-#Then all the fields should be cleared for the Client Mapping
+Scenario: Verify that clicking "Reset" fields clears the fields for the Client Mapping
+ When the user select client_map_lkp from the common reference table
+And the user clicks the Add button from the Client Mapping page
+And the user enters the data in required fields for the Client Mapping
+And the user click on Reset button for the Client Mapping
+Then all the fields should be cleared for the Client Mapping
  
-#Scenario: Verify that clicking "Cancel" does not save data for the Client Mapping
- # When the user select client_map_lkp from the common reference table
-#And the user clicks the Add button from the Client Mapping page
-#And the user click on Cancel button for the Client Mapping
-  #Then Add Pop up should be closed for the Client Mapping
+Scenario: Verify that clicking "Cancel" does not save data for the Client Mapping
+  When the user select client_map_lkp from the common reference table
+And the user clicks the Add button from the Client Mapping page
+And the user click on Cancel button for the Client Mapping
+  Then Add Pop up should be closed for the Client Mapping
   
-#Scenario: Verify the edit icon functionality for the Client Mapping
-#When the user select client_map_lkp from the common reference table
- # And The User click the edit icon for the any Client Mapping
-#Then The User should see the edit modal open Client Mapping
-#And the user update the any field for the Client Mapping
-#And the user should see click on the Update Button for the Client Mapping
-#And the user should see the updated "test_file" in the file list for the Client Mapping
+Scenario: Verify the edit icon functionality for the Client Mapping
+When the user select client_map_lkp from the common reference table
+  And The User click the edit icon for the any Client Mapping
+Then The User should see the edit modal open Client Mapping
+And the user update the any field for the Client Mapping
+And the user should see click on the Update Button for the Client Mapping
+And the user should see the updated "test_file" in the file list for the Client Mapping
 
-#Scenario: Verify delete confirmation pop-up appears for the Client Mapping
-  #When the user select client_map_lkp from the common reference table
- #And The User click the delete icon for the any Client Mapping
-#Then The User should see a confirmation pop-up with title "Confirmation deletion" for the Client Mapping
+Scenario: Verify delete confirmation pop-up appears for the Client Mapping
+  When the user select client_map_lkp from the common reference table
+ And The User click the delete icon for the any Client Mapping
+Then The User should see a confirmation pop-up with title "Confirmation deletion" for the Client Mapping
 
-#Scenario: Confirm deletion of a Client Mapping
- # When the user select client_map_lkp from the common reference table
-#And The User click the delete icon for the any Client Mapping
-#  And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client Mapping
-#  And The User confirm the deletion for the Client Mapping
-#Then the file should be removed from the table for the Client Mapping
+Scenario: Confirm deletion of a Client Mapping
+  When the user select client_map_lkp from the common reference table
+And The User click the delete icon for the any Client Mapping
+  And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Client Mapping
+  And The User confirm the deletion for the Client Mapping
+Then the file should be removed from the table for the Client Mapping
  
 #Scenario: User downloads all record a file successfully
  # When the user select client_map_lkp from the common reference table

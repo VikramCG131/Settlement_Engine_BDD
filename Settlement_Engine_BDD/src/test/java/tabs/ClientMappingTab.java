@@ -28,13 +28,14 @@ import locators.ClientMappingLocators;
 import locators.ClientMappingLocators;
 import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
+import steps.ClientMappingSteps;
 import utils.DriverManager;
 
-public class ClientMappingTab {
+public class ClientMappingTab  {
 
 	private WebDriver driver;
 	public WebDriverWait wait;
-
+	static String random;
 	// Constructor to initialize the driver and wait
 	public ClientMappingTab() {
 		this.driver = DriverManager.getDriver();
@@ -106,9 +107,9 @@ public class ClientMappingTab {
 
 	// Enter the Field Value in Client Lookup Category
 	public void enterCLMCategoryFieldValue(String clientCode, String shopCode, String mappedCode) {
-
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMClientCode));
-		driver.findElement(ClientMappingLocators.CLMClientCode).sendKeys(clientCode);
+		driver.findElement(ClientMappingLocators.CLMClientCode).sendKeys(clientCode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
 		driver.findElement(ClientMappingLocators.CLMShopCode).sendKeys(shopCode);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMMappedCode));
@@ -141,7 +142,7 @@ public class ClientMappingTab {
 			
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+random);
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).sendKeys("NEW");

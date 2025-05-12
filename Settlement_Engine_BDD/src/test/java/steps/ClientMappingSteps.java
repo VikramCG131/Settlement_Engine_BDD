@@ -11,6 +11,8 @@ import io.cucumber.java.en.When;
 import tabs.ClientMappingTab;
  
 public class ClientMappingSteps {
+	public static String random;
+	
 	ClientMappingTab ClientMappingTab = new ClientMappingTab();
  
 	@Given("Settlement_Engine<URL>")
@@ -51,8 +53,10 @@ public class ClientMappingSteps {
 	}
  
 	@When("the user enters the data in required fields for the Client Mapping")
+	
 	public void the_user_enters_the_data_in_required_fields_for_the_client_mapping() {
-		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random,ClientMappingConstants.SHOP_CODE.getValue()+CommonUtilities.random, ClientMappingConstants.MAPPED_CODE.getValue());
+		
+		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue(),ClientMappingConstants.SHOP_CODE.getValue(), ClientMappingConstants.MAPPED_CODE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
  
