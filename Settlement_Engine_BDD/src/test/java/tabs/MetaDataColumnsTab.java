@@ -151,9 +151,10 @@ public class MetaDataColumnsTab {
 		//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
+			String random = CommonUtilities.getRandomInteger();
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).sendKeys(MetadataColumnConstants.NAME.getValue()+CommonUtilities.random);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).sendKeys(MetadataColumnConstants.NAME.getValue()+random);
 			Thread.sleep(5000);
 		}
 		

@@ -138,9 +138,10 @@ public class BrandMappingTab {
 	//search for the added record
 	public void AddedRecorddSearch() throws InterruptedException
 	{
+		String random = CommonUtilities.getRandomInteger();
 		Thread.sleep(5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+random);
 		Thread.sleep(5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).click();;
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).sendKeys("Not Approved");

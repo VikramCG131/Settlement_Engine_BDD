@@ -26,7 +26,7 @@ import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
-/*public class DataSourceFileTab {
+public class DataSourceFileTab {
 	private WebDriver driver;
 	private WebDriverWait wait;
 	
@@ -196,9 +196,10 @@ import utils.DriverManager;
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
+			String random = CommonUtilities.getRandomInteger();
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).sendKeys(DataSourceFileConstants.FILE_NAME.getValue()+CommonUtilities.random);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).sendKeys(DataSourceFileConstants.FILE_NAME.getValue()+random);
 			Thread.sleep(5000);
 		}
 	
@@ -330,4 +331,4 @@ import utils.DriverManager;
 
 	
 	
-}*/
+}

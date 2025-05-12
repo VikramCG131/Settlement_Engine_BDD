@@ -52,8 +52,7 @@ public class ClientMappingSteps {
  
 	@When("the user enters the data in required fields for the Client Mapping")
 	public void the_user_enters_the_data_in_required_fields_for_the_client_mapping() {
-		String random = CommonUtilities.getRandomInteger();
-		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue()+random,ClientMappingConstants.SHOP_CODE.getValue()+random, ClientMappingConstants.MAPPED_CODE.getValue());
+		ClientMappingTab.enterCLMCategoryFieldValue(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random,ClientMappingConstants.SHOP_CODE.getValue()+CommonUtilities.random, ClientMappingConstants.MAPPED_CODE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
  

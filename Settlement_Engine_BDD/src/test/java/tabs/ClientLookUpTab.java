@@ -147,9 +147,10 @@ public class ClientLookUpTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
+			String random = CommonUtilities.getRandomInteger();
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).sendKeys(ClientLookUpConstants.SHOP_CODE.getValue()+CommonUtilities.random);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).sendKeys(ClientLookUpConstants.SHOP_CODE.getValue()+random);
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).sendKeys("Not Approved");

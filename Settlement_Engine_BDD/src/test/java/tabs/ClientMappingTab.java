@@ -138,6 +138,7 @@ public class ClientMappingTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
+			
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+CommonUtilities.random);

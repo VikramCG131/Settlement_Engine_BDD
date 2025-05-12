@@ -132,7 +132,7 @@ public class Element3MappingTab {
 		{
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+CommonUtilities.random);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SearchforProductcode)).sendKeys(Element3MappingConstants.PRODUCT_CODE.getValue()+CommonUtilities.getRandomInteger());
 			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3Searchforstatus)).sendKeys("NEW");
