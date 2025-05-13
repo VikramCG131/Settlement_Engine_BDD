@@ -139,13 +139,12 @@ public class ClientMappingTab  {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(5000);
+			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforClientcode)).sendKeys(ClientMappingConstants.CLIENT_CODE.getValue()+random);
-			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSearchforstatus)).sendKeys("NEW");
-			Thread.sleep(5000);
+			
 		}
 	// Verify the Update Popup Message
 	public void verifyCLMUpdatePopupMessage() {
@@ -301,7 +300,7 @@ public class ClientMappingTab  {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMDownloadButton));
 		driver.findElement(ClientMappingLocators.CLMDownloadButton).click();
 		try {
-			Thread.sleep(5000); // Or use polling logic for better wait
+			Thread.sleep(1000); // Or use polling logic for better wait
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -325,7 +324,7 @@ public class ClientMappingTab  {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMDownloadButtonApproveRecord));
 			driver.findElement(ClientMappingLocators.CLMDownloadButtonApproveRecord).click();
 			try {
-				Thread.sleep(5000); // Or use polling logic for better wait
+				Thread.sleep(1000); // Or use polling logic for better wait
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -412,7 +411,6 @@ public class ClientMappingTab  {
 	    {
 	    	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
 	    	dropdownElement.click();
-	    	Thread.sleep(5000);
             Select dropdown = new Select(dropdownElement);
             dropdown.selectByValue("client_map_lkp"); // Replace 'option_value' with the actual value
 	    }

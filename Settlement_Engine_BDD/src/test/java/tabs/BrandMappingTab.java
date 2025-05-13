@@ -103,7 +103,6 @@ public class BrandMappingTab {
     {
     	WebElement dropdownElement = driver.findElement(BrandMappingLocators.BMSourceTabledropdown); 
     	dropdownElement.click();
-    	Thread.sleep(5000);
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByValue("brand_map_lkp"); // Replace 'option_value' with the actual value
     }
@@ -144,14 +143,11 @@ public class BrandMappingTab {
 	//search for the added record
 	public void AddedRecorddSearch() throws InterruptedException
 	{
-		
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforClientcode)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+random);
-		Thread.sleep(5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).click();;
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSearchforstatus)).sendKeys("NEW");
-		Thread.sleep(5000);
+		
 	}
 	
 	
@@ -317,7 +313,7 @@ public class BrandMappingTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMDownloadButton));
 		driver.findElement(BrandMappingLocators.BMDownloadButton).click();
 		try {
-			Thread.sleep(5000); // Or use polling logic for better wait
+			Thread.sleep(1000); // Or use polling logic for better wait
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -343,7 +339,7 @@ public class BrandMappingTab {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMDownloadButtonApproveRecord));
 			driver.findElement(BrandMappingLocators.BMDownloadButtonApproveRecord).click();
 			try {
-				Thread.sleep(5000); // Or use polling logic for better wait
+				Thread.sleep(1000); // Or use polling logic for better wait
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

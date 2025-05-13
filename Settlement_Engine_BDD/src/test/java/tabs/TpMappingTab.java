@@ -133,7 +133,7 @@ public class TpMappingTab  {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(1000);
+			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(TpMappingLocators.TPSearchforElmCode)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(TpMappingLocators.TPSearchforElmCode)).sendKeys(TpMappingConstants.ELM_CODE.getValue()+random);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(TpMappingLocators.TPSearchforstatus)).click();;

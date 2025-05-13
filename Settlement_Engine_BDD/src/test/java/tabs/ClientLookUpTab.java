@@ -98,7 +98,6 @@ public class ClientLookUpTab {
     {
     	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
     	dropdownElement.click();
-    	Thread.sleep(3000);
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByValue("client_lkp"); // Replace 'option_value' with the actual value
     }
@@ -147,10 +146,8 @@ public class ClientLookUpTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).sendKeys(ClientLookUpConstants.SHOP_CODE.getValue()+random);
-			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).sendKeys("NEW");
 		}
@@ -313,7 +310,7 @@ public class ClientLookUpTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDownloadButton));
 		driver.findElement(ClientLookupLocators.CLUDownloadButton).click();
 		try {
-			Thread.sleep(5000); // Or use polling logic for better wait
+			Thread.sleep(1000); // Or use polling logic for better wait
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -339,7 +336,7 @@ public class ClientLookUpTab {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDownloadButtonApproveRecord));
 			driver.findElement(ClientLookupLocators.CLUDownloadButtonApproveRecord).click();
 			try {
-				Thread.sleep(5000); // Or use polling logic for better wait
+				Thread.sleep(1000); // Or use polling logic for better wait
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
