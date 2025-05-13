@@ -6,7 +6,7 @@ public class ClientLookupLocators {
 	
 	/******Client Lookup Page******/
 	
-	public static final By ClientLookupTab = By.xpath("//a/span[contains(text(),'Client Look Up')]");
+	
 	public static final By CLUAddNewButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By CLUFields = By.xpath("//div[@class='form-group col-md-4']");
 	public static final By CLUSuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully..! ']");

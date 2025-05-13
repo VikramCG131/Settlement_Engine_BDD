@@ -29,25 +29,19 @@ public class ClientLookUpSteps {
 			e.printStackTrace();
 		}
 	}
-
-	@Then("The User is able to navigate to the settlement Engine Homepage")
-	public void The_User_is_able_to_navigate_to_the_settlement_Engine_Homepage() {
-		ClientLookUpTab.verifyTitle();
-	}
-
+	
 	@Then("the User clicks on Reference LookUp UI screen")
 	public void the_User_clicks_on_Reference_LookUp_UI_screen() {
 		ClientLookUpTab.clickReferenceLookUpButton();
 	}
 
-	@When("User Clicks on Hamburger Button Icon")
-	public void the_user_click_on_the_hamburger_Icon() {
-
-		ClientLookUpTab.clickHamburgerMenuButton();
+	@Then("the User is able to navigate to the Settlement Engine Homepage for the Client Lookup & user is able to see the reference table dropdown")
+	public void The_User_is_able_to_navigate_to_the_settlement_Engine_Homepage() {
+		ClientLookUpTab.verifyTitle();
 	}
 
-	@When("the user click on the Client LookUp")
-	public void the_user_click_on_the_client_look_up() {
+	@When("the user select client_lkp from the common reference table")
+	public void the_user_select_client_lkp_from_the_common_reference_table() {
 		ClientLookUpTab.clickClientLookUpTab();
 	}
 
@@ -154,16 +148,29 @@ public class ClientLookUpSteps {
 		ClientLookUpTab.verifyCLUFileRemoval();
 	}
 
-	@When("user clicks the download button")
-	public void user_clicks_the_download_button() {
+	@When("user clicks the download all records button for the Client Lookup page")
+	public void user_clicks_the_download_all_records_button_for_the_Client_Lookup_page() {
 		ClientLookUpTab.clickCLUDownloadButton();
 	}
 
-	@Then("a file should be downloaded to the default download folder")
-	public void a_file_should_be_downloaded_to_the_default_download_folder() {
+	@Then("a file should be downloaded all the records to the default download folder for the Client Lookup Page")
+	public void a_file_should_be_downloaded_all_the_records_to_the_default_download_folder_for_the_Client_Lookup_Page() {
 		ClientLookUpTab.verifyFileDownloaded();
 	}
 
+	// download approve record only
+	
+	@When("user clicks the only approved records button for the Client Lookup page")
+	public void user_clicks_the_only_approved_records_button_for_the_Client_Lookup_page() {
+		ClientLookUpTab.clickCLUDownloadButton();
+	}
+
+	@Then("a file should be downloaded approved record to the default download folder for the Client Lookup page")
+	public void a_file_should_be_downloaded_approved_record_to_the_default_download_folder_for_the_Client_Lookup_page() {
+		ClientLookUpTab.verifyFileDownloaded();
+	}
+	
+	
 	@When("the User Navigates to upload Button")
 	public void the_user_navigates_to_upload_button() {
 		ClientLookUpTab.clickCLUUploadButton();

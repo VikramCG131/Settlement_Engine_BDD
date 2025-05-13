@@ -90,20 +90,10 @@ public class ClientLookUpTab {
 		System.out.println("The user is able to click on Reference Look Up Button");
 	}
 
-	// Click on Hamburger Menu Button
-	public void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
-		driver.findElement(LoginPageLocators.HamburgerButton).click();
-		System.out.println("The user is able to click on Hamburger Menu Button");
-	}
-
-	// Click on Client Lookup Tab
-	public void clickClientLookUpTab() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.ClientLookupTab));
-		driver.findElement(ClientLookupLocators.ClientLookupTab).click();
-		System.out.println("The user is able to click on Client Lookup Tab");
-	}
-
+	
+	//select the client lkp
+	
+	
 	// Click on Add New Button
 	public void clickCLUAddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUAddNewButton));
