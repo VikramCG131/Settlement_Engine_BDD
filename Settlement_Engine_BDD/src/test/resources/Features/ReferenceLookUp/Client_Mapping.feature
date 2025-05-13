@@ -55,7 +55,7 @@ Then the file should be removed from the table for the Client Mapping
 Scenario: User downloads all record a file successfully
   When the user select client_map_lkp from the common reference table
 And user clicks the download all records button for the Client Mapping page 
-Then a file should be downloaded all the records to the default download folder for the Brand Mapping Page
+Then a file should be downloaded all the records to the default download folder for the Client Mapping Page
 
 Scenario: User downloads a file successfully for approve record
  When the user select client_map_lkp from the common reference table

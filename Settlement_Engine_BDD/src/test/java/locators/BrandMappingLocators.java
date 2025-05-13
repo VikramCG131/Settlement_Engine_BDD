@@ -23,19 +23,20 @@ public class BrandMappingLocators {
 	
 	/******Brand Mapping Category******/
 	
-	public static final By BMClientCode = By.xpath("//input[@formcontrolname='clientCode']");
-	public static final By BMBrandCode = By.xpath("//input[@formcontrolname='brandCode']");
+	public static final By BMClientCode = By.xpath("//input[@placeholder='Enter Client Code']");
+	public static final By BMBrandCode = By.xpath("//input[@placeholder='Enter Brand Code']");
 	public static final By BMSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By BMErrorValidation = By.xpath("//div[contains(text(),'Please enter Client Code')]");
-	public static final By BMPageGridValidation = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
+	public static final By BMErrorValidation = By.xpath("//div[contains(text(),'Client Code is required.')]");
+	public static final By BMPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By BMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By BMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By BMUpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By BMCCategoryTextVisible = By.xpath("//h6[contains(text(),'Brand Mapping Category')]");
-	public static final By BMCCategoryTextPageVisible = By.xpath("//span[contains(text(),'Brand Mapping Grid')]");
+	public static final By BMCategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category')]");
+	public static final By BMCategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By BMConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
 	public static final By BMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
-	
+	public static final By BMDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By BMSourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	/******Brand Mapping Grid******/
 	public static final By BMSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Client Code Filter Input']");
 	public static final By BMSearchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");
