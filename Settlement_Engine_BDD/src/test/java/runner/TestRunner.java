@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/Features/ReferenceLookUp/Client_LookUp.feature",
+    features = "src/test/resources/Features/ReferenceLookUp/Tp_Mapping.feature",
     glue = {"steps", "hooks", "listeners"},
     monochrome = true,
     tags = "not @skip",
