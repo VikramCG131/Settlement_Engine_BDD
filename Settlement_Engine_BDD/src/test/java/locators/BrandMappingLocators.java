@@ -34,8 +34,8 @@ public class BrandMappingLocators {
 	public static final By BMCategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category')]");
 	public static final By BMCategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By BMConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
-	public static final By BMDownloadButton= By.xpath("//button[contains(text(),'Download')]");
-	public static final By BMDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By BMDownloadButton= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By BMDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Only Approved Records')]");
 	public static final By BMSourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	/******Brand Mapping Grid******/
 	public static final By BMSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Client Code Filter Input']");

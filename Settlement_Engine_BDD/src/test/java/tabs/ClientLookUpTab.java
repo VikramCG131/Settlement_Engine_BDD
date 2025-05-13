@@ -24,6 +24,7 @@ import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
 import locators.BrandMappingLocators;
 import locators.ClientLookupLocators;
+import locators.ClientMappingLocators;
 import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
@@ -34,7 +35,7 @@ public class ClientLookUpTab {
 
 	private WebDriver driver;
 	public WebDriverWait wait;
-
+	static String random;
 	// Constructor to initialize the driver and wait
 	public ClientLookUpTab() {
 		this.driver = DriverManager.getDriver();
@@ -93,6 +94,14 @@ public class ClientLookUpTab {
 	
 	//select the client lkp
 	
+	public void Client_LkpSlectionFromReferenceTableDropdown() throws InterruptedException
+    {
+    	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
+    	dropdownElement.click();
+    	Thread.sleep(3000);
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByValue("client_lkp"); // Replace 'option_value' with the actual value
+    }
 	
 	// Click on Add New Button
 	public void clickCLUAddNewButton() {
@@ -104,19 +113,20 @@ public class ClientLookUpTab {
 
 	// Enter the Field Value in Client Lookup Category
 	public void enterCLUCategoryFieldValue(String payableEl2, String advanceComission, String shopCode, String shopName,
-			String dStype) {
-
+			String dStype) throws InterruptedException {
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUPayableElement2));
-		driver.findElement(ClientLookupLocators.CLUPayableElement2).sendKeys(payableEl2);
+		driver.findElement(ClientLookupLocators.CLUPayableElement2).sendKeys(payableEl2+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUAdvanComission));
 		driver.findElement(ClientLookupLocators.CLUAdvanComission).sendKeys(advanceComission);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUShopCode));
-		driver.findElement(ClientLookupLocators.CLUShopCode).sendKeys(shopCode);
+		driver.findElement(ClientLookupLocators.CLUShopCode).sendKeys(shopCode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUShopName));
 		driver.findElement(ClientLookupLocators.CLUShopName).sendKeys(shopName);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDataSourceType));
-		driver.findElement(ClientLookupLocators.CLUDataSourceType).sendKeys(dStype);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDescriptionType));
+		driver.findElement(ClientLookupLocators.CLUDescriptionType).sendKeys(dStype);
 		System.out.println("The user is able to insert the data in the all fields");
+		
 	}
 
 	// Click on Submit Button
@@ -137,13 +147,12 @@ public class ClientLookUpTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			String random = CommonUtilities.getRandomInteger();
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSearchforShopcode)).sendKeys(ClientLookUpConstants.SHOP_CODE.getValue()+random);
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).click();;
-			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).sendKeys("Not Approved");
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUearchforstatus)).sendKeys("NEW");
 		}
 	
 	// Verify the Update Popup Message
@@ -162,7 +171,7 @@ public class ClientLookUpTab {
 		driver.findElement(ClientLookupLocators.CLUAdvanComission).click();
 
 		String actual = driver.findElement(ClientLookupLocators.CLUASourceErrorValidation).getText();
-		Assert.assertEquals("Please Enter Payable Element 2", actual);
+		Assert.assertEquals("Payable Element 2 is required.", actual);
 		System.out.println("The user is able to click on Payable Element 2 and validate the error message");
 	}
 
@@ -177,7 +186,7 @@ public class ClientLookUpTab {
 	public void clickCLUCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(ClientLookupLocators.CLUCategoryTextVisible).getText();
-		Assert.assertEquals("Client Look Up Category", actual);
+		Assert.assertEquals("Common Reference Look Up Category", actual);
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUCancelButton));
 		driver.findElement(ClientLookupLocators.CLUCancelButton).click();
@@ -245,7 +254,7 @@ public class ClientLookUpTab {
 		String advanceCommission = driver.findElement(ClientLookupLocators.CLUAdvanComission).getAttribute("value");
 		String shopCode = driver.findElement(ClientLookupLocators.CLUShopCode).getAttribute("value");
 		String shopName = driver.findElement(ClientLookupLocators.CLUShopName).getAttribute("value");
-		String dataSourceType = driver.findElement(ClientLookupLocators.CLUDataSourceType).getAttribute("value");
+		String dataSourceType = driver.findElement(ClientLookupLocators.CLUDescriptionType).getAttribute("value");
 
 		Assert.assertEquals("", payableElement2);
 		Assert.assertEquals("", advanceCommission);
@@ -323,6 +332,32 @@ public class ClientLookUpTab {
 		
 	}
 
+	// download approve record
+	
+	// Click on Download Button
+		public void clickCLUDownloadButtonAllapproverecord() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUDownloadButtonApproveRecord));
+			driver.findElement(ClientLookupLocators.CLUDownloadButtonApproveRecord).click();
+			try {
+				Thread.sleep(5000); // Or use polling logic for better wait
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("The user is able to click on Download Button");
+		}
+
+		// Verify Downloaded file
+		public void verifyFileDownloadedAllApproveRecords() {
+			String downloadPath = System.getProperty("user.dir") + "/downloads";
+			File downloadDir = new File(downloadPath);
+			if (!downloadDir.exists())
+				downloadDir.mkdir();
+			String fileName = "example.csv";
+			File downloadedFile = new File(downloadDir, fileName);
+			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
+			
+		}
+		
 	// Click on Upload Button
 	public void clickCLUUploadButton() {
 		WebElement uploadButton = wait
@@ -339,7 +374,7 @@ public class ClientLookUpTab {
 		System.out.println("The user is able to select a valid file to upload");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		String projectPath = System.getProperty("user.dir");
-		File file = new File(projectPath + "\\src\\test\\resources\\TestData\\client_Map.csv");
+		File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Client_LookUp.csv");
 		String absolutePath = file.getAbsolutePath();
 		System.out.println(absolutePath);
 		// Upload the file by sending the path

@@ -34,9 +34,9 @@ public class Element3MappingLocators {
 	public static final By EL3CategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category ')]");
 	public static final By EL3CategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By EL3ConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
-	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download')]");
+	public static final By EL3DownloadButton= By.xpath("//button[contains(text(),'Download All Records')]");
 	public static final By EL3SourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
-	public static final By EL3DownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By EL3DownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Only Approved Records')]");
 	/******Element 3 Grid******/
 	public static final By EL3SearchforProductcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Product Code Filter Input']");
 	public static final By EL3Searchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");

@@ -27,21 +27,23 @@ public class ClientLookupLocators {
 	//
 	/******Client Lookup Category******/
 	
-	public static final By CLUPayableElement2 = By.xpath("//input[@formcontrolname='payableEl2']");
-	public static final By CLUAdvanComission = By.xpath("//input[@formcontrolname='advanceComission']");
-	public static final By CLUShopCode = By.xpath("//input[@formcontrolname='shopCode']");
-	public static final By CLUShopName = By.xpath("//input[@formcontrolname='shopName']");
-	public static final By CLUDataSourceType= By.xpath("//input[@formcontrolname='dStype']");
+	public static final By CLUPayableElement2 = By.xpath("//input[@placeholder='Enter Payable Element 2']");
+	public static final By CLUAdvanComission = By.xpath("//input[@placeholder='Enter Advance Commission']");
+	public static final By CLUShopCode = By.xpath("//input[@placeholder='Enter Shop Code']");
+	public static final By CLUShopName = By.xpath("//input[@placeholder='Enter Shop Name']");
+	public static final By CLUDescriptionType= By.xpath("//input[@placeholder='Enter Description type']");
 	public static final By CLUSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By CLUASourceErrorValidation = By.xpath("//span[contains(text(),'Please Enter Payable Element 2')]");
-	public static final By CLUPageGridValidation = By.xpath("//span[contains(text(),'Client Look Up Grid')]");
+	public static final By CLUASourceErrorValidation = By.xpath("//div[contains(text(),'Payable Element 2 is required')]");
+	public static final By CLUPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By CLUResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By CLUCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
 	public static final By CLUUpdateButton = By.xpath("//button[contains(text(),'Update')]");
-	public static final By CLUCategoryTextVisible = By.xpath("//h6[contains(text(),'Client Look Up Category')]");
-	public static final By CLUCategoryTextPageVisible = By.xpath("//span[contains(text(),'Client Look Up Grid')]");
+	public static final By CLUCategoryTextVisible = By.xpath("//h6[contains(text(),'Common Reference Look Up Category')]");
+	public static final By CLUCategoryTextPageVisible = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By CLUConfirmationPopupSelect = By.xpath("//div[@class='modal-content']");
-	public static final By CLUDownloadButton= By.xpath("//button[contains(text(),'Download')]");
+	public static final By CLUDownloadButton= By.xpath("//button[contains(text(),'Download All Records')]");
+	public static final By CLUDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Only Approved Records')]");
+	public static final By CLUSourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	//
 	/******Client Lookup Grid******/
 	public static final By CLUSearchforShopcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Shop Code Filter Input']");

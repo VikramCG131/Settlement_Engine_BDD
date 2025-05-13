@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import tabs.ClientLookUpTab;
 
 public class ClientLookUpSteps {
+	public static String random;
 	ClientLookUpTab ClientLookUpTab = new ClientLookUpTab();
 
 	@Given("Settlement_Engine<URL> for Client LookUp page")
@@ -41,8 +42,8 @@ public class ClientLookUpSteps {
 	}
 
 	@When("the user select client_lkp from the common reference table")
-	public void the_user_select_client_lkp_from_the_common_reference_table() {
-		ClientLookUpTab.clickClientLookUpTab();
+	public void the_user_select_client_lkp_from_the_common_reference_table() throws InterruptedException {
+		ClientLookUpTab.Client_LkpSlectionFromReferenceTableDropdown();
 	}
 
 	@When("the user clicks the Add button from the Client LookUp page")
@@ -51,9 +52,9 @@ public class ClientLookUpSteps {
 	}
 
 	@When("the user enters the data in required fields for the Client LookUp")
-	public void the_user_enters_the_data_in_required_fields_for_the_client_look_up() {
-		String random = CommonUtilities.getRandomInteger();
-		ClientLookUpTab.enterCLUCategoryFieldValue(ClientLookUpConstants.PAYABLE_ELEMENT_2.getValue(),ClientLookUpConstants.ADVANCE_COMMISSION.getValue(), ClientLookUpConstants.SHOP_CODE.getValue()+random,ClientLookUpConstants.SHOPE_NAME.getValue()+random,ClientLookUpConstants.DATA_SOURCE_TYPE.getValue()+random);
+	
+	public void the_user_enters_the_data_in_required_fields_for_the_client_look_up() throws InterruptedException {
+		ClientLookUpTab.enterCLUCategoryFieldValue(ClientLookUpConstants.PAYABLE_ELEMENT_2.getValue(),ClientLookUpConstants.ADVANCE_COMMISSION.getValue(), ClientLookUpConstants.SHOP_CODE.getValue(),ClientLookUpConstants.SHOPE_NAME.getValue(),ClientLookUpConstants.DATA_SOURCE_TYPE.getValue());
 		System.out.println("The user is able to insert the data in the all fields");
 	}
 		
@@ -162,12 +163,12 @@ public class ClientLookUpSteps {
 	
 	@When("user clicks the only approved records button for the Client Lookup page")
 	public void user_clicks_the_only_approved_records_button_for_the_Client_Lookup_page() {
-		ClientLookUpTab.clickCLUDownloadButton();
+		ClientLookUpTab.clickCLUDownloadButtonAllapproverecord();
 	}
 
 	@Then("a file should be downloaded approved record to the default download folder for the Client Lookup page")
 	public void a_file_should_be_downloaded_approved_record_to_the_default_download_folder_for_the_Client_Lookup_page() {
-		ClientLookUpTab.verifyFileDownloaded();
+		ClientLookUpTab.verifyFileDownloadedAllApproveRecords();
 	}
 	
 	
