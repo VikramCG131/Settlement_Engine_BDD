@@ -7,39 +7,39 @@ Feature: Validation of the Due Date LookUP Reference LookUp UI Screen
       Then the User is able to navigate to the Settlement Engine Homepage for the Due Date LookUP & user is able to see the reference table dropdown
       
      
-#Scenario: Verify reference data form submission with valid data for Due Date LookUP
- #When the user select due_date_lkp from the common reference table
- #And the user clicks the Add button from the Due Date LookUP page
- #And the user enters the data in required fields for the Due Date LookUP
-  #And the user should see click on the Submit Button for the Due Date LookUP
-  #Then the user should see "test_data" in the file list for the Due Date LookUP
-	#Then user can search and see the addded same record for the Due Date LookUP
+Scenario: Verify reference data form submission with valid data for Due Date LookUP
+ When the user select due_date_lkp from the common reference table
+ And the user clicks the Add button from the Due Date LookUP page
+ And the user enters the data in required fields for the Due Date LookUP
+  And the user should see click on the Submit Button for the Due Date LookUP
+  Then the user should see "test_data" in the file list for the Due Date LookUP
+	Then user can search and see the addded same record for the Due Date LookUP
 	
-#Scenario: Verify validation errors when mandatory fields are missing for the Due Date LookUP
- #When the user select due_date_lkp from the common reference table
- 	#And the user clicks the Add button from the Due Date LookUP page
- #Then the user click on any field for the Due Date LookUP and the user should see validation errors for required fields for the Due Date LookUP
+Scenario: Verify validation errors when mandatory fields are missing for the Due Date LookUP
+ When the user select due_date_lkp from the common reference table
+ 	And the user clicks the Add button from the Due Date LookUP page
+ Then the user click on any field for the Due Date LookUP and the user should see validation errors for required fields for the Due Date LookUP
    
-#Scenario: Verify that clicking "Reset" fields clears the fields for the Due Date LookUP
- #When the user select due_date_lkp from the common reference table
- #And the user clicks the Add button from the Due Date LookUP page
- #And the user enters the data in required fields for the Due Date LookUP
- #And the user click on Reset button for the Due Date LookUP
- #Then all the fields should be cleared for the Due Date LookUP
+Scenario: Verify that clicking "Reset" fields clears the fields for the Due Date LookUP
+ When the user select due_date_lkp from the common reference table
+ And the user clicks the Add button from the Due Date LookUP page
+ And the user enters the data in required fields for the Due Date LookUP
+ And the user click on Reset button for the Due Date LookUP
+ Then all the fields should be cleared for the Due Date LookUP
 
-#Scenario: Verify that clicking "Cancel" does not save data for the Due Date LookUP
- # When the user select due_date_lkp from the common reference table
-  #And the user clicks the Add button from the Due Date LookUP page
- #And the user click on Cancel button for the Due Date LookUP
- #Then Add Pop up should be closed for the Due Date LookUP
+Scenario: Verify that clicking "Cancel" does not save data for the Due Date LookUP
+  When the user select due_date_lkp from the common reference table
+  And the user clicks the Add button from the Due Date LookUP page
+ And the user click on Cancel button for the Due Date LookUP
+ Then Add Pop up should be closed for the Due Date LookUP
     
-#Scenario: Verify the edit icon functionality for the Due Date LookUP
- # When the user select due_date_lkp from the common reference table
-  #And The User click the edit icon for the any Due Date LookUP
- #Then The User should see the edit modal open Due Date LookUP
- #And the user update the any field for the Due Date LookUP
- #And the user should see click on the Update Button for the Due Date LookUP
-  #And the user should see the updated "test_file" in the file list for the Due Date LookUP
+Scenario: Verify the edit icon functionality for the Due Date LookUP
+  When the user select due_date_lkp from the common reference table
+  And The User click the edit icon for the any Due Date LookUP
+ Then The User should see the edit modal open Due Date LookUP
+ And the user update the any field for the Due Date LookUP
+ And the user should see click on the Update Button for the Due Date LookUP
+  And the user should see the updated "test_file" in the file list for the Due Date LookUP
     
 Scenario: Verify delete confirmation pop-up appears for the Due Date LookUP
   When the user select due_date_lkp from the common reference table
