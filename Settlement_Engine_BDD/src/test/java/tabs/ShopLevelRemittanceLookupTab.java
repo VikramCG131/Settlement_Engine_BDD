@@ -137,13 +137,13 @@ public class ShopLevelRemittanceLookupTab  {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(5000);
+			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ShopLevelRemittanceLookupLocators.SLRPaysearchbleEL2)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ShopLevelRemittanceLookupLocators.SLRPaysearchbleEL2)).sendKeys(ShopLevelRemittanceLookupConstants.PAYABLE_EL2.getValue()+random);
-			Thread.sleep(5000);
+			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ShopLevelRemittanceLookupLocators.SLRSearchforstatus)).click();;
 			wait.until(ExpectedConditions.visibilityOfElementLocated(ShopLevelRemittanceLookupLocators.SLRSearchforstatus)).sendKeys("NEW");
-			Thread.sleep(5000);
+			
 		}
 	// Verify the Update Popup Message
 	public void verifySLRUpdatePopupMessage() {
