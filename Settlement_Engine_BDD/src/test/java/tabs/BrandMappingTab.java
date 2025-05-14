@@ -168,9 +168,8 @@ public class BrandMappingTab {
 		driver.findElement(BrandMappingLocators.BMClientCode).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMBrandCode));
 		driver.findElement(BrandMappingLocators.BMBrandCode).click();
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		String actual = driver.findElement(BrandMappingLocators.BMErrorValidation).getText();
 		Thread.sleep(2000);
+		String actual = driver.findElement(BrandMappingLocators.BMErrorValidation).getText();
 		Assert.assertEquals("Client Code is required.", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
 	}
@@ -226,8 +225,8 @@ public class BrandMappingTab {
 
 	public void editClientCodeValue() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
-		driver.findElement(BrandMappingLocators.BMClientCode).clear();
 		Thread.sleep(2000);
+		driver.findElement(BrandMappingLocators.BMClientCode).clear();
 		driver.findElement(BrandMappingLocators.BMClientCode).sendKeys("111");
 		
 	}

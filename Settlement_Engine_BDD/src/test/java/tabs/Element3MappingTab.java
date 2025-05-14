@@ -152,6 +152,7 @@ public class Element3MappingTab {
 		driver.findElement(Element3MappingLocators.EL3Element3Code).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3ProductCode));
 		driver.findElement(Element3MappingLocators.EL3ProductCode).click();
+		Thread.sleep(2000);
 		String actual = driver.findElement(Element3MappingLocators.EL3CodeErrorValidation).getText();
 		Assert.assertEquals("Element 3 Code is required.", actual);
 		System.out.println("The user is able to click on Element 3 code and validate the error message");

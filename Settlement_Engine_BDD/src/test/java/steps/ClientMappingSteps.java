@@ -156,7 +156,7 @@ public class ClientMappingSteps {
 		ClientMappingTab.clickCLMDownloadButton();
 	}
  
-	@Then("a file should be downloaded all the records to the default download folder for the Client Mapping page")
+	@Then("a file should be downloaded all the records to the default download folder for the Client Mapping Page")
 	public void a_file_should_be_downloaded_to_the_default_download_folder_for_the_client_mapping_page() {
 		ClientMappingTab.verifyFileDownloaded();
 	}
