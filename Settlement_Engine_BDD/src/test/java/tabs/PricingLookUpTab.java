@@ -163,11 +163,13 @@ public class PricingLookUpTab {
 		driver.findElement(PricingLookUpLocators.PLVolBonusPct).sendKeys(volBonusPct);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLHeadOfficeRebate));
 		driver.findElement(PricingLookUpLocators.PLHeadOfficeRebate).sendKeys(headOfficeRebate);
+		Thread.sleep(2000);
 		System.out.println("The user is able to enter the field values in the Client Lookup Category");
 	}
 
 	// Click on Submit Button
-	public void clickBMSubmitButton() {
+	public void clickBMSubmitButton() throws InterruptedException {
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSubmitButton));
 		driver.findElement(PricingLookUpLocators.PLSubmitButton).click();
 		System.out.println("The user is able to click on Submit Button");
@@ -206,8 +208,8 @@ public class PricingLookUpTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLProductCode));
 		driver.findElement(PricingLookUpLocators.PLProductCode).click();
 		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		 Thread.sleep(2000);
 		String actual = driver.findElement(PricingLookUpLocators.PLErrorValidation).getText();
-		Thread.sleep(2000);
 		Assert.assertEquals("Client code is required.", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
 	}
@@ -262,9 +264,9 @@ public class PricingLookUpTab {
 	}
 
 	public void editClientCodeValue() throws InterruptedException {
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLProductCode));
 		driver.findElement(PricingLookUpLocators.PLProductCode).clear();
-		Thread.sleep(2000);
 		driver.findElement(PricingLookUpLocators.PLProductCode).sendKeys("111");
 		
 	}

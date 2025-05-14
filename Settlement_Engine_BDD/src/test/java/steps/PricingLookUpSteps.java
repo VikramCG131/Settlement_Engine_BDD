@@ -65,7 +65,7 @@ public class PricingLookUpSteps {
 	}
 
 	@When("the user should see click on the Submit Button for the Pricing LookUp")
-	public void the_user_should_see_click_on_the_submit_button_for_the_pricing_lookup() {
+	public void the_user_should_see_click_on_the_submit_button_for_the_pricing_lookup() throws InterruptedException {
 		PricingLookUpTab.clickBMSubmitButton();
 	}
 	
