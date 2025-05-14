@@ -90,16 +90,8 @@ public class PricingLookUpTab {
 		driver.findElement(LoginPageLocators.ReferenceLookUpButton).click();
 		System.out.println("The user is able to click on Reference Look Up Button");
 	}
-
-	// Click on Hamburger Menu Button
-	public void clickHamburgerMenuButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPageLocators.HamburgerButton));
-		driver.findElement(LoginPageLocators.HamburgerButton).click();
-		System.out.println("The user is able to click on Hamburger Menu Button");
-	}
-
-	// Click on Brand Maping Tab
 	
+	// select the pricing lookup dropdown
 	public void Pricing_LkpSlectionFromReferenceTableDropdown() throws InterruptedException
     {
     	WebElement dropdownElement = driver.findElement(PricingLookUpLocators.PLSourceTabledropdown); 
