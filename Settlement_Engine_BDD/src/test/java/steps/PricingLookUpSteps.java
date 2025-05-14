@@ -18,8 +18,8 @@ public class PricingLookUpSteps {
 		PricingLookUpTab.openLoginPage();
 	}
 
-	@When("the User Clicks Settlement engine_uRL")
-	public void the_User_clicks_Settlement_engine_url() {
+	@When("The User Clicks Settlement engine URL")
+	public void The_User_clicks_Settlement_engine_url() {
 		try {
 			
 			PricingLookUpTab.verifyHealthCheck();
@@ -51,7 +51,7 @@ public class PricingLookUpSteps {
 	}
 
 	@When("the user enters the data in required fields for the Pricing LookUp")
-	public void the_user_enters_the_data_in_required_fields_for_the_pricing_lookup() {
+	public void the_user_enters_the_data_in_required_fields_for_the_pricing_lookup() throws InterruptedException {
 		PricingLookUpTab.enterBMCategoryFieldValue(PricingLookUpConstants.CURRENCY.getValue(),
 				PricingLookUpConstants.CLIENT_CODE.getValue(),PricingLookUpConstants.PRODUCT_CODE.getValue(),PricingLookUpConstants.INSTALEMENTS.getValue(),
 				PricingLookUpConstants.OFFER_MONTHS.getValue(),PricingLookUpConstants.LOAN_AMOUNT_MIN.getValue(),PricingLookUpConstants.LOAN_AMOUNT_MAX.getValue(),

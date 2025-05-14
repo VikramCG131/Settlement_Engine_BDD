@@ -1,0 +1,2 @@
+﻿active_from_date,currency,client_code,product_code,instalments,offer_months,loan_amt_min,loan_amt_max,rule_id,comm_subs_pct,min_max_subs_val,cntdwn_rate_pct,min_cntdwn_rate_pct,cntdwn_adjust,third_party_1_encoding,third_party_1_rate,third_party_2_encoding,third_party_2_rate,third_party_3_encoding,third_party_3_rate,vol_bonus_pct,ho_rebate_pct
+05/01/2025 00:00:00,USD,US381,111,1,11,1000.000000000,10000.000000000,AB381,0.500000000,5.000000000,39.000000000,5.000000000,6.000000000,8,5.00,6,0.90,8,9.00,10.000000000,9.000000000

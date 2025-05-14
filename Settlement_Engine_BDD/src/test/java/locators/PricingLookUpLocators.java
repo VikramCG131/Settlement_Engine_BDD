@@ -47,7 +47,7 @@ public class PricingLookUpLocators {
 	public static final By PLVolBonusPct = By.xpath("//input[@placeholder='Enter VOL BONUS PCT']");
 	public static final By PLHeadOfficeRebate = By.xpath("//input[@placeholder='Enter Head Office Rebate %']");
 	public static final By PLSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By PLErrorValidation = By.xpath("//div[contains(text(),'Client Code is required.')]");
+	public static final By PLErrorValidation = By.xpath("//div[contains(text(),'Client code is required.')]");
 	public static final By PLPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By PLResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By PLCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -59,7 +59,7 @@ public class PricingLookUpLocators {
 	public static final By PLDownloadButtonApproveRecord= By.xpath("//button[contains(text(),'Only Approved Records')]");
 	public static final By PLSourceTabledropdown= By.xpath("//select[@formcontrolname='sourceTable']");
 	/******Pricing LookUp Grid******/
-	public static final By PLSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Client Code Filter Input']");
+	public static final By PLSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Client code Filter Input']");
 	public static final By PLSearchforstatus= By.xpath("//input[@aria-label='Status Filter Input']");
 	public static final By PLGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By PLEditButton = By.xpath("(//i[@data-action='edit'])[1]");

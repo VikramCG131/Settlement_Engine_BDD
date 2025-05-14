@@ -122,7 +122,7 @@ public class PricingLookUpTab {
 			String commSubPct, String minMaxSubVal, String cntdwnRatePct, String minCntdwnRatePct,
 			String cntdwnAdjust, String thirdParty1Encoding, String thirdParty1Rate, String thirdParty2Encoding,
 			String thirdParty2Rate, String thirdParty3Encoding, String thirdParty3Rate, String volBonusPct,
-			String headOfficeRebate) {
+			String headOfficeRebate) throws InterruptedException {
 		
 		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLActiveFromDate));
@@ -132,11 +132,11 @@ public class PricingLookUpTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLCurrency));
 		driver.findElement(PricingLookUpLocators.PLCurrency).sendKeys(currency);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLClientCode));
-		driver.findElement(PricingLookUpLocators.PLClientCode).sendKeys(clientcode);
+		driver.findElement(PricingLookUpLocators.PLClientCode).sendKeys(clientcode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLProductCode));
-		driver.findElement(PricingLookUpLocators.PLProductCode).sendKeys(productCode);
+		driver.findElement(PricingLookUpLocators.PLProductCode).sendKeys(productCode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLInstalments));
-		driver.findElement(PricingLookUpLocators.PLInstalments).sendKeys(productCode);
+		driver.findElement(PricingLookUpLocators.PLInstalments).sendKeys(instalments);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLOfferMonths));
 		driver.findElement(PricingLookUpLocators.PLOfferMonths).sendKeys(offerMonths);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLLoanAmountMin));
@@ -144,7 +144,7 @@ public class PricingLookUpTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLLoanAmountMax));
 		driver.findElement(PricingLookUpLocators.PLLoanAmountMax).sendKeys(loanAmountMax);	
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLRule));
-		driver.findElement(PricingLookUpLocators.PLRule).sendKeys(rule);
+		driver.findElement(PricingLookUpLocators.PLRule).sendKeys(rule+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLCommSubPct));
 		driver.findElement(PricingLookUpLocators.PLCommSubPct).sendKeys(commSubPct);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLMinMaxSubVal));
@@ -194,9 +194,6 @@ public class PricingLookUpTab {
 	{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSearchforClientcode)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSearchforClientcode)).sendKeys(PricingLookUpConstants.CLIENT_CODE.getValue()+random);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSearchforstatus)).click();;
-		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSearchforstatus)).sendKeys("NEW");
-		
 	}
 	
 	
@@ -219,7 +216,7 @@ public class PricingLookUpTab {
 		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		String actual = driver.findElement(PricingLookUpLocators.PLErrorValidation).getText();
 		Thread.sleep(2000);
-		Assert.assertEquals("Client Code is required.", actual);
+		Assert.assertEquals("Client code is required.", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
 	}
 
@@ -273,10 +270,10 @@ public class PricingLookUpTab {
 	}
 
 	public void editClientCodeValue() throws InterruptedException {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLClientCode));
-		driver.findElement(PricingLookUpLocators.PLClientCode).clear();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLProductCode));
+		driver.findElement(PricingLookUpLocators.PLProductCode).clear();
 		Thread.sleep(2000);
-		driver.findElement(PricingLookUpLocators.PLClientCode).sendKeys("111");
+		driver.findElement(PricingLookUpLocators.PLProductCode).sendKeys("111");
 		
 	}
 
@@ -459,7 +456,7 @@ public class PricingLookUpTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Brandmapping.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Pricing_LookUp.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path

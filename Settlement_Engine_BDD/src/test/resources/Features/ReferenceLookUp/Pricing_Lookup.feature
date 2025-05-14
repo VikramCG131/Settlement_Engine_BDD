@@ -11,7 +11,7 @@ Scenario: Verify reference data form submission with valid data for Pricing Look
  When the user select pricing_lkp from the common reference table
  And the user clicks the Add button from the Pricing LookUp page
  And the user enters the data in required fields for the Pricing LookUp
-  And the user should see click on the Submit Button for the Pricing LookUp
+ And the user should see click on the Submit Button for the Pricing LookUp
   Then the user should see "test_data" in the file list for the Pricing LookUp
 	Then user can search and see the addded same record for the Pricing LookUp
 	
@@ -28,13 +28,13 @@ Scenario: Verify that clicking "Reset" fields clears the fields for the Pricing 
  Then all the fields should be cleared for the Pricing LookUp
 
 Scenario: Verify that clicking "Cancel" does not save data for the Pricing LookUp
-  When the user select pricing_lkp from the common reference table
+ When the user select pricing_lkp from the common reference table
   And the user clicks the Add button from the Pricing LookUp page
  And the user click on Cancel button for the Pricing LookUp
  Then Add Pop up should be closed for the Pricing LookUp
     
 Scenario: Verify the edit icon functionality for the Pricing LookUp
-  When the user select pricing_lkp from the common reference table
+ When the user select pricing_lkp from the common reference table
   And The User click the edit icon for the any Pricing LookUp
  Then The User should see the edit modal open Pricing LookUp
  And the user update the any field for the Pricing LookUp

@@ -18,12 +18,11 @@ public enum PricingLookUpConstants {
 	THIRD_PARTY_1_ENCODING("8"),
 	THIRD_PARTY_1_RATE("5"),
 	THIRD_PARTY_2_ENCODING("6"),
-	THIRD_PARTY_2_RATE("10"),
+	THIRD_PARTY_2_RATE("0.9"),
 	THIRD_PARTY_3_ENCODING("8"),
 	THIRD_PARTY_3_RATE("9"),
 	VOL_BONUS_PCT("10"),
 	HEAD_OFFICE_REBATE("9");
-	
 	
 	private final String value;
 	PricingLookUpConstants(String value)
