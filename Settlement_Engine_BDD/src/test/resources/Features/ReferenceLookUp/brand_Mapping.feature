@@ -47,7 +47,7 @@ Scenario: Verify delete confirmation pop-up appears for the Brand Mapping
  Then The User should see a confirmation pop-up with title "Confirmation deletion" for the Brand Mapping
    
 Scenario: Confirm deletion of a Brand Mapping
-  When the user select brand_map_lkp from the common reference table
+ When the user select brand_map_lkp from the common reference table
  And The User click the delete icon for the any Brand Mapping
  And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Brand Mapping
   And The User confirm the deletion for the Brand Mapping

@@ -72,7 +72,7 @@ public class BrandMappingSteps {
 	}
 	
 	@Then("the user click on any field for the Brand Mapping and the user should see validation errors for required fields for the Brand Mapping")
-	public void the_user_click_on_any_field_for_the_brand_mapping() {
+	public void the_user_click_on_any_field_for_the_brand_mapping() throws InterruptedException {
 		BrandMappingTab.clickBMClientCodeblankSelection();
 	}
 
@@ -107,7 +107,7 @@ public class BrandMappingSteps {
 	}
 
 	@Then("the user update the any field for the Brand Mapping")
-	public void the_user_update_the_any_field_for_the_brand_mapping() {
+	public void the_user_update_the_any_field_for_the_brand_mapping() throws InterruptedException {
 	 BrandMappingTab.editClientCodeValue();
 	}
 

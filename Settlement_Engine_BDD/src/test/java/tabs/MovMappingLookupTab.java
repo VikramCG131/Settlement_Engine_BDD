@@ -17,6 +17,7 @@ import Utilities.CommonUtilities;
 import constants.BrandMappingConstants;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
+import constants.MovMappingLookupConstants;
 import locators.MovMappingLookupLocators;
 import locators.ClientLookupLocators;
 import locators.ClientMappingLocators;
@@ -140,7 +141,7 @@ public class MovMappingLookupTab {
 	public void AddedRecorddSearch() throws InterruptedException
 	{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSearchMovementType)).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSearchMovementType)).sendKeys(BrandMappingConstants.CLIENT_CODE.getValue()+random);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSearchMovementType)).sendKeys(MovMappingLookupConstants.MOVEMENT_TYPE.getValue()+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSearchforstatus)).click();;
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSearchforstatus)).sendKeys("NEW");
 		

@@ -162,7 +162,7 @@ public class BrandMappingTab {
 	}
 
 	// Click on Source Table Dropdown and Blank Selection
-	public void clickBMClientCodeblankSelection() {
+	public void clickBMClientCodeblankSelection() throws InterruptedException {
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
 		driver.findElement(BrandMappingLocators.BMClientCode).click();
@@ -170,6 +170,7 @@ public class BrandMappingTab {
 		driver.findElement(BrandMappingLocators.BMBrandCode).click();
 		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		String actual = driver.findElement(BrandMappingLocators.BMErrorValidation).getText();
+		Thread.sleep(2000);
 		Assert.assertEquals("Client Code is required.", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
 	}
@@ -223,12 +224,12 @@ public class BrandMappingTab {
 		System.out.println("The user is able to verify the Common Reference Look Up Category Text is visible");
 	}
 
-	public void editClientCodeValue() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	public void editClientCodeValue() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMClientCode));
 		driver.findElement(BrandMappingLocators.BMClientCode).clear();
-		driver.findElement(BrandMappingLocators.BMClientCode).sendKeys("0.9");
-
+		Thread.sleep(2000);
+		driver.findElement(BrandMappingLocators.BMClientCode).sendKeys("111");
+		
 	}
 
 	// Click on Delete Button
