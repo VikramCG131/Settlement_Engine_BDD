@@ -40,8 +40,8 @@ public class DueDateLookupSteps {
 		DueDateLookupTab.verifyTitle();
 	}
 
-	@When("the user select brand_map_lkp from the common reference table")
-	public void the_user_Select_brand_map_lkp_from_the_common_reference_table() throws InterruptedException {
+	@When("the user select due_date_lkp from the common reference table")
+	public void the_user_select_due_date_lkp_from_the_common_reference_table() throws InterruptedException {
 		DueDateLookupTab.Due_date_LkpSlectionFromReferenceTableDropdown();
 	}
 
@@ -70,8 +70,8 @@ public class DueDateLookupSteps {
 	public void the_user_should_see_in_the_file_list_for_the_Due_Date_LookUP(String string) throws InterruptedException {
 		DueDateLookupTab.verifyBMSuccessPopupMessage();
 	}
-	@Then("user can search and see the addded same record")
-	public void user_can_search_and_see_the_addded_same_record() throws InterruptedException {
+	@Then("user can search and see the addded same record for the Due Date LookUP")
+	public void user_can_search_and_see_the_addded_same_record_for_the_Due_Date_LookUP() throws InterruptedException {
 		DueDateLookupTab.AddedRecorddSearch();
 	}
 	

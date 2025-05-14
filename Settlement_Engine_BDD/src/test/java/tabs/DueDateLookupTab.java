@@ -123,13 +123,13 @@ public class DueDateLookupTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLClientCode));
 		driver.findElement(DueDateLookupLocators.DDLClientCode).sendKeys(clintCode+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLDataSet));
-		driver.findElement(DueDateLookupLocators.DDLDataSet).sendKeys(dataset+random);
+		driver.findElement(DueDateLookupLocators.DDLDataSet).sendKeys(dataset);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLCapitalTerms));
 		driver.findElement(DueDateLookupLocators.DDLCapitalTerms).sendKeys(capitalTerms+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLComissionTerms));
 		driver.findElement(DueDateLookupLocators.DDLComissionTerms).sendKeys(comissionTerms);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLMovementType));
-		driver.findElement(DueDateLookupLocators.DDLMovementType).sendKeys(movementType+random);
+		driver.findElement(DueDateLookupLocators.DDLMovementType).sendKeys(movementType);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLRULEType));
 		driver.findElement(DueDateLookupLocators.DDLRULEType).sendKeys(ruleType+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLProduceCode));
@@ -159,12 +159,10 @@ public class DueDateLookupTab {
 	{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLSearchforClientcode)).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLSearchforClientcode)).sendKeys(DueDateLookupConstants.CLIENT_CODE.getValue()+random);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLSearchforstatus)).click();;
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLSearchforstatus)).sendKeys("NEW");
+		
 		
 	}
-	
-	
+
 	//veriy the search functionality added same record
 
 	// Verify the Update Popup Message
@@ -399,7 +397,7 @@ public class DueDateLookupTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Brandmapping.csv");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\due_date_Lookup.csv");
 	        String absolutePath = file.getAbsolutePath();
 	        System.out.println(absolutePath);
 	        // Upload the file by sending the path

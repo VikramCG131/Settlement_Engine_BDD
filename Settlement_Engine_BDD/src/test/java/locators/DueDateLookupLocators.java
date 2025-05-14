@@ -26,7 +26,7 @@ public class DueDateLookupLocators {
 	public static final By DDLClientCode = By.xpath("//input[@placeholder='Enter Client Code']");
 	public static final By DDLDataSet = By.xpath("//input[@placeholder='Enter Dataset']");
 	public static final By DDLCapitalTerms = By.xpath("//input[@placeholder='Enter Capital Terms']");
-	public static final By DDLComissionTerms = By.xpath("////input[@placeholder='Enter Commission Terms']");
+	public static final By DDLComissionTerms = By.xpath("//input[@placeholder='Enter Commission Terms']");
 	public static final By DDLMovementType = By.xpath("//input[@placeholder='Enter Movement Type']");
 	public static final By DDLRULEType = By.xpath("//input[@placeholder='Enter Rule Type']");
 	public static final By DDLProduceCode = By.xpath("//input[@placeholder='Enter Product Code']");

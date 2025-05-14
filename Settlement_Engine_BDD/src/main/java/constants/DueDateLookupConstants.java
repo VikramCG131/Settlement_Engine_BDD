@@ -2,11 +2,11 @@ package constants;
 
 public enum DueDateLookupConstants {
 	CLIENT_CODE("50"),
-	DATA_SET("101"),
-	CAPITAL_TERMS("Test"),
+	DATA_SET("123"),
+	CAPITAL_TERMS(""),
 	COMISSION_TERMS("11"),
-	MOVEMENT_TYPE("300"),
-	RULE_TYPE("ABC"),
+	MOVEMENT_TYPE("987"),
+	RULE_TYPE("5"),
 	PRODUCE_CODE("12"),
 	RULE_EXPRESSION("12");
 	
