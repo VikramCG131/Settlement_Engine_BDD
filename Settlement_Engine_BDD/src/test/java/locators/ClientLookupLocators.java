@@ -33,7 +33,7 @@ public class ClientLookupLocators {
 	public static final By CLUShopName = By.xpath("//input[@placeholder='Enter Shop Name']");
 	public static final By CLUDescriptionType= By.xpath("//input[@placeholder='Enter Description type']");
 	public static final By CLUSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By CLUASourceErrorValidation = By.xpath("//div[contains(text(),'Payable Element 2 is required')]");
+	public static final By CLUASourceErrorValidation = By.xpath("//small[contains(text(),'Payable Element 2 is required')]");
 	public static final By CLUPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By CLUResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By CLUCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

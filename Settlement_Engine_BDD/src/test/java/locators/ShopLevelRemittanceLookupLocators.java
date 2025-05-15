@@ -27,7 +27,7 @@ public class ShopLevelRemittanceLookupLocators {
 	public static final By SLRShopCode = By.xpath("//input[@placeholder='Enter Shop Code']");
 	public static final By SLRAdviceEntity= By.xpath("//input[@placeholder='Enter Advice Entity']");
 	public static final By SLRSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By SLRClentCodeErrorValidation = By.xpath("//div[contains(text(),'Payable El2 is required.')]");
+	public static final By SLRClentCodeErrorValidation = By.xpath("//small[contains(text(),'Payable El2 is required.')]");
 	public static final By SLRPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By SLRResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By SLRCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

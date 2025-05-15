@@ -32,7 +32,7 @@ public class DueDateLookupLocators {
 	public static final By DDLProduceCode = By.xpath("//input[@placeholder='Enter Product Code']");
 	public static final By DDLRuleExpression = By.xpath("//input[@placeholder='Enter Rule Expression']");
 	public static final By DDLSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By DDLErrorValidation = By.xpath("//div[contains(text(),'Client Code is required.')]");
+	public static final By DDLErrorValidation = By.xpath("//small[contains(text(),'Client Code is required.')]");
 	public static final By DDLPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By DDLResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By DDLCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

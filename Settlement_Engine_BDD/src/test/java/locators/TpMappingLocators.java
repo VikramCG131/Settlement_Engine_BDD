@@ -26,7 +26,7 @@ public class TpMappingLocators {
 	public static final By TPElmCode = By.xpath("//input[@placeholder='Enter Elm Code']");
 	public static final By TPName= By.xpath("//input[@placeholder='Enter Name']");
 	public static final By TPSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By TPClentCodeErrorValidation = By.xpath("//div[contains(text(),'Elm Code is required.')]");
+	public static final By TPClentCodeErrorValidation = By.xpath("//small[contains(text(),'Elm Code is required.')]");
 	public static final By TPPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By TPResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By TPCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

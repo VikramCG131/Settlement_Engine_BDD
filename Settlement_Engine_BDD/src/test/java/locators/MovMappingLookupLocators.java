@@ -25,7 +25,7 @@ public class MovMappingLookupLocators {
 	public static final By MMMovemnetType = By.xpath("//input[@placeholder='Enter Movement Type']");
 	public static final By MMDescription = By.xpath("//input[@placeholder='Enter Description']");
 	public static final By MMSuMMitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By MMErrorValidation = By.xpath("//div[contains(text(),'Movement Type is required.')]");
+	public static final By MMErrorValidation = By.xpath("//small[contains(text(),'Movement Type is required.')]");
 	public static final By MMPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By MMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By MMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

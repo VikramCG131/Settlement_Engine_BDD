@@ -26,7 +26,7 @@ public class Element3MappingLocators {
 	public static final By EL3ProductCode = By.xpath("//input[@placeholder='Enter Product Code']");
 	public static final By EL3Element3Code = By.xpath("//input[@placeholder='Enter Element 3 Code ']");
 	public static final By EL3SubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By EL3CodeErrorValidation = By.xpath("//div[contains(text(),'Element 3 Code  is required.')]");
+	public static final By EL3CodeErrorValidation = By.xpath("//small[contains(text(),'Element 3 Code  is required.')]");
 	public static final By EL3ageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By EL3ResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By EL3CancelButton = By.xpath("//button[contains(text(),'Cancel')]");

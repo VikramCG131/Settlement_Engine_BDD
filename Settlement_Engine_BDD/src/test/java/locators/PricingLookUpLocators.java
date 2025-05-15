@@ -47,7 +47,7 @@ public class PricingLookUpLocators {
 	public static final By PLVolBonusPct = By.xpath("//input[@placeholder='Enter VOL BONUS PCT']");
 	public static final By PLHeadOfficeRebate = By.xpath("//input[@placeholder='Enter Head Office Rebate %']");
 	public static final By PLSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By PLErrorValidation = By.xpath("//div[contains(text(),'Client code is required.')]");
+	public static final By PLErrorValidation = By.xpath("//small[contains(text(),'Client code is required.')]");
 	public static final By PLPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By PLResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By PLCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

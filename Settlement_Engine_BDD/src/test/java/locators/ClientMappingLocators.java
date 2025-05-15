@@ -27,7 +27,7 @@ public class ClientMappingLocators {
 	public static final By CLMShopCode = By.xpath("//input[@placeholder='Enter Shop Code']");
 	public static final By CLMMappedCode= By.xpath("//input[@placeholder='Enter Mapped Code']");
 	public static final By CLMSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
-	public static final By CLMClentCodeErrorValidation = By.xpath("//div[contains(text(),'Client Code is required.')]");
+	public static final By CLMClentCodeErrorValidation = By.xpath("//small[contains(text(),'Client Code is required.')]");
 	public static final By CLMPageGridValidation = By.xpath("//span[contains(text(),'Common Reference Look Up ')]");
 	public static final By CLMResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By CLMCancelButton = By.xpath("//button[contains(text(),'Cancel')]");
