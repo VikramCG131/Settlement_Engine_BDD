@@ -20,7 +20,7 @@ import utils.DriverManager;
 public class EmailAlertsTab {
 	private WebDriver driver;
 	private WebDriverWait wait;
-	
+	static String random;
 	//Constructor to initialize the driver and wait
 	public EmailAlertsTab() {
 		this.driver = DriverManager.getDriver();
@@ -98,11 +98,12 @@ public class EmailAlertsTab {
 	
 	//Enter the Field Value in Data Source File Category
 	public   void enterEAFieldValue(String templateType, String emailaddress,String subject, String insertText ){
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EATemplateTypeDropdown));
 		Select templatetypedropdown = new Select(driver.findElement(EmailAlertsLocators.EATemplateTypeDropdown));
 		templatetypedropdown.selectByIndex(3);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAEmailAddress));
-		driver.findElement(EmailAlertsLocators.EAEmailAddress).sendKeys(emailaddress);
+		driver.findElement(EmailAlertsLocators.EAEmailAddress).sendKeys(random+emailaddress);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASubject));
 		driver.findElement(EmailAlertsLocators.EASubject).sendKeys(subject);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAInsertText));
@@ -137,10 +138,10 @@ public class EmailAlertsTab {
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			Thread.sleep(5000);
+			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).sendKeys(EmailAlertConstants.EMAIL_ADDRESS.getValue());
-			Thread.sleep(5000);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).sendKeys(random+EmailAlertConstants.EMAIL_ADDRESS.getValue());
+			Thread.sleep(2000);
 		}
 	
 	//Click on File Pattern and Blank Selection

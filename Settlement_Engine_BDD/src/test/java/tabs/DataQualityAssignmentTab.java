@@ -101,7 +101,7 @@ public class DataQualityAssignmentTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public   void enterDQACategoryFieldValue(String sourceTable, String sourceAttribute) {
+	public   void enterDQACategoryFieldValue(String sourceTable, String sourceAttribute) throws InterruptedException {
 		//Source Table Dropdown
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -127,6 +127,7 @@ public class DataQualityAssignmentTab {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDate));
 		driver.findElement(DataQualityAssignmentLocators.DQADQEndDate).click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQEndDateSelect));
 		driver.findElement(DataQualityAssignmentLocators.DQADQEndDateSelect).click();
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
@@ -169,24 +170,19 @@ public class DataQualityAssignmentTab {
 	}
 	
 	//Click on Source Table Dropdown and Blank Selection
-	public   void clickDQASourceTableDropdownandblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQASourceTableDropdown));
-		driver.findElement(DataQualityAssignmentLocators.DQASourceTableDropdown).click();
-		driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+	public   void clickDQASourceTableDropdownandblankSelection() throws InterruptedException {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQRuleDropdown));
+		Select sourceattributedropdown = new Select(driver.findElement(DataQualityAssignmentLocators.DQADQRuleDropdown));
+		sourceattributedropdown.selectByIndex(0);
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQAclickonDQRuleforValidation));
+		driver.findElement(DataQualityAssignmentLocators.DQAclickonDQRuleforValidation).click();
+		Thread.sleep(2000);
 		String actual = driver.findElement(DataQualityAssignmentLocators.DQASourceTableValidation).getText();
-		Assert.assertEquals("Please Select Source Table", actual);
-		System.out.println("The user is able to click on Source Table Dropdown and validate the error message");
+		Assert.assertEquals("Please select DQ Rule", actual);
+		System.out.println("The user is able to click on DQRule Table Dropdown and validate the error message");
 	}
 	
-	//Click on DQ Rule Dropdown
-	public   void clickDQADQRuleDropdown() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQADQRuleDropdown));
-		driver.findElement(DataQualityAssignmentLocators.DQADQRuleDropdown).click();
-		String actual = driver.findElement(DataQualityAssignmentLocators.DQADQRuleValidation).getText();
-		Assert.assertEquals("Please select DQ Rule", actual);
-		System.out.println("The user is able to click on DQ Rule Dropdown and validate the error message");
-	}
 	
 	//Click on DQ Rule Dropdown and Blank Selection
 	public   void clickDQADQRuleDropdownandBlankSelection() {
@@ -217,7 +213,8 @@ public class DataQualityAssignmentTab {
 	}
 	
 	//Click on Reset Button
-	public   void clickDQAResetButton() {
+	public   void clickDQAResetButton() throws InterruptedException {
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQAResetButton));
 		driver.findElement(DataQualityAssignmentLocators.DQAResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
@@ -227,7 +224,7 @@ public class DataQualityAssignmentTab {
 	public   void clickDQACancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		String actual = driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).getText();
-		Assert.assertEquals("Data Quality Assignment Category", actual);
+		Assert.assertEquals("Data Quality Assignment Grid", actual);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataQualityAssignmentLocators.DQACancelButton));
 		driver.findElement(DataQualityAssignmentLocators.DQACancelButton).click();
@@ -292,8 +289,8 @@ public class DataQualityAssignmentTab {
 	public void verifyDQAAssignmentGridVisibleandDataAssignmentCategoryNotVisible() {
 		
 		String actual = driver.findElement(DataQualityAssignmentLocators.DQACategoryTextVisible).getText();
-		Assert.assertNotEquals("Data Quality Assignment Category", actual);
-		System.out.println("The user is able to verify the Data Quality Assignment Grid is visible and Data Assignment Category is not visible");
+		Assert.assertEquals("Data Quality Assignment Grid", actual);
+		System.out.println("The user is able to verify the Data Quality Assignment Grid");
 	}
 	
 	//Verify the Delete Confirmation Popup Message

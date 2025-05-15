@@ -74,9 +74,9 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@When("the user enters the data in required fields for the DQ Assignment")
-	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment(){
+	public void the_user_enters_the_data_in_required_fields_for_the_dq_assignment() throws InterruptedException{
 
-		DataQualityAssignmentTab.enterDQACategoryFieldValue("tallyman_raw", "product_code");
+		DataQualityAssignmentTab.enterDQACategoryFieldValue("brand_map_lkp", "client_code");
 		
 	}
 	
@@ -100,7 +100,7 @@ public class DataQualityAssignmentSteps {
 	}
 
 	@When("the user click on Reset button for the DQ Assignment")
-	public void the_user_click_on_reset_button_for_the_dq_assignment() {
+	public void the_user_click_on_reset_button_for_the_dq_assignment() throws InterruptedException {
 		
 		DataQualityAssignmentTab.clickDQAResetButton();
 	}

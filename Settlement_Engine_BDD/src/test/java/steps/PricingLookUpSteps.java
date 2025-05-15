@@ -104,7 +104,7 @@ public class PricingLookUpSteps {
 	}
 
 	@When("The User click the edit icon for the any Pricing LookUp")
-	public void the_user_click_the_edit_icon_for_the_any_pricing_lookup() {
+	public void the_user_click_the_edit_icon_for_the_any_pricing_lookup() throws InterruptedException {
 		PricingLookUpTab.clickBMEditButton();
 	}
 

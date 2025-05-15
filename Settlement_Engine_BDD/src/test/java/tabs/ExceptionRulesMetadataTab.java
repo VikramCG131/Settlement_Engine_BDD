@@ -33,7 +33,7 @@ public class ExceptionRulesMetadataTab {
 
 	private WebDriver driver;
 	public WebDriverWait wait;
-
+	static String random;
 	// Constructor to initialize the driver and wait
 	public ExceptionRulesMetadataTab() {
 		this.driver = DriverManager.getDriver();
@@ -111,8 +111,9 @@ public class ExceptionRulesMetadataTab {
 	}
 
 	// Enter the Field Value in Client Lookup Category
-	public void enterEXRCategoryFieldValue(String ruleType, String severity, String exceptionOwners, String inputSource, String inputattributes, String refrenceFile, String refattributes) {
+	public void enterEXRCategoryFieldValue(String ruleType, String severity, String exceptionOwners, String inputSource, String inputattributes, String refrenceFile, String refattributes) throws InterruptedException {
 		//Rule type drop down
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRRuleTypeDropDown)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select ruletypedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRRuleTypeDropDown));
@@ -126,15 +127,16 @@ public class ExceptionRulesMetadataTab {
 		System.out.println("Selected Severity: Medium");
 		//Exception Owners
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRExceptionOwners));
-		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).sendKeys(exceptionOwners);
+		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).sendKeys(exceptionOwners+random);
 		//Input Source drop down
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceDropdown)).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		Select inputsourcedropdown = new Select(driver.findElement(ExceptionalRuleMetaDataLocators.EXRInputSourceDropdown));
 		inputsourcedropdown.selectByVisibleText("tallyman_raw");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceTextClick)).click();
 		System.out.println("Selected Input Source: tallyman_raw");
 		//Input Source Attribute drop down
+		Thread.sleep(1000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownClick)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		List<WebElement> options = driver.findElements(ExceptionalRuleMetaDataLocators.EXRInputSourceAttributeDropdownSelect);
@@ -157,6 +159,7 @@ public class ExceptionRulesMetadataTab {
 		dropdownreffile.selectByIndex(randomindexreffiledrop);
 		System.out.println("Selected Reference File: ");	
 		//click on the reference file for select attribute
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownClick)).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		List<WebElement> options2att = driver.findElements(ExceptionalRuleMetaDataLocators.EXRReferencefileAttributedropdownSelect);
@@ -250,7 +253,7 @@ public class ExceptionRulesMetadataTab {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ExceptionalRuleMetaDataLocators.EXRExceptionOwners));
 		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).clear();
-		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).sendKeys("Testing Team");;
+		driver.findElement(ExceptionalRuleMetaDataLocators.EXRExceptionOwners).sendKeys("Tes"+random);;
 
 	}
 

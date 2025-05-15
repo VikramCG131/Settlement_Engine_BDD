@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import tabs.ExceptionRulesMetadataTab;
 
 public class ExceptionRuleMetaDataSteps {
+	public static String random;
 	ExceptionRulesMetadataTab ExceptionRulesMetadataTab = new ExceptionRulesMetadataTab();
 
 	@Given("Settlement engine<URL> Exception")
@@ -55,10 +56,10 @@ try {
 	}
 
 	@When("the user enters the data in required fields for the Exception Rule Meta Data")
-	public void the_user_enters_the_data_in_required_fields_for_the_exception_rule_meta_data() {
-		String random = CommonUtilities.getRandomInteger();
+	public void the_user_enters_the_data_in_required_fields_for_the_exception_rule_meta_data() throws InterruptedException {
+
 		ExceptionRulesMetadataTab.enterEXRCategoryFieldValue(ExceptionRulesMetadataConstants.RULE_TYPE.getValue(),
-				ExceptionRulesMetadataConstants.SEVERITY.getValue(), ExceptionRulesMetadataConstants.EXCEPTION_OWNERS.getValue()+random,
+				ExceptionRulesMetadataConstants.SEVERITY.getValue(), ExceptionRulesMetadataConstants.EXCEPTION_OWNERS.getValue(),
 				ExceptionRulesMetadataConstants.INPUT_SOURCE.getValue(), ExceptionRulesMetadataConstants.iNPUT_ATTRIBUTES.getValue(),
 				ExceptionRulesMetadataConstants.REFERENCE_FILE.getValue(), ExceptionRulesMetadataConstants.REFERENCE_FILE_ATTRIBUTES.getValue());
 	}

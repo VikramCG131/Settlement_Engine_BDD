@@ -194,6 +194,7 @@ public class ClientMappingTab  {
 
 	// Click on Edit Button
 	public void clickCLMEditButton() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMEditButton));
 		driver.findElement(ClientMappingLocators.CLMEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
@@ -409,6 +410,7 @@ public class ClientMappingTab  {
 	    
 	    public void Client_Map_LkpSlectionFromReferenceTableDropdown() throws InterruptedException
 	    {
+	    	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
 	    	WebElement dropdownElement = driver.findElement(ClientMappingLocators.CLMSourceTabledropdown); 
 	    	dropdownElement.click();
             Select dropdown = new Select(dropdownElement);

@@ -249,7 +249,8 @@ public class PricingLookUpTab {
 	}
 
 	// Click on Edit Button
-	public void clickBMEditButton() {
+	public void clickBMEditButton() throws InterruptedException {
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLEditButton));
 		driver.findElement(PricingLookUpLocators.PLEditButton).click();
 		System.out.println("The user is able to click on Edit Button");

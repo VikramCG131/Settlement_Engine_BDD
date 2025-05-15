@@ -24,7 +24,7 @@ Scenario: Verify that clicking "Reset" fields clears the fields for the DQ Assig
     And the user clicks the Add New button for the DQ Assignment
     And the user enters the data in required fields for the DQ Assignment
     And the user click on Reset button for the DQ Assignment
-    Then all the fields should be cleared for the DQ Assignment
+   Then all the fields should be cleared for the DQ Assignment
 
 Scenario: Verify that clicking "Cancel" does not save data for the DQ Assignment
     When the user click on Data Quality Assignment

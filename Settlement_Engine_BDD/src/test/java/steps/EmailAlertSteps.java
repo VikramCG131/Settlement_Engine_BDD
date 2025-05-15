@@ -12,6 +12,7 @@ import constants.EmailAlertConstants;
 
 
 public class EmailAlertSteps {
+	public static String random;
 	EmailAlertsTab EmailAlertsTab = new EmailAlertsTab();
 	
 	@Given("The Settlement Engine<URL> for email alert")
@@ -58,10 +59,10 @@ public class EmailAlertSteps {
 
 	@When("the user enters the data in required fields for the Email Alert")
 	public void the_user_enters_the_data_in_required_fields_for_the_email_alert() {
-		String random = CommonUtilities.getRandomInteger();
+		
 		EmailAlertsTab.enterEAFieldValue(EmailAlertConstants.TEMPLATE_TYPE.getValue(),
-				EmailAlertConstants.EMAIL_ADDRESS.getValue(), EmailAlertConstants.SUBJECT.getValue()+random,
-				EmailAlertConstants.INSERT_TEXT.getValue()+random);
+				EmailAlertConstants.EMAIL_ADDRESS.getValue(), EmailAlertConstants.SUBJECT.getValue(),
+				EmailAlertConstants.INSERT_TEXT.getValue());
 		System.out.println("The user is able to enter the data in required fields");
 	}
 
