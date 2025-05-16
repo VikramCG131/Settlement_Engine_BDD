@@ -215,7 +215,8 @@ public class PricingLookUpTab {
 	}
 
 	// Click on Reset Button
-	public void clickBMResetButton() {
+	public void clickBMResetButton() throws InterruptedException {
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLResetButton));
 		driver.findElement(PricingLookUpLocators.PLResetButton).click();
 		System.out.println("The user is able to click on Reset Button");

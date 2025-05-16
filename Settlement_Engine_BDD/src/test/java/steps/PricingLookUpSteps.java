@@ -84,7 +84,7 @@ public class PricingLookUpSteps {
 	}
 
 	@When("the user click on Reset button for the Pricing LookUp")
-	public void the_user_click_on_reset_button_for_the_pricing_lookup() {
+	public void the_user_click_on_reset_button_for_the_pricing_lookup() throws InterruptedException {
 		PricingLookUpTab.clickBMResetButton();
 	}
 

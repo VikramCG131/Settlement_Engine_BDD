@@ -42,7 +42,7 @@ public class ReportUtil {
         extent.setSystemInfo("Environment", "Local");
         extent.setSystemInfo("Test Runner", "Cucumber");
         extent.setSystemInfo("Browser", "Chrome");
-        extent.setSystemInfo("Run By", "Shilajeet Chakraborty");
+        extent.setSystemInfo("Run By", "Shanofar");
     }
  
      // Create Feature

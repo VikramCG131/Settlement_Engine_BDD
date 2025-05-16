@@ -1,5 +1,4 @@
 Feature: Validation of the Client Mapping Reference LookUp UI Screen
- 
    Background:  the user navigate to the Settlement Engine page
     Given Settlement_Engine<URL>
       When the user clicks Settlement Engine URL for the Client Mapping

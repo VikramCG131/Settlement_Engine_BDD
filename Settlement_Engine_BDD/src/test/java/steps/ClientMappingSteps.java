@@ -101,7 +101,7 @@ public class ClientMappingSteps {
 	}
  
 	@When("The User click the edit icon for the any Client Mapping")
-	public void the_user_click_the_edit_icon_for_the_any_client_mapping() {
+	public void the_user_click_the_edit_icon_for_the_any_client_mapping() throws InterruptedException {
 		ClientMappingTab.clickCLMEditButton();
 	}
  
@@ -111,7 +111,7 @@ public class ClientMappingSteps {
 	}
  
 	@Then("the user update the any field for the Client Mapping")
-	public void the_user_update_the_any_field_for_the_client_mapping() {
+	public void the_user_update_the_any_field_for_the_client_mapping() throws InterruptedException {
 		ClientMappingTab.editShopCodeValue();
 	}
  

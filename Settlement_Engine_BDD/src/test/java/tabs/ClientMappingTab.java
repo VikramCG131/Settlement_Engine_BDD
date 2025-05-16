@@ -193,8 +193,8 @@ public class ClientMappingTab  {
 	}
 
 	// Click on Edit Button
-	public void clickCLMEditButton() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	public void clickCLMEditButton() throws InterruptedException {
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMEditButton));
 		driver.findElement(ClientMappingLocators.CLMEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
@@ -208,10 +208,9 @@ public class ClientMappingTab  {
 		System.out.println("The user is able to verify the Data Quality Assignment Category Text is visible");
 	}
 
-	public void editShopCodeValue() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	public void editShopCodeValue() throws InterruptedException {
+		Thread.sleep(3000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMShopCode));
-		driver.findElement(ClientMappingLocators.CLMShopCode).clear();
 		driver.findElement(ClientMappingLocators.CLMShopCode).sendKeys("40");
 
 	}
