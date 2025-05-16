@@ -180,9 +180,8 @@ public class DueDateLookupTab {
 		driver.findElement(DueDateLookupLocators.DDLClientCode).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DueDateLookupLocators.DDLDataSet));
 		driver.findElement(DueDateLookupLocators.DDLDataSet).click();
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		 Thread.sleep(2000);
 		String actual = driver.findElement(DueDateLookupLocators.DDLErrorValidation).getText();
-		Thread.sleep(2000);
 		Assert.assertEquals("Client Code is required.", actual);
 		System.out.println("The user is able to click on Client code and validate the error message");
 	}

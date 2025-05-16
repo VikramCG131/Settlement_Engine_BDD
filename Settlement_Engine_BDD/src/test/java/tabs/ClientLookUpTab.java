@@ -161,12 +161,12 @@ public class ClientLookUpTab {
 	}
 
 	// Click on Source Table Dropdown and Blank Selection
-	public void clickCLUPayableElement2blankSelection() {
+	public void clickCLUPayableElement2blankSelection() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUPayableElement2));
 		driver.findElement(ClientLookupLocators.CLUPayableElement2).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUAdvanComission));
 		driver.findElement(ClientLookupLocators.CLUAdvanComission).click();
-
+		Thread.sleep(2000);
 		String actual = driver.findElement(ClientLookupLocators.CLUASourceErrorValidation).getText();
 		Assert.assertEquals("Payable Element 2 is required.", actual);
 		System.out.println("The user is able to click on Payable Element 2 and validate the error message");
@@ -200,10 +200,11 @@ public class ClientLookUpTab {
 	}
 
 	// Click on Edit Button
-	public void clickCLUEditButton() {
+	public void clickCLUEditButton() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUEditButton));
 		driver.findElement(ClientLookupLocators.CLUEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
+		Thread.sleep(2000);
 	}
 
 	// Verify Client look up Category Text is Visible

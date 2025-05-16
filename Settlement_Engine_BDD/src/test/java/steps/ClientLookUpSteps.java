@@ -74,7 +74,7 @@ public class ClientLookUpSteps {
 	}
 
 	@When("the user click on any field for the Client LookUp and the user should see validation errors for required fields for the Client LookUp")
-	public void the_user_click_on_any_field_for_the_client_look_up() {
+	public void the_user_click_on_any_field_for_the_client_look_up() throws InterruptedException {
 		ClientLookUpTab.clickCLUPayableElement2blankSelection();
 	}
 
@@ -99,7 +99,7 @@ public class ClientLookUpSteps {
 	}
 
 	@When("The User click the edit icon for the any Client LookUp")
-	public void the_user_click_the_edit_icon_for_the_any_client_look_up() {
+	public void the_user_click_the_edit_icon_for_the_any_client_look_up() throws InterruptedException {
 		ClientLookUpTab.clickCLUEditButton();
 	}
 
