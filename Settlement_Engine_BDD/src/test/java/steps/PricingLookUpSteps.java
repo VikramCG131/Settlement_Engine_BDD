@@ -94,7 +94,7 @@ public class PricingLookUpSteps {
 	}
 
 	@When("the user click on Cancel button for the Pricing LookUp")
-	public void the_user_click_on_cancel_button_for_the_pricing_lookup() {
+	public void the_user_click_on_cancel_button_for_the_pricing_lookup() throws InterruptedException {
 		PricingLookUpTab.clickBMCancelButton();
 	}
 

@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,7 @@ import Utilities.CommonUtilities;
 import constants.BrandMappingConstants;
 import constants.ClientLookUpConstants;
 import constants.DataSourceFileConstants;
+import io.cucumber.java.Before;
 import locators.BrandMappingLocators;
 import locators.ClientLookupLocators;
 import locators.ClientMappingLocators;
@@ -51,7 +53,7 @@ public class BrandMappingTab {
 		driver.get(LoginPageLocators.SE_URL);
 		System.out.println("The user is able to open the login page");
 	}
-
+	
 	// Verify health check of the URL
 	public void verifyHealthCheck() throws IOException {
 		String url = driver.getCurrentUrl();
