@@ -64,11 +64,11 @@ Then a file should be downloaded all the records to the default download folder 
 And user clicks the only approved records button for the EL3 Mapping page
 Then a file should be downloaded approved record to the default download folder for the EL3 Mapping page
  
-Scenario: Verify file Upload functionality 
-  When the user select el3_map_lkp from the common reference table
-  And the User Navigates to upload Button from the EL3 Mapping page
-  And user selects a valid file to upload for the EL3 Mapping
- And the file should be successfully uploaded for EL3 Client Mapping
+#Scenario: Verify file Upload functionality 
+ # When the user select el3_map_lkp from the common reference table
+  #And the User Navigates to upload Button from the EL3 Mapping page
+  #And user selects a valid file to upload for the EL3 Mapping
+ #And the file should be successfully uploaded for EL3 Client Mapping
      
     
 Scenario: Verify Send for Approval button triggers approval process

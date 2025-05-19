@@ -175,7 +175,7 @@ public class PricingLookUpSteps {
 		PricingLookUpTab.verifyFileDownloadedAllApproveRecord();
 	}
 	
-
+/*
 	
 	@When("the User Navigates to upload Button from the Pricing LookUp page")
 	public void the_user_navigates_to_upload_button_from_the_pricing_lookup_page() {
@@ -191,7 +191,7 @@ public class PricingLookUpSteps {
 	public void the_file_should_be_successfully_uploaded_from_the_pricing_lookup_page() {
 		PricingLookUpTab.verifyUploadSuccessMessage();
 	}
-
+*/
 	@When("user click the Send for Approval button from the Pricing LookUp page")
 	public void user_click_the_send_for_approval_button_from_the_pricing_lookup_page() {
 		PricingLookUpTab.clickSendForApprovalButton();

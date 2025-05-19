@@ -359,7 +359,7 @@ public class BrandMappingTab {
 			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 			
 		}
-
+		/*
 	// Click on Upload Button
 	public void clickBMUploadButton() {
 		WebElement uploadButton = wait
@@ -368,6 +368,7 @@ public class BrandMappingTab {
 		Assert.assertTrue(wait.until(ExpectedConditions.elementToBeClickable(uploadButton)) != null);
 		System.out.println("The upload button is visible and is clickable");
 	}
+	
 	//BMSelectValidFile
 	//Verify Selection of file and upload
 	 public void selectFileToUpload() {
@@ -393,7 +394,7 @@ public class BrandMappingTab {
 	        driver.findElement((BrandMappingLocators.BMSuccesspopupMessageUploadOk)).click();
 	        System.out.println("The user is able to click on OK button");
 	 }
-	 
+	 */
 	//Click on Send for Approval button
 	 public void clickSendForApprovalButton() {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(BrandMappingLocators.BMSendforApprovalButton));

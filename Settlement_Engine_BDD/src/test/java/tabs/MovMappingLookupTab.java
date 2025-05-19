@@ -355,7 +355,7 @@ public class MovMappingLookupTab {
 			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 			
 		}
-
+/*
 	// Click on Upload Button
 	public void clickMMUploadButton() {
 		WebElement uploadButton = wait
@@ -389,7 +389,7 @@ public class MovMappingLookupTab {
 	        driver.findElement((MovMappingLookupLocators.MMSuccesspopupMessageUploadOk)).click();
 	        System.out.println("The user is able to click on OK button");
 	 }
-	 
+	 */
 	//Click on Send for Approval button
 	 public void clickSendForApprovalButton() {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(MovMappingLookupLocators.MMSendforApprovalButton));

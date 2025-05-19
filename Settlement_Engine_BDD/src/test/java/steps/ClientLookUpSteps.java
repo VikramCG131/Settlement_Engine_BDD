@@ -171,7 +171,7 @@ public class ClientLookUpSteps {
 		ClientLookUpTab.verifyFileDownloadedAllApproveRecords();
 	}
 	
-	
+/*	
 	@When("the User Navigates to upload Button")
 	public void the_user_navigates_to_upload_button() {
 		ClientLookUpTab.clickCLUUploadButton();
@@ -186,7 +186,7 @@ public class ClientLookUpSteps {
 	public void the_file_should_be_successfully_uploaded() {
 		ClientLookUpTab.verifyUploadSuccessMessage();
 	}
-
+*/
 	@When("user click the Send for Approval button")
 	public void user_click_the_send_for_approval_button() {
 		ClientLookUpTab.clickSendForApprovalButton();

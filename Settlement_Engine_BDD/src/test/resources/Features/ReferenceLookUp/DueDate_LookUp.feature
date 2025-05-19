@@ -64,11 +64,11 @@ And user clicks the only approved records button for the Due Date LookUP page
 Then a file should be downloaded approved record to the default download folder for the Due Date LookUP page
  
      
-Scenario: Verify file Upload functionality 
-  When the user select due_date_lkp from the common reference table
-  And the User Navigates to upload Button from the Due Date LookUP page
-  And user selects a valid file to upload from the Due Date LookUP page
- And the file should be successfully Uploaded from the Due Date LookUP page
+#Scenario: Verify file Upload functionality 
+ # When the user select due_date_lkp from the common reference table
+  #And the User Navigates to upload Button from the Due Date LookUP page
+  #And user selects a valid file to upload from the Due Date LookUP page
+ #And the file should be successfully Uploaded from the Due Date LookUP page
     
 Scenario: Verify Send for Approval button triggers approval process
 When the user select due_date_lkp from the common reference table

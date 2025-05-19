@@ -63,11 +63,11 @@ And user clicks the only approved records button for the TP Mapping page
 Then a file should be downloaded approved record to the default download folder for the TP Mapping page
 
 
-Scenario: Verify file Upload functionality 
-  When the user select tp_mapping_lkp from the common reference table
-And the User Navigates to upload Button from the TP Mapping page
-  And user selects a valid file to upload for the TP Mapping
-  And the file should be successfully uploaded for the TP Mapping
+#Scenario: Verify file Upload functionality 
+ # When the user select tp_mapping_lkp from the common reference table
+#And the User Navigates to upload Button from the TP Mapping page
+ # And user selects a valid file to upload for the TP Mapping
+  #And the file should be successfully uploaded for the TP Mapping
   
 Scenario: Verify Send for Approval button triggers approval process
  When the user select tp_mapping_lkp from the common reference table

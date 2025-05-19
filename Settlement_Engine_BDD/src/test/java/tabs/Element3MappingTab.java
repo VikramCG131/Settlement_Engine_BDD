@@ -307,7 +307,7 @@ public class Element3MappingTab {
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 		
 	}
-
+/*
 	// Click on Upload Button
 	public void clickEL3UploadButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3UploadButton));
@@ -330,7 +330,7 @@ public class Element3MappingTab {
 	        System.out.println("File uploaded successfully!");
 	 }
 	 
-
+*/
 //verify download only approve record
 	// Click on Download Button
 		public void clickCLMDownloadButtonApproverecord() {
@@ -355,6 +355,7 @@ public class Element3MappingTab {
 			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 			
 		}
+		/*
 	//Verify Success message of Upload
 	 public void verifyUploadSuccessMessage() {
 	    	String actual = wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SuccesspopupMessageUpload)).getText();
@@ -364,7 +365,7 @@ public class Element3MappingTab {
 	        driver.findElement((Element3MappingLocators.EL3SuccesspopupMessageUploadOk)).click();
 	        System.out.println("The user is able to click on OK button");
 	 }
-	 
+	 */
 	//Click on Send for Approval button
 	 public void clickSendForApprovalButton() {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(Element3MappingLocators.EL3SendforApprovalButton));

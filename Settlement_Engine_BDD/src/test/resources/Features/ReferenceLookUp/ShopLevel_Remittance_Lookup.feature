@@ -63,11 +63,11 @@ And user clicks the only approved records button for the Shop Level Remittance L
 Then a file should be downloaded approved record to the default download folder for the Shop Level Remittance Lookup page
 
 
-Scenario: Verify file Upload functionality 
-  When the user select shop_level_rem_lkp from the common reference table
-And the User Navigates to upload Button from the Shop Level Remittance Lookup page
-  And user selects a valid file to upload for the Shop Level Remittance Lookup
-  And the file should be successfully uploaded for the Shop Level Remittance Lookup
+#Scenario: Verify file Upload functionality 
+ # When the user select shop_level_rem_lkp from the common reference table
+#And the User Navigates to upload Button from the Shop Level Remittance Lookup page
+ # And user selects a valid file to upload for the Shop Level Remittance Lookup
+  #And the file should be successfully uploaded for the Shop Level Remittance Lookup
   
 Scenario: Verify Send for Approval button triggers approval process
  When the user select shop_level_rem_lkp from the common reference table

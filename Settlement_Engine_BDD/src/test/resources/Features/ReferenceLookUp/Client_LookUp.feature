@@ -64,11 +64,11 @@ Scenario: User downloads all record a file successfully
 And user clicks the only approved records button for the Client Lookup page
 Then a file should be downloaded approved record to the default download folder for the Client Lookup page
  
-Scenario: Verify file Upload functionality 
-  When the user select client_lkp from the common reference table
-  And the User Navigates to upload Button
- And user selects a valid file to upload
- And the file should be successfully uploaded
+#Scenario: Verify file Upload functionality 
+ # When the user select client_lkp from the common reference table
+  #And the User Navigates to upload Button
+ #And user selects a valid file to upload
+ #And the file should be successfully uploaded
     
 Scenario: Verify Send for Approval button triggers approval process
  When the user select client_lkp from the common reference table

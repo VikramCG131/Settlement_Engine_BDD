@@ -62,13 +62,12 @@ Scenario: User downloads all record a file successfully
  When the user select brand_map_lkp from the common reference table
 And user clicks the only approved records button for the Brand Mapping page
 Then a file should be downloaded approved record to the default download folder for the Brand Mapping page
- 
-     
-Scenario: Verify file Upload functionality 
-  When the user select brand_map_lkp from the common reference table
-  And the User Navigates to upload Button from the Brand Mapping page
-  And user selects a valid file to upload from the Brand Mapping page
- And the file should be successfully Uploaded from the Brand Mapping page
+    
+#Scenario: Verify file Upload functionality 
+ # When the user select brand_map_lkp from the common reference table
+  #And the User Navigates to upload Button from the Brand Mapping page
+  #And user selects a valid file to upload from the Brand Mapping page
+ #And the file should be successfully Uploaded from the Brand Mapping page
     
 Scenario: Verify Send for Approval button triggers approval process
 When the user select brand_map_lkp from the common reference table

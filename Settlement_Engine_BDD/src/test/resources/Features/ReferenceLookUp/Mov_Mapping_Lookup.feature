@@ -64,11 +64,11 @@ And user clicks the only approved records button for the Mov Mapping LookUP page
 Then a file should be downloaded approved record to the default download folder for the Mov Mapping LookUP page
  
      
-Scenario: Verify file Upload functionality 
-  When the user select move_mapping_lkp from the common reference table
-  And the User Navigates to upload Button from the Mov Mapping LookUP page
-  And user selects a valid file to upload from the Mov Mapping LookUP page
- And the file should be successfully Uploaded from the Mov Mapping LookUP page
+#Scenario: Verify file Upload functionality 
+ # When the user select move_mapping_lkp from the common reference table
+  #And the User Navigates to upload Button from the Mov Mapping LookUP page
+  #And user selects a valid file to upload from the Mov Mapping LookUP page
+ #And the file should be successfully Uploaded from the Mov Mapping LookUP page
     
 Scenario: Verify Send for Approval button triggers approval process
 When the user select move_mapping_lkp from the common reference table

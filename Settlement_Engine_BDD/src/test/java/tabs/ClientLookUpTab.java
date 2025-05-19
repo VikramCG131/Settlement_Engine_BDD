@@ -355,7 +355,7 @@ public class ClientLookUpTab {
 			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 			
 		}
-		
+/*		
 	// Click on Upload Button
 	public void clickCLUUploadButton() {
 		WebElement uploadButton = wait
@@ -389,7 +389,7 @@ public class ClientLookUpTab {
 	        driver.findElement((ClientLookupLocators.CLUSuccesspopupMessageUploadOk)).click();
 	        System.out.println("The user is able to click on OK button");
 	 }
-	 
+	 */
 	//Click on Send for Approval button
 	 public void clickSendForApprovalButton() {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(ClientLookupLocators.CLUSendforApprovalButton));

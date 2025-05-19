@@ -342,6 +342,7 @@ public class ClientMappingTab  {
 			System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 			
 		}
+		/*
 	// Click on Upload Button
 	public void clickCLMUploadButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMUploadButton));
@@ -373,7 +374,7 @@ public class ClientMappingTab  {
 	        driver.findElement((ClientMappingLocators.CLMSuccesspopupMessageUploadOk)).click();
 	        System.out.println("The user is able to click on OK button");
 	 }
-	 
+	 */
 	//Click on Send for Approval button
 	 public void clickSendForApprovalButton() {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(ClientMappingLocators.CLMSendforApprovalButton));

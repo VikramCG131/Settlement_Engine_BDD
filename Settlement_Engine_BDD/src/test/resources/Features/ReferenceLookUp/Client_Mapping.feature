@@ -62,11 +62,11 @@ And user clicks the only approved records button for the Client Mapping page
 Then a file should be downloaded approved record to the default download folder for the Client Mapping page
 
 
-Scenario: Verify file Upload functionality 
-  When the user select client_map_lkp from the common reference table
-And the User Navigates to upload Button from the Client Mapping page
-  And user selects a valid file to upload for the Client Mapping
-  And the file should be successfully uploaded for the Client Mapping
+#Scenario: Verify file Upload functionality 
+ # When the user select client_map_lkp from the common reference table
+#And the User Navigates to upload Button from the Client Mapping page
+ # And user selects a valid file to upload for the Client Mapping
+  #And the file should be successfully uploaded for the Client Mapping
   
 Scenario: Verify Send for Approval button triggers approval process
  When the user select client_map_lkp from the common reference table

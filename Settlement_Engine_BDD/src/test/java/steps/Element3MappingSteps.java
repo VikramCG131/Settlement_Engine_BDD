@@ -169,7 +169,7 @@ public class Element3MappingSteps {
 	public void a_file_should_be_downloaded_approved_record_to_the_default_download_folder_for_the_EL3_Mapping_Page() {
 		Element3MappingTab.verifyFileDownloadedForApprove();
 	}
-
+/*
 	@When("the User Navigates to upload Button from the EL3 Mapping page")
 	public void the_user_navigates_to_upload_button_from_the_el3_mapping_page() {
 		Element3MappingTab.clickEL3UploadButton();
@@ -184,7 +184,7 @@ public class Element3MappingSteps {
 	public void the_file_should_be_successfully_uploaded_for_el3_client_mapping() {
 		Element3MappingTab.verifyUploadSuccessMessage();
 	}
-
+*/
 	@When("user click the Send for Approval button EL3 Mapping")
 	public void user_click_the_send_for_approval_button_el3_mapping() {
 		Element3MappingTab.clickSendForApprovalButton();

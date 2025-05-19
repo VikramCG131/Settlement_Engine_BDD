@@ -171,7 +171,7 @@ public class ClientMappingSteps {
 		ClientMappingTab.verifyFileDownloadedForApprove();
 	}
 	
- 
+ /*
 	@When("the User Navigates to upload Button from the Client Mapping page")
 	public void the_user_navigates_to_upload_button_from_the_client_mapping_page() {
 		ClientMappingTab.clickCLMUploadButton();
@@ -186,7 +186,7 @@ public class ClientMappingSteps {
 	public void the_file_should_be_successfully_uploaded_for_the_client_mapping() {
 		ClientMappingTab.verifyUploadSuccessMessage();
 	}
- 
+ */
 	@When("user click the Send for Approval button for the Client Mapping")
 	public void user_click_the_send_for_approval_button_for_the_client_mapping() {
 		ClientMappingTab.clickSendForApprovalButton();

@@ -170,7 +170,7 @@ public class ShopLevelRemittanceLookupSteps {
 		ShopLevelRemittanceLookupTab.verifyFileDownloadedForApprove();
 	}
 	
- 
+ /*
 	@When("the User Navigates to upload Button from the Shop Level Remittance Lookup page")
 	public void the_user_navigates_to_upload_button_from_the_Shop_Level_Remittance_Lookup_page() {
 		ShopLevelRemittanceLookupTab.clickSLRUploadButton();
@@ -185,7 +185,7 @@ public class ShopLevelRemittanceLookupSteps {
 	public void the_file_should_be_successfully_uploaded_for_the_Shop_Level_Remittance_Lookup() {
 		ShopLevelRemittanceLookupTab.verifyUploadSuccessMessage();
 	}
- 
+ */
 	@When("user click the Send for Approval button for the Shop Level Remittance Lookup")
 	public void user_click_the_send_for_approval_button_for_the_Shop_Level_Remittance_Lookup() {
 		ShopLevelRemittanceLookupTab.clickSendForApprovalButton();

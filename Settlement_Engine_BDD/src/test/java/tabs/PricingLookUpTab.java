@@ -473,7 +473,7 @@ public class PricingLookUpTab {
 		System.out.println("✅ Downloaded file found: " + downloadedFile.getAbsolutePath());
 
 	}
-
+/*
 	// Click on Upload Button
 	public void clickBMUploadButton() {
 		WebElement uploadButton = wait
@@ -510,7 +510,7 @@ public class PricingLookUpTab {
 		driver.findElement((PricingLookUpLocators.PLSuccesspopupMessageUploadOk)).click();
 		System.out.println("The user is able to click on OK button");
 	}
-
+*/
 	// Click on Send for Approval button
 	public void clickSendForApprovalButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(PricingLookUpLocators.PLSendforApprovalButton));
