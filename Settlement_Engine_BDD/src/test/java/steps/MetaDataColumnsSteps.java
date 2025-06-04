@@ -21,6 +21,7 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class MetaDataColumnsSteps {
+	public static String random;
 	WebDriver driver;
 	CommonUtilities commonUtilities = new CommonUtilities();
 	WebDriverWait wait;
@@ -68,13 +69,12 @@ public class MetaDataColumnsSteps {
 
 	@When("the user enters the data in required fields for the Metadata Column")
 	public void the_user_enters_the_data_in_required_fields_for_the_metadata_column() throws InterruptedException {
-		String random = CommonUtilities.getRandomInteger();
-		MetaDataColumnsTab.enterMDCFieldValue(MetadataColumnConstants.NAME.getValue() + random,
-				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants.IS_ACTIVE.getValue(),
-				MetadataColumnConstants.IS_NULL.getValue(), MetadataColumnConstants.MIN_SIZE.getValue(),
-				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.ORDER.getValue(),
-				MetadataColumnConstants.DATE_FORMAT.getValue(),MetadataColumnConstants.IS_KEY.getValue(),
-				MetadataColumnConstants.TABLE_NAME.getValue(),MetadataColumnConstants.BUSINESS_NAME.getValue()+random);
+		MetaDataColumnsTab.enterMDCFieldValue(MetadataColumnConstants.NAME.getValue(),
+				MetadataColumnConstants.DATA_TYPE.getValue(), MetadataColumnConstants.ORDER.getValue(),
+				MetadataColumnConstants.MAX_SIZE.getValue(), MetadataColumnConstants.BUSINESS_NAME.getValue(),
+				MetadataColumnConstants.IS_NULL.getValue(),
+				MetadataColumnConstants.IS_KEY.getValue(),
+				MetadataColumnConstants.IS_Serial.getValue());
 		System.out.println("The user is able to enter the data in required fields");
 	}
 
@@ -95,12 +95,12 @@ public class MetaDataColumnsSteps {
 
 	@When("the user click on any field for the Metadata Column")
 	public void the_user_click_on_any_field_for_the_metadata_column() throws InterruptedException {
-		MetaDataColumnsTab.clickMDCMinSizeandblankSelection();
+		MetaDataColumnsTab.clickMDCNamseandblankSelection();
 	}
 
 	@Then("the user should see validation errors for required fields for the Metadata Column")
 	public void the_user_should_see_validation_errors_for_required_fields_for_the_metadata_column() {
-		MetaDataColumnsTab.clickMDCMinSizeandblankSelection();
+		MetaDataColumnsTab.clickMDCNamseandblankSelection();
 		System.out.println("The user is able to see the error message for required fields");
 		
 	}

@@ -17,16 +17,16 @@ public class MetaDataColumnsLocators {
 	/******MetaData Column Category******/
 	public static final By MDCName = By.xpath("//input[@formcontrolname='columnName']");
 	public static final By MDCDataTypeDropdown = By.id("columnDataType");
-	public static final By MDCColumnActive = By.xpath("//input[@id='columnIsActiveYes']");
-	public static final By MDCColumnIsNull = By.xpath("//input[@id='columnIsNullNo']");
-	public static final By MDCColumnIsKey = By.xpath("//input[@id='isKeyYes']");
+	public static final By MDCIsSerial= By.xpath("//input[@id='isSerialNo']");
+	public static final By MDCColumnIsNull = By.xpath("//input[@id='columnIsNullYes']");
+	public static final By MDCColumnIsKey = By.xpath("//input[@id='isKeyNo']");
 	public static final By MDCMinSize= By.xpath("//input[@formcontrolname='minSize']");
 	public static final By MDCMaxSize = By.xpath("//input[@formcontrolname='maxSize']");
 	public static final By MDCColumnOrder= By.xpath("//input[@formcontrolname='columnOrder']");
 	public static final By MDCColumnDateFormat = By.xpath("//input[@formcontrolname='columnDateFormat']");
 	public static final By MDCTableNameDropdown =By.xpath("//select[@formcontrolname='fileMetadataId']");	
 	public static final By MDCBusinessName = By.xpath("//input[@formcontrolname='businessName']");
-	public static final By MDCMinSizeValidation = By.xpath("//div[contains(text(),'Min Size Must be a Number')]");
+	public static final By MDCNameValidation = By.xpath("//span[contains(text(),'Please Enter Name.')]");
 	public static final By MDCSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By MDCResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By MDCCancelButton = By.xpath("//button[contains(text(),'Cancel')]");

@@ -3,10 +3,13 @@ package tabs;
 import java.io.IOException;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,7 +28,7 @@ public class MetaDataColumnsTab {
 	
 	private WebDriver driver;
 	private WebDriverWait wait;
-	
+	static String random;
 	//Constructor to initialize the driver and wait
 	public MetaDataColumnsTab() {
 		this.driver = DriverManager.getDriver();
@@ -101,35 +104,39 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Enter the Field Value in Data Quality Assignment Category
-	public    void enterMDCFieldValue(String name,String dataType, String columnActive, String ColumnIsNull,String columnIskey, String minSize, String maxSize, String columnOrder, String columnDateFormat, String tableName,String businessName) {
+	public void enterMDCFieldValue(String name,String dataType ,String columnOrder, String maxSize,String ColumnIsNull,String columnIsSerial,   String tableName,String businessName) throws InterruptedException {
+		random = CommonUtilities.getRandomInteger();
+		// select the table name from the dropdown
+		WebElement dropdownElementable=wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown));
+		Select dropdowntable = new Select(dropdownElementable);
+		// Get all options from the dropdown
+		List<WebElement> options = dropdowntable.getOptions();
+		// Generate a random index
+		Random randomdropdowntable = new Random();
+		int randomValueselection = randomdropdowntable.nextInt(options.size());
+		// Select the random option
+		dropdowntable.selectByIndex(randomValueselection);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
-		driver.findElement(MetaDataColumnsLocators.MDCName).sendKeys(name);
+		driver.findElement(MetaDataColumnsLocators.MDCName).sendKeys(name+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCDataTypeDropdown));
 		Select datatypedropdown = new Select(driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown));
 		datatypedropdown.selectByIndex(3);
 		System.out.println("Selected Data Type: "+datatypedropdown);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnActive));
-		driver.findElement(MetaDataColumnsLocators.MDCColumnActive).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnOrder));
+		driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).sendKeys(columnOrder);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize));
+		driver.findElement(MetaDataColumnsLocators.MDCMaxSize).sendKeys(maxSize);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCBusinessName));
+		driver.findElement(MetaDataColumnsLocators.MDCBusinessName).sendKeys(businessName+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnIsNull));
 		driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnIsKey));
-		driver.findElement(MetaDataColumnsLocators.MDCColumnIsKey).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
-		driver.findElement(MetaDataColumnsLocators.MDCMinSize).sendKeys(minSize);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize));
-		driver.findElement(MetaDataColumnsLocators.MDCMaxSize).sendKeys(maxSize);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnOrder));
-		driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).sendKeys(columnOrder);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCColumnDateFormat));
-		driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).sendKeys(columnDateFormat);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCTableNameDropdown)).click();
-		Select datatypedropdown1 = new Select(driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown));
-		datatypedropdown1.selectByIndex(2);		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCBusinessName));
-		driver.findElement(MetaDataColumnsLocators.MDCBusinessName).sendKeys(businessName);
+		driver.findElement(MetaDataColumnsLocators.MDCColumnIsKey).click();	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCIsSerial));
+		driver.findElement(MetaDataColumnsLocators.MDCIsSerial).click();		
 		System.out.println("The user is able to enter the field value in Columns Information");
+		Thread.sleep(5000);
 	}
 	
 	//Click on Submit Button
@@ -151,8 +158,6 @@ public class MetaDataColumnsTab {
 		//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
-			String random = CommonUtilities.getRandomInteger();
-			Thread.sleep(5000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCSearchName)).sendKeys(MetadataColumnConstants.NAME.getValue()+random);
 			Thread.sleep(5000);
@@ -175,14 +180,14 @@ public class MetaDataColumnsTab {
 	}
 	
 	//Click on Source Table Dropdown and Blank Selection
-	public    void clickMDCMinSizeandblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMinSize));
-		driver.findElement(MetaDataColumnsLocators.MDCMinSize).click();
+	public    void clickMDCNamseandblankSelection() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCName));
 		driver.findElement(MetaDataColumnsLocators.MDCName).click();
-		String actual = driver.findElement(MetaDataColumnsLocators.MDCMinSizeValidation).getText();
-		Assert.assertEquals("Min Size Must be a Number", actual);
-		System.out.println("The user is able to click on Min Size field and validate the error message");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize));
+		driver.findElement(MetaDataColumnsLocators.MDCMaxSize).click();	
+		String actual = driver.findElement(MetaDataColumnsLocators.MDCNameValidation).getText();
+		Assert.assertEquals("Please Enter Name.", actual);
+		System.out.println("The user is able to click on name field and validate the error message");
 	}
 	
 	//Click on Reset Button
@@ -225,7 +230,8 @@ public class MetaDataColumnsTab {
 	
 	public void editValueField()
 	{
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize)).sendKeys("40");;
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize)).clear();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(MetaDataColumnsLocators.MDCMaxSize)).sendKeys("40");
 		
 	}
 	//Click on Delete Button
@@ -251,25 +257,25 @@ public class MetaDataColumnsTab {
 	
 	//Verify All the Fields are Cleared after Reset Button
 	public    void verifyAllFieldsClearedforResetButton() {
+		String tableName = driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown).getAttribute("value");
 		String name = driver.findElement(MetaDataColumnsLocators.MDCName).getAttribute("value");
 		String dataType = driver.findElement(MetaDataColumnsLocators.MDCDataTypeDropdown).getAttribute("value");
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		//String columnActive = driver.findElement(MetaDataColumnsLocators.MDCColumnActive).getAttribute("value");
-		//String ColumnIsNull = driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).getAttribute("value");
-		String minSize = driver.findElement(MetaDataColumnsLocators.MDCMinSize).getAttribute("value");
-		String maxSize = driver.findElement(MetaDataColumnsLocators.MDCMaxSize).getAttribute("value");
 		String columnOrder = driver.findElement(MetaDataColumnsLocators.MDCColumnOrder).getAttribute("value");
-		String columnDateFormat = driver.findElement(MetaDataColumnsLocators.MDCColumnDateFormat).getAttribute("value");
-		String tableName = driver.findElement(MetaDataColumnsLocators.MDCTableNameDropdown).getAttribute("value");
-		
+		String maxSize = driver.findElement(MetaDataColumnsLocators.MDCMaxSize).getAttribute("value");
+		String Businessname = driver.findElement(MetaDataColumnsLocators.MDCBusinessName).getAttribute("value");
+		//String ColumnIsNull = driver.findElement(MetaDataColumnsLocators.MDCColumnIsNull).getAttribute("value");
+		//String columnIsKey = driver.findElement(MetaDataColumnsLocators.MDCColumnIsKey).getAttribute("value");
+		//String columnIsSerial = driver.findElement(MetaDataColumnsLocators.MDCIsSerial).getAttribute("value");
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	
 		Assert.assertEquals("", name);
 		Assert.assertEquals("", dataType);
-		//Assert.assertEquals("", columnActive);
-		//Assert.assertEquals("", ColumnIsNull);
-		Assert.assertEquals("", minSize);
-		Assert.assertEquals("", maxSize);
 		Assert.assertEquals("", columnOrder);
-		Assert.assertEquals("", columnDateFormat);
+		Assert.assertEquals("", maxSize);
+		Assert.assertEquals("", Businessname);
+	//	Assert.assertEquals("", ColumnIsNull);
+		//Assert.assertEquals("", columnIsKey);
+		//Assert.assertEquals("", columnIsSerial);
 		Assert.assertEquals("", tableName);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}

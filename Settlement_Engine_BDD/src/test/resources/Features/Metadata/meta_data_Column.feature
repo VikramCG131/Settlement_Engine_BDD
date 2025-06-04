@@ -52,5 +52,5 @@ Feature: Validation of the Metadata Column
    When the user click on Metadata Column
     And The User click the delete icon for the any Metadata Column
    And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Metadata Column
-    And The User confirm the deletion for the Metadata Column
+   And The User confirm the deletion for the Metadata Column
     Then the file should be removed from the table for the Metadata Column
