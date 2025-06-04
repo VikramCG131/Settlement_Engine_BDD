@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
@@ -23,13 +24,14 @@ import locators.BrandMappingLocators;
 import locators.DataQualityAssignmentLocators;
 import locators.DataSourceFileLocators;
 import locators.LoginPageLocators;
+import locators.MetaDataColumnsLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
 public class DataSourceFileTab {
 	private WebDriver driver;
 	private WebDriverWait wait;
-	
+	static String random;
 	//Constructor to initialize the driver and wait
 	public DataSourceFileTab() {
 		this.driver = DriverManager.getDriver();
@@ -107,12 +109,27 @@ public class DataSourceFileTab {
 	
 	//Enter the Field Value in Data Source File Category
 	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) {
+		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
-		driver.findElement(DataSourceFileLocators.DSFFileName).sendKeys(fileName);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
-		driver.findElement(DataSourceFileLocators.DSFFileType).sendKeys(fileType);
+		driver.findElement(DataSourceFileLocators.DSFFileName).sendKeys(fileName+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePattern));
 		driver.findElement(DataSourceFileLocators.DSFFilePattern).sendKeys(filePattern);
+		//select file type from dropdown
+		WebElement dropdownElementfileType = wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
+        Select dropdownfiletype = new Select(dropdownElementfileType);        
+        dropdownfiletype.selectByIndex(2);
+		//file delemeter
+        WebElement dropdownfiledele=wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileDelimiter));
+		Select dropdowntabledele = new Select(dropdownfiledele);
+		// Get all options from the dropdown
+		List<WebElement> options = dropdowntabledele.getOptions();
+		// Generate a random index
+		Random randomdropdowntabledele = new Random();
+		int randomValueselectiondele = randomdropdowntabledele.nextInt(options.size());
+		// Select the random option
+		dropdowntabledele.selectByIndex(randomValueselectiondele);
+		
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
 		driver.findElement(DataSourceFileLocators.DSFFilePathRow).sendKeys(filePathRaw);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathCleansed));
@@ -122,8 +139,7 @@ public class DataSourceFileTab {
 		tableNameFieldValues();
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFTableName));
 		//driver.findElement(DataSourceFileLocators.DSFTableName).sendKeys(fileTableName);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileDelimiter));
-		driver.findElement(DataSourceFileLocators.DSFFileDelimiter).sendKeys(fileDelimiter);
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFHeaderPresentYes));
 		driver.findElement(DataSourceFileLocators.DSFHeaderPresentYes).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFColumnIdentifier));

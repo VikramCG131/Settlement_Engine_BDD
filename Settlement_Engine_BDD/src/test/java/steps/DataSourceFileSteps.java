@@ -21,6 +21,7 @@ import io.cucumber.java.en.Then;
 
 public class DataSourceFileSteps {
 	WebDriver driver;
+	public static String random;
 	CommonUtilities commonUtilities = new CommonUtilities();
 	WebDriverWait wait;
 	DataSourceFileTab DataSourceFileTab = new DataSourceFileTab();
@@ -69,11 +70,11 @@ public class DataSourceFileSteps {
 
 	@Then("the user enters the data in required fields for the Data Source File")
 	public void the_user_enters_the_data_in_required_fields() {
-		String random = CommonUtilities.getRandomInteger();
-		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue()+ random,
+		
+		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue(),
 				DataSourceFileConstants.FILE_TYPE.getValue(), DataSourceFileConstants.FILE_PATTERN.getValue(),
 				DataSourceFileConstants.FILE_PATH_RAW.getValue(), DataSourceFileConstants.FILE_PATH_CLEANSED.getValue(),
-				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue()+random,
+				DataSourceFileConstants.FILE_MAX_SIZE.getValue(), DataSourceFileConstants.FILE_TABLE_NAME.getValue(),
 				DataSourceFileConstants.FILE_DELIMETER.getValue(),
 				DataSourceFileConstants.COLUMN_IDENTIFIER.getValue());
 		

@@ -18,13 +18,13 @@ public class DataSourceFileLocators {
 	
 	/******Data Source File Category******/
 	public static final By DSFFileName = By.xpath("//input[@formcontrolname='fileName']");
-	public static final By DSFFileType = By.xpath("//input[@formcontrolname='fileType']");
+	public static final By DSFFileType = By.xpath("//select[@formcontrolname='fileType']");
 	public static final By DSFFilePattern = By.xpath("//input[@formcontrolname='filePattern']");
 	public static final By DSFFilePathRow = By.xpath("//input[@formcontrolname='filePathRaw']");
 	public static final By DSFFilePathCleansed= By.xpath("//input[@formcontrolname='filePathCleansed']");
 	public static final By DSFFileMaxSize = By.xpath("//input[@formcontrolname='fileSizeMB']");
 	public static final By DSFTableName= By.xpath("//input[@formcontrolname='stagingTableName']");
-	public static final By DSFFileDelimiter = By.xpath("//input[@formcontrolname='fileDelimiter']");
+	public static final By DSFFileDelimiter = By.xpath("//select[@formcontrolname='fileDelimiter']");
 	public static final By DSFHeaderPresentYes = By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']");
 	public static final By DSFIsReferenceyes = By.xpath("//input[@id='isRefYes']");
 	public static final By DSFColumnIdentifier = By.xpath("//input[@formcontrolname='columnIdentifier']");
