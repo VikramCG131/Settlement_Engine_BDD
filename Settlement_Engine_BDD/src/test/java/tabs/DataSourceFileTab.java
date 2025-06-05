@@ -294,7 +294,13 @@ public class DataSourceFileTab {
 		System.out.println("The user is able to click on Edit Button");
 	}
 	
-	
+//edit field
+	public void editDSFFieldValue()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileMaxSize)).clear();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileMaxSize));
+		driver.findElement(DataSourceFileLocators.DSFFileMaxSize).sendKeys("40");
+	}
 	//Verify Assignment Category Text is Visible
 	public   void verifyDSFCategoryTextVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFCategoryTextVisible));

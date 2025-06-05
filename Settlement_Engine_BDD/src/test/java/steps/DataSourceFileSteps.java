@@ -137,13 +137,8 @@ public class DataSourceFileSteps {
 	}
 
 	@Then("the user update the any field for the file")
-	public void the_user_update_the_any_field() {
-		try {
-			DataSourceFileTab.enterDSFFieldValue("Test", "", "raw", "");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void the_user_update_the_any_field()throws InterruptedException {
+		DataSourceFileTab.editDSFFieldValue();
 	}
 
 	@Then("the user should see click on the Update Button for the file")
