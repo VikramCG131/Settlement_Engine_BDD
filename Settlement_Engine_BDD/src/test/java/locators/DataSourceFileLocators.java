@@ -20,7 +20,8 @@ public class DataSourceFileLocators {
 	public static final By DSFFileName = By.xpath("//input[@formcontrolname='fileName']");
 	public static final By DSFFileType = By.xpath("//select[@formcontrolname='fileType']");
 	public static final By DSFFilePattern = By.xpath("//input[@formcontrolname='filePattern']");
-	public static final By DSFFilePathRow = By.xpath("//input[@formcontrolname='filePathRaw']");
+	public static final By DSFFilePathRawtextfield = By.xpath("//input[@formcontrolname='filePathRaw']");
+	public static final By DSFFilePathRow = By.xpath("//label[contains(text(),'File Path Raw')]");
 	public static final By DSFFilePathCleansed= By.xpath("//input[@formcontrolname='filePathCleansed']");
 	public static final By DSFFileMaxSize = By.xpath("//input[@formcontrolname='fileSizeMB']");
 	public static final By DSFTableName= By.xpath("//input[@formcontrolname='stagingTableName']");

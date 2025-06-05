@@ -69,7 +69,7 @@ public class DataSourceFileSteps {
 	}
 
 	@Then("the user enters the data in required fields for the Data Source File")
-	public void the_user_enters_the_data_in_required_fields() {
+	public void the_user_enters_the_data_in_required_fields() throws InterruptedException {
 		
 		DataSourceFileTab.enterDSFFieldValue(DataSourceFileConstants.FILE_NAME.getValue(),
 				DataSourceFileConstants.FILE_TYPE.getValue(), DataSourceFileConstants.FILE_PATTERN.getValue(),
@@ -140,8 +140,13 @@ public class DataSourceFileSteps {
 
 	@Then("the user update the any field for the file")
 	public void the_user_update_the_any_field() {
-		DataSourceFileTab.enterDSFFieldValue("Test", "txt", "raw", "C://local", "D://local", "10",
-				"MetadataSourceFile", "", "");
+		try {
+			DataSourceFileTab.enterDSFFieldValue("Test", "txt", "raw", "", "D://local", "10",
+					"MetadataSourceFile", "", "");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Then("the user should see click on the Update Button for the file")

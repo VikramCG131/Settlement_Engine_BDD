@@ -4,8 +4,8 @@ public enum DataSourceFileConstants {
 	
 	FILE_NAME("Test"),
 	FILE_TYPE(""),
-	FILE_PATTERN("raw"),
-	FILE_PATH_RAW("C://local"),
+	FILE_PATTERN("Test"),
+	FILE_PATH_RAW(""),
 	FILE_PATH_CLEANSED("d://local"),
 	FILE_MAX_SIZE("30"),
 	FILE_TABLE_NAME("Metadata"),

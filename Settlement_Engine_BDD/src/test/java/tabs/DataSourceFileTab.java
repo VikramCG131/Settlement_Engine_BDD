@@ -1,5 +1,6 @@
 package tabs;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -108,12 +109,12 @@ public class DataSourceFileTab {
 	}
 	
 	//Enter the Field Value in Data Source File Category
-	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) {
+	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) throws InterruptedException {
 		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
 		driver.findElement(DataSourceFileLocators.DSFFileName).sendKeys(fileName+random);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePattern));
-		driver.findElement(DataSourceFileLocators.DSFFilePattern).sendKeys(filePattern);
+		driver.findElement(DataSourceFileLocators.DSFFilePattern).sendKeys(filePattern+random+"_*");
 		//select file type from dropdown
 		WebElement dropdownElementfileType = wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileType));
         Select dropdownfiletype = new Select(dropdownElementfileType);        
@@ -129,7 +130,25 @@ public class DataSourceFileTab {
 		// Select the random option
 		dropdowntabledele.selectByIndex(randomValueselectiondele);
 		
+		//upload for file path raw
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
+		driver.findElement(DataSourceFileLocators.DSFFilePathRow).isDisplayed();
+		System.out.println("The upload button is visible and is clickable");
 		
+		 WebElement fileInput= driver.findElement(DataSourceFileLocators.DSFFilePathRow);
+	        System.out.println("The user is able to select a valid file to upload");
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	        String projectPath = System.getProperty("user.dir");
+	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
+	        String absolutePath = file.getAbsolutePath();
+	        System.out.println(absolutePath);
+	        // Upload the file by sending the path
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRawtextfield));
+	        driver.findElement(DataSourceFileLocators.DSFFilePathRawtextfield).sendKeys(absolutePath);   
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	        System.out.println("File uploaded successfully!");
+	        Thread.sleep(5000);
+	        
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
 		driver.findElement(DataSourceFileLocators.DSFFilePathRow).sendKeys(filePathRaw);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathCleansed));
