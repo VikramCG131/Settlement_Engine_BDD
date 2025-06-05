@@ -109,7 +109,7 @@ public class DataSourceFileTab {
 	}
 	
 	//Enter the Field Value in Data Source File Category
-	public   void enterDSFFieldValue(String fileName, String fileType,String filePattern, String filePathRaw, String filePathCleansed, String fileMaxSize, String fileTableName, String fileDelimiter, String columnIdentifier) throws InterruptedException {
+	public   void enterDSFFieldValue(String fileName,String filePattern,String fileMaxSize, String fileTableName) throws InterruptedException {
 		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileName));
 		driver.findElement(DataSourceFileLocators.DSFFileName).sendKeys(fileName+random);
@@ -134,39 +134,49 @@ public class DataSourceFileTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
 		driver.findElement(DataSourceFileLocators.DSFFilePathRow).isDisplayed();
 		System.out.println("The upload button is visible and is clickable");
-		
-		 WebElement fileInput= driver.findElement(DataSourceFileLocators.DSFFilePathRow);
+
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        String projectPath = System.getProperty("user.dir");
-	        File file = new File(projectPath + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
-	        String absolutePath = file.getAbsolutePath();
-	        System.out.println(absolutePath);
+	        String projectPathfilepathraw = System.getProperty("user.dir");
+	        File filePathraw = new File(projectPathfilepathraw + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
+	        String absolutePathfilepathraw = filePathraw.getAbsolutePath();
+	        System.out.println(absolutePathfilepathraw);
 	        // Upload the file by sending the path
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRawtextfield));
-	        driver.findElement(DataSourceFileLocators.DSFFilePathRawtextfield).sendKeys(absolutePath);   
+	        driver.findElement(DataSourceFileLocators.DSFFilePathRawtextfield).sendKeys(absolutePathfilepathraw);   
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	        System.out.println("File uploaded successfully!");
-	        Thread.sleep(5000);
-	        
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathRow));
-		driver.findElement(DataSourceFileLocators.DSFFilePathRow).sendKeys(filePathRaw);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathCleansed));
-		driver.findElement(DataSourceFileLocators.DSFFilePathCleansed).sendKeys(filePathCleansed);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileMaxSize));
-		driver.findElement(DataSourceFileLocators.DSFFileMaxSize).sendKeys(fileMaxSize);
-		tableNameFieldValues();
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFTableName));
-		//driver.findElement(DataSourceFileLocators.DSFTableName).sendKeys(fileTableName);
+	        //file path archive
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathArchived));
+			driver.findElement(DataSourceFileLocators.DSFFilePathArchived).isDisplayed();
+			System.out.println("The upload button is visible and is clickable");
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFHeaderPresentYes));
-		driver.findElement(DataSourceFileLocators.DSFHeaderPresentYes).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFColumnIdentifier));
-		driver.findElement(DataSourceFileLocators.DSFColumnIdentifier).sendKeys(columnIdentifier);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFIsReferenceyes));
-		driver.findElement(DataSourceFileLocators.DSFIsReferenceyes).click();
-		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
+		        System.out.println("The user is able to select a valid file to upload");
+		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		        String Filepatharchived = System.getProperty("user.dir");
+		        File filearchived = new File(Filepatharchived + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
+		        String absolutePathfilearchived = filearchived.getAbsolutePath();
+		        System.out.println(absolutePathfilearchived);
+		        // Upload the file by sending the path
+		        wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFilePathArchivedfield));
+		        driver.findElement(DataSourceFileLocators.DSFFilePathArchivedfield).sendKeys(absolutePathfilearchived);   
+		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		        System.out.println("File uploaded successfully!");
+		        wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFFileMaxSize));
+				driver.findElement(DataSourceFileLocators.DSFFileMaxSize).sendKeys(fileMaxSize);
+				
+				wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFTableName));
+				driver.findElement(DataSourceFileLocators.DSFTableName).sendKeys(fileTableName);
+				
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFisHeader));
+		driver.findElement(DataSourceFileLocators.DSFisHeader).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFisFooter));
+		driver.findElement(DataSourceFileLocators.DSFisFooter).click();	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFisreferenceTable));
+		driver.findElement(DataSourceFileLocators.DSFisreferenceTable).click();
 		
+		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
+		Thread.sleep(5000);
 	}
 	//Enter the Table Name Field Value in Data Source File Category
 	public void tableNameFieldValues()

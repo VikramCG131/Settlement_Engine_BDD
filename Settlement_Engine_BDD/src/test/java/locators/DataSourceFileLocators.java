@@ -22,12 +22,12 @@ public class DataSourceFileLocators {
 	public static final By DSFFilePattern = By.xpath("//input[@formcontrolname='filePattern']");
 	public static final By DSFFilePathRawtextfield = By.xpath("//input[@formcontrolname='filePathRaw']");
 	public static final By DSFFilePathRow = By.xpath("//label[contains(text(),'File Path Raw')]");
+	public static final By DSFFilePathArchivedfield = By.xpath("//input[@formcontrolname='filePathArchived']");
+	public static final By DSFFilePathArchived = By.xpath("//label[contains(text(),' File Path Archived ')]");
 	public static final By DSFFilePathCleansed= By.xpath("//input[@formcontrolname='filePathCleansed']");
 	public static final By DSFFileMaxSize = By.xpath("//input[@formcontrolname='fileSizeMB']");
-	public static final By DSFTableName= By.xpath("//input[@formcontrolname='stagingTableName']");
+	public static final By DSFTableName= By.xpath("//input[@formcontrolname='tableName']");
 	public static final By DSFFileDelimiter = By.xpath("//select[@formcontrolname='fileDelimiter']");
-	public static final By DSFHeaderPresentYes = By.xpath("//div[3]/div[1]/label[@for='headerPresentYes']");
-	public static final By DSFIsReferenceyes = By.xpath("//input[@id='isRefYes']");
 	public static final By DSFColumnIdentifier = By.xpath("//input[@formcontrolname='columnIdentifier']");
 	public static final By DSFFilePatternValidation = By.xpath("//*[text()='Please Enter File Pattern']");
 	public static final By DSFSubmitButton = By.xpath("//button[contains(text(),'Submit')]");
@@ -39,7 +39,9 @@ public class DataSourceFileLocators {
 	public static final By DSFCategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Data Source File Grid')]");
 	public static final By DSFTableCoulmnTableName = By.xpath("//div[@col-id='stagingTableName']");
 	//
-	
+	public static final By DSFisHeader = By.xpath("//input[@id='headerPresentYes']");
+	public static final By DSFisFooter = By.xpath("//input[@id='footerPresentYes']");
+	public static final By DSFisreferenceTable= By.xpath("//input[@id='isRefYes']");
 	/******Data Source File Grid******/
 	public static final By DSFSearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='File Name Filter Input']");
 	public static final By DSFGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");

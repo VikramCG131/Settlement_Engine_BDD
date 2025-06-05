@@ -2,16 +2,10 @@ package constants;
 
 public enum DataSourceFileConstants {
 	
-	FILE_NAME("Test"),
-	FILE_TYPE(""),
-	FILE_PATTERN("Test"),
-	FILE_PATH_RAW(""),
-	FILE_PATH_CLEANSED("d://local"),
+	FILE_NAME("Test"),	
+	FILE_PATTERN("Test"),	
 	FILE_MAX_SIZE("30"),
-	FILE_TABLE_NAME("Metadata"),
-	FILE_DELIMETER(""),
-	COLUMN_IDENTIFIER("Test2");
-	
+	FILE_TABLE_NAME("Test_");	
 	
 	private final String value;
 	DataSourceFileConstants(String value)
