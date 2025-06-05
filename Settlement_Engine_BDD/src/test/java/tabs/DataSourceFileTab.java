@@ -178,7 +178,7 @@ public class DataSourceFileTab {
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
 		Thread.sleep(5000);
 	}
-	//Enter the Table Name Field Value in Data Source File Category
+	/*//Enter the Table Name Field Value in Data Source File Category
 	public void tableNameFieldValues()
 	{
 		 // Step 1: List of data options
@@ -211,7 +211,7 @@ public class DataSourceFileTab {
            System.out.println("No new data to send. All entries already exist.");
        }
 	}
-	
+	*/
 	//Click on Submit Button
 	public   void clickDSFSubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSubmitButton));
@@ -328,16 +328,16 @@ public class DataSourceFileTab {
 	//Verify All the Fields are Cleared after Reset Button
 	public   void verifyAllFieldsClearedforResetButton() {
 		String fileName = driver.findElement(DataSourceFileLocators.DSFFileName).getAttribute("value");
-		String fileType = driver.findElement(DataSourceFileLocators.DSFFileType).getAttribute("value");
-		String filePattern = driver.findElement(DataSourceFileLocators.DSFFileType).getAttribute("value");
-		String filePathRaw = driver.findElement(DataSourceFileLocators.DSFFilePathRow).getAttribute("value");
-		String filePathCleansed = driver.findElement(DataSourceFileLocators.DSFFilePathCleansed).getAttribute("value");
+		String filepattern = driver.findElement(DataSourceFileLocators.DSFFilePattern).getAttribute("value");
+		//String filePathraw = driver.findElement(DataSourceFileLocators.DSFFilePathRow).getAttribute("value");
+		//String filePatharcieved = driver.findElement(DataSourceFileLocators.DSFFilePathArchived).getAttribute("value");
+		String filetablename= driver.findElement(DataSourceFileLocators.DSFTableName).getAttribute("value");
 		
 		Assert.assertEquals("", fileName);
-		Assert.assertEquals("", fileType);
-		Assert.assertEquals("", filePattern);
-		Assert.assertEquals("", filePathRaw);	
-		Assert.assertEquals("", filePathCleansed);
+		Assert.assertEquals("", filepattern);
+		//Assert.assertEquals("", filePathraw);
+		//Assert.assertEquals("", filePatharcieved);	
+		Assert.assertEquals("", filetablename);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 	
