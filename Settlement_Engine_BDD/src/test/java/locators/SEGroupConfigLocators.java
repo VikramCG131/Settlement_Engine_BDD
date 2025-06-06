@@ -22,11 +22,8 @@ public class SEGroupConfigLocators {
 	public static final By SEConfigeredRules= By.xpath("//div[@class='rule-item form-control ng-star-inserted']");
 	public static final By SEArrow= By.xpath("//button[contains(text(),'<')]");
 	public static final By SEArrowgreater= By.xpath("//button[contains(text(),'>>')]");
-	public static final By SETemplateTypeDropdown = By.id("templateType");
-	public static final By SEEmailAddress = By.xpath("//input[@formcontrolname='emailAddress']");
 	public static final By SEAppliedRulesClick = By.xpath("//div[contains(text(),'Applied Rules')]");
-	public static final By SEInsertText = By.xpath("//div[@data-placeholder='Insert text here ...']");
-	public static final By SEFilePatternValidation = By.xpath("//*[text()='Please Enter File Pattern']");
+
 	public static final By SESubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By SEResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By SECancelButton = By.xpath("//button[contains(text(),'Cancel')]");
@@ -36,7 +33,7 @@ public class SEGroupConfigLocators {
 	public static final By SECategoryTextVisibleGrid = By.xpath("//span[contains(text(),'Settlement Grouping Config Grid')]");
 	
 	/******Settlement Grouping Config Grid******/
-	public static final By SESearchforClientcode = By.xpath("//input[@data-ref='eInput' and @aria-label='Email Address Filter Input']");
+
 	public static final By SEGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
 	public static final By SEEditButton = By.xpath("(//i[@data-action='edit'])[1]");
 	public static final By SEDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
