@@ -12,7 +12,7 @@ import Utilities.CommonUtilities;
 
 import constants.EmailAlertConstants;
 
-import locators.EmailAlertsLocators;
+import locators.SEGroupConfigLocators;
 import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
@@ -83,117 +83,117 @@ public class SEGroupConfigTab {
 	}
 	
 	//Click on Data Quality Assignment Tab
-	public   void clickEmailAlertsTab() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EmailAlertTab));
-		driver.findElement(EmailAlertsLocators.EmailAlertTab).click();
+	public   void clickSeGroupConfigTab() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupConfigTab));
+		driver.findElement(SEGroupConfigLocators.SEGroupConfigTab).click();
 		System.out.println("The user is able to click on Data Source File Tab");
 	}
 	
 	//Click on Add New Button
 	public   void clickEAAddNewButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAAddNewButton));
-		driver.findElement(EmailAlertsLocators.EAAddNewButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEAddButton));
+		driver.findElement(SEGroupConfigLocators.SEAddButton).click();
 		System.out.println("The user is able to click on Add New Button");
 	}
 	
 	//Enter the Field Value in Data Source File Category
 	public   void enterEAFieldValue(String templateType, String emailaddress,String subject, String insertText ){
 		random = CommonUtilities.getRandomInteger();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EATemplateTypeDropdown));
-		Select templatetypedropdown = new Select(driver.findElement(EmailAlertsLocators.EATemplateTypeDropdown));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SETemplateTypeDropdown));
+		Select templatetypedropdown = new Select(driver.findElement(SEGroupConfigLocators.SETemplateTypeDropdown));
 		templatetypedropdown.selectByIndex(3);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAEmailAddress));
-		driver.findElement(EmailAlertsLocators.EAEmailAddress).sendKeys(random+emailaddress);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASubject));
-		driver.findElement(EmailAlertsLocators.EASubject).sendKeys(subject);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAInsertText));
-		driver.findElement(EmailAlertsLocators.EAInsertText).sendKeys(insertText);
-		System.out.println("The user is able to enter the field value in Email Alert Category");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
+		driver.findElement(SEGroupConfigLocators.SEEmailAddress).sendKeys(random+emailaddress);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubject));
+		driver.findElement(SEGroupConfigLocators.SESubject).sendKeys(subject);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEInsertText));
+		driver.findElement(SEGroupConfigLocators.SEInsertText).sendKeys(insertText);
+		System.out.println("The user is able to enter the field value in SE Group Config Category");
 	}
 	
 	//Click on Submit Button
 	public   void clickEASubmitButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASubmitButton));
-		driver.findElement(EmailAlertsLocators.EASubmitButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubmitButton));
+		driver.findElement(SEGroupConfigLocators.SESubmitButton).click();
 		System.out.println("The user is able to click on Submit Button");
 	}
 	
 	//Verify the Update Popup Message
 			public   void verifyEAUpdatePopupMessage() {
-				wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAUpdatePopupMessage));
-				String successMessage = driver.findElement(EmailAlertsLocators.EAUpdatePopupMessage).getText();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpdatePopupMessage));
+				String successMessage = driver.findElement(SEGroupConfigLocators.SEUpdatePopupMessage).getText();
 				Assert.assertEquals(successMessage, "Record has been updated successfully");
 				System.out.println("The user is able to verify the Update Popup Message");
 			}
 			
 	//Verify the Success Popup Message
 	public   void verifyEASuccessPopupMessage() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASuccessPopupMessage));
-		String successMessage = driver.findElement(EmailAlertsLocators.EASuccessPopupMessage).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccessPopupMessage));
+		String successMessage = driver.findElement(SEGroupConfigLocators.SESuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASuccesspopupMessageUploadOk)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccesspopupMessageUploadOk)).click();
 	}
 	
 	//search for the added record
 		public void AddedRecorddSearch() throws InterruptedException
 		{
 			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASearchforClientcode)).sendKeys(random+EmailAlertConstants.EMAIL_ADDRESS.getValue());
+			wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESearchforClientcode)).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESearchforClientcode)).sendKeys(random+EmailAlertConstants.EMAIL_ADDRESS.getValue());
 			Thread.sleep(2000);
 		}
 	
 	//Click on File Pattern and Blank Selection
-	public   void clickEAEmailAddressblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAEmailAddress));
-		driver.findElement(EmailAlertsLocators.EAEmailAddress).click();
+	public   void clickSEGroupConfigblankSelection() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
+		driver.findElement(SEGroupConfigLocators.SEEmailAddress).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EASubject));
-		driver.findElement(EmailAlertsLocators.EASubject).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubject));
+		driver.findElement(SEGroupConfigLocators.SESubject).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-		String actual = driver.findElement(EmailAlertsLocators.EAEmailAddressValidation).getText();
+		String actual = driver.findElement(SEGroupConfigLocators.SEEmailAddressValidation).getText();
 		Assert.assertEquals("Please Enter EmailAddress", actual);
 		System.out.println("The user is able to click on Email Address and validate the error message");
 	}
 	
 	//Click on Reset Button
 	public   void clickEAResetButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAResetButton));
-		driver.findElement(EmailAlertsLocators.EAResetButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEResetButton));
+		driver.findElement(SEGroupConfigLocators.SEResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
 	}
 	
 	//Click on Cancel Button
 	public   void clickEACancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EACategoryTextVisible));
-		boolean grid = driver.findElement(EmailAlertsLocators.EACategoryTextVisible).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SECategoryTextVisible));
+		boolean grid = driver.findElement(SEGroupConfigLocators.SECategoryTextVisible).isDisplayed();
 		Assert.assertTrue(grid);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EACancelButton));
-		driver.findElement(EmailAlertsLocators.EACancelButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SECancelButton));
+		driver.findElement(SEGroupConfigLocators.SECancelButton).click();
 		System.out.println("The user is able to click on Cancel Button");
 	}
 	
 	//Click on Update Button
 	public   void clickEAUpdateButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAUpdateButton));
-		driver.findElement(EmailAlertsLocators.EAUpdateButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpdateButton));
+		driver.findElement(SEGroupConfigLocators.SEUpdateButton).click();
 		System.out.println("The user is able to click on Update Button");
 	}
 	
 	//Click on Edit Button
 	public void clickEAEditButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAEditButton));
-		driver.findElement(EmailAlertsLocators.EAEditButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEditButton));
+		driver.findElement(SEGroupConfigLocators.SEEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
 	}
 	
 	
 	//Verify Assignment Category Text is Visible
 	public   void verifyEACategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EACategoryTextVisibleGrid));
-		boolean category = driver.findElement(EmailAlertsLocators.EACategoryTextVisibleGrid).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SECategoryTextVisibleGrid));
+		boolean category = driver.findElement(SEGroupConfigLocators.SECategoryTextVisibleGrid).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the File Information Text is visible");
 	}	
@@ -201,30 +201,30 @@ public class SEGroupConfigTab {
 	
 	//Click on Delete Button
 	public   void clickEADeleteButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteButton));
-		driver.findElement(EmailAlertsLocators.EADeleteButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteButton));
+		driver.findElement(SEGroupConfigLocators.SEDeleteButton).click();
 		System.out.println("The user is able to click on Delete Button");
 	}
 	
 	//Click on Delete Confirmation Popup Confirm Button
 	public   void clickEADeleteConfirmationPopupConfirmButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteConfirmationPopupConfirmButton));
-		driver.findElement(EmailAlertsLocators.EADeleteConfirmationPopupConfirmButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton));
+		driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Confirm Button");
 	}
 	
 	//Click on Delete Confirmation Popup Cancel Button
 	public   void clickEADeleteConfirmationPopupCancelButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteConfirmationPopupCancelButton));
-		driver.findElement(EmailAlertsLocators.EADeleteConfirmationPopupCancelButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton));
+		driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Cancel Button");
 	}
 	
 	//Verify All the Fields are Cleared after Reset Button
 	public   void verifyAllFieldsClearedforResetButton() {
-		String templateType = driver.findElement(EmailAlertsLocators.EATemplateTypeDropdown).getAttribute("value");
-		String emailAddress = driver.findElement(EmailAlertsLocators.EAEmailAddress).getAttribute("value");
-		String subject = driver.findElement(EmailAlertsLocators.EASubject).getAttribute("value");
+		String templateType = driver.findElement(SEGroupConfigLocators.SETemplateTypeDropdown).getAttribute("value");
+		String emailAddress = driver.findElement(SEGroupConfigLocators.SEEmailAddress).getAttribute("value");
+		String subject = driver.findElement(SEGroupConfigLocators.SESubject).getAttribute("value");
 		
 		Assert.assertEquals("", templateType);
 		Assert.assertEquals("", emailAddress);
@@ -235,15 +235,15 @@ public class SEGroupConfigTab {
 	//Verify the Data Source File Grid is visible and File Information is Not Visible
 	public void verifyEAGridVisibleandFileInformationNotVisible() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		boolean category = driver.findElement(EmailAlertsLocators.EACategoryTextVisibleGrid).isDisplayed();
+		boolean category = driver.findElement(SEGroupConfigLocators.SECategoryTextVisibleGrid).isDisplayed();
 		Assert.assertTrue(category);
 		System.out.println("The user is able to verify the Data Source File Grid is visible and File Information is not visible");
 	}
 	
 	//Verify the Delete Confirmation Popup Message
 	public   void verifyEADeleteConfirmationPopupMessage() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteConfirmationPopupMessage));
-		String deleteMessage = driver.findElement(EmailAlertsLocators.EADeleteConfirmationPopupMessage).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupMessage));
+		String deleteMessage = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupMessage).getText();
 		Assert.assertEquals(deleteMessage, "Are you sure you want to delete");
 		System.out.println("The user is able to verify the Delete Confirmation Popup Message");
 	}
@@ -251,28 +251,28 @@ public class SEGroupConfigTab {
 	public void editEmailAddressValue()
 	{
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EAEmailAddress));
-		driver.findElement(EmailAlertsLocators.EAEmailAddress).clear();
-		driver.findElement(EmailAlertsLocators.EAEmailAddress).sendKeys("test123@yahoo.com");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
+		driver.findElement(SEGroupConfigLocators.SEEmailAddress).clear();
+		driver.findElement(SEGroupConfigLocators.SEEmailAddress).sendKeys("test123@yahoo.com");
 	}
 	
 	public void verifyEAFileRemoval() {
-		boolean grid = driver.findElement(EmailAlertsLocators.EAGridVisible).isDisplayed();
+		boolean grid = driver.findElement(SEGroupConfigLocators.SEGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
 	}
 	
 	//Verify in the Delete Popup Confirm button is Visible
 	public   void verifyEADeleteConfirmationPopupConfirmButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteConfirmationPopupConfirmButton));
-		boolean confirm = driver.findElement(EmailAlertsLocators.EADeleteConfirmationPopupConfirmButton).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton));
+		boolean confirm = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton).isDisplayed();
 		Assert.assertTrue(confirm);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Confirm Button");
 	}
 	
 	//Verify in the Delete Popup Cancel button is Visible
 	public   void verifyEADeleteConfirmationPopupCancelButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(EmailAlertsLocators.EADeleteConfirmationPopupCancelButton));
-		boolean cancel = driver.findElement(EmailAlertsLocators.EADeleteConfirmationPopupCancelButton).isDisplayed();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton));
+		boolean cancel = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton).isDisplayed();
 		Assert.assertTrue(cancel);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Cancel Button");
 	}

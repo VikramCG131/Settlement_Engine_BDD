@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class SEGroupConfigLocators {
 	
 	/******Settlement Grouping Config Page******/
-	public static final By SEGroupConfigTab = By.xpath("//span[contains(text(),'Email Alert')]");
+	public static final By SEGroupConfigTab = By.xpath("//span[contains(text(),'SE Group Config')]");
 	public static final By SEAddButton = By.xpath("//button[contains(text(),'Add')]");
 	public static final By SESuccessPopupMessage = By.xpath("//*[text()=' Record has been added successfully ']");
 	public static final By SESuccesspopupMessageUploadOk = By.xpath("//button[contains(text(),'Ok')]");
