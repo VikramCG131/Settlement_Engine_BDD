@@ -1,4 +1,4 @@
-#Feature: Data Quality Rule Management
+Feature: Data Quality Rule Management
 
  Background: The user navigate to the "Settlement Engine" page
      Given the Settlement Engine<URL>
