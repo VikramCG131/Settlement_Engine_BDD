@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     //features = "src/test/resources/Features/Metadata/metdata_Data_Quality_Assignment.feature",
-    features = "src/test/resources/Features/Metadata/metadata_Data_Source_File.feature",
+    features = "src/test/resources/Features/Metadata/SE_Group_Config.feature",
     glue = {"steps", "hooks", "listeners"},
     monochrome = true,
     tags = "not @skip",

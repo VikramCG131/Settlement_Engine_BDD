@@ -135,14 +135,7 @@ public class SEGroupConfigTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccesspopupMessageUploadOk)).click();
 	}
 	
-	//search for the added record
-		public void AddedRecorddSearch() throws InterruptedException
-		{
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESearchforClientcode)).sendKeys(random+EmailAlertConstants.EMAIL_ADDRESS.getValue());
-			Thread.sleep(2000);
-		}
+	
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickSEGroupConfigblankSelection() {
