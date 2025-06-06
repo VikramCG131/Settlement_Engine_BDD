@@ -7,7 +7,7 @@ import tabs.SEGroupConfigTab;
 
 import java.io.IOException;
 
-import constants.EmailAlertConstants;
+import constants.SEGroupConfigConstants;
 
 
 public class SEGroupConfigSteps {
@@ -53,29 +53,43 @@ public class SEGroupConfigSteps {
 
 	@When("the user clicks the Add button for the SE Group Config")
 	public void the_user_clicks_the_add_new_button_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEAAddNewButton();
+		SEGroupConfigTab.clickSEAddNewButton();
 	}
-
-	@When("the user enters the data in required fields for the SE Group Config")
-	public void the_user_enters_the_data_in_required_fields_for_the_SE_Group_Config() {
-		
-		SEGroupConfigTab.enterEAFieldValue(EmailAlertConstants.TEMPLATE_TYPE.getValue(),
-				EmailAlertConstants.EMAIL_ADDRESS.getValue(), EmailAlertConstants.SUBJECT.getValue(),
-				EmailAlertConstants.INSERT_TEXT.getValue());
+	
+	@When("selects Rules from the list of Configured Rules and clicks the any arrow icon")
+	public void selects_rules_from_the_list_of_configured_rules_and_clicks_the_any_arrow_icon() throws InterruptedException {
+		SEGroupConfigTab.clicksAnyArrowIcon();
+	    
+	}
+	
+	@When("Rules should appear under Applied Rules and arrows working as expected")
+	public void Rules_should_appear_under_Applied_Rules_and_arrows_working_as_expected() throws InterruptedException {
+		SEGroupConfigTab.appliedRulesAppear();
+	    
+	}
+	
+	@When("User enter the required group name in the Group Name field")
+	public void the_user_enters_the_data_in_required_fields_for_the_SE_Group_Config() throws InterruptedException {
+		SEGroupConfigTab.enterEAFieldValue(SEGroupConfigConstants.GROUP_NAME.getValue());
+				
 		System.out.println("The user is able to enter the data in required fields");
 	}
-
+	@When("User move any Rule from Configured Rules to Applied Rules")
+	public void user_move_any_rule_from_configured_rules_to_applied_rules() throws InterruptedException {
+	    		SEGroupConfigTab.AddConfigureRulesInAppliedRulrd();
+	}
+	
 	@When("the user should see click on the Submit Button for the file for the SE Group Config")
 	public void the_user_should_see_click_on_the_submit_button_for_the_file_for_the_SE_Group_Config() {
 		SEGroupConfigTab.clickEASubmitButton();
 	}
 
-	@Then("the user should see {string} in the file list for the SE Group Config")
-	public void the_user_should_see_in_the_file_list_for_the_SE_Group_Config(String string) {
+	@Then("the form should be submitted successfully")
+	public void the_form_should_be_submitted_successfully() {
 		SEGroupConfigTab.verifyEASuccessPopupMessage();
 	}
 
-	@When("the user click on any field for the SE Group Config and the user should see validation errors for required fields for the SE Group Config")
+	@When("the user click on group name for the SE Group Config and the user should see validation errors for required fields for the SE Group Config")
 	public void the_user_click_on_any_field_for_the_SE_Group_Config_and_the_user_should_see_validation_errors_for_required_fields_for_the_SE_Group_Config() {
      SEGroupConfigTab.clickSEGroupConfigblankSelection();
 	}
@@ -95,12 +109,12 @@ public class SEGroupConfigSteps {
 		SEGroupConfigTab.clickEACancelButton();
 	}
 
-	@Then("Add New Pop up should be closed for the SE Group Config")
-	public void add_new_pop_up_should_be_closed_for_the_SE_Group_Config() {
+	@Then("Add Pop up should be closed for the SE Group Config")
+	public void add_pop_up_should_be_closed_for_the_se_group_config() {
 		SEGroupConfigTab.verifyEACategoryTextVisible();
 	}
 
-	@When("The User click the edit icon for the any file for the SE Group Config")
+	@When("The User click the edit icon for the any record for the SE Group Config")
 	public void the_user_click_the_edit_icon_for_the_any_file_for_the_SE_Group_Config() {
 		SEGroupConfigTab.clickEAEditButton();
 	}
@@ -112,7 +126,7 @@ public class SEGroupConfigSteps {
 
 	@Then("the user update the any field for the SE Group Config")
 	public void the_user_update_the_any_field_for_the_SE_Group_Config() {
-		SEGroupConfigTab.editEmailAddressValue();
+		SEGroupConfigTab.editGroupNameValue();
 	}
 
 	@Then("the user should see click on the Update Button for the SE Group Config")

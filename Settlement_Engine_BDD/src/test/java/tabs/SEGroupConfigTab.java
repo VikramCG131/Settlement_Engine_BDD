@@ -2,8 +2,12 @@ package tabs;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -90,27 +94,50 @@ public class SEGroupConfigTab {
 	}
 	
 	//Click on Add New Button
-	public   void clickEAAddNewButton() {
+	public   void clickSEAddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEAddButton));
 		driver.findElement(SEGroupConfigLocators.SEAddButton).click();
 		System.out.println("The user is able to click on Add New Button");
 	}
 	
-	//Enter the Field Value in Data Source File Category
-	public   void enterEAFieldValue(String templateType, String emailaddress,String subject, String insertText ){
-		random = CommonUtilities.getRandomInteger();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SETemplateTypeDropdown));
-		Select templatetypedropdown = new Select(driver.findElement(SEGroupConfigLocators.SETemplateTypeDropdown));
-		templatetypedropdown.selectByIndex(3);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
-		driver.findElement(SEGroupConfigLocators.SEEmailAddress).sendKeys(random+emailaddress);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubject));
-		driver.findElement(SEGroupConfigLocators.SESubject).sendKeys(subject);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEInsertText));
-		driver.findElement(SEGroupConfigLocators.SEInsertText).sendKeys(insertText);
-		System.out.println("The user is able to enter the field value in SE Group Config Category");
+	public void clicksAnyArrowIcon() throws InterruptedException
+	{	
+		List<WebElement> rules = driver.findElements(By.xpath("//div[@class='rule-item form-control ng-star-inserted']"));
+	       // Step 2: Get all arrow buttons (adjust this XPath as needed)	      
+	       for (int i = 0; i < 3 && i < rules.size(); i++) {
+	           rules.get(i).click();               // Click the rule    		
+	       } 
 	}
 	
+	public void appliedRulesAppear() throws InterruptedException
+	{
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
+	   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
+	   		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrowgreater));
+   		driver.findElement(SEGroupConfigLocators.SEArrowgreater).click();
+	}
+	
+	//Enter the Field Value in Data Source File Category
+	public   void enterEAFieldValue(String groupName) throws InterruptedException {
+		random = CommonUtilities.getRandomInteger();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
+		driver.findElement(SEGroupConfigLocators.SEGroupName).sendKeys(groupName+random);
+		System.out.println("The user is able to enter the field value in SE Group Config Category");
+		Thread.sleep(5000);
+	}
+	
+	public void AddConfigureRulesInAppliedRulrd() throws InterruptedException
+	{
+		List<WebElement> ruleselection = driver.findElements(By.xpath("//div[@class='rule-item form-control ng-star-inserted']"));
+	       // Step 2: Get all arrow buttons (adjust this XPath as needed)	      
+	       for (int i = 0; i < 3 && i < ruleselection.size(); i++) {
+	    	   ruleselection.get(i).click();  
+	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
+		   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
+		   		Thread.sleep(5000);// Click the rule    		
+	       } 
+	}
 	//Click on Submit Button
 	public   void clickEASubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubmitButton));
@@ -122,7 +149,7 @@ public class SEGroupConfigTab {
 			public   void verifyEAUpdatePopupMessage() {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpdatePopupMessage));
 				String successMessage = driver.findElement(SEGroupConfigLocators.SEUpdatePopupMessage).getText();
-				Assert.assertEquals(successMessage, "Record has been updated successfully");
+				Assert.assertEquals(successMessage, "Record has been updated successfully..!");
 				System.out.println("The user is able to verify the Update Popup Message");
 			}
 			
@@ -130,7 +157,7 @@ public class SEGroupConfigTab {
 	public   void verifyEASuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccessPopupMessage));
 		String successMessage = driver.findElement(SEGroupConfigLocators.SESuccessPopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been added successfully");
+		Assert.assertEquals(successMessage, "Record has been added successfully..!");
 		System.out.println("The user is able to verify the Success Popup Message");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccesspopupMessageUploadOk)).click();
 	}
@@ -139,15 +166,15 @@ public class SEGroupConfigTab {
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickSEGroupConfigblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
-		driver.findElement(SEGroupConfigLocators.SEEmailAddress).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
+		driver.findElement(SEGroupConfigLocators.SEGroupName).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubject));
-		driver.findElement(SEGroupConfigLocators.SESubject).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEAppliedRulesClick));
+		driver.findElement(SEGroupConfigLocators.SEAppliedRulesClick).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-		String actual = driver.findElement(SEGroupConfigLocators.SEEmailAddressValidation).getText();
-		Assert.assertEquals("Please Enter EmailAddress", actual);
-		System.out.println("The user is able to click on Email Address and validate the error message");
+		String actual = driver.findElement(SEGroupConfigLocators.SEGroupNameValidation).getText();
+		Assert.assertEquals("Please Enter Group Name", actual);
+		System.out.println("The user is able to click on Group name and validate the error message");
 	}
 	
 	//Click on Reset Button
@@ -215,13 +242,8 @@ public class SEGroupConfigTab {
 	
 	//Verify All the Fields are Cleared after Reset Button
 	public   void verifyAllFieldsClearedforResetButton() {
-		String templateType = driver.findElement(SEGroupConfigLocators.SETemplateTypeDropdown).getAttribute("value");
-		String emailAddress = driver.findElement(SEGroupConfigLocators.SEEmailAddress).getAttribute("value");
-		String subject = driver.findElement(SEGroupConfigLocators.SESubject).getAttribute("value");
-		
-		Assert.assertEquals("", templateType);
-		Assert.assertEquals("", emailAddress);
-		Assert.assertEquals("", subject);
+		String GroupName = driver.findElement(SEGroupConfigLocators.SEGroupName).getAttribute("value");
+		Assert.assertEquals("", GroupName);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 	
@@ -241,12 +263,12 @@ public class SEGroupConfigTab {
 		System.out.println("The user is able to verify the Delete Confirmation Popup Message");
 	}
 	
-	public void editEmailAddressValue()
+	public void editGroupNameValue()
 	{
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEmailAddress));
-		driver.findElement(SEGroupConfigLocators.SEEmailAddress).clear();
-		driver.findElement(SEGroupConfigLocators.SEEmailAddress).sendKeys("test123@yahoo.com");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
+		driver.findElement(SEGroupConfigLocators.SEGroupName).clear();
+		driver.findElement(SEGroupConfigLocators.SEGroupName).sendKeys("GP123");
 	}
 	
 	public void verifyEAFileRemoval() {
