@@ -143,7 +143,7 @@ public class SECalculationTab {
 	
 	
 	//Verify the Update Popup Message
-			public   void verifyEAUpdatePopupMessage() {
+			public   void verifySECUpdatePopupMessage() {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECUpdatePopupMessage));
 				String successMessage = driver.findElement(SECalculationLocators.SECUpdatePopupMessage).getText();
 				Assert.assertEquals(successMessage, "Record has been updated successfully..!");
@@ -151,7 +151,7 @@ public class SECalculationTab {
 			}
 		
 	//Verify the Success Popup Message
-	public   void verifyEASuccessPopupMessage() {
+	public   void verifySECSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECSuccessPopupMessage));
 		String successMessage = driver.findElement(SECalculationLocators.SECSuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Rule has been added successfully");
@@ -171,7 +171,7 @@ public class SECalculationTab {
 	}
 	
 	//Click on Reset Button
-	public   void clickEAResetButton() {
+	public   void clickSECResetButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECResetButton));
 		driver.findElement(SECalculationLocators.SECResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
@@ -179,14 +179,14 @@ public class SECalculationTab {
 	
 	
 	//Click on Update Button
-	public   void clickEAUpdateButton() {
+	public   void clickSECUpdateButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEUpdateButton));
 		driver.findElement(SECalculationLocators.SEUpdateButton).click();
 		System.out.println("The user is able to click on Update Button");
 	}
 	
 	//Click on Edit Button
-	public void clickEAEditButton() {
+	public void clickSECEditButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECditButton));
 		driver.findElement(SECalculationLocators.SECditButton).click();
 		System.out.println("The user is able to click on Edit Button");
@@ -198,21 +198,21 @@ public class SECalculationTab {
 			Assert.assertTrue(category);
 			System.out.println("The user is able to verify the File Information Text is visible");
 		}	
-	/*
+	
 	//Click on Delete Button
-	public   void clickEADeleteButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteButton));
-		driver.findElement(SECalculationLocators.SEDeleteButton).click();
+	public   void clickSECDeleteButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECDeleteButton));
+		driver.findElement(SECalculationLocators.SECDeleteButton).click();
 		System.out.println("The user is able to click on Delete Button");
 	}
 	
 	//Click on Delete Confirmation Popup Confirm Button
-	public   void clickEADeleteConfirmationPopupConfirmButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteConfirmationPopupConfirmButton));
-		driver.findElement(SECalculationLocators.SEDeleteConfirmationPopupConfirmButton).click();
+	public   void clickSECDeleteConfirmationPopupConfirmButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECDeleteConfirmationPopupConfirmButton));
+		driver.findElement(SECalculationLocators.SECDeleteConfirmationPopupConfirmButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Confirm Button");
 	}
-	
+	/*
 	//Click on Delete Confirmation Popup Cancel Button
 	public   void clickEADeleteConfirmationPopupCancelButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteConfirmationPopupCancelButton));

@@ -78,7 +78,7 @@ public class SECalculationSteps {
 	
 	@Then("the rule should be saved successfully")
 	public void the_rule_should_be_saved_successfully() {
-		SECalculationTab.verifyEASuccessPopupMessage();
+		SECalculationTab.verifySECSuccessPopupMessage();
 	}
 
 	@When("the user click on VALIDATE Button for the SE Calculation and the user should see error for required fields for the SE Calculation")
@@ -88,7 +88,7 @@ public class SECalculationSteps {
 
 	@When("the user click on Reset button for the SE Calculation")
 	public void the_user_click_on_reset_button_for_the_SE_calculation() {
-		SECalculationTab.clickEAResetButton();
+		SECalculationTab.clickSECResetButton();
 	}
 
 	@Then("all the fields should be cleared for the SE Calculation")
@@ -99,7 +99,7 @@ public class SECalculationSteps {
 
 	@When("The User click the edit icon for the any record for the SE Calculation")
 	public void The_User_click_the_edit_icon_for_the_any_record_for_the_SE_Calculation() {
-		SECalculationTab.clickEAEditButton();
+		SECalculationTab.clickSECEditButton();
 	}
 
 	@Then("The User should see the edit modal open file for the SE Calculation")
@@ -114,24 +114,24 @@ public class SECalculationSteps {
 	
 	@Then("the user should see click on the Update Button for the SE Calculation")
 	public void the_user_should_see_click_on_the_Update_Button_for_the_SE_Calculation() {
-		SECalculationTab.clickEAUpdateButton();
+		SECalculationTab.clickSECUpdateButton();
 	}
 
 	@Then("the user should see the updated {string} in the file list for the SE Calculation")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_SE_Calculation(String string) {
-		SECalculationTab.verifyEAUpdatePopupMessage();
+		SECalculationTab.verifySECUpdatePopupMessage();
+	}
+
+	@When("The User click the delete icon for the any file for the SE Calculation")
+	public void the_user_click_the_delete_icon_for_the_any_file_for_the_SE_Calculation() {
+		SECalculationTab.clickSECEditButton();
+	}
+
+	@Then("The User should see a confirmation pop-up with title {string} for the SE Calculation")
+	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_SE_Calculation(String string) {
+		SECalculationTab.clickSECDeleteConfirmationPopupConfirmButton();
 	}
 /*
-	@When("The User click the delete icon for the any file for the SE Group Config")
-	public void the_user_click_the_delete_icon_for_the_any_file_for_the_SE_Group_Config() {
-		SECalculationTab.clickEADeleteButton();
-	}
-
-	@Then("The User should see a confirmation pop-up with title {string} for the SE Group Config")
-	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_SE_Group_Config(String string) {
-		SECalculationTab.verifyEADeleteConfirmationPopupMessage();
-	}
-
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Group Config")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_SE_Group_Config() {
 		SECalculationTab.verifyEADeleteConfirmationPopupCancelButton();

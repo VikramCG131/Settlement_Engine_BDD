@@ -26,18 +26,18 @@ Feature: Settlement Engine Calculation
     #And the user click on Reset button for the SE Calculation
  	#Then all the fields should be cleared for the SE Calculation
  	
- 	Scenario: Verify the edit icon functionality for the SE Calculation
-   When the user click on SE Calculation
-   And The User click the edit icon for the any record for the SE Calculation
-  Then The User should see the edit modal open file for the SE Calculation
-  And the user update the any field for the SE Calculation
- And the user should see click on the Update Button for the SE Calculation
-  And the user should see the updated "test_file" in the file list for the SE Calculation
-
- 	#Scenario: Verify delete confirmation pop-up appears
+ 	#Scenario: Verify the edit icon functionality for the SE Calculation
    #When the user click on SE Calculation
-   #And The User click the delete icon for the any file for the SE Calculation
-  # Then The User should see a confirmation pop-up with title "Confirmation deletion" for the SE Calculation
+   #And The User click the edit icon for the any record for the SE Calculation
+  #Then The User should see the edit modal open file for the SE Calculation
+  #And the user update the any field for the SE Calculation
+ #And the user should see click on the Update Button for the SE Calculation
+  #And the user should see the updated "test_file" in the file list for the SE Calculation
+
+ 	Scenario: Verify delete confirmation pop-up appears
+   When the user click on SE Calculation
+   And The User click the delete icon for the any file for the SE Calculation
+   Then The User should see a confirmation pop-up with title "Confirmation deletion" for the SE Calculation
 
 #Scenario: Confirm deletion of a file
     #When the user click on SE Calculation
