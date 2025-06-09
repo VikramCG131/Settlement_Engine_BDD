@@ -114,8 +114,8 @@ public class SEGroupConfigTab {
 		 wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
 	   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
 	   		Thread.sleep(2000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrowgreater));
-   		driver.findElement(SEGroupConfigLocators.SEArrowgreater).click();
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrowgreater));
+   		//driver.findElement(SEGroupConfigLocators.SEArrowgreater).click();
 	}
 	
 	//Enter the Field Value in Data Source File Category
@@ -124,7 +124,7 @@ public class SEGroupConfigTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
 		driver.findElement(SEGroupConfigLocators.SEGroupName).sendKeys(groupName+random);
 		System.out.println("The user is able to enter the field value in SE Group Config Category");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 	}
 	
 	public void AddConfigureRulesInAppliedRulrd() throws InterruptedException
@@ -135,7 +135,7 @@ public class SEGroupConfigTab {
 	    	   ruleselection.get(i).click();  
 	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
 		   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
-		   		Thread.sleep(5000);// Click the rule    		
+		   		Thread.sleep(2000);// Click the rule    		
 	       } 
 	}
 	//Click on Submit Button
