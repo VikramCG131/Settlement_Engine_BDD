@@ -126,8 +126,8 @@ public class SEGroupConfigTab {
 			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpperArrow));
 			   		driver.findElement(SEGroupConfigLocators.SEUpperArrow).click();
 			   		
-			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SERightArrow));
-			   		driver.findElement(SEGroupConfigLocators.SERightArrow).click();
+			   		//wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SERightArrow));
+			   		//driver.findElement(SEGroupConfigLocators.SERightArrow).click();
 			   		
 			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDoubleLeftArrow));
 			   		driver.findElement(SEGroupConfigLocators.SEDoubleRightArrow).click();

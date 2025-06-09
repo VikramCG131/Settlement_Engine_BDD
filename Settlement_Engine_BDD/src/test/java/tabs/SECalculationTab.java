@@ -19,6 +19,7 @@ import Utilities.CommonUtilities;
 import constants.EmailAlertConstants;
 
 import locators.SECalculationLocators;
+import locators.SEGroupConfigLocators;
 import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
@@ -140,15 +141,15 @@ public class SECalculationTab {
 		System.out.println("The user is able to click on Save Button");
 	}
 	
-	/*
+	
 	//Verify the Update Popup Message
 			public   void verifyEAUpdatePopupMessage() {
-				wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEUpdatePopupMessage));
-				String successMessage = driver.findElement(SECalculationLocators.SEUpdatePopupMessage).getText();
+				wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECUpdatePopupMessage));
+				String successMessage = driver.findElement(SECalculationLocators.SECUpdatePopupMessage).getText();
 				Assert.assertEquals(successMessage, "Record has been updated successfully..!");
 				System.out.println("The user is able to verify the Update Popup Message");
 			}
-		*/	
+		
 	//Verify the Success Popup Message
 	public   void verifyEASuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECSuccessPopupMessage));
@@ -157,39 +158,25 @@ public class SECalculationTab {
 		System.out.println("The user is able to verify the Success Popup Message");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECSuccesspopupMessageUploadOk)).click();
 	}
-	/*
+	
 	
 	
 	//Click on File Pattern and Blank Selection
-	public   void clickSEGroupConfigblankSelection() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEGroupName));
-		driver.findElement(SECalculationLocators.SEGroupName).click();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEAppliedRulesClick));
-		driver.findElement(SECalculationLocators.SEAppliedRulesClick).click();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-		String actual = driver.findElement(SECalculationLocators.SEGroupNameValidation).getText();
-		Assert.assertEquals("Please Enter Group Name", actual);
-		System.out.println("The user is able to click on Group name and validate the error message");
+	public   void clickSECalCulationBlankSelection() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECValidate));
+		driver.findElement(SECalculationLocators.SECValidate).click();
+		String actual = driver.findElement(SECalculationLocators.SECFormulaValidation).getText();
+		Assert.assertEquals("Please Enter Valid Formula", actual);
+		System.out.println("The user is able to click on Validate Button and validate the error message");
 	}
 	
 	//Click on Reset Button
 	public   void clickEAResetButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEResetButton));
-		driver.findElement(SECalculationLocators.SEResetButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECResetButton));
+		driver.findElement(SECalculationLocators.SECResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
 	}
 	
-	//Click on Cancel Button
-	public   void clickEACancelButton() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECategoryTextVisible));
-		boolean grid = driver.findElement(SECalculationLocators.SECategoryTextVisible).isDisplayed();
-		Assert.assertTrue(grid);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECancelButton));
-		driver.findElement(SECalculationLocators.SECancelButton).click();
-		System.out.println("The user is able to click on Cancel Button");
-	}
 	
 	//Click on Update Button
 	public   void clickEAUpdateButton() {
@@ -200,21 +187,18 @@ public class SECalculationTab {
 	
 	//Click on Edit Button
 	public void clickEAEditButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEEditButton));
-		driver.findElement(SECalculationLocators.SEEditButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECditButton));
+		driver.findElement(SECalculationLocators.SECditButton).click();
 		System.out.println("The user is able to click on Edit Button");
 	}
-	
-	
 	//Verify Assignment Category Text is Visible
-	public   void verifyEACategoryTextVisible() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECategoryTextVisibleGrid));
-		boolean category = driver.findElement(SECalculationLocators.SECategoryTextVisibleGrid).isDisplayed();
-		Assert.assertTrue(category);
-		System.out.println("The user is able to verify the File Information Text is visible");
-	}	
-	
-	
+		public   void verifySECalculationCategoryTextVisible() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCategoryTextVisible));
+			boolean category = driver.findElement(SECalculationLocators.SECategoryTextVisibleRules).isDisplayed();
+			Assert.assertTrue(category);
+			System.out.println("The user is able to verify the File Information Text is visible");
+		}	
+	/*
 	//Click on Delete Button
 	public   void clickEADeleteButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteButton));
@@ -235,14 +219,17 @@ public class SECalculationTab {
 		driver.findElement(SECalculationLocators.SEDeleteConfirmationPopupCancelButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Cancel Button");
 	}
+	*/
 	
 	//Verify All the Fields are Cleared after Reset Button
 	public   void verifyAllFieldsClearedforResetButton() {
-		String GroupName = driver.findElement(SECalculationLocators.SEGroupName).getAttribute("value");
-		Assert.assertEquals("", GroupName);
+		String RuleName = driver.findElement(SECalculationLocators.SECRuleName).getAttribute("value");
+		Assert.assertEquals("", RuleName);
+		String VariableName = driver.findElement(SECalculationLocators.SECValriableName).getAttribute("value");
+		Assert.assertEquals("", VariableName);
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
-	
+	/*
 	//Verify the Data Source File Grid is visible and File Information is Not Visible
 	public void verifyEAGridVisibleandFileInformationNotVisible() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -258,15 +245,16 @@ public class SECalculationTab {
 		Assert.assertEquals(deleteMessage, "Are you sure you want to delete");
 		System.out.println("The user is able to verify the Delete Confirmation Popup Message");
 	}
-	
+	*/
 	public void editGroupNameValue()
 	{
+		random = CommonUtilities.getRandomInteger();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEGroupName));
-		driver.findElement(SECalculationLocators.SEGroupName).clear();
-		driver.findElement(SECalculationLocators.SEGroupName).sendKeys("GP123");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECValriableName));
+		driver.findElement(SECalculationLocators.SECValriableName).clear();
+		driver.findElement(SECalculationLocators.SECValriableName).sendKeys("Var"+random);
 	}
-	
+	/*
 	public void verifyEAFileRemoval() {
 		boolean grid = driver.findElement(SECalculationLocators.SEGridVisible).isDisplayed();
 		Assert.assertTrue(grid);

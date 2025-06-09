@@ -80,57 +80,48 @@ public class SECalculationSteps {
 	public void the_rule_should_be_saved_successfully() {
 		SECalculationTab.verifyEASuccessPopupMessage();
 	}
-/*
-	@When("the user click on group name for the SE Group Config and the user should see validation errors for required fields for the SE Group Config")
-	public void the_user_click_on_any_field_for_the_SE_Group_Config_and_the_user_should_see_validation_errors_for_required_fields_for_the_SE_Group_Config() {
-     SECalculationTab.clickSEGroupConfigblankSelection();
+
+	@When("the user click on VALIDATE Button for the SE Calculation and the user should see error for required fields for the SE Calculation")
+	public void the_user_click_on_VALIDATE_Button_for_the_SE_Calculation_and_the_user_should_see_error_for_required_fields_for_the_SE_Calculation() {
+     SECalculationTab.clickSECalCulationBlankSelection();
 	}
 
-	@When("the user click on Reset button for the SE Group Config")
-	public void the_user_click_on_reset_button_for_the_SE_Group_Config() {
+	@When("the user click on Reset button for the SE Calculation")
+	public void the_user_click_on_reset_button_for_the_SE_calculation() {
 		SECalculationTab.clickEAResetButton();
 	}
 
-	@Then("all the fields should be cleared for the SE Group Config")
-	public void all_the_fields_should_be_cleared_for_the_SE_Group_Config() {
+	@Then("all the fields should be cleared for the SE Calculation")
+	public void all_the_fields_should_be_cleared_for_the_SE_calculation() {
 		SECalculationTab.verifyAllFieldsClearedforResetButton();
 	}
 
-	@When("the user click on Cancel button for the SE Group Config")
-	public void the_user_click_on_cancel_button_for_the_SE_Group_Config() {
-		SECalculationTab.clickEACancelButton();
-	}
 
-	@Then("Add Pop up should be closed for the SE Group Config")
-	public void add_pop_up_should_be_closed_for_the_se_group_config() {
-		SECalculationTab.verifyEACategoryTextVisible();
-	}
-
-	@When("The User click the edit icon for the any record for the SE Group Config")
-	public void the_user_click_the_edit_icon_for_the_any_file_for_the_SE_Group_Config() {
+	@When("The User click the edit icon for the any record for the SE Calculation")
+	public void The_User_click_the_edit_icon_for_the_any_record_for_the_SE_Calculation() {
 		SECalculationTab.clickEAEditButton();
 	}
 
-	@Then("The User should see the edit modal open file for the SE Group Config")
-	public void the_user_should_see_the_edit_modal_open_file_for_the_SE_Group_Config() {
-		SECalculationTab.verifyEACategoryTextVisible();
+	@Then("The User should see the edit modal open file for the SE Calculation")
+	public void the_user_should_see_the_edit_modal_open_file_for_the_SE_Calculation() {
+		SECalculationTab.verifySECalculationCategoryTextVisible();
 	}
 
-	@Then("the user update the any field for the SE Group Config")
-	public void the_user_update_the_any_field_for_the_SE_Group_Config() {
+	@Then("the user update the any field for the SE Calculation")
+	public void the_user_update_the_any_field_for_the_SE_Calculation() {
 		SECalculationTab.editGroupNameValue();
 	}
-
-	@Then("the user should see click on the Update Button for the SE Group Config")
-	public void the_user_should_see_click_on_the_update_button_for_the_SE_Group_Config() {
+	
+	@Then("the user should see click on the Update Button for the SE Calculation")
+	public void the_user_should_see_click_on_the_Update_Button_for_the_SE_Calculation() {
 		SECalculationTab.clickEAUpdateButton();
 	}
 
-	@Then("the user should see the updated {string} in the file list for the SE Group Config")
-	public void the_user_should_see_the_updated_in_the_file_list_for_the_SE_Group_Config(String string) {
+	@Then("the user should see the updated {string} in the file list for the SE Calculation")
+	public void the_user_should_see_the_updated_in_the_file_list_for_the_SE_Calculation(String string) {
 		SECalculationTab.verifyEAUpdatePopupMessage();
 	}
-
+/*
 	@When("The User click the delete icon for the any file for the SE Group Config")
 	public void the_user_click_the_delete_icon_for_the_any_file_for_the_SE_Group_Config() {
 		SECalculationTab.clickEADeleteButton();

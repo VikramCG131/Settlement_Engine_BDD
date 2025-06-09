@@ -31,8 +31,8 @@ public class SECalculationLocators {
 	
 	/******Configured Settlement Rules******/
 
-	public static final By SEGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
-	public static final By SEEditButton = By.xpath("(//i[@data-action='edit'])[1]");
-	public static final By SEDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
+	public static final By SECGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");
+	public static final By SECditButton = By.xpath("(//i[@data-action='edit'])[1]");
+	public static final By SECDeleteButton = By.xpath("(//i[@data-action='delete'])[1]");
 
 }
