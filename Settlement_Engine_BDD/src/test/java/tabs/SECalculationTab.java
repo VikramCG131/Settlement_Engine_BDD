@@ -21,12 +21,12 @@ import locators.LoginPageLocators;
 import locators.SettlementEngineLoginLocators;
 import utils.DriverManager;
 
-public class SEGroupConfigTab {
+public class SECalculationTab {
 	private WebDriver driver;
 	private WebDriverWait wait;
 	static String random;
 	//Constructor to initialize the driver and wait
-	public SEGroupConfigTab() {
+	public SECalculationTab() {
 		this.driver = DriverManager.getDriver();
 		
 		if (this.driver == null) {
