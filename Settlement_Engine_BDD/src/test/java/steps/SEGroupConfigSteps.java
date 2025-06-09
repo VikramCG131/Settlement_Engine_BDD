@@ -53,7 +53,7 @@ public class SEGroupConfigSteps {
 
 	@When("the user clicks the Add button for the SE Group Config")
 	public void the_user_clicks_the_add_new_button_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickSEAddNewButton();
+		SEGroupConfigTab.clickSGCddNewButton();
 	}
 	
 	@When("selects Rules from the list of Configured Rules and clicks the any arrow icon")
@@ -81,12 +81,12 @@ public class SEGroupConfigSteps {
 	
 	@When("the user should see click on the Submit Button for the file for the SE Group Config")
 	public void the_user_should_see_click_on_the_submit_button_for_the_file_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEASubmitButton();
+		SEGroupConfigTab.clickSCGSubmitButton();
 	}
 
 	@Then("the form should be submitted successfully")
 	public void the_form_should_be_submitted_successfully() {
-		SEGroupConfigTab.verifyEASuccessPopupMessage();
+		SEGroupConfigTab.verifySGCSuccessPopupMessage();
 	}
 
 	@When("the user click on group name for the SE Group Config and the user should see validation errors for required fields for the SE Group Config")
@@ -96,7 +96,7 @@ public class SEGroupConfigSteps {
 
 	@When("the user click on Reset button for the SE Group Config")
 	public void the_user_click_on_reset_button_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEAResetButton();
+		SEGroupConfigTab.clickSGCResetButton();
 	}
 
 	@Then("all the fields should be cleared for the SE Group Config")
@@ -106,22 +106,22 @@ public class SEGroupConfigSteps {
 
 	@When("the user click on Cancel button for the SE Group Config")
 	public void the_user_click_on_cancel_button_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEACancelButton();
+		SEGroupConfigTab.clickSCGCancelButton();
 	}
 
 	@Then("Add Pop up should be closed for the SE Group Config")
 	public void add_pop_up_should_be_closed_for_the_se_group_config() {
-		SEGroupConfigTab.verifyEACategoryTextVisible();
+		SEGroupConfigTab.verifySCGCategoryTextVisible();
 	}
 
 	@When("The User click the edit icon for the any record for the SE Group Config")
 	public void the_user_click_the_edit_icon_for_the_any_file_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEAEditButton();
+		SEGroupConfigTab.clickSGCEditButton();
 	}
 
 	@Then("The User should see the edit modal open file for the SE Group Config")
 	public void the_user_should_see_the_edit_modal_open_file_for_the_SE_Group_Config() {
-		SEGroupConfigTab.verifyEACategoryTextVisible();
+		SEGroupConfigTab.verifySCGCategoryTextVisible();
 	}
 
 	@Then("the user update the any field for the SE Group Config")
@@ -131,38 +131,38 @@ public class SEGroupConfigSteps {
 
 	@Then("the user should see click on the Update Button for the SE Group Config")
 	public void the_user_should_see_click_on_the_update_button_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEAUpdateButton();
+		SEGroupConfigTab.clickSCGUpdateButton();
 	}
 
 	@Then("the user should see the updated {string} in the file list for the SE Group Config")
 	public void the_user_should_see_the_updated_in_the_file_list_for_the_SE_Group_Config(String string) {
-		SEGroupConfigTab.verifyEAUpdatePopupMessage();
+		SEGroupConfigTab.verifySGCUpdatePopupMessage();
 	}
 
 	@When("The User click the delete icon for the any file for the SE Group Config")
 	public void the_user_click_the_delete_icon_for_the_any_file_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEADeleteButton();
+		SEGroupConfigTab.clickSGCDeleteButton();
 	}
 
 	@Then("The User should see a confirmation pop-up with title {string} for the SE Group Config")
 	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_SE_Group_Config(String string) {
-		SEGroupConfigTab.verifyEADeleteConfirmationPopupMessage();
+		SEGroupConfigTab.verifySGCDeleteConfirmationPopupMessage();
 	}
 
 	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Group Config")
 	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_SE_Group_Config() {
-		SEGroupConfigTab.verifyEADeleteConfirmationPopupCancelButton();
-		SEGroupConfigTab.verifyEADeleteConfirmationPopupConfirmButton();
+		SEGroupConfigTab.verifySGCDeleteConfirmationPopupCancelButton();
+		SEGroupConfigTab.verifySGCDeleteConfirmationPopupConfirmButton();
 	}
 
 	@When("The User confirm the deletion for the SE Group Config")
 	public void the_user_confirm_the_deletion_for_the_SE_Group_Config() {
-		SEGroupConfigTab.clickEADeleteConfirmationPopupConfirmButton();
+		SEGroupConfigTab.clickSGCDeleteConfirmationPopupConfirmButton();
 	}
 
 	@Then("the file should be removed from the table for the SE Group Config")
 	public void the_file_should_be_removed_from_the_table_for_the_SE_Group_Config() {
-		SEGroupConfigTab.verifyEAFileRemoval();
+		SEGroupConfigTab.verifySGCFileRemoval();
 	}
 
 

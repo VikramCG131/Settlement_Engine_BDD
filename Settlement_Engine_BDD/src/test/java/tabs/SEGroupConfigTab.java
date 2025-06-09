@@ -9,12 +9,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.CommonUtilities;
 
-import constants.EmailAlertConstants;
+
 
 import locators.SEGroupConfigLocators;
 import locators.LoginPageLocators;
@@ -90,11 +90,11 @@ public class SEGroupConfigTab {
 	public   void clickSeGroupConfigTab() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupConfigTab));
 		driver.findElement(SEGroupConfigLocators.SEGroupConfigTab).click();
-		System.out.println("The user is able to click on Data Source File Tab");
+		System.out.println("The user is able to click on SE Group Config  Tab");
 	}
 	
 	//Click on Add New Button
-	public   void clickSEAddNewButton() {
+	public   void clickSGCddNewButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEAddButton));
 		driver.findElement(SEGroupConfigLocators.SEAddButton).click();
 		System.out.println("The user is able to click on Add New Button");
@@ -137,7 +137,7 @@ public class SEGroupConfigTab {
 			
 	}
 
-	//Enter the Field Value in Data Source File Category
+	//Enter the Field Value in SE Group Config  Category
 	public   void enterEAFieldValue(String groupName) throws InterruptedException {
 		random = CommonUtilities.getRandomInteger();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
@@ -158,14 +158,14 @@ public class SEGroupConfigTab {
 	       } 
 	}
 	//Click on Submit Button
-	public   void clickEASubmitButton() {
+	public   void clickSCGSubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESubmitButton));
 		driver.findElement(SEGroupConfigLocators.SESubmitButton).click();
 		System.out.println("The user is able to click on Submit Button");
 	}
 	
 	//Verify the Update Popup Message
-			public   void verifyEAUpdatePopupMessage() {
+			public   void verifySGCUpdatePopupMessage() {
 				wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpdatePopupMessage));
 				String successMessage = driver.findElement(SEGroupConfigLocators.SEUpdatePopupMessage).getText();
 				Assert.assertEquals(successMessage, "Record has been updated successfully..!");
@@ -173,7 +173,7 @@ public class SEGroupConfigTab {
 			}
 			
 	//Verify the Success Popup Message
-	public   void verifyEASuccessPopupMessage() {
+	public   void verifySGCSuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SESuccessPopupMessage));
 		String successMessage = driver.findElement(SEGroupConfigLocators.SESuccessPopupMessage).getText();
 		Assert.assertEquals(successMessage, "Record has been added successfully..!");
@@ -197,14 +197,14 @@ public class SEGroupConfigTab {
 	}
 	
 	//Click on Reset Button
-	public   void clickEAResetButton() {
+	public   void clickSGCResetButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEResetButton));
 		driver.findElement(SEGroupConfigLocators.SEResetButton).click();
 		System.out.println("The user is able to click on Reset Button");
 	}
 	
 	//Click on Cancel Button
-	public   void clickEACancelButton() {
+	public   void clickSCGCancelButton() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SECategoryTextVisible));
 		boolean grid = driver.findElement(SEGroupConfigLocators.SECategoryTextVisible).isDisplayed();
@@ -215,14 +215,14 @@ public class SEGroupConfigTab {
 	}
 	
 	//Click on Update Button
-	public   void clickEAUpdateButton() {
+	public   void clickSCGUpdateButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpdateButton));
 		driver.findElement(SEGroupConfigLocators.SEUpdateButton).click();
 		System.out.println("The user is able to click on Update Button");
 	}
 	
 	//Click on Edit Button
-	public void clickEAEditButton() {
+	public void clickSGCEditButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEEditButton));
 		driver.findElement(SEGroupConfigLocators.SEEditButton).click();
 		System.out.println("The user is able to click on Edit Button");
@@ -230,7 +230,7 @@ public class SEGroupConfigTab {
 	
 	
 	//Verify Assignment Category Text is Visible
-	public   void verifyEACategoryTextVisible() {
+	public   void verifySCGCategoryTextVisible() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SECategoryTextVisibleGrid));
 		boolean category = driver.findElement(SEGroupConfigLocators.SECategoryTextVisibleGrid).isDisplayed();
 		Assert.assertTrue(category);
@@ -239,14 +239,14 @@ public class SEGroupConfigTab {
 	
 	
 	//Click on Delete Button
-	public   void clickEADeleteButton() {
+	public   void clickSGCDeleteButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteButton));
 		driver.findElement(SEGroupConfigLocators.SEDeleteButton).click();
 		System.out.println("The user is able to click on Delete Button");
 	}
 	
 	//Click on Delete Confirmation Popup Confirm Button
-	public   void clickEADeleteConfirmationPopupConfirmButton() {
+	public   void clickSGCDeleteConfirmationPopupConfirmButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton));
 		driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Confirm Button");
@@ -266,16 +266,16 @@ public class SEGroupConfigTab {
 		System.out.println("The user is able to verify all the fields are cleared after Reset Button");
 	}
 	
-	//Verify the Data Source File Grid is visible and File Information is Not Visible
+	//Verify the SE Group Config File Grid is visible and File Information is Not Visible
 	public void verifyEAGridVisibleandFileInformationNotVisible() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		boolean category = driver.findElement(SEGroupConfigLocators.SECategoryTextVisibleGrid).isDisplayed();
 		Assert.assertTrue(category);
-		System.out.println("The user is able to verify the Data Source File Grid is visible and File Information is not visible");
+		System.out.println("The user is able to verify the SE Group Config File Grid is visible and File Information is not visible");
 	}
 	
 	//Verify the Delete Confirmation Popup Message
-	public   void verifyEADeleteConfirmationPopupMessage() {
+	public   void verifySGCDeleteConfirmationPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupMessage));
 		String deleteMessage = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupMessage).getText();
 		Assert.assertEquals(deleteMessage, "Are you sure you want to delete");
@@ -290,13 +290,13 @@ public class SEGroupConfigTab {
 		driver.findElement(SEGroupConfigLocators.SEGroupName).sendKeys("GP123");
 	}
 	
-	public void verifyEAFileRemoval() {
+	public void verifySGCFileRemoval() {
 		boolean grid = driver.findElement(SEGroupConfigLocators.SEGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
 	}
 	
 	//Verify in the Delete Popup Confirm button is Visible
-	public   void verifyEADeleteConfirmationPopupConfirmButton() {
+	public   void verifySGCDeleteConfirmationPopupConfirmButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton));
 		boolean confirm = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupConfirmButton).isDisplayed();
 		Assert.assertTrue(confirm);
@@ -304,7 +304,7 @@ public class SEGroupConfigTab {
 	}
 	
 	//Verify in the Delete Popup Cancel button is Visible
-	public   void verifyEADeleteConfirmationPopupCancelButton() {
+	public   void verifySGCDeleteConfirmationPopupCancelButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton));
 		boolean cancel = driver.findElement(SEGroupConfigLocators.SEDeleteConfirmationPopupCancelButton).isDisplayed();
 		Assert.assertTrue(cancel);
