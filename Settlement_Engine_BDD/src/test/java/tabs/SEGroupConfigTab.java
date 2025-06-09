@@ -105,18 +105,34 @@ public class SEGroupConfigTab {
 		List<WebElement> rules = driver.findElements(By.xpath("//div[@class='rule-item form-control ng-star-inserted']"));
 	       // Step 2: Get all arrow buttons (adjust this XPath as needed)	      
 	       for (int i = 0; i < 3 && i < rules.size(); i++) {
-	           rules.get(i).click();               // Click the rule    		
+	           rules.get(i).click();  
+	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SELeftArrow));
+		   		driver.findElement(SEGroupConfigLocators.SELeftArrow).click();// Click the rule    		
 	       } 
 	}
 	
 	public void appliedRulesAppear() throws InterruptedException
 	{
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
-	   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
 	   		Thread.sleep(2000);
-		
+	   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDoubleLeftArrow));
+	   		driver.findElement(SEGroupConfigLocators.SEDoubleLeftArrow).click();
+	   		List<WebElement> rules = driver.findElements(By.xpath("//div[@class='rule-item form-control ng-star-inserted']"));
+		       // Step 2: Get all arrow buttons (adjust this XPath as needed)	      
+		       for (int i = 0; i < 1 && i < rules.size(); i++) {
+		           rules.get(i).click();  
+		           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDownArrow));
+			   		driver.findElement(SEGroupConfigLocators.SEDownArrow).click();
+			   		Thread.sleep(2000);
+			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpperArrow));
+			   		driver.findElement(SEGroupConfigLocators.SEUpperArrow).click();
+			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDoubleLeftArrow));
+			   		driver.findElement(SEGroupConfigLocators.SEDoubleRightArrow).click();
+			   		Thread.sleep(2000);// Click the rule  
+			   		
+		       }
+			
 	}
-	
+
 	//Enter the Field Value in Data Source File Category
 	public   void enterEAFieldValue(String groupName) throws InterruptedException {
 		random = CommonUtilities.getRandomInteger();
@@ -132,8 +148,8 @@ public class SEGroupConfigTab {
 	       // Step 2: Get all arrow buttons (adjust this XPath as needed)	      
 	       for (int i = 0; i < 3 && i < ruleselection.size(); i++) {
 	    	   ruleselection.get(i).click();  
-	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEArrow));
-		   		driver.findElement(SEGroupConfigLocators.SEArrow).click();
+	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SELeftArrow));
+		   		driver.findElement(SEGroupConfigLocators.SELeftArrow).click();
 		   		Thread.sleep(2000);// Click the rule    		
 	       } 
 	}

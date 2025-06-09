@@ -20,10 +20,13 @@ public class SEGroupConfigLocators {
 	
 	public static final By SEGroupName = By.xpath("//input[@placeholder='Enter Group Name']");
 	public static final By SEConfigeredRules= By.xpath("//div[@class='rule-item form-control ng-star-inserted']");
-	public static final By SEArrow= By.xpath("//button[contains(text(),'<')]");
-	public static final By SEArrowgreater= By.xpath("//button[contains(text(),'>>')]");
+	public static final By SELeftArrow= By.xpath("//button[contains(text(),'<')]");
+	public static final By SERightArrow= By.xpath("//button[contains(text(),'>')]");
+	public static final By SEDoubleLeftArrow= By.xpath("//button[contains(text(),'<<')]");
+	public static final By SEDoubleRightArrow= By.xpath("//button[contains(text(),'>>')]");
+	public static final By SEUpperArrow= By.xpath("//button[contains(text(),'↑')]");
+	public static final By SEDownArrow= By.xpath("//button[contains(text(),'↓')]");
 	public static final By SEAppliedRulesClick = By.xpath("//div[contains(text(),'Applied Rules')]");
-
 	public static final By SESubmitButton = By.xpath("//button[contains(text(),'Submit')]");
 	public static final By SEResetButton = By.xpath("//button[contains(text(),'Reset')]");
 	public static final By SECancelButton = By.xpath("//button[contains(text(),'Cancel')]");

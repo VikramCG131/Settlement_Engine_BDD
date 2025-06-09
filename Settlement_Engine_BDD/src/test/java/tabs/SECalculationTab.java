@@ -153,9 +153,9 @@ public class SECalculationTab {
 	public   void verifyEASuccessPopupMessage() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECSuccessPopupMessage));
 		String successMessage = driver.findElement(SECalculationLocators.SECSuccessPopupMessage).getText();
-		Assert.assertEquals(successMessage, "Record has been added successfully..!");
+		Assert.assertEquals(successMessage, "Rule has been added successfully");
 		System.out.println("The user is able to verify the Success Popup Message");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SESuccesspopupMessageUploadOk)).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECSuccesspopupMessageUploadOk)).click();
 	}
 	/*
 	
