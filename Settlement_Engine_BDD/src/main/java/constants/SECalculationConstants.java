@@ -3,7 +3,7 @@ package constants;
 	
 	public enum SECalculationConstants {
 		RULE_NAME("RULE_"),
-		VARIABLE_NAME("Variable");
+		VARIABLE_NAME("var");
 		
 		private final String value;
 		SECalculationConstants(String value)

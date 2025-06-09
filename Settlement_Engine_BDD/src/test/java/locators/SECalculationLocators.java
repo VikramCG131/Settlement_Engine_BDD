@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class SECalculationLocators {
 	
 	/******Settlement Rules Config Metadata - Page******/
-	public static final By SECGroupConfigTab = By.xpath("//span[contains(text(),'SE Calculation')]");
+	public static final By SECCalculationTab = By.xpath("//span[contains(text(),'SE Calculation')]");
 	public static final By SEcSuccessPopupMessage = By.xpath("//div[contains(text(),' Record has been added successfully..!') ]");
 	public static final By SEcSuccesspopupMessageUploadOk = By.xpath("//button[contains(text(),'Ok')]");
 	public static final By SECUpdatePopupMessage = By.xpath("//div[contains(text(),' Record has been updated successfully')]");
@@ -20,6 +20,9 @@ public class SECalculationLocators {
 	public static final By SECRuleName = By.xpath("//input[@id='ruleName']");
 	public static final By SECValriableName= By.xpath("//input[@id='varName']");
 	public static final By SECFormula= By.xpath("//input[@placeholder='Enter Formula']");
+	public static final By SECSuccessPopupMessage = By.xpath("//div[contains(text(),' Record has been added successfully..!') ]");
+	public static final By SESuccesspopupMessageUploadOk = By.xpath("//button[contains(text(),'Ok')]");
+	public static final By SECFormulaValidationMessage= By.xpath("//div[contains(text(),' Formula is Valid ')]");
 	public static final By SECValidate= By.xpath("//button[contains(text(),' VALIDATE ')]");
 	public static final By SECSubmitButton = By.xpath("//button[contains(text(),'Save')]");
 	public static final By SECResetButton = By.xpath("//button[contains(text(),'Reset')]");
