@@ -113,7 +113,7 @@ public class SEGroupConfigTab {
 	
 	public void appliedRulesAppear() throws InterruptedException
 	{
-	   		Thread.sleep(2000);
+	   		
 	   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDoubleLeftArrow));
 	   		driver.findElement(SEGroupConfigLocators.SEDoubleLeftArrow).click();
 	   		List<WebElement> rules = driver.findElements(By.xpath("//div[@class='rule-item form-control ng-star-inserted']"));
@@ -122,12 +122,16 @@ public class SEGroupConfigTab {
 		           rules.get(i).click();  
 		           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDownArrow));
 			   		driver.findElement(SEGroupConfigLocators.SEDownArrow).click();
-			   		Thread.sleep(2000);
+			   		
 			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEUpperArrow));
 			   		driver.findElement(SEGroupConfigLocators.SEUpperArrow).click();
+			   		
+			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SERightArrow));
+			   		driver.findElement(SEGroupConfigLocators.SERightArrow).click();
+			   		
 			   		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEDoubleLeftArrow));
 			   		driver.findElement(SEGroupConfigLocators.SEDoubleRightArrow).click();
-			   		Thread.sleep(2000);// Click the rule  
+			   		// Click the rule  
 			   		
 		       }
 			
@@ -139,7 +143,7 @@ public class SEGroupConfigTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
 		driver.findElement(SEGroupConfigLocators.SEGroupName).sendKeys(groupName+random);
 		System.out.println("The user is able to enter the field value in SE Group Config Category");
-		Thread.sleep(2000);
+		
 	}
 	
 	public void AddConfigureRulesInAppliedRulrd() throws InterruptedException
@@ -150,7 +154,7 @@ public class SEGroupConfigTab {
 	    	   ruleselection.get(i).click();  
 	           wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SELeftArrow));
 		   		driver.findElement(SEGroupConfigLocators.SELeftArrow).click();
-		   		Thread.sleep(2000);// Click the rule    		
+		   		// Click the rule    		
 	       } 
 	}
 	//Click on Submit Button
