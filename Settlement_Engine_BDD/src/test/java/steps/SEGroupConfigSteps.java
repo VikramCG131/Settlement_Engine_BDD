@@ -90,7 +90,7 @@ public class SEGroupConfigSteps {
 	}
 
 	@When("the user click on group name for the SE Group Config and the user should see validation errors for required fields for the SE Group Config")
-	public void the_user_click_on_any_field_for_the_SE_Group_Config_and_the_user_should_see_validation_errors_for_required_fields_for_the_SE_Group_Config() {
+	public void the_user_click_on_any_field_for_the_SE_Group_Config_and_the_user_should_see_validation_errors_for_required_fields_for_the_SE_Group_Config() throws InterruptedException {
      SEGroupConfigTab.clickSEGroupConfigblankSelection();
 	}
 

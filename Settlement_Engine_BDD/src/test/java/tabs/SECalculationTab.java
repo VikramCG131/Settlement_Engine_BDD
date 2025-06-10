@@ -212,14 +212,14 @@ public class SECalculationTab {
 		driver.findElement(SECalculationLocators.SECDeleteConfirmationPopupConfirmButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Confirm Button");
 	}
-	/*
+	
 	//Click on Delete Confirmation Popup Cancel Button
 	public   void clickEADeleteConfirmationPopupCancelButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteConfirmationPopupCancelButton));
-		driver.findElement(SECalculationLocators.SEDeleteConfirmationPopupCancelButton).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECDeleteConfirmationPopupCancelButton));
+		driver.findElement(SECalculationLocators.SECDeleteConfirmationPopupCancelButton).click();
 		System.out.println("The user is able to click on Delete Confirmation Popup Cancel Button");
 	}
-	*/
+	
 	
 	//Verify All the Fields are Cleared after Reset Button
 	public   void verifyAllFieldsClearedforResetButton() {
@@ -254,29 +254,29 @@ public class SECalculationTab {
 		driver.findElement(SECalculationLocators.SECValriableName).clear();
 		driver.findElement(SECalculationLocators.SECValriableName).sendKeys("Var"+random);
 	}
-	/*
-	public void verifyEAFileRemoval() {
-		boolean grid = driver.findElement(SECalculationLocators.SEGridVisible).isDisplayed();
+	
+	public void verifySECFileRemoval() {
+		boolean grid = driver.findElement(SECalculationLocators.SECGridVisible).isDisplayed();
 		Assert.assertTrue(grid);
 	}
 	
 	//Verify in the Delete Popup Confirm button is Visible
-	public   void verifyEADeleteConfirmationPopupConfirmButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteConfirmationPopupConfirmButton));
-		boolean confirm = driver.findElement(SECalculationLocators.SEDeleteConfirmationPopupConfirmButton).isDisplayed();
+	public   void verifySECDeleteConfirmationPopupConfirmButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECDeleteConfirmationPopupConfirmButton));
+		boolean confirm = driver.findElement(SECalculationLocators.SECDeleteConfirmationPopupConfirmButton).isDisplayed();
 		Assert.assertTrue(confirm);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Confirm Button");
 	}
 	
 	//Verify in the Delete Popup Cancel button is Visible
-	public   void verifyEADeleteConfirmationPopupCancelButton() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SEDeleteConfirmationPopupCancelButton));
-		boolean cancel = driver.findElement(SECalculationLocators.SEDeleteConfirmationPopupCancelButton).isDisplayed();
+	public   void verifySECDeleteConfirmationPopupCancelButton() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECDeleteConfirmationPopupCancelButton));
+		boolean cancel = driver.findElement(SECalculationLocators.SECDeleteConfirmationPopupCancelButton).isDisplayed();
 		Assert.assertTrue(cancel);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Cancel Button");
 	}
 
-*/
+
 	
 	
 }

@@ -184,13 +184,14 @@ public class SEGroupConfigTab {
 	
 	
 	//Click on File Pattern and Blank Selection
-	public   void clickSEGroupConfigblankSelection() {
+	public   void clickSEGroupConfigblankSelection() throws InterruptedException {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEGroupName));
 		driver.findElement(SEGroupConfigLocators.SEGroupName).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SEGroupConfigLocators.SEAppliedRulesClick));
 		driver.findElement(SEGroupConfigLocators.SEAppliedRulesClick).click();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+		Thread.sleep(2000);
 		String actual = driver.findElement(SEGroupConfigLocators.SEGroupNameValidation).getText();
 		Assert.assertEquals("Please Enter Group Name", actual);
 		System.out.println("The user is able to click on Group name and validate the error message");

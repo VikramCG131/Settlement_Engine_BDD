@@ -124,30 +124,30 @@ public class SECalculationSteps {
 
 	@When("The User click the delete icon for the any file for the SE Calculation")
 	public void the_user_click_the_delete_icon_for_the_any_file_for_the_SE_Calculation() {
-		SECalculationTab.clickSECEditButton();
+		SECalculationTab.clickSECDeleteButton();
 	}
 
 	@Then("The User should see a confirmation pop-up with title {string} for the SE Calculation")
 	public void the_user_should_see_a_confirmation_pop_up_with_title_for_the_SE_Calculation(String string) {
 		SECalculationTab.clickSECDeleteConfirmationPopupConfirmButton();
 	}
-/*
-	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Group Config")
-	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_SE_Group_Config() {
-		SECalculationTab.verifyEADeleteConfirmationPopupCancelButton();
-		SECalculationTab.verifyEADeleteConfirmationPopupConfirmButton();
+
+	@When("The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Calculation")
+	public void the_user_should_see_a_confirmation_pop_up_with_cancel_and_confirm_buttons_for_the_SE_Calculation() {
+		SECalculationTab.verifySECDeleteConfirmationPopupCancelButton();
+		SECalculationTab.verifySECDeleteConfirmationPopupConfirmButton();
+	}
+	
+	@When("The User confirm the deletion for the SE Calculation")
+	public void the_user_confirm_the_deletion_for_the_SE_Calculation() {
+		SECalculationTab.clickSECDeleteConfirmationPopupConfirmButton();
 	}
 
-	@When("The User confirm the deletion for the SE Group Config")
-	public void the_user_confirm_the_deletion_for_the_SE_Group_Config() {
-		SECalculationTab.clickEADeleteConfirmationPopupConfirmButton();
+	@Then("the file should be removed from the table for the SE Calculation")
+	public void the_file_should_be_removed_from_the_table_for_the_SE_Calculation() {
+		SECalculationTab.verifySECFileRemoval();
 	}
 
-	@Then("the file should be removed from the table for the SE Group Config")
-	public void the_file_should_be_removed_from_the_table_for_the_SE_Group_Config() {
-		SECalculationTab.verifyEAFileRemoval();
-	}
-*/
 
 
 }

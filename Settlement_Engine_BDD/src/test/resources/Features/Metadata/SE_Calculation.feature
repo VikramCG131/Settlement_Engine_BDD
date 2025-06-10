@@ -39,12 +39,12 @@ Feature: Settlement Engine Calculation
    And The User click the delete icon for the any file for the SE Calculation
    Then The User should see a confirmation pop-up with title "Confirmation deletion" for the SE Calculation
 
-#Scenario: Confirm deletion of a file
-    #When the user click on SE Calculation
-    #And The User click the delete icon for the any file for the SE Calculation
-    #And The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Calculation
-    #And The User confirm the deletion for the SE Calculation
-   #Then the file should be removed from the table for the SE Calculation
+Scenario: Confirm deletion of a file
+    When the user click on SE Calculation
+    And The User click the delete icon for the any file for the SE Calculation
+    And The User should see a confirmation pop-up with Cancel and Confirm buttons for the SE Calculation
+    And The User confirm the deletion for the SE Calculation
+   Then the file should be removed from the table for the SE Calculation
 
    
   
