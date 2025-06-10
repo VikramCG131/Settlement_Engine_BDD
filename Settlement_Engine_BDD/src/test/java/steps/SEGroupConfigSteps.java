@@ -164,7 +164,7 @@ public class SEGroupConfigSteps {
 	public void the_file_should_be_removed_from_the_table_for_the_SE_Group_Config() {
 		SEGroupConfigTab.verifySGCFileRemoval();
 	}
-
-
-
 }
+
+
+

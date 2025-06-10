@@ -30,7 +30,8 @@ public class Hooks {
         if (scenario.isFailed()) {
             ReportUtil.logFail(scenario.getName(), driver);
         } else {
-            ReportUtil.logPass(scenario.getName(), driver);
+        	ReportUtil.logPass(scenario.getName(), driver);
+        
         }
  
         DriverManager.closeDriver();

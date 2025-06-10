@@ -62,7 +62,7 @@ public class SECalculationSteps {
 	}
 	
 	
-	@When("the user enters required formula in requried field of Settlement Rules Config Metadata Explorer")
+	@When("the user enters Valid formula in requried field of Settlement Rules Config Metadata Explorer")
 	public void user_move_any_rule_from_configured_rules_to_applied_rules() throws InterruptedException {
 	    		SECalculationTab.enterRuleConfigMetaDataFieldWithFormula();
 	}

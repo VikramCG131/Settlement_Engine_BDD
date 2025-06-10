@@ -16,8 +16,8 @@ Feature: Settlement Engine Calculation
    Then the rule should be saved successfully
     
     Scenario: Verify validation errors when mandatory fields are missing for the SE Calculation
-   #When the user click on SE Calculation
-  	#And the user click on VALIDATE Button for the SE Calculation and the user should see error for required fields for the SE Calculation
+   When the user click on SE Calculation
+  	And the user click on VALIDATE Button for the SE Calculation and the user should see error for required fields for the SE Calculation
   	
   	#Scenario: Verify that clicking "Reset" fields clears the fields for SE Calculation
   #When the user click on SE Calculation
