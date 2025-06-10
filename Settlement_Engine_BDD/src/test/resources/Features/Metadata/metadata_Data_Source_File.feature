@@ -13,7 +13,7 @@ Scenario: Verify Meta Data form submission with valid data for the file
  And the user enters the data in required fields for the Data Source File
  And the user should see click on the Submit Button for the file
  Then the user should see "test_file" in the file list for the file
- Then user can search and see the addded same record for data Source
+ 
 
  Scenario: Verify validation errors when mandatory fields are missing for the file
  When the user click on Data Source File

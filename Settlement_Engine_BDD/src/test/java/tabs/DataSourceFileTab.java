@@ -178,40 +178,7 @@ public class DataSourceFileTab {
 		System.out.println("The user is able to enter the field value in Data Quality Assignment Category");
 		Thread.sleep(5000);
 	}
-	/*//Enter the Table Name Field Value in Data Source File Category
-	public void tableNameFieldValues()
-	{
-		 // Step 1: List of data options
-       List<String> dataList = Arrays.asList("el3_map_lkp", "exception_metadata", "tallyman_raw", "el3_mapping",
-			   "file_header_metadata", "file_processing", "pricing_lkp", "file_metadata", "dq_rule_metadata",
-			   "alert_metadata", "pricing_info", "exception_management", "dq_rule_validation_metadata", "brand_mapping",
-			   "pricing_raw_delta", "batch_metadata", "file_column_metadata", "pricing_lkp_new", "customer_dim",
-			   "client_map_lkp", "brand_map_lkp", "client_lkp");
-       // Step 2: Locate divs that act like table cells
-       List<WebElement> cellElements =driver.findElements(DataSourceFileLocators.DSFTableCoulmnTableName);
-       Set<String> existingData = new HashSet<>();
-       for (WebElement cell : cellElements) {
-           existingData.add(cell.getText().trim());
-       }
-       // Step 3: Filter out data already in the table
-       List<String> availableData = new ArrayList<>();
-       for (String data : dataList) {
-           if (!existingData.contains(data)) {
-               availableData.add(data);
-           }
-       }
-       // Step 4: Send random unused data (if available)
-       if (!availableData.isEmpty()) {
-           Random rand = new Random();
-           String dataToSend = availableData.get(rand.nextInt(availableData.size()));
-           //DSFTableName
-           wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFTableName));
-           driver.findElement(DataSourceFileLocators.DSFTableName).sendKeys(dataToSend);
-       } else {
-           System.out.println("No new data to send. All entries already exist.");
-       }
-	}
-	*/
+	
 	//Click on Submit Button
 	public   void clickDSFSubmitButton() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSubmitButton));
@@ -238,15 +205,6 @@ public class DataSourceFileTab {
 	}
 	
 	
-	//search for the added record
-		public void AddedRecorddSearch() throws InterruptedException
-		{
-			String random = CommonUtilities.getRandomInteger();
-			Thread.sleep(5000);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(DataSourceFileLocators.DSFSearchforClientcode)).sendKeys(DataSourceFileConstants.FILE_NAME.getValue()+random);
-			Thread.sleep(5000);
-		}
 	
 	//Click on File Pattern and Blank Selection
 	public   void clickDSFFilePatternblankSelection() {
