@@ -147,7 +147,23 @@ public class SECalculationSteps {
 	public void the_file_should_be_removed_from_the_table_for_the_SE_Calculation() {
 		SECalculationTab.verifySECFileRemoval();
 	}
-
-
-
+	
+	@When("the user clicks on Enter Formula for the SE Calculation")
+	public void the_user_clicks_on_Enter_Formula_for_the_SE_Calculation() {
+		SECalculationTab.clickOnEnterFormula();
+	}
+	//enter the valid formula
+	@When("the user uses appropriate operators and logical conditions such for entering valid formula")
+	public void the_user_uses_appropriate_operators_and_logical_conditions_such_for_entering_valid_formula() throws InterruptedException {
+		SECalculationTab.enterValidFormulaInFormulaTextBox();
+	}
+	@When("the formula should be displayed in the formula input box and the user clicks on VALIDATE button")
+	public void the_formula_should_be_displayed_in_the_formula_input_box_and_the_user_clicks_on_VALIDATE_button() throws InterruptedException {
+		SECalculationTab.clickOnValidateButton();
+	}
+	
+	@Then("the system should validate formula with success message")
+	public void the_system_should_validate_formula_with_success_message() {
+		SECalculationTab.validateSuccessMessage();
+	}
 }

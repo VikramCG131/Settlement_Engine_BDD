@@ -28,7 +28,22 @@ public class SECalculationLocators {
 	public static final By SECCategoryTextVisible = By.xpath("//h6[contains(text(),'Settlement Rules Config Metadata Category ')]");
 	public static final By SECFormulaValidation = By.xpath("//div[contains(text(),' Please Enter Valid Formula')]");
 	public static final By SECategoryTextVisibleRules = By.xpath("//span[contains(text(),'Configured Settlement Rules ')]");
-	
+	public static final By SECStarOperator = By.xpath("//button[contains(text(),'*')]");
+	public static final By SECOpenBracesOperator = By.xpath("//button[contains(text(),'(')]");
+	public static final By SECCloseBracesOperator = By.xpath("//button[contains(text(),')')]");
+	public static final By SECWhereOperator = By.xpath("//button[contains(text(),'Where')]");
+	public static final By SECifthenelseOperator = By.xpath("//button[contains(text(),'if then else')]");
+	public static final By SECANDOperator = By.xpath("//button[contains(text(),'AND')]");
+	public static final By SECOROperator = By.xpath("//button[contains(text(),'OR')]");
+	public static final By SECNOTOperator = By.xpath("//button[contains(text(),'OR')]");
+	public static final By SECEqualsOperator = By.xpath("//button[contains(text(),'=')]");
+	public static final By SECNotEqualsOperator = By.xpath("//button[contains(text(),'!=')]");
+	public static final By SECLessOperator = By.xpath("//button[contains(text(),'<')]");
+	public static final By SECMinusOperator = By.xpath("//button[contains(text(),'-')]");
+	public static final By SECForwardslaceOperator = By.xpath("//button[contains(text(),'/')]");
+	public static final By SECPLUSOperator = By.xpath("//button[contains(text(),'+')]");
+	public static final By SECINOperator = By.xpath("//button[contains(text(),'IN')]");
+	public static final By SECGreaterThanOperator = By.xpath("//button[contains(text(),'>')]");
 	/******Configured Settlement Rules******/
 
 	public static final By SECGridVisible = By.xpath("//div[@data-ref='rootWrapperBody']");

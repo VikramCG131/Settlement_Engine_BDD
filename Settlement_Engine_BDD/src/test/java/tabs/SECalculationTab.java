@@ -275,8 +275,82 @@ public class SECalculationTab {
 		Assert.assertTrue(cancel);
 		System.out.println("The user is able to verify the Delete Confirmation Popup Cancel Button");
 	}
-
-
+	// click on Enter Formula
+	public void clickOnEnterFormula()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).click();
+	}
 	
+	public void enterValidFormulaInFormulaTextBox() throws InterruptedException
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("select");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECStarOperator));
+		driver.findElement(SECalculationLocators.SECStarOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("from employee");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECWhereOperator));
+		driver.findElement(SECalculationLocators.SECWhereOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
+		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Department");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECEqualsOperator));
+		driver.findElement(SECalculationLocators.SECEqualsOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'IT'");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOROperator));
+		driver.findElement(SECalculationLocators.SECOROperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" Department");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECEqualsOperator));
+		driver.findElement(SECalculationLocators.SECEqualsOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'HR'");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
+		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECANDOperator));
+		driver.findElement(SECalculationLocators.SECANDOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
+		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Status");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECNotEqualsOperator));
+		driver.findElement(SECalculationLocators.SECNotEqualsOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'Inactive'");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
+		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECANDOperator));
+		driver.findElement(SECalculationLocators.SECANDOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
+		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Role");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECINOperator));
+		driver.findElement(SECalculationLocators.SECINOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
+		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'DEV','QA'");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
+		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
+		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
+		Thread.sleep(5000);
+	}
+	public void clickOnValidateButton()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECValidate));
+		driver.findElement(SECalculationLocators.SECValidate).click();
+	}
+	//Verify the Formula Validation Message
+	public void validateSuccessMessage() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormulaValidationMessage));
+		String validationMessage = driver.findElement(SECalculationLocators.SECFormulaValidationMessage).getText();
+		Assert.assertEquals(validationMessage, "Formula is Valid");
+		System.out.println("The user is able to verify the Formula Validation Message");
+	}
 	
 }
