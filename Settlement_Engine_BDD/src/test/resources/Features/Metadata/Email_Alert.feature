@@ -52,3 +52,13 @@ Scenario: Confirm deletion of a file
     And The User should see a confirmation pop-up with Cancel and Confirm buttons for the Email Alert
     And The User confirm the deletion for the Email Alert
    Then the file should be removed from the table for the Email Alert
+   
+   
+  # Scenario: User receives an email alert after submitting a form
+   # Given the user is logged into the application
+    #And the user is on the "Alert Settings" page
+    #When the user enables the "Email Alert" toggle
+    #And clicks the "Save Settings" button
+    #Then a confirmation message should appear on the UI
+    #And an email alert should be sent to the user's registered email address
+    #And the email should contain the subject "Alert Settings Updated"
