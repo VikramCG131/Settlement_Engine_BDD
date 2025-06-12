@@ -289,7 +289,7 @@ public class SECalculationTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECStarOperator));
 		driver.findElement(SECalculationLocators.SECStarOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("from employee");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" from employee");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECWhereOperator));
 		driver.findElement(SECalculationLocators.SECWhereOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
