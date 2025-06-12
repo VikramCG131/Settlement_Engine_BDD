@@ -284,30 +284,32 @@ public class SECalculationTab {
 	
 	public void enterValidFormulaInFormulaTextBox() throws InterruptedException
 	{
+		//SELECT * FROM file_column_metadata WHERE (column_data_type = 'VARCHAR' OR column_data_type = 'DATE') AND
+		//(is_delete != 'true') AND (column_isnull IN ('true','false'));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
 		driver.findElement(SECalculationLocators.SECFormula).sendKeys("select");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECStarOperator));
 		driver.findElement(SECalculationLocators.SECStarOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" from employee");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" from file_column_metadata");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECWhereOperator));
 		driver.findElement(SECalculationLocators.SECWhereOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
 		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Department");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("column_data_type");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECEqualsOperator));
 		driver.findElement(SECalculationLocators.SECEqualsOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'IT'");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'VARCHAR'");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOROperator));
 		driver.findElement(SECalculationLocators.SECOROperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" Department");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys(" column_data_type");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECEqualsOperator));
 		driver.findElement(SECalculationLocators.SECEqualsOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'HR'");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'DATE'");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
 		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECANDOperator));
@@ -315,11 +317,11 @@ public class SECalculationTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
 		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Status");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("is_delete");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECNotEqualsOperator));
 		driver.findElement(SECalculationLocators.SECNotEqualsOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'Inactive'");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'true'");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
 		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECANDOperator));
@@ -327,18 +329,18 @@ public class SECalculationTab {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
 		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("Role");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("column_isnull");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECINOperator));
 		driver.findElement(SECalculationLocators.SECINOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECOpenBracesOperator));
 		driver.findElement(SECalculationLocators.SECOpenBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECFormula));
-		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'DEV','QA'");
+		driver.findElement(SECalculationLocators.SECFormula).sendKeys("'true','false'");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
 		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(SECalculationLocators.SECCloseBracesOperator));
 		driver.findElement(SECalculationLocators.SECCloseBracesOperator).click();
-		Thread.sleep(5000);
+		
 	}
 	public void clickOnValidateButton()
 	{
