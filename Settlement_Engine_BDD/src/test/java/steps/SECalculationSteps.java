@@ -54,7 +54,7 @@ public class SECalculationSteps {
 
 
 	
-	@When("the user enters values in requried fields of Settlement Rules Config Metadata Category")
+	@When("the user enters values in required fields of Settlement Rules Config Metadata Category")
 	public void the_user_enters_values_in_requried_fields_of_Settlement_Rules_Config_Metadata_Category() throws InterruptedException {
 		SECalculationTab.enterSECalculationCategoryValues(SECalculationConstants.RULE_NAME.getValue(),SECalculationConstants.VARIABLE_NAME.getValue());
 				
@@ -62,8 +62,8 @@ public class SECalculationSteps {
 	}
 	
 	
-	@When("the user enters Valid formula in requried field of Settlement Rules Config Metadata Explorer")
-	public void user_move_any_rule_from_configured_rules_to_applied_rules() throws InterruptedException {
+	@When("the user enters Valid formula in required field of Settlement Rules Config Metadata Explorer")
+	public void the_user_enters_Valid_formula_in_required_field_of_Settlement_Rules_Config_Metadata_Explorer() throws InterruptedException {
 	    		SECalculationTab.enterRuleConfigMetaDataFieldWithFormula();
 	}
 	@When("the user clicks on VALIDATE button and see the success message")
