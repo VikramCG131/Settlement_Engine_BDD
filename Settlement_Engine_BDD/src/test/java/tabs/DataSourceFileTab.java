@@ -138,7 +138,7 @@ public class DataSourceFileTab {
 	        System.out.println("The user is able to select a valid file to upload");
 	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	        String projectPathfilepathraw = System.getProperty("user.dir");
-	        File filePathraw = new File(projectPathfilepathraw + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
+	        File filePathraw = new File(projectPathfilepathraw + "\\src\\test\\resources\\TestData\\filepath.csv");
 	        String absolutePathfilepathraw = filePathraw.getAbsolutePath();
 	        System.out.println(absolutePathfilepathraw);
 	        // Upload the file by sending the path
@@ -154,7 +154,7 @@ public class DataSourceFileTab {
 		        System.out.println("The user is able to select a valid file to upload");
 		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		        String Filepatharchived = System.getProperty("user.dir");
-		        File filearchived = new File(Filepatharchived + "\\src\\test\\resources\\TestData\\Tp_Mapping.csv");
+		        File filearchived = new File(Filepatharchived + "\\src\\test\\resources\\TestData\\filepath.csv");
 		        String absolutePathfilearchived = filearchived.getAbsolutePath();
 		        System.out.println(absolutePathfilearchived);
 		        // Upload the file by sending the path
